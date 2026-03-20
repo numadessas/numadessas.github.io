@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numa — Design, Art & Education in Emerging Technologies</title>
+<meta name="description" content="Numa is a designer, artist, researcher, and educator working at the intersection of Web3, blockchain, and NFTs.">
+<meta property="og:title" content="Numa — Design, Art & Education in Emerging Technologies">
+<meta property="og:description" content="Designer, artist, researcher, and educator working with Web3, blockchain, and NFTs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #ee6f22;
+    --green: #93FF78;
+    --purple: #734578;
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --dark: #1a1a1a;
+    --mid: #2a2a2a;
+    --grey: #888;
+    --light-grey: #ccc;
+    --white: #f5f5f0;
+    --font-display: 'Climate Crisis', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--orange); color: var(--black); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    mix-blend-mode: normal;
+    transition: background 0.3s, backdrop-filter 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(238,111,34,0.15);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--orange);
+    transition: width 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange); color: var(--black); }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--black);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--orange); }
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--grey);
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(115,69,120,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(238,111,34,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 40% at 50% 10%, rgba(147,255,120,0.06) 0%, transparent 50%);
+  }
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(238,111,34,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(238,111,34,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--orange);
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 14rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-headline .accent { color: var(--orange); }
+  .hero-sub {
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--light-grey);
+    max-width: 480px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-desc strong { color: var(--white); font-weight: 500; }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid;
+    line-height: 1;
+  }
+  .pill-orange { border-color: var(--orange); color: var(--orange); }
+  .pill-green { border-color: var(--green); color: var(--green); }
+  .pill-purple { border-color: var(--purple); color: #b87fbf; }
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: var(--orange);
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #ff8540; transform: translateY(-2px); }
+  .btn-secondary {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--white); }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll svg { opacity: 0.4; }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* SECTIONS COMMON */
+  section { position: relative; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--orange);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    margin-bottom: 3rem;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--orange) 0%, rgba(238,111,34,0.1) 60%, transparent 100%);
+    margin: 0;
+  }
+
+  /* ABOUT */
+  #about { background: var(--off-black); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-left { position: sticky; top: 8rem; }
+  .about-number {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 12vw, 10rem);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(238,111,34,0.25);
+    margin-bottom: -1rem;
+  }
+  .about-img-block {
+    position: relative;
+    margin-top: 2rem;
+  }
+  .about-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--dark);
+    border: 1px solid rgba(238,111,34,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-placeholder::after {
+    content: 'NUMA';
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: rgba(238,111,34,0.1);
+    letter-spacing: 0.2em;
+  }
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(115,69,120,0.2) 0%, rgba(238,111,34,0.1) 100%);
+  }
+  .about-tag-float {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    background: var(--orange);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.85rem;
+    font-weight: 700;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong { color: var(--white); font-weight: 500; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 0.25rem;
+  }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--black); }
+  .portfolio-filter {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .filter-btn {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--grey);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+  .project-card {
+    position: relative;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    border-color: rgba(238,111,34,0.4);
+    transform: translateY(-4px);
+  }
+  .project-card.wide { grid-column: span 7; }
+  .project-card.narrow { grid-column: span 5; }
+  .project-card.medium { grid-column: span 6; }
+  .project-card.full { grid-column: span 12; }
+  .project-card.third { grid-column: span 4; }
+  .project-img {
+    aspect-ratio: 16/10;
+    background: var(--mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card.wide .project-img { aspect-ratio: 16/9; }
+  .project-img-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.6);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .project-card:hover .project-overlay { opacity: 1; }
+  .project-overlay-btn {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .project-overlay-btn:hover { background: var(--white); color: var(--black); }
+  .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .project-cat {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .meta-tag {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    background: rgba(255,255,255,0.05);
+    color: #777;
+  }
+  .meta-tag.role { background: rgba(238,111,34,0.08); color: rgba(238,111,34,0.7); }
+
+  /* PROJECT VISUAL PLACEHOLDERS */
+  .pv-1 { background: linear-gradient(135deg, #1a0f0a 0%, #3d1f0e 50%, #1a0f0a 100%); }
+  .pv-2 { background: linear-gradient(135deg, #0f1a0f 0%, #1a3d1a 50%, #0a1a12 100%); }
+  .pv-3 { background: linear-gradient(135deg, #150f1a 0%, #2d1f3d 50%, #150f1a 100%); }
+  .pv-4 { background: linear-gradient(135deg, #1a1200 0%, #3d2d00 50%, #1a1200 100%); }
+  .pv-5 { background: linear-gradient(135deg, #0a0f1a 0%, #1a2540 50%, #0a0f1a 100%); }
+  .pv-6 { background: linear-gradient(135deg, #1a0f15 0%, #3d1f2d 50%, #1a0f15 100%); }
+  .pv-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.5;
+  }
+  .project-tag-label {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    background: rgba(10,10,10,0.8);
+    color: var(--grey);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* AREAS */
+  #areas { background: var(--off-black); }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: 2rem;
+  }
+  .area-item {
+    background: var(--off-black);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .area-item:hover { background: var(--dark); }
+  .area-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(238,111,34,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: -webkit-text-stroke-color 0.3s;
+  }
+  .area-item:hover .area-num { -webkit-text-stroke-color: rgba(238,111,34,0.5); }
+  .area-icon {
+    width: 36px; height: 36px;
+    margin-bottom: 1.25rem;
+  }
+  .area-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+  .area-title .highlight { color: var(--orange); }
+  .area-desc {
+    font-size: 0.88rem;
+    color: #888;
+    line-height: 1.7;
+  }
+  .area-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--orange);
+    transition: width 0.4s;
+  }
+  .area-item:hover .area-bar { width: 100%; }
+
+  /* EDUCATION */
+  #education { background: var(--black); }
+  .edu-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .edu-left {}
+  .edu-featured {
+    background: var(--dark);
+    border: 1px solid rgba(238,111,34,0.2);
+    padding: 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+  .edu-featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--orange);
+  }
+  .edu-featured-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+  }
+  .edu-featured-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .edu-featured-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.7;
+  }
+  .edu-items { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .edu-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+  .edu-dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+  }
+  .edu-item-type {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 0.25rem;
+  }
+  .edu-item-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+  .edu-item-desc {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.6;
+  }
+
+  /* WRITING */
+  #writing { background: var(--off-black); }
+  .writing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .writing-card {
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  .writing-card:hover {
+    border-color: rgba(238,111,34,0.35);
+    transform: translateY(-3px);
+  }
+  .writing-card-date {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 0.75rem;
+  }
+  .writing-card-cat {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .writing-card-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+  }
+  .writing-card-excerpt {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.6;
+  }
+  .writing-card-arrow {
+    position: absolute;
+    bottom: 1.5rem; right: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--orange);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .writing-card:hover .writing-card-arrow { opacity: 1; transform: translate(3px,-3px); }
+  .writing-cta {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--black); overflow: hidden; }
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+  .contact-headline span { color: var(--orange); }
+  .contact-text {
+    font-size: 1rem;
+    color: #999;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .contact-email {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .contact-email:hover { color: var(--orange); }
+  .social-list { display: flex; flex-direction: column; gap: 0; }
+  .social-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .social-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+  .social-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(238,111,34,0.05);
+    transition: width 0.3s;
+  }
+  .social-item:hover::before { width: calc(100% + 6rem); }
+  .social-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    transition: color 0.2s;
+  }
+  .social-item:hover .social-name { color: var(--orange); }
+  .social-handle {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+  }
+  .contact-bg-text {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-display);
+    font-size: 18rem;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(238,111,34,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--off-black);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+  .footer-brand span { color: var(--orange); }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow: hidden;
+    background: var(--orange);
+    padding: 0.85rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 25s linear infinite;
+    gap: 0;
+  }
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    padding: 0 2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .marquee-dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; flex-shrink: 0; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--orange);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s, width 0.2s, height 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(238,111,34,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s cubic-bezier(.25,.1,.25,1), width 0.3s, height 0.3s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor.hover { width: 6px; height: 6px; }
+  .cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(238,111,34,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .areas-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-left { position: static; }
+    .edu-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .project-card.wide { grid-column: span 12; }
+    .project-card.narrow { grid-column: span 12; }
+    .project-card.medium { grid-column: span 12; }
+    .project-card.third { grid-column: span 6; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .section-inner { padding: 4rem 1.5rem; }
+    #hero { padding: 0 1.5rem 4rem; }
+    .hero-sub { flex-direction: column; align-items: flex-start; }
+    .hero-ctas { flex-direction: row; align-items: flex-start; }
+    .areas-grid { grid-template-columns: 1fr; }
+    .writing-grid { grid-template-columns: 1fr; }
+    .project-card.third { grid-column: span 12; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .contact-inner { padding: 4rem 1.5rem; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <span class="mobile-close" id="mobile-close">✕</span>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#portfolio" onclick="closeMobile()">Work</a>
+  <a href="#areas" onclick="closeMobile()">Areas</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#writing" onclick="closeMobile()">Writing</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">NUMA<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#writing">Writing</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-tag">Design · Art · Education · Research</div>
+  <h1 class="hero-headline">NUMA<span class="accent">.</span></h1>
+  <div class="hero-sub">
+    <div>
+      <p class="hero-desc">
+        <strong>Designer, artist, researcher, and educator</strong> working at the intersection of
+        emerging technologies — with a focus on <strong>Web3, blockchain, and NFTs.</strong>
+        Connecting design practice with critical thinking, between industry and academia.
+      </p>
+      <div class="hero-pills">
+        <span class="pill pill-orange">Web3 Design</span>
+        <span class="pill pill-green">NFTs & Blockchain</span>
+        <span class="pill pill-purple">Research & Education</span>
+        <span class="pill pill-orange">Digital Art</span>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <rect x="1" y="1" width="14" height="22" rx="7" stroke="white" stroke-width="1"/>
+      <circle cx="8" cy="7" r="2" fill="white"/>
+    </svg>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">Design<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Web3<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Blockchain<span class="marquee-dot"></span></span>
+    <span class="marquee-item">NFTs<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Art<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Education<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Research<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Emerging Technologies<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Design<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Web3<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Blockchain<span class="marquee-dot"></span></span>
+    <span class="marquee-item">NFTs<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Art<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Education<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Research<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Emerging Technologies<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left fade-up">
+        <div class="about-number">01</div>
+        <div class="about-img-block">
+          <div class="about-img-placeholder"></div>
+          <div class="about-tag-float">São Paulo, BR</div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">+5</div>
+            <div class="stat-label">Years in Web3</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">M.A.</div>
+            <div class="stat-label">Design Research</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Projects delivered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Worlds: industry + academia</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text fade-up">
+        <div class="section-label">About</div>
+        <h2 class="section-title">DESIGN<br>WITH<br><span style="color:var(--orange)">CONTEXT.</span></h2>
+        <p>
+          I'm Numa — a designer, artist, researcher, and educator based in Brazil.
+          My work sits at the intersection of <strong>emerging technologies and design practice</strong>,
+          with a particular focus on blockchain ecosystems, NFTs, and the social implications of Web3.
+        </p>
+        <p>
+          On the practice side, I work with visual communication, branding, digital products,
+          and creative direction — mostly for projects operating in the Web3 space.
+          I build identities, campaigns, and digital experiences that communicate clearly
+          even within complex, technically dense environments.
+        </p>
+        <p>
+          My Master's research in Design investigates <strong>blockchain onboarding education</strong>
+          and social impact — specifically how design can make these technologies more accessible,
+          legible, and equitable. I don't separate theory from practice:
+          research informs how I design, and hands-on experience shapes the questions I ask.
+        </p>
+        <p>
+          I also teach. I develop <strong>educational content, workshops, and courses</strong>
+          about NFTs and blockchain for different levels of familiarity —
+          from total beginners to practitioners looking to deepen their understanding.
+          Mentorship and knowledge-sharing are as important to me as the work I produce.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">Selected Work</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
+      <h2 class="section-title" style="margin-bottom:0;">PROJECTS.</h2>
+      <div class="portfolio-filter">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('design', this)">Design</button>
+        <button class="filter-btn" onclick="filterProjects('branding', this)">Branding</button>
+        <button class="filter-btn" onclick="filterProjects('art', this)">Art</button>
+        <button class="filter-btn" onclick="filterProjects('education', this)">Education</button>
+      </div>
+    </div>
+    <div class="portfolio-grid fade-up">
+
+      <!-- Card 1 - Wide -->
+      <div class="project-card wide" data-cat="design">
+        <div class="project-img pv-3">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:200px;height:200px;background:#734578;top:20%;left:30%;"></div>
+            <div class="pv-shape" style="width:120px;height:120px;background:#ee6f22;top:40%;left:55%;opacity:0.6;"></div>
+            <svg width="60%" height="60%" viewBox="0 0 300 200" style="position:relative;z-index:1;opacity:0.6;">
+              <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="'Bebas Neue',sans-serif" font-size="48" letter-spacing="6">WEB3 UI</text>
+            </svg>
+          </div>
+          <div class="project-tag-label">2024</div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View Case</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Digital Product · UX/UI</div>
+          <div class="project-title">DeFi Platform Interface</div>
+          <div class="project-desc">End-to-end product design for a decentralized finance platform — from onboarding flow to dashboard. Focused on reducing cognitive load for first-time Web3 users.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Lead Designer</span>
+            <span class="meta-tag">Figma</span>
+            <span class="meta-tag">Prototyping</span>
+            <span class="meta-tag">User Research</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 - Narrow -->
+      <div class="project-card narrow" data-cat="branding">
+        <div class="project-img pv-1" style="aspect-ratio:1/1;">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:160px;height:160px;background:#ee6f22;top:10%;left:15%;"></div>
+            <svg width="60%" height="60%" viewBox="0 0 200 200" style="position:relative;z-index:1;opacity:0.7;">
+              <circle cx="100" cy="100" r="60" fill="none" stroke="white" stroke-width="2"/>
+              <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="'Bebas Neue',sans-serif" font-size="28" letter-spacing="4">NFT DROP</text>
+            </svg>
+          </div>
+          <div class="project-tag-label">2024</div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View Case</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Branding · Visual Identity</div>
+          <div class="project-title">NFT Collection Visual Identity</div>
+          <div class="project-desc">Brand system for a generative art collection — from concept and naming to full visual identity and mint-page design.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Art Direction</span>
+            <span class="meta-tag">Illustrator</span>
+            <span class="meta-tag">Photoshop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card medium" data-cat="art">
+        <div class="project-img pv-2">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:180px;height:180px;background:#93FF78;top:20%;left:20%;opacity:0.4;"></div>
+            <svg width="55%" height="55%" viewBox="0 0 240 180" style="position:relative;z-index:1;opacity:0.65;">
+              <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#93FF78" font-family="'Bebas Neue',sans-serif" font-size="38" letter-spacing="4">DIGITAL</text>
+              <text x="50%" y="72%" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="'Bebas Neue',sans-serif" font-size="38" letter-spacing="4">BODIES</text>
+            </svg>
+          </div>
+          <div class="project-tag-label">2023</div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View Work</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Digital Art · NFT</div>
+          <div class="project-title">Digital Bodies Series</div>
+          <div class="project-desc">An artistic exploration of identity, embodiment, and representation in digital spaces. Series of 24 works published on-chain.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Solo Artist</span>
+            <span class="meta-tag">Photoshop</span>
+            <span class="meta-tag">3D</span>
+            <span class="meta-tag">On-chain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="project-card medium" data-cat="design">
+        <div class="project-img pv-5">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:140px;height:140px;background:#4a6aaf;top:15%;right:10%;opacity:0.5;"></div>
+            <svg width="55%" height="55%" viewBox="0 0 240 180" style="position:relative;z-index:1;opacity:0.65;">
+              <rect x="30" y="40" width="80" height="100" fill="none" stroke="white" stroke-width="1.5"/>
+              <rect x="130" y="60" width="80" height="80" fill="none" stroke="#ee6f22" stroke-width="1.5"/>
+              <line x1="110" y1="90" x2="130" y2="100" stroke="white" stroke-width="1" stroke-dasharray="4"/>
+            </svg>
+          </div>
+          <div class="project-tag-label">2023</div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View Case</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Visual Campaign</div>
+          <div class="project-title">Web3 Onboarding Campaign</div>
+          <div class="project-desc">Full visual campaign for a blockchain project targeting non-technical audiences. Strategy, copywriting direction, and visual execution.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Creative Director</span>
+            <span class="meta-tag">Campaign</span>
+            <span class="meta-tag">Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="project-card third" data-cat="branding">
+        <div class="project-img pv-6" style="aspect-ratio:1/1;">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:120px;height:120px;background:#734578;top:20%;left:20%;"></div>
+            <svg width="50%" height="50%" viewBox="0 0 160 160" style="position:relative;z-index:1;opacity:0.7;">
+              <polygon points="80,20 140,60 140,100 80,140 20,100 20,60" fill="none" stroke="white" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Branding</div>
+          <div class="project-title">DAO Brand System</div>
+          <div class="project-desc">Complete identity for a decentralized autonomous organization, including governance materials and community assets.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Brand Designer</span>
+            <span class="meta-tag">Identity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="project-card third" data-cat="education">
+        <div class="project-img pv-4" style="aspect-ratio:1/1;">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:130px;height:130px;background:#ee6f22;top:10%;right:15%;opacity:0.4;"></div>
+            <svg width="50%" height="50%" viewBox="0 0 160 160" style="position:relative;z-index:1;opacity:0.7;">
+              <text x="50%" y="45%" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="'Bebas Neue',sans-serif" font-size="22">COURSE</text>
+              <text x="50%" y="65%" text-anchor="middle" dominant-baseline="middle" fill="#ee6f22" font-family="'Bebas Neue',sans-serif" font-size="22">DESIGN</text>
+            </svg>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Education · Design</div>
+          <div class="project-title">NFT Fundamentals Course</div>
+          <div class="project-desc">Design and development of an educational course on NFTs for beginners — visual design, content structure, and interaction design.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Designer + Educator</span>
+            <span class="meta-tag">Curriculum</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="project-card third" data-cat="art">
+        <div class="project-img pv-3" style="aspect-ratio:1/1;">
+          <div class="project-img-inner" style="position:relative;overflow:hidden;">
+            <div class="pv-shape" style="width:110px;height:110px;background:#93FF78;bottom:20%;right:20%;opacity:0.3;"></div>
+            <svg width="50%" height="50%" viewBox="0 0 160 160" style="position:relative;z-index:1;opacity:0.65;">
+              <circle cx="80" cy="80" r="50" fill="none" stroke="#93FF78" stroke-width="1"/>
+              <circle cx="80" cy="80" r="35" fill="none" stroke="white" stroke-width="0.5"/>
+              <circle cx="80" cy="80" r="15" fill="rgba(238,111,34,0.3)"/>
+            </svg>
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="project-overlay-btn">View</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Generative Art</div>
+          <div class="project-title">On-chain Generative Series</div>
+          <div class="project-desc">Exploration of code-based generative art, published fully on-chain. Experiments in system-generated visual forms.</div>
+          <div class="project-meta">
+            <span class="meta-tag role">Artist</span>
+            <span class="meta-tag">Generative</span>
+            <span class="meta-tag">On-chain</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="https://www.behance.net/numadessas" target="_blank" class="btn-secondary">See full portfolio on Behance →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="section-inner">
+    <div class="section-label">What I do</div>
+    <h2 class="section-title fade-up">AREAS<br>OF <span style="color:var(--orange)">WORK.</span></h2>
+    <div class="areas-grid fade-up">
+      <div class="area-item">
+        <div class="area-num">01</div>
+        <div class="area-title"><span class="highlight">DESIGN</span></div>
+        <p class="area-desc">
+          Visual communication, branding, digital product design, and creative direction.
+          Working primarily with Web3 projects — from identity systems to interface design,
+          campaign visuals to design systems. Practice-led, research-informed.
+        </p>
+        <div class="area-bar"></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">02</div>
+        <div class="area-title"><span class="highlight">ART</span></div>
+        <p class="area-desc">
+          Digital art and creative exploration, often navigating themes of identity,
+          technology, and the body in virtual spaces. Work published on-chain across
+          multiple platforms including Mallow. Art as a critical and experimental space.
+        </p>
+        <div class="area-bar"></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">03</div>
+        <div class="area-title"><span class="highlight">EDUCATION</span></div>
+        <p class="area-desc">
+          Development of educational materials, workshops, lectures, and courses on
+          NFTs and blockchain — designed for different levels of prior knowledge.
+          Mentorship in blockchain, with a focus on access and practical literacy.
+        </p>
+        <div class="area-bar"></div>
+      </div>
+      <div class="area-item">
+        <div class="area-num">04</div>
+        <div class="area-title"><span class="highlight">RESEARCH</span></div>
+        <p class="area-desc">
+          Master's research in Design examining blockchain onboarding education and
+          social impact. How do people enter Web3 spaces? What design choices
+          facilitate or obstruct that access? Where does emerging tech generate
+          or deepen inequality?
+        </p>
+        <div class="area-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & RESEARCH -->
+<section id="education">
+  <div class="section-inner">
+    <div class="edu-layout">
+      <div class="edu-left fade-up">
+        <div class="section-label">Education & Research</div>
+        <h2 class="section-title">BUILD<br>AND<br><span style="color:var(--green)">TEACH.</span></h2>
+        <div class="edu-featured">
+          <div class="edu-featured-label">Master's Research</div>
+          <div class="edu-featured-title">Blockchain Onboarding & Social Impact</div>
+          <div class="edu-featured-desc">
+            My graduate research in Design investigates how people enter Web3 spaces —
+            what barriers exist, how design shapes that experience, and what social
+            outcomes follow. The work connects HCI, design education, and critical
+            perspectives on emerging technology. Practice meets theory.
+          </div>
+        </div>
+      </div>
+      <div class="edu-items fade-up">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-item-type">Course</div>
+            <div class="edu-item-title">NFT Fundamentals — from zero to your first collection</div>
+            <div class="edu-item-desc">Accessible introductory course designed for people with no prior blockchain knowledge. Covers technical basics, creative applications, and market dynamics.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-item-type">Workshop</div>
+            <div class="edu-item-title">Design for Web3: visual thinking in decentralized spaces</div>
+            <div class="edu-item-desc">Hands-on workshop exploring how visual design principles apply (and need to adapt) in blockchain contexts — for designers entering the Web3 space.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-item-type">Mentorship</div>
+            <div class="edu-item-title">Blockchain mentorship program</div>
+            <div class="edu-item-desc">Individual and group mentorship for artists and designers entering the NFT ecosystem. Focus on sustainable practice, technical literacy, and community navigation.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-item-type">Lecture</div>
+            <div class="edu-item-title">NFTs and digital art: critical perspectives</div>
+            <div class="edu-item-desc">Talk covering the cultural, economic, and technological dimensions of NFTs — presented at universities, design events, and community spaces.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-item-type">Content</div>
+            <div class="edu-item-title">Educational materials on blockchain and design</div>
+            <div class="edu-item-desc">Open educational resources, guides, and visual explainers developed to make blockchain concepts more accessible to non-technical audiences.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+      <div>
+        <div class="section-label">Writing & Thinking</div>
+        <h2 class="section-title" style="margin-bottom:0;">IDEAS<br><span style="color:var(--green)">ON PAPER.</span></h2>
+      </div>
+      <a href="#" class="btn-secondary" style="margin-bottom:0.5rem;">See all posts</a>
+    </div>
+    <div class="writing-grid fade-up">
+      <a href="#" class="writing-card">
+        <div class="writing-card-date">March 2025</div>
+        <div class="writing-card-cat">Research</div>
+        <div class="writing-card-title">Who is Web3 actually designed for?</div>
+        <div class="writing-card-excerpt">Design choices in blockchain interfaces are not neutral. They reflect assumptions about users, literacy, and access — and those assumptions have real consequences.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+      <a href="#" class="writing-card">
+        <div class="writing-card-date">January 2025</div>
+        <div class="writing-card-cat">Education</div>
+        <div class="writing-card-title">Teaching NFTs without the hype</div>
+        <div class="writing-card-excerpt">How I approach blockchain education for beginners — cutting through marketing language to build genuine understanding from the ground up.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+      <a href="#" class="writing-card">
+        <div class="writing-card-date">October 2024</div>
+        <div class="writing-card-cat">Design</div>
+        <div class="writing-card-title">Visual identity in decentralized projects</div>
+        <div class="writing-card-excerpt">What makes branding for DAOs and NFT projects distinct from traditional work — and where conventional design thinking still holds.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg-text">NUMA</div>
+  <div class="contact-inner">
+    <div class="fade-up">
+      <div class="section-label">Contact</div>
+      <h2 class="contact-headline">LET'S<br><span>WORK.</span></h2>
+      <p class="contact-text">
+        Open to design collaborations, research partnerships, educational projects,
+        and speaking invitations. If you have something interesting in the Web3 space,
+        I'd like to hear about it.
+      </p>
+      <a href="mailto:contato@numadessas.com.br" class="contact-email">contato@numadessas.com.br</a>
+    </div>
+    <div class="fade-up">
+      <div class="section-label" style="margin-bottom:1.5rem;">Find me online</div>
+      <div class="social-list">
+        <a href="https://www.linkedin.com/in/numadessas/" target="_blank" class="social-item">
+          <span class="social-name">LinkedIn</span>
+          <span class="social-handle">/numadessas</span>
+        </a>
+        <a href="https://www.instagram.com/numadessas/" target="_blank" class="social-item">
+          <span class="social-name">Instagram</span>
+          <span class="social-handle">@numadessas</span>
+        </a>
+        <a href="https://x.com/numadessas" target="_blank" class="social-item">
+          <span class="social-name">X / Twitter</span>
+          <span class="social-handle">@numadessas</span>
+        </a>
+        <a href="https://www.behance.net/numadessas" target="_blank" class="social-item">
+          <span class="social-name">Behance</span>
+          <span class="social-handle">/numadessas</span>
+        </a>
+        <a href="https://www.mallow.art/u/numadessas" target="_blank" class="social-item">
+          <span class="social-name">Mallow</span>
+          <span class="social-handle">/u/numadessas</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">NUMA<span>.</span></div>
+  <div class="footer-copy">© 2025 Numa — Design, Art & Education in Emerging Technologies</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#portfolio">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+
+  // NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // MOBILE MENU
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.add('open');
+  });
+  document.getElementById('mobile-close').addEventListener('click', closeMobile);
+  function closeMobile() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // FADE UP OBSERVER
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // PORTFOLIO FILTER
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? 'flex' : 'none';
+    });
+  }
+
+  // STAGGER PROJECT CARDS
+  document.querySelectorAll('.project-card').forEach((c, i) => {
+    c.style.transitionDelay = (i * 0.07) + 's';
+  });
+</script>
+</body>
+</html>
