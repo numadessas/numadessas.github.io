@@ -632,8 +632,6 @@
   .area-item:hover .area-bar { width: 100%; }
 
   /* EDUCATION */
-  
-  /* EDUCATION */
   #education { background: var(--black); }
   .edu-layout {
     display: grid;
@@ -903,6 +901,46 @@
   }
   .footer-links a:hover { color: var(--green); }
 
+  /* PUBLICATION PROFILE BUTTONS */
+  .pub-profiles {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .pub-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.75rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .pub-profile-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateY(-2px);
+  }
+  .pub-profile-btn--lattes {
+    border-color: rgba(238,111,34,0.4);
+    color: var(--orange);
+  }
+  .pub-profile-btn--lattes:hover {
+    border-color: var(--orange);
+    background: rgba(238,111,34,0.08);
+    color: var(--orange);
+  }
+  @media (max-width: 768px) {
+    .pub-profiles { flex-direction: column; }
+    .pub-profile-btn { justify-content: center; }
+  }
+
   /* ANIMATIONS */
   .fade-up {
     opacity: 0;
@@ -992,6 +1030,8 @@
     .hero-ctas { flex-direction: row; align-items: flex-start; }
     .areas-grid { grid-template-columns: 1fr; }
     .writing-grid { grid-template-columns: 1fr; }
+    .pub-profiles { flex-direction: column; }
+    .pub-profile-btn { justify-content: center; }
     .project-card.third { grid-column: span 12; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .contact-inner { padding: 4rem 1.5rem; }
@@ -1445,65 +1485,49 @@
 <!-- EDUCATION & RESEARCH -->
 <section id="publications">
   <div class="section-inner">
-    <div class="edu-layout">
-      <div class="edu-left fade-up">
-        <div class="section-label">Education & Research</div>
-        <h2 class="section-title">PUBLICATIONS<span style="color:var(--orange)">.</span></h2>
-        <div class="edu-featured">
-          <div class="edu-featured-label">Summary</div>
-          <div class="edu-featured-title">Technology from multidisciplinary perspectives</div>
-          <div class="edu-featured-desc">
-            Degree in Graphic Design from UTFPR.<br>
-            Master's degree in Design from UFPE.
-          </div>
-        </div>
-      </div>
-      <div class="edu-items fade-up">
-        <div class="edu-item">
-          <div class="edu-dot"></div>
-          <div>
-            <div class="edu-item-type">Dissertation</div>
-            <div class="edu-item-title">Applications and practices in Web3</div>
-            <div class="edu-item-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam. Ut arcu ligula,
-              volutpat nec commodo ut, facilisis vel tellus. Sed fermentum vehicula ipsum sit amet finibus.
-              In condimentum feugiat ante.</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-dot"></div>
-          <div>
-            <div class="edu-item-type">Paper</div>
-            <div class="edu-item-title">At the frontier of the metaverse: NFTs, artistic expression, and digital immersions</div>
-            <div class="edu-item-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam. Ut arcu ligula,
-              volutpat nec commodo ut, facilisis vel tellus. Sed fermentum vehicula ipsum sit amet finibus.
-              In condimentum feugiat ante.</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-dot"></div>
-          <div>
-            <div class="edu-item-type">Paper</div>
-            <div class="edu-item-title">Metaverse and cultural preservation: an alternative through NFTs of social sustainability in Brazil</div>
-            <div class="edu-item-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam. Ut arcu ligula,
-              volutpat nec commodo ut, facilisis vel tellus. Sed fermentum vehicula ipsum sit amet finibus.
-              In condimentum feugiat ante.</div>
-          </div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-dot"></div>
-          <div>
-            <div class="edu-item-type">Book Chapter</div>
-            <div class="edu-item-title">"Computers Make Art" — Blockchain & NFTs</div>
-            <div class="edu-item-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam. Ut arcu ligula,
-              volutpat nec commodo ut, facilisis vel tellus. Sed fermentum vehicula ipsum sit amet finibus.
-              In condimentum feugiat ante.</div>
-          </div>
-        </div>
-      </div>
+    <div class="section-label">Education & Research</div>
+    <h2 class="section-title fade-up">PUBLICATIONS<span style="color:var(--orange)">.</span></h2>
+    <div class="writing-grid fade-up" style="grid-template-columns: repeat(2, 1fr);">
+      <a href="#" class="writing-card">
+        <div class="writing-card-cat">Dissertation</div>
+        <div class="writing-card-title">Applications and practices in Web3</div>
+        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+      <a href="#" class="writing-card">
+        <div class="writing-card-cat">Paper</div>
+        <div class="writing-card-title">At the frontier of the metaverse: NFTs, artistic expression, and digital immersions</div>
+        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+      <a href="#" class="writing-card">
+        <div class="writing-card-cat">Paper</div>
+        <div class="writing-card-title">Metaverse and cultural preservation: an alternative through NFTs of social sustainability in Brazil</div>
+        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+      <a href="#" class="writing-card">
+        <div class="writing-card-cat">Book Chapter</div>
+        <div class="writing-card-title">"Computers Make Art" — Blockchain & NFTs</div>
+        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
+        <span class="writing-card-arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- Academic Profile Buttons -->
+    <div class="pub-profiles fade-up">
+      <a href="https://orcid.org/0009-0003-4375-315X" target="_blank" class="pub-profile-btn">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm-28.8 195.8H80.4V98.6h18.8v97.2zm-9.4-110.3c-6 0-10.9-4.9-10.9-10.9s4.9-10.9 10.9-10.9 10.9 4.9 10.9 10.9-4.9 10.9-10.9 10.9zm97.3 110.3h-18.8v-47.2c0-7-.1-16-9.7-16-9.8 0-11.3 7.6-11.3 15.5v47.7h-18.8V98.6h18v8.4h.3c2.5-4.7 8.6-9.7 17.7-9.7 18.9 0 22.4 12.5 22.4 28.7v69.8z"/></svg>
+        ORCID
+      </a>
+      <a href="https://ufpe.academia.edu/NumaGodoy" target="_blank" class="pub-profile-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L0 5.09v1.82h1.91c0 .5.33.94.82 1.08L4 13.01c-.51.27-.85.81-.85 1.43C3.15 15.31 3.84 16 4.7 16c.85 0 1.55-.69 1.55-1.56 0-.62-.35-1.16-.86-1.43l1.26-5.02L12 9.75l5.35-1.76 1.26 5.02c-.51.27-.86.81-.86 1.43 0 .87.7 1.56 1.55 1.56.86 0 1.55-.69 1.55-1.56 0-.62-.34-1.16-.85-1.43l1.27-5.01c.49-.14.82-.58.82-1.08H24V5.09L12 0zM7 17v5h2v-5H7zm4 0v5h2v-5h-2zm4 0v5h2v-5h-2z"/></svg>
+        Academia.edu
+      </a>
+      <a href="https://lattes.cnpq.br/4546032083856705" target="_blank" class="pub-profile-btn pub-profile-btn--lattes">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>
+        Currículo Lattes
+      </a>
     </div>
   </div>
 </section>
@@ -1522,7 +1546,7 @@
         Open to design collaborations, art commissions, research partnerships, educational projects,
         and speaking invitations.
       </p>
-      <a href="mailto:contato@numadessas.com.br" class="contact-email">contato@numadessas.com.br</a>
+      <a href="/cdn-cgi/l/email-protection#ea8985849e8b9e85aa849f878b8e8f99998b99c4898587c48898" class="contact-email"><span class="__cf_email__" data-cfemail="beddd1d0cadfcad1fed0cbd3dfdadbcdcddfcd90ddd1d390dccc">[email&#160;protected]</span></a>
     </div>
     <div class="fade-up">
       <div class="section-label" style="margin-bottom:1.5rem;">Find me online</div>
@@ -1597,7 +1621,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
@@ -1651,11 +1675,6 @@
       card.style.display = show ? 'flex' : 'none';
     });
   }
-
-  // STAGGER PROJECT CARDS
-  document.querySelectorAll('.project-card').forEach((c, i) => {
-    c.style.transitionDelay = (i * 0.07) + 's';
-  });
 </script>
 </body>
 </html>
