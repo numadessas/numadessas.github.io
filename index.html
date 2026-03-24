@@ -769,7 +769,9 @@
     opacity: 0;
     transition: opacity 0.2s, transform 0.2s;
   }
+  .writing-card-arrow--green { color: var(--green) !important; }
   .writing-card:hover .writing-card-arrow { opacity: 1; transform: translate(3px,-3px); }
+  .writing-card:hover .writing-card-arrow--green { color: var(--green); }
   .writing-cta {
     margin-top: 2.5rem;
     text-align: center;
@@ -1448,10 +1450,16 @@
   <div class="section-inner">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
       <div>
-        <div class="section-label">Education & Research</div>
+        <div class="section-label">Education</div>
         <h2 class="section-title">BUILD AND<br><span style="color:var(--green)">TEACH</span><span style="color:var(--orange)">.</span></h2>
       </div>
     </div>
+    
+    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:3rem;">
+      I'm available for lectures, workshops, mentorships, and educational collaborations — especially with universities and research groups.
+      These are usually open initiatives, but I'm open to proposals for something tailored or more institutional.
+    </p>
+    
     <div class="writing-grid fade-up">
       <a href="#" class="writing-card">
         <div class="writing-card-cat">Educational Training</div>
@@ -1472,8 +1480,10 @@
       <a href="#" class="writing-card">
         <div class="writing-card-cat">Design for Education</div>
         <div class="writing-card-title">Teaching material</div>
-        <div class="writing-card-excerpt">Educational materials that can be easily replicated across different contexts.
-          Created with clarity, accessibility, and scalability in mind.</div>
+        <div class="writing-card-excerpt">Educational materials about the internet and blockchain technology
+          that can be easily replicated in different contexts. Created with clarity,
+          accessibility, visually attractive and for different audiences.
+        </div>
         <span class="writing-card-arrow">↗</span>
       </a>
     </div>
@@ -1485,39 +1495,47 @@
 <!-- EDUCATION & RESEARCH -->
 <section id="publications">
   <div class="section-inner">
-    <div class="section-label">Education & Research</div>
+    <div class="section-label">Academic Output</div>
     <h2 class="section-title fade-up">PUBLICATIONS<span style="color:var(--orange)">.</span></h2>
     <div class="writing-grid fade-up" style="grid-template-columns: repeat(2, 1fr);">
-      <a href="#" class="writing-card">
+      <a href="https://repositorio.ufpe.br/handle/123456789/65915" target="_blank" class="writing-card">
         <div class="writing-card-cat">Dissertation</div>
         <div class="writing-card-title">"Computers Make Art" — Didactics for Web3</div>
-        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
-        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-excerpt">
+          Master's dissertation investigating pedagogical frameworks for teaching blockchain, NFTs, and Web3 to diverse audiences. 
+          Developed at UFPE, it bridges design education and emerging digital technologies.</div>
+        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
-      <a href="#" class="writing-card">
+      <a href="https://doi.org/10.54517/m.v5i1.2449" target="_blank" class="writing-card">
         <div class="writing-card-cat">Paper</div>
         <div class="writing-card-title">At the frontier of the metaverse: NFTs, artistic expression, and digital immersions</div>
-        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
-        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-excerpt">
+          Explores NFTs beyond digital art tokenization, examining the tension between artistic autonomy and commercialization in Web3. 
+          Published in the Metaverse journal (2024), with case studies from immersive exhibitions.</div>
+        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
-      <a href="#" class="writing-card">
+      <a href="https://sol.sbc.org.br/index.php/svr/article/view/27139" target="_blank" class="writing-card">
         <div class="writing-card-cat">Paper</div>
         <div class="writing-card-title">Metaverse and cultural preservation: an alternative through NFTs of social sustainability in Brazil</div>
-        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
-        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-excerpt">
+          Presented at SVR'23, this paper investigates how NFTs and metaverse platforms — particularly 3.land — 
+          can be leveraged to preserve and promote Indigenous cultural heritage in Brazil.</div>
+        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
-      <a href="#" class="writing-card">
+      <a href="https://doi.org/10.5753/sbc.17750.6.2" target="_blank" class="writing-card">
         <div class="writing-card-cat">Book Chapter</div>
         <div class="writing-card-title">"Computers Make Art" — Blockchain & NFTs</div>
-        <div class="writing-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mattis est ac massa gravida semper. Aliquam in sollicitudin diam.</div>
-        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-excerpt">
+          Chapter from the collection of short courses from the WebMedia 2024 event. Translates blockchain and NFT concepts
+          into an accessible educational language, result of my master's degree on teaching Web3 through artistic and design practice.</div>
+        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
     </div>
 
     <!-- Academic Profile Buttons -->
     <div class="pub-profiles fade-up">
       <a href="https://orcid.org/0009-0003-4375-315X" target="_blank" class="pub-profile-btn">
-        <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm-28.8 195.8H80.4V98.6h18.8v97.2zm-9.4-110.3c-6 0-10.9-4.9-10.9-10.9s4.9-10.9 10.9-10.9 10.9 4.9 10.9 10.9-4.9 10.9-10.9 10.9zm97.3 110.3h-18.8v-47.2c0-7-.1-16-9.7-16-9.8 0-11.3 7.6-11.3 15.5v47.7h-18.8V98.6h18v8.4h.3c2.5-4.7 8.6-9.7 17.7-9.7 18.9 0 22.4 12.5 22.4 28.7v69.8z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 0c-8.839 0-16 7.161-16 16s7.161 16 16 16c8.839 0 16-7.161 16-16s-7.161-16-16-16zM9.823 5.839c0.704 0 1.265 0.573 1.265 1.26 0 0.688-0.561 1.265-1.265 1.265-0.692-0.004-1.26-0.567-1.26-1.265 0-0.697 0.563-1.26 1.26-1.26zM8.864 9.885h1.923v13.391h-1.923zM13.615 9.885h5.197c4.948 0 7.125 3.541 7.125 6.703 0 3.439-2.687 6.699-7.099 6.699h-5.224zM15.536 11.625v9.927h3.063c4.365 0 5.365-3.312 5.365-4.964 0-2.687-1.713-4.963-5.464-4.963z"/></svg>
         ORCID
       </a>
       <a href="https://ufpe.academia.edu/NumaGodoy" target="_blank" class="pub-profile-btn">
