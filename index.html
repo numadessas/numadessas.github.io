@@ -1733,23 +1733,41 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // MODEL VIEWER: oscillating rotation + parallax
+  // MODEL VIEWER: luxury oscillation + parallax
   (function() {
     const mv = document.getElementById('hero-model');
     if (!mv) return;
 
-    // --- Oscilação suave (vai e volta, sem giro completo) ---
+    // --- Oscilação com easing mais orgânico ---
     let startTime = null;
-    const AMPLITUDE = 30; // graus para cada lado
-    const SPEED = 0.0015; // velocidade (ajuste fino)
+    const AMPLITUDE = 30; // graus
+    const DURATION = 4000; // tempo de um ciclo completo (ms)
+
+    // easing cubic suave (mais "pesado" nas pontas)
+    function easeInOutCubic(t) {
+      return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
 
     function rotateTick(time) {
       if (!startTime) startTime = time;
 
       const elapsed = time - startTime;
 
-      // Movimento suave de -30° até +30°
-      const angle = Math.sin(elapsed * SPEED) * AMPLITUDE;
+      // loop 0 → 1 → 0
+      const progress = (elapsed % DURATION) / DURATION;
+
+      // transforma em ping-pong (vai e volta)
+      const pingPong = progress < 0.5
+        ? progress * 2
+        : (1 - progress) * 2;
+
+      // aplica easing
+      const eased = easeInOutCubic(pingPong);
+
+      // converte para -AMPLITUDE → +AMPLITUDE
+      const angle = (eased * 2 - 1) * AMPLITUDE;
 
       mv.setAttribute('camera-orbit', `${angle}deg 80deg 2.5m`);
 
@@ -1757,7 +1775,7 @@
     }
     requestAnimationFrame(rotateTick);
 
-    // --- Parallax: o 3D fica fixo enquanto o hero está visível ---
+    // --- Parallax (igual ao seu) ---
     const hero = document.getElementById('hero');
     let lastState = '';
 
