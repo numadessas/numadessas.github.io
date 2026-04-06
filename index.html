@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
   :root {
     --orange: #ee6f22;
@@ -156,6 +157,18 @@
     color: var(--grey);
   }
 
+  .hero-model-viewer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    --progress-bar-color: transparent;
+    --progress-mask: none;
+    background: transparent;
+    pointer-events: none;
+  }
+
   /* HERO */
   #hero {
     min-height: 100vh;
@@ -192,6 +205,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    position: relative;
+    z-index: 1;
   }
   .hero-tag::before {
     content: '';
@@ -1085,6 +1100,21 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
+  <model-viewer
+    class="hero-model-viewer"
+    src="EuWebsite2026compressed.glb"
+    alt="3D background"
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="10deg"
+    camera-controls
+    disable-zoom
+    disable-pan
+    interaction-prompt="none"
+    shadow-intensity="0"
+    exposure="1"
+    tone-mapping="neutral"
+  ></model-viewer>
   <div class="hero-tag">Design · Art · Education</div>
   <h1 class="hero-headline">NUMA<span class="accent">.</span></h1>
   <div class="hero-sub">
