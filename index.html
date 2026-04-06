@@ -1733,21 +1733,29 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // MODEL VIEWER: auto-rotate loop + parallax
+  // MODEL VIEWER: oscillating rotation + parallax
   (function() {
     const mv = document.getElementById('hero-model');
     if (!mv) return;
 
-    // --- Auto-rotate suave para a direita em loop ---
-    let angle = 0;
-    const SPEED = 0.012; // graus por frame (~0.7°/s a 60fps)
+    // --- Oscilação suave (vai e volta, sem giro completo) ---
+    let startTime = null;
+    const AMPLITUDE = 30; // graus para cada lado
+    const SPEED = 0.0015; // velocidade (ajuste fino)
 
-    function rotateTick() {
-      angle = (angle + SPEED) % 360;
+    function rotateTick(time) {
+      if (!startTime) startTime = time;
+
+      const elapsed = time - startTime;
+
+      // Movimento suave de -30° até +30°
+      const angle = Math.sin(elapsed * SPEED) * AMPLITUDE;
+
       mv.setAttribute('camera-orbit', `${angle}deg 80deg 2.5m`);
+
       requestAnimationFrame(rotateTick);
     }
-    rotateTick();
+    requestAnimationFrame(rotateTick);
 
     // --- Parallax: o 3D fica fixo enquanto o hero está visível ---
     const hero = document.getElementById('hero');
@@ -1759,7 +1767,6 @@
       const scrollY = window.scrollY;
 
       if (scrollY <= 0) {
-        // Topo exato da página: absolute normal
         if (lastState !== 'top') {
           mv.style.cssText = `
             position: absolute;
@@ -1773,7 +1780,6 @@
           lastState = 'top';
         }
       } else if (heroBottom > 0) {
-        // Hero ainda visível: fixa na viewport
         if (lastState !== 'fixed') {
           mv.style.cssText = `
             position: fixed;
@@ -1787,7 +1793,6 @@
           lastState = 'fixed';
         }
       } else {
-        // Hero saiu completamente: move para fora da tela
         if (lastState !== 'hidden') {
           mv.style.cssText = `
             position: absolute;
@@ -1828,13 +1833,11 @@
     el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
   });
 
-  // NAV SCROLL
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // MOBILE MENU
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.add('open');
   });
@@ -1843,14 +1846,12 @@
     document.getElementById('mobile-menu').classList.remove('open');
   }
 
-  // FADE UP OBSERVER
   const fadeEls = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // PORTFOLIO FILTER
   function filterProjects(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
