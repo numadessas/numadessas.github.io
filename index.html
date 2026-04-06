@@ -1733,49 +1733,78 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // MODEL VIEWER: scroll rotation + custom lighting
+  // MODEL VIEWER: auto-rotate loop + parallax
   (function() {
     const mv = document.getElementById('hero-model');
     if (!mv) return;
 
-    // Wait for model-viewer to be ready
-    mv.addEventListener('load', () => {
-      // Add warm key light matching the orange palette
-      const scene = mv.shadowRoot && mv.shadowRoot.querySelector('canvas');
+    // --- Auto-rotate suave para a direita em loop ---
+    let angle = 0;
+    const SPEED = 0.012; // graus por frame (~0.7°/s a 60fps)
 
-      // Scroll-based rotation: 0deg (front) → -45deg (left) as user scrolls through hero
-      let targetOrbit = 0;
-      let currentOrbit = 0;
-      const BASE_ORBIT = 0;      // facing front
-      const MAX_ROTATION = -45;  // rotate left 45deg on scroll
+    function rotateTick() {
+      angle = (angle + SPEED) % 360;
+      mv.setAttribute('camera-orbit', `${angle}deg 80deg 2.5m`);
+      requestAnimationFrame(rotateTick);
+    }
+    rotateTick();
 
-      function applyOrbit(deg) {
-        // camera-orbit: theta phi radius
-        mv.setAttribute('camera-orbit', `${deg}deg 80deg 2.5m`);
-      }
+    // --- Parallax: o 3D fica fixo enquanto o hero está visível ---
+    const hero = document.getElementById('hero');
+    let lastState = '';
 
-      applyOrbit(BASE_ORBIT);
+    function updateParallax() {
+      if (!hero) return;
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      const scrollY = window.scrollY;
 
-      window.addEventListener('scroll', () => {
-        const hero = document.getElementById('hero');
-        if (!hero) return;
-        const heroHeight = hero.offsetHeight;
-        const scrollY = window.scrollY;
-        // Progress 0→1 as user scrolls through the hero section
-        const progress = Math.min(1, Math.max(0, scrollY / heroHeight));
-        targetOrbit = BASE_ORBIT + MAX_ROTATION * progress;
-      });
-
-      // Smooth interpolation
-      function tick() {
-        currentOrbit += (targetOrbit - currentOrbit) * 0.08;
-        if (Math.abs(targetOrbit - currentOrbit) > 0.01) {
-          applyOrbit(currentOrbit);
+      if (scrollY <= 0) {
+        // Topo exato da página: absolute normal
+        if (lastState !== 'top') {
+          mv.style.cssText = `
+            position: absolute;
+            top: 0; right: 0; left: auto;
+            width: 55%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            --progress-bar-color: transparent;
+            background: transparent;
+          `;
+          lastState = 'top';
         }
-        requestAnimationFrame(tick);
+      } else if (heroBottom > 0) {
+        // Hero ainda visível: fixa na viewport
+        if (lastState !== 'fixed') {
+          mv.style.cssText = `
+            position: fixed;
+            top: 0; right: 0; left: auto;
+            width: 55%; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            --progress-bar-color: transparent;
+            background: transparent;
+          `;
+          lastState = 'fixed';
+        }
+      } else {
+        // Hero saiu completamente: move para fora da tela
+        if (lastState !== 'hidden') {
+          mv.style.cssText = `
+            position: absolute;
+            top: -200vh; right: 0; left: auto;
+            width: 55%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            --progress-bar-color: transparent;
+            background: transparent;
+          `;
+          lastState = 'hidden';
+        }
       }
-      tick();
-    });
+    }
+
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
   })();
 
   const cursor = document.getElementById('cursor');
