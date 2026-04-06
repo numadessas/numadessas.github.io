@@ -386,7 +386,9 @@
   .about-img-placeholder {
     width: 100%;
     aspect-ratio: 3/4;
-    background: var(--dark);
+    background-image: url(/assets/profile2026_site.png);
+    background-size: cover;
+    background-position: center;
     border: 1px solid rgba(238,111,34,0.15);
     display: flex;
     align-items: center;
@@ -394,19 +396,21 @@
     position: relative;
     overflow: hidden;
   }
-  .about-img-placeholder::after {
-    content: 'NUMA';
-    font-family: var(--font-display);
-    font-size: 5rem;
-    color: rgba(238,111,34,0.1);
-    letter-spacing: 0.2em;
-  }
-  .about-img-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(115,69,120,0.2) 0%, rgba(238,111,34,0.1) 100%);
-  }
+  
+ /*       .about-img-placeholder::after {
+          content: 'NUMA';
+          font-family: var(--font-display);
+          font-size: 5rem;
+          color: rgba(238,111,34,0.1);
+          letter-spacing: 0.2em;
+        }
+        .about-img-placeholder::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(115,69,120,0.2) 0%, rgba(238,111,34,0.1) 100%);
+        } */
+  
   .about-tag-float {
     position: absolute;
     bottom: -1rem;
@@ -435,7 +439,6 @@
     padding-top: 3rem;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
-  .stat-item {}
   .stat-num {
     font-family: var(--font-display);
     font-size: 3rem;
@@ -667,7 +670,6 @@
     gap: 5rem;
     align-items: start;
   }
-  .edu-left {}
   .edu-featured {
     background: var(--dark);
     border: 1px solid rgba(238,111,34,0.2);
@@ -1073,13 +1075,16 @@
       right: 0;
       left: 0;
       width: 100%;
-      height: 60%;
-      opacity: 0.55;
+      height: 100%;
+      opacity: 0.85;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .hero-overlay {
       background:
-        linear-gradient(to top, var(--black) 35%, rgba(10,10,10,0.8) 55%, rgba(10,10,10,0.2) 75%, transparent 100%),
-        linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, transparent 30%);
+        linear-gradient(to top, var(--black) 30%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 70%, transparent 100%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 25%);
     }
   }
 
@@ -1167,12 +1172,12 @@
     disable-zoom
     disable-pan
     interaction-prompt="none"
-    shadow-intensity="0.3"
-    shadow-softness="1"
-    exposure="0.6"
+    shadow-intensity="1"
+    shadow-softness="2"
+    exposure="0.5"
     tone-mapping="commerce"
     environment-image="neutral"
-    camera-orbit="0deg 75deg 2.5m"
+    camera-orbit="0deg 45deg 2m"
     min-camera-orbit="auto auto auto"
     max-camera-orbit="auto auto auto"
     field-of-view="30deg"
@@ -1733,23 +1738,54 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // MODEL VIEWER: auto-rotate loop + parallax
+  // MODEL VIEWER: luxury oscillation + parallax
   (function() {
     const mv = document.getElementById('hero-model');
     if (!mv) return;
 
-    // --- Auto-rotate suave para a direita em loop ---
-    let angle = 0;
-    const SPEED = 0.012; // graus por frame (~0.7°/s a 60fps)
+    // --- Oscilação com easing mais orgânico ---
+    let startTime = null;
+    const AMPLITUDE = 30; // graus
+    const DURATION = 6000; // tempo de um ciclo completo (ms)
 
-    function rotateTick() {
-      angle = (angle + SPEED) % 360;
-      mv.setAttribute('camera-orbit', `${angle}deg 80deg 2.5m`);
+    // easing cubic suave (mais "pesado" nas pontas)
+    function easeInOutCubic(t) {
+      return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function rotateTick(time) {
+      if (!startTime) startTime = time;
+
+      const elapsed = time - startTime;
+
+      // loop 0 → 1 → 0
+      const progress = (elapsed % DURATION) / DURATION;
+
+      // transforma em ping-pong (vai e volta)
+      const pingPong = progress < 0.5
+        ? progress * 2
+        : (1 - progress) * 2;
+
+      // aplica easing
+      const eased = easeInOutCubic(pingPong);
+
+      // converte para -AMPLITUDE → +AMPLITUDE
+      const angle = (eased * 2 - 1) * AMPLITUDE;
+
+      // Responsive: zoom out more on mobile portrait so model isn't cut off
+      const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+      const distance = isMobilePortrait ? '2.2m' : '2.5m';
+      const pitch = isMobilePortrait ? '70deg' : '80deg';
+
+      mv.setAttribute('camera-orbit', `${angle}deg ${pitch} ${distance}`);
+
       requestAnimationFrame(rotateTick);
     }
-    rotateTick();
+    requestAnimationFrame(rotateTick);
 
-    // --- Parallax: o 3D fica fixo enquanto o hero está visível ---
+    // --- Parallax (igual ao seu) ---
     const hero = document.getElementById('hero');
     let lastState = '';
 
@@ -1759,7 +1795,6 @@
       const scrollY = window.scrollY;
 
       if (scrollY <= 0) {
-        // Topo exato da página: absolute normal
         if (lastState !== 'top') {
           mv.style.cssText = `
             position: absolute;
@@ -1773,7 +1808,6 @@
           lastState = 'top';
         }
       } else if (heroBottom > 0) {
-        // Hero ainda visível: fixa na viewport
         if (lastState !== 'fixed') {
           mv.style.cssText = `
             position: fixed;
@@ -1787,7 +1821,6 @@
           lastState = 'fixed';
         }
       } else {
-        // Hero saiu completamente: move para fora da tela
         if (lastState !== 'hidden') {
           mv.style.cssText = `
             position: absolute;
@@ -1828,13 +1861,11 @@
     el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
   });
 
-  // NAV SCROLL
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // MOBILE MENU
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.add('open');
   });
@@ -1843,14 +1874,12 @@
     document.getElementById('mobile-menu').classList.remove('open');
   }
 
-  // FADE UP OBSERVER
   const fadeEls = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // PORTFOLIO FILTER
   function filterProjects(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
