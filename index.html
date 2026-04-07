@@ -1047,21 +1047,55 @@
   .cursor, .cursor-ring { display: none; }
 
   /* 🔧 ABOUT corrigido no mobile */
-  .about-grid {
-    grid-template-columns: 0.8fr 1.2fr;
+.about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-left {
+    display: flex;
     gap: 1.5rem;
-    align-items: center;
+    align-items: flex-start;
   }
-
-  .about-img-placeholder {
-    aspect-ratio: 1 / 1;
-  }
-
   .about-img-block {
-    max-width: 140px;
+    max-width: 120px;
+    flex-shrink: 0;
+  }
+  .about-img-placeholder {
+    aspect-ratio: 3 / 4;
+  }
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .about-text {
+    margin-top: 1rem;
   }
 
   /* 🎯 Model viewer (mobile + tablet portrait herdado) */
+  /* Mobile + tablet portrait (mais próximo e central) */
+@media (max-width: 768px) {
+  #hero-model {
+    --camera-orbit: 0deg 75deg 1.6m;
+  }
+}
+
+/* Tablet landscape (um pouco mais afastado) */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  #hero-model {
+    --camera-orbit: 20deg 65deg 2.2m;
+  }
+}
+
+/* Desktop (mais aberto e equilibrado) */
+@media (min-width: 1025px) {
+  #hero-model {
+    --camera-orbit: 30deg 60deg 2.6m;
+  }
+
   .hero-model-viewer {
     top: -20%;
     right: 0;
