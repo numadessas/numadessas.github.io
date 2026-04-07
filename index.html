@@ -1016,7 +1016,85 @@
     to { transform: translateX(-50%); }
   }
 
-  /* CURSOR */
+ /* RESPONSIVE */
+@media (max-width: 1024px) {
+  .areas-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-left { position: static; }
+  .edu-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .project-card.wide { grid-column: span 12; }
+  .project-card.narrow { grid-column: span 12; }
+  .project-card.medium { grid-column: span 12; }
+  .project-card.third { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .section-inner { padding: 4rem 1.5rem; }
+  #hero { padding: 0 1.5rem 4rem; }
+  .hero-sub { flex-direction: column; align-items: flex-start; }
+  .hero-ctas { flex-direction: row; align-items: flex-start; }
+  .areas-grid { grid-template-columns: 1fr; }
+  .writing-grid { grid-template-columns: 1fr; }
+  .pub-profiles { flex-direction: column; }
+  .pub-profile-btn { justify-content: center; }
+  .project-card.third { grid-column: span 12; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .contact-inner { padding: 4rem 1.5rem; }
+  .cursor, .cursor-ring { display: none; }
+
+  /* 🔧 ABOUT corrigido no mobile */
+  .about-grid {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .about-img-placeholder {
+    aspect-ratio: 1 / 1;
+  }
+
+  .about-img-block {
+    max-width: 140px;
+  }
+
+  /* 🎯 Model viewer (mobile + tablet portrait herdado) */
+  .hero-model-viewer {
+    top: -20%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(to top, var(--black) 10%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 70%, transparent 100%),
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 5%);
+  }
+}
+
+/* Tablet landscape: mantém comportamento de desktop */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero-model-viewer {
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 50%;
+    height: 100%;
+    opacity: 1;
+  }
+} /* CURSOR */
   .cursor {
     width: 12px; height: 12px;
     background: var(--orange);
@@ -1040,85 +1118,7 @@
   .cursor.hover { width: 6px; height: 6px; }
   .cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(238,111,34,0.6); }
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .areas-grid { grid-template-columns: repeat(2, 1fr); }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-left { position: static; }
-    .edu-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .project-card.wide { grid-column: span 12; }
-    .project-card.narrow { grid-column: span 12; }
-    .project-card.medium { grid-column: span 12; }
-    .project-card.third { grid-column: span 6; }
-  }
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .section-inner { padding: 4rem 1.5rem; }
-    #hero { padding: 0 1.5rem 4rem; }
-    .hero-sub { flex-direction: column; align-items: flex-start; }
-    .hero-ctas { flex-direction: row; align-items: flex-start; }
-    .areas-grid { grid-template-columns: 1fr; }
-    .writing-grid { grid-template-columns: 1fr; }
-    .pub-profiles { flex-direction: column; }
-    .pub-profile-btn { justify-content: center; }
-    .project-card.third { grid-column: span 12; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-    .contact-inner { padding: 4rem 1.5rem; }
-    .cursor, .cursor-ring { display: none; }
-
-    /* Model viewer: centralizado e ocupando todo o banner no mobile */
-    .hero-model-viewer {
-      top: -20%;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100% !important;
-      height: 100% !important;
-      margin: 0 auto;
-      opacity: 0.9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform: none;
-    }
-    .hero-overlay {
-      background:
-        linear-gradient(to top, var(--black) 10%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 70%, transparent 100%),
-        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 5%);
-    }
-  }
-
-  /* Tablet landscape: modelo à direita como desktop */
-  @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-    .hero-model-viewer {
-      top: 0;
-      right: 0;
-      left: auto;
-      width: 50%;
-      height: 100%;
-      opacity: 1;
-    }
-  }
-
-  /* Tablet portrait: centralizado como mobile */
-  @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-    .hero-model-viewer {
-      top: 0;
-      right: 0;
-      left: 0;
-      width: 100%;
-      height: 55%;
-      opacity: 0.6;
-    }
-    .hero-overlay {
-      background:
-        linear-gradient(to top, var(--black) 35%, rgba(10,10,10,0.8) 55%, rgba(10,10,10,0.1) 75%, transparent 100%),
-        linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, transparent 30%);
-    }
-  }
+  
 </style>
 </head>
 <body>
