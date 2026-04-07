@@ -206,7 +206,7 @@
     background-image:
       linear-gradient(rgba(238,111,34,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(238,111,34,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-size: 100px 100px;
   }
   .hero-tag {
     font-family: var(--font-mono);
@@ -386,7 +386,7 @@
   .about-img-placeholder {
     width: 100%;
     aspect-ratio: 3/4;
-    background-image: url(/assets/profile2026_site.png);
+    background-image: url(.../assets/profile2026_site.png);
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(238,111,34,0.15);
@@ -1778,7 +1778,7 @@
       const angle = (eased * 2 - 1) * AMPLITUDE;
 
       // Responsive: zoom out more on mobile portrait so model isn't cut off
-      const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+      const isMobilePortrait = window.innerWidth <= 1080 && window.innerHeight > window.innerWidth;
       const distance = isMobilePortrait ? '2.2m' : '2.5m';
       const pitch = isMobilePortrait ? '70deg' : '80deg';
 
@@ -1788,7 +1788,7 @@
     }
     requestAnimationFrame(rotateTick);
 
-    // --- Parallax (igual ao seu) ---
+    // --- Parallax ---
     const hero = document.getElementById('hero');
     let lastState = '';
 
