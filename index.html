@@ -1636,7 +1636,19 @@ It helps users quickly understand their cash flow, income, expenses, and balance
         Open to design collaborations, art commissions, research partnerships, educational projects,
         and speaking invitations.
       </p>
-      <a href="mailto:contato@numadessas.com.br" class="contact-email">contato@numadessas.com.br</a>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const u = "contato";
+          const d = "numadessas.com.br";
+          const el = document.querySelector(".contact-email");
+          if (el) {
+            el.href = "mailto:" + u + "@" + d;
+            el.textContent = u + "@" + d;
+          }
+        });
+      </script>
+      
+      <a href="#" class="contact-email">[click and mail me]</a>
     </div>
     <div class="fade-up">
       <div class="section-label" style="margin-bottom:1.5rem;">Find me online</div>
