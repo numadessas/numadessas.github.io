@@ -126,6 +126,17 @@
   }
   .nav-links a:hover { color: var(--green); }
   .nav-links a:hover::after { width: 100%; }
+  .nav-wiki-link {
+    color: var(--green) !important;
+    border: 1px solid rgba(147,255,120,0.4);
+    padding: 0.3rem 0.75rem;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-wiki-link:hover {
+    background: var(--green) !important;
+    color: var(--black) !important;
+  }
+  .nav-wiki-link::after { display: none !important; }
   .nav-cta {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -825,6 +836,23 @@
     transition: opacity 0.2s, transform 0.2s;
   }
   .writing-card-arrow--green { color: var(--green) !important; }
+  .writing-card--wiki {
+    border-color: rgba(147,255,120,0.3);
+    background: linear-gradient(135deg, var(--dark) 0%, rgba(147,255,120,0.04) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .writing-card--wiki::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--green);
+  }
+  .writing-card--wiki:hover {
+    border-color: rgba(147,255,120,0.6);
+    transform: translateY(-3px);
+  }
   .writing-card:hover .writing-card-arrow { opacity: 1; transform: translate(3px,-3px); }
   .writing-card:hover .writing-card-arrow--green { color: var(--green); }
   .writing-cta {
@@ -1160,6 +1188,7 @@
   <a href="#areas" onclick="closeMobile()">Areas</a>
   <a href="#education" onclick="closeMobile()">Education</a>
   <a href="#publications" onclick="closeMobile()">Publications</a>
+  <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);">Wiki ↗</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
@@ -1179,6 +1208,7 @@
     <li><a href="#areas">Areas</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#publications">Publications</a></li>
+    <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link">Wiki ↗</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Get in touch</a>
   <div class="hamburger" id="hamburger">
@@ -1558,6 +1588,12 @@
     </p>
     
     <div class="writing-grid fade-up">
+      <a href="https://numadessas.com.br/wiki/" target="_blank" class="writing-card writing-card--wiki">
+        <div class="writing-card-cat" style="color:var(--green);">Free Resource</div>
+        <div class="writing-card-title" style="font-size:1.7rem;">NumaWiki 📖</div>
+        <div class="writing-card-excerpt">A free open knowledge base on blockchain, Web3, crypto art, and emerging technologies — written in clear, accessible language. A living resource for curious minds at any level.</div>
+        <span class="writing-card-arrow writing-card-arrow--green" style="opacity:1;font-size:1.5rem;">↗</span>
+      </a>
       <a class="writing-card">
         <div class="writing-card-cat">Educational Training</div>
         <div class="writing-card-title">Lectures & Workshops</div>
