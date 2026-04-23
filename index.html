@@ -34,9 +34,7 @@
   
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
   :root {
@@ -1156,6 +1154,57 @@
     }
   }
 
+  /* TEZOS AWARD BADGE */
+  .tezos-award-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(115, 69, 120, 0.4);
+    background: linear-gradient(135deg, rgba(115, 69, 120, 0.1) 0%, rgba(115, 69, 120, 0.04) 100%);
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    position: relative;
+  }
+  .tezos-award-badge:hover {
+    border-color: rgba(115, 69, 120, 0.7);
+    background: linear-gradient(135deg, rgba(115, 69, 120, 0.16) 0%, rgba(115, 69, 120, 0.08) 100%);
+    transform: translateY(-2px);
+  }
+  .tezos-award-shield {
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(115, 69, 120, 0.4));
+  }
+  .tezos-award-info {
+    flex: 1;
+  }
+  .tezos-award-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #b87fbf;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .tezos-award-org {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 0.2rem;
+  }
+  .tezos-award-arrow {
+    flex-shrink: 0;
+    color: rgba(115, 69, 120, 0.6);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .tezos-award-badge:hover .tezos-award-arrow {
+    color: #b87fbf;
+    transform: translate(2px, -2px);
+  }
+
   /* Tablet portrait: centralizado como mobile */
   @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
     .hero-model-viewer {
@@ -1311,6 +1360,26 @@
             <div class="stat-label">Years in Web3</div>
           </div>
         </div>
+        <a href="https://x.com/TezosCommons" target="_blank" rel="noopener" class="tezos-award-badge">
+          <div class="tezos-award-shield">
+            <svg viewBox="0 0 80 90" width="48" height="54" aria-hidden="true">
+              <path d="M40 4 L74 18 L74 52 C74 68 58 80 40 86 C22 80 6 68 6 52 L6 18 Z" fill="#734578"/>
+              <path d="M40 2 L76 17 L76 52 C76 69 59 82 40 88 C21 82 4 69 4 52 L4 17 Z" fill="none" stroke="#b87fbf" stroke-width="1.5" opacity="0.6"/>
+              <polygon points="40,22 43.5,32 54,32 45.5,38 48.5,48 40,42 31.5,48 34.5,38 26,32 36.5,32" fill="white" opacity="0.95"/>
+              <circle cx="40" cy="34" r="5" fill="#734578"/>
+              <circle cx="29" cy="60" r="3" fill="white" opacity="0.8"/>
+              <polygon points="40,57 42,63 48,63 43,67 45,73 40,69 35,73 37,67 32,63 38,63" fill="white" opacity="0.9" transform="scale(0.7) translate(17, 17)"/>
+              <circle cx="51" cy="60" r="3" fill="white" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="tezos-award-info">
+            <div class="tezos-award-title">Influencer Award</div>
+            <div class="tezos-award-org">Tezos Commons</div>
+          </div>
+          <svg class="tezos-award-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 12 L12 2 M12 2 H5 M12 2 V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
       </div>
       <div class="about-text fade-up">
         <div class="section-label">About</div>
