@@ -6,13 +6,13 @@
     "education": "Educação",
     "publications": "Publicações",
     "wiki": "Wiki ↗",
-    "contact": "Fale comigo"
+    "contact": "Contato"
   },
   "hero": {
     "tag": "Designer · Artista · Educadora",
-    "desc": "A tecnologia pode criar ecossistemas sociais conscientes e sustentáveis<br><strong>phygital.</strong>",
+    "desc": "A tecnologia pode criar ecossistemas sociais conscientes e sustentáveis, <strong>[físicos ou digitais]</strong>.",
     "cta_primary": "Ver Projetos",
-    "cta_secondary": "Fale comigo",
+    "cta_secondary": "Contato",
     "scroll": "Rolar"
   },
   "about": {
