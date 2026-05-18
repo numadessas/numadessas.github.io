@@ -229,18 +229,55 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(115,69,120,0.25) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(238,111,34,0.15) 0%, transparent 55%),
-      radial-gradient(ellipse 30% 40% at 50% 10%, rgba(147,255,120,0.06) 0%, transparent 50%);
+    background: linear-gradient(-45deg, #160a20, #241038, #331041, #241038, #160a20);
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    transition: background-position 0.5s ease;
+    z-index: 0;
   }
-  .hero-grid-lines {
+  .hero-bg::before {
+    content: '';
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(238,111,34,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(238,111,34,0.04) 1px, transparent 1px);
-    background-size: 100px 100px;
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 70%, rgba(52,16,65,0.8) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 20%, rgba(36,16,56,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 90%, rgba(22,10,32,0.7) 0%, transparent 60%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    animation: grain 0.6s steps(1) infinite;
+    pointer-events: none;
+  }
+  #hero:has(.btn-primary:hover) .hero-bg,
+  #hero:has(.btn-secondary:hover) .hero-bg {
+    animation: heroGrad 7s ease infinite;
+  }
+  @keyframes heroGrad {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes grain {
+    0%   { transform: translate(0, 0); }
+    10%  { transform: translate(-5%, -10%); }
+    20%  { transform: translate(-15%, 5%); }
+    30%  { transform: translate(7%, -20%); }
+    40%  { transform: translate(-5%, 20%); }
+    50%  { transform: translate(-15%, 10%); }
+    60%  { transform: translate(15%, 0%); }
+    70%  { transform: translate(0%, 15%); }
+    80%  { transform: translate(3%, 30%); }
+    90%  { transform: translate(-10%, 10%); }
+    100% { transform: translate(0, 0); }
   }
   .hero-tag {
     font-family: var(--font-mono);
@@ -1035,37 +1072,6 @@
     transform: translateY(0);
   }
 
-  /* MARQUEE */
-  .marquee-wrap {
-    overflow: hidden;
-    background: var(--orange);
-    padding: 0.85rem 0;
-    position: relative;
-    z-index: 1;
-  }
-  .marquee-track {
-    display: flex;
-    white-space: nowrap;
-    animation: marquee 25s linear infinite;
-    gap: 0;
-  }
-  .marquee-item {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--black);
-    padding: 0 2rem;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .marquee-dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; flex-shrink: 0; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
 
   /* CURSOR */
   .cursor {
@@ -1181,15 +1187,14 @@
   }
   .tezos-award-title {
     font-family: var(--font-display);
-    font-size: 0.8rem;
-    font-weight: 200;
+    font-size: 0.95rem;
     color: #b87fbf;
     letter-spacing: 0.04em;
     line-height: 1.2;
   }
   .tezos-award-org {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--grey);
@@ -1268,7 +1273,6 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
   <div class="hero-overlay"></div>
   <model-viewer
     id="hero-model"
@@ -1321,26 +1325,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track" id="marquee">
-    <span class="marquee-item">Design<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Web3<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Blockchain<span class="marquee-dot"></span></span>
-    <span class="marquee-item">NFTs<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Art<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Education<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Emerging Technologies<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Design<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Web3<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Blockchain<span class="marquee-dot"></span></span>
-    <span class="marquee-item">NFTs<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Art<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Education<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Emerging Technologies<span class="marquee-dot"></span></span>
-  </div>
-</div>
-
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
@@ -1352,17 +1336,17 @@
         </div>
         <div class="about-stats">
           <div class="stat-item">
-            <div class="stat-num">+12</div>
+            <div class="stat-num">+13</div>
             <div class="stat-label">Years in Design</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">+4</div>
+            <div class="stat-num">+5</div>
             <div class="stat-label">Years in Web3</div>
           </div>
         </div>
-        <a href="https://news.tezoscommons.org/tezos-community-rewards-march-2026-c4c7e7d05ab5" target="_blank" rel="noopener" class="tezos-award-badge">
+        <a href="https://x.com/TezosCommons" target="_blank" rel="noopener" class="tezos-award-badge">
           <div class="tezos-award-shield">
-            <svg viewBox="0 0 80 90" width="35" height="39" aria-hidden="true">
+            <svg viewBox="0 0 80 90" width="48" height="54" aria-hidden="true">
               <path d="M40 4 L74 18 L74 52 C74 68 58 80 40 86 C22 80 6 68 6 52 L6 18 Z" fill="#734578"/>
               <path d="M40 2 L76 17 L76 52 C76 69 59 82 40 88 C21 82 4 69 4 52 L4 17 Z" fill="none" stroke="#b87fbf" stroke-width="1.5" opacity="0.6"/>
               <polygon points="40,22 43.5,32 54,32 45.5,38 48.5,48 40,42 31.5,48 34.5,38 26,32 36.5,32" fill="white" opacity="0.95"/>
@@ -1373,7 +1357,7 @@
             </svg>
           </div>
           <div class="tezos-award-info">
-            <div class="tezos-award-title">Tezos Commons Influencer Award</div>
+            <div class="tezos-award-title">Tezos Commons <strong>Influencer Award</strong></div>
             <div class="tezos-award-org">March 2026</div>
           </div>
           <svg class="tezos-award-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
