@@ -147,6 +147,20 @@
     transition: background 0.2s, color 0.2s;
   }
   .nav-cta:hover { background: var(--orange); color: var(--black); }
+  .lang-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--grey);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    margin-left: 0.5rem;
+  }
+  .lang-toggle:hover { border-color: var(--white); color: var(--white); }
 
   /* HAMBURGER */
   .hamburger {
@@ -1237,13 +1251,13 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#areas" onclick="closeMobile()">Areas</a>
-  <a href="#education" onclick="closeMobile()">Education</a>
-  <a href="#publications" onclick="closeMobile()">Publications</a>
-  <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);">Wiki ↗</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
+  <a href="#portfolio" onclick="closeMobile()" data-i18n="nav.portfolio">Portfolio</a>
+  <a href="#areas" onclick="closeMobile()" data-i18n="nav.areas">Areas</a>
+  <a href="#education" onclick="closeMobile()" data-i18n="nav.education">Education</a>
+  <a href="#publications" onclick="closeMobile()" data-i18n="nav.publications">Publications</a>
+  <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
+  <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
 </div>
 
 <!-- NAV -->
@@ -1257,14 +1271,15 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#areas">Areas</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link">Wiki ↗</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+    <li><a href="#areas" data-i18n="nav.areas">Areas</a></li>
+    <li><a href="#education" data-i18n="nav.education">Education</a></li>
+    <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get in touch</a>
+  <a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in touch</a>
+  <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">PT</button>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
@@ -1294,11 +1309,11 @@
     field-of-view="30deg"
     style="--poster-color: transparent;"
   ></model-viewer>
-  <div class="hero-tag">Designer · Artist · Educator</div>
+  <div class="hero-tag" data-i18n="hero.tag">Designer · Artist · Educator</div>
   <h1 class="hero-headline">NUMA<span class="accent">.</span></h1>
   <div class="hero-sub">
     <div>
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n-html="hero.desc">
         Technology can craft conscious and sustainable<br>
         <strong>phygital social ecosystems.</strong>
       </p>
@@ -1312,8 +1327,8 @@
       </div>
     </div>
     <div class="hero-ctas">
-      <a href="#portfolio" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-secondary">Get in touch</a>
+      <a href="#portfolio" class="btn-primary" data-i18n="hero.cta_primary">View Projects</a>
+      <a href="#contact" class="btn-secondary" data-i18n="hero.cta_secondary">Get in touch</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1321,7 +1336,7 @@
       <rect x="1" y="1" width="14" height="22" rx="7" stroke="white" stroke-width="1"/>
       <circle cx="8" cy="7" r="2" fill="white"/>
     </svg>
-    Scroll
+    <span data-i18n="hero.scroll">Scroll</span>
   </div>
 </section>
 
@@ -1337,11 +1352,11 @@
         <div class="about-stats">
           <div class="stat-item">
             <div class="stat-num">+13</div>
-            <div class="stat-label">Years in Design</div>
+            <div class="stat-label" data-i18n="about.stat_design">Years in Design</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">+5</div>
-            <div class="stat-label">Years in Web3</div>
+            <div class="stat-label" data-i18n="about.stat_web3">Years in Web3</div>
           </div>
         </div>
         <a href="https://x.com/TezosCommons" target="_blank" rel="noopener" class="tezos-award-badge">
@@ -1366,19 +1381,19 @@
         </a>
       </div>
       <div class="about-text fade-up">
-        <div class="section-label">About</div>
-        <h2 class="section-title">DIGITAL MATTER,<br><span style="color:var(--green)">HUMAN TOUCH</span><span style="color:var(--orange)">.</span></h2>
-        <p>
+        <div class="section-label" data-i18n="about.label">About</div>
+        <h2 class="section-title" data-i18n-html="about.title">DIGITAL MATTER,<br><span style="color:var(--green)">HUMAN TOUCH</span><span style="color:var(--orange)">.</span></h2>
+        <p data-i18n-html="about.p1">
           I'm Manuella Godoy, also know as <strong>Numa</strong> — a designer, artist, researcher, and educator based in Brazil.
           My work sits at the intersection of <strong>emerging technologies and cultural practice</strong>,
           with a particular focus on <strong>blockchain ecosystems and multimedia applications.</strong>
         </p>
-        <p>
+        <p data-i18n-html="about.p2">
           On the practice side, I work with <strong>visual communication, branding, digital products,
           creative direction, webdesign, audiovisual production, illustration, and 3D modeling</strong>.
           I build visual identities, soundtracks, videos, and diverse digital experiences.
         </p>
-        <p>
+        <p data-i18n-html="about.p3">
           I  also develop <strong>educational content, workshops, and courses on blockchain</strong>
           for different levels of familiarity — from beginners
           to professionals seeking to deepen their knowledge.
@@ -1393,7 +1408,7 @@
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-inner">
-    <div class="section-label">Portfolio</div>
+    <div class="section-label" data-i18n="portfolio.label">Portfolio</div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
       <h2 class="section-title" style="margin-bottom:0;">PROJECTS<span style="color:var(--orange)">.</span></h2>
        <!--<div class="portfolio-filter">
@@ -1414,13 +1429,13 @@
           </div>
           <div class="project-tag-label">2026</div>
           <div class="project-overlay">
-            <a href="https://www.behance.net/gallery/247175921/Flui" class="project-overlay-btn" target="_blank">View Case</a>
+            <a href="https://www.behance.net/gallery/247175921/Flui" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">On-chain Financial Management</div>
+          <div class="project-cat" data-i18n="portfolio.flui_cat">On-chain Financial Management</div>
           <div class="project-title">Flui</div>
-          <div class="project-desc">A prototype platform that transforms on-chain data into clear financial information, facilitating income organization and reporting.</div>
+          <div class="project-desc" data-i18n="portfolio.flui_desc">A prototype platform that transforms on-chain data into clear financial information, facilitating income organization and reporting.</div>
           <div class="project-meta">
             <span class="meta-tag role">Product Design</span>
             <span class="meta-tag">Brand Identity</span>
@@ -1438,13 +1453,13 @@
           </div>
           <div class="project-tag-label">2026</div>
           <div class="project-overlay">
-            <a href="https://www.behance.net/gallery/247184767/Peera" class="project-overlay-btn" target="_blank">View Case</a>
+            <a href="https://www.behance.net/gallery/247184767/Peera" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">2FA Authentication App</div>
+          <div class="project-cat" data-i18n="portfolio.peera_cat">2FA Authentication App</div>
           <div class="project-title">Peera</div>
-          <div class="project-desc">Product concept and campaign for a P2P two-factor authentication application. Visual identity, social media posts, landing page, and motion graphics.</div>
+          <div class="project-desc" data-i18n="portfolio.peera_desc">Product concept and campaign for a P2P two-factor authentication application. Visual identity, social media posts, landing page, and motion graphics.</div>
           <div class="project-meta">
             <span class="meta-tag role">Digital Marketing</span>
             <span class="meta-tag">3D</span>
@@ -1463,10 +1478,10 @@
           <div class="project-tag-label">2025</div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Event</div>
+          <div class="project-cat" data-i18n="portfolio.web3pe_cat">Event</div>
           <div class="project-title">WEB3 PE 2025</div>
-          <div class="project-desc">At WebPE 2025, held at IFPE Belo Jardim, I presented the lecture "Crypto and Society",
-            discussing the socioeconomic in blockchain, conducted a workshop on cryptocurrency wallets with Pine Stake covering 
+          <div class="project-desc" data-i18n="portfolio.web3pe_desc">At WebPE 2025, held at IFPE Belo Jardim, I presented the lecture "Crypto and Society",
+            discussing the socioeconomic in blockchain, conducted a workshop on cryptocurrency wallets with Pine Stake covering
             concepts and validation of the Solana network, and also moderated a panel on Crypto Art.</div>
           <div class="project-meta">
             <span class="meta-tag role">Education</span>
@@ -1485,14 +1500,14 @@
           </div>
           <div class="project-tag-label">2023</div>
           <div class="project-overlay">
-            <a href="https://www.behance.net/gallery/247190643/Computadores-Fazem-Arte" class="project-overlay-btn" target="_blank">View Case</a>
+            <a href="https://www.behance.net/gallery/247190643/Computadores-Fazem-Arte" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Education Material · Course · Workshops</div>
+          <div class="project-cat" data-i18n="portfolio.cfa_cat">Education Material · Course · Workshops</div>
           <div class="project-title">Computadores Fazem Arte</div>
-          <div class="project-desc">Visual identity for the introductory education project on Web3 for my master's degree. 
-            This project involved 2 years of research, mentoring of three undergraduate research students, presentations 
+          <div class="project-desc" data-i18n="portfolio.cfa_desc">Visual identity for the introductory education project on Web3 for my master's degree.
+            This project involved 2 years of research, mentoring of three undergraduate research students, presentations
             at academic events, and in-person and virtual courses for the general public.</div>
           <div class="project-meta">
             <span class="meta-tag role">Education</span>
@@ -1510,13 +1525,13 @@
           <img src="assets/img/projects/interlace-cover.png" alt="Interlace Exhibition" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="project-overlay">
-            <a href="https://www.mallow.art/artwork/14eaNwfY8V8Bk5zuMnLcExd3vRE2rnYApNSMAPTSvmZJ" class="project-overlay-btn" target="_blank">View</a>
+            <a href="https://www.mallow.art/artwork/14eaNwfY8V8Bk5zuMnLcExd3vRE2rnYApNSMAPTSvmZJ" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view">View</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">International Exhibition</div>
+          <div class="project-cat" data-i18n="portfolio.camapu_cat">International Exhibition</div>
           <div class="project-title">Camapu</div>
-          <div class="project-desc">My artwork featured in the "Held in Motion" section of the Interlace exhibition at ArtVerse Paris, produced by Mallow and Exchange.art.</div>
+          <div class="project-desc" data-i18n="portfolio.camapu_desc">My artwork featured in the "Held in Motion" section of the Interlace exhibition at ArtVerse Paris, produced by Mallow and Exchange.art.</div>
           <div class="project-meta">
             <span class="meta-tag role">CryptoArt</span>
             <span class="meta-tag">3D</span>
@@ -1532,13 +1547,13 @@
           <img src="assets/img/projects/logofolio-cover.png" alt="Logofolio" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="project-overlay">
-            <a href="https://www.behance.net/gallery/23138943/Logofolio" class="project-overlay-btn" target="_blank">View</a>
+            <a href="https://www.behance.net/gallery/23138943/Logofolio" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view">View</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Visual Identity</div>
+          <div class="project-cat" data-i18n="portfolio.logofolio_cat">Visual Identity</div>
           <div class="project-title">Logofolio</div>
-          <div class="project-desc">Logos developed for various clients, in different fields of activity, over the years.</div>
+          <div class="project-desc" data-i18n="portfolio.logofolio_desc">Logos developed for various clients, in different fields of activity, over the years.</div>
           <div class="project-meta">
             <span class="meta-tag role">Branding</span>
             <span class="meta-tag">Graphic Design</span>
@@ -1553,13 +1568,13 @@
           <img src="assets/img/projects/beatnu.gif" alt="Gate Nu" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="project-overlay">
-            <a href="https://www.mallow.art/collection/7XuczBVwgGHxzKJDhjgpkDNsS3RtLr2AFNx7vs76Xrr5" class="project-overlay-btn" target="_blank">View</a>
+            <a href="https://www.mallow.art/collection/7XuczBVwgGHxzKJDhjgpkDNsS3RtLr2AFNx7vs76Xrr5" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view">View</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">NFT Collection</div>
+          <div class="project-cat" data-i18n="portfolio.gatenu_cat">NFT Collection</div>
           <div class="project-title">Gate Nu</div>
-          <div class="project-desc">My first collection in Solana, released in 2022 and with more than 70 collaborations.</div>
+          <div class="project-desc" data-i18n="portfolio.gatenu_desc">My first collection in Solana, released in 2022 and with more than 70 collaborations.</div>
           <div class="project-meta">
             <span class="meta-tag role">Art</span>
             <span class="meta-tag">Illustration</span>
@@ -1570,7 +1585,7 @@
 
     </div>
     <div style="text-align:center;margin-top:3rem;">
-      <a href="https://www.behance.net/numadessas" target="_blank" class="btn-secondary">See full portfolio on Behance →</a>
+      <a href="https://www.behance.net/numadessas" target="_blank" class="btn-secondary" data-i18n="portfolio.see_more">See full portfolio on Behance →</a>
     </div>
   </div>
 </section>
@@ -1580,22 +1595,22 @@
 <!-- AREAS -->
 <section id="areas">
   <div class="section-inner">
-    <div class="section-label">What I do</div>
-    <h2 class="section-title fade-up">AREAS<br>OF <span style="color:var(--green)">WORK</span><span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="areas.label">What I do</div>
+    <h2 class="section-title fade-up" data-i18n-html="areas.title">AREAS<br>OF <span style="color:var(--green)">WORK</span><span style="color:var(--orange)">.</span></h2>
     <div class="areas-grid fade-up">
       <div class="area-item">
         <div class="area-num">01</div>
         <div class="area-title"><span class="highlight">DESIGN</span></div>
-        <p class="area-desc">
+        <p class="area-desc" data-i18n="areas.design_desc">
           Visual communication, branding, digital product, and creative direction.
-          From identity systems to interface design, phygital graphics. 
+          From identity systems to interface design, phygital graphics.
         </p>
         <div class="area-bar"></div>
       </div>
       <div class="area-item">
         <div class="area-num">02</div>
         <div class="area-title"><span class="highlight">ART</span></div>
-        <p class="area-desc">
+        <p class="area-desc" data-i18n="areas.art_desc">
           Digital and traditional art, blending fantasy and cultural symbols
           with a dreamlike nature. On-chain works exhibited in Brasil, France and Thailand.
         </p>
@@ -1604,7 +1619,7 @@
       <div class="area-item">
         <div class="area-num">03</div>
         <div class="area-title"><span class="highlight">MUSIC</span></div>
-        <p class="area-desc">
+        <p class="area-desc" data-i18n="areas.music_desc">
           Music for various purposes. Soundtracks for films and games, DJing,
           sound design, remixes, and production of original instrumentals for artists.
         </p>
@@ -1613,7 +1628,7 @@
       <div class="area-item">
         <div class="area-num">04</div>
         <div class="area-title"><span class="highlight">EDUCATION</span></div>
-        <p class="area-desc">
+        <p class="area-desc" data-i18n="areas.edu_desc">
           Development of educational materials, workshops, lectures, and courses on
           blockchain — designed for different levels of prior knowledge.
         </p>
@@ -1630,35 +1645,35 @@
   <div class="section-inner">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
       <div>
-        <div class="section-label">Education</div>
-        <h2 class="section-title">BUILD AND<br><span style="color:var(--green)">TEACH</span><span style="color:var(--orange)">.</span></h2>
+        <div class="section-label" data-i18n="education.label">Education</div>
+        <h2 class="section-title" data-i18n-html="education.title">BUILD AND<br><span style="color:var(--green)">TEACH</span><span style="color:var(--orange)">.</span></h2>
       </div>
     </div>
     
-    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:3rem;">
+    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:3rem;" data-i18n="education.intro">
       I'm available for lectures, workshops, mentorships, and educational collaborations — especially with universities and research groups.
       These are usually open initiatives, but I'm open to proposals for something tailored or more institutional.
     </p>
     
     <div class="writing-grid fade-up">
       <a href="https://numadessas.com.br/wiki/" target="_blank" class="writing-card writing-card--wiki">
-        <div class="writing-card-cat" style="color:var(--green);">Free Resource</div>
-        <div class="writing-card-title" style="font-size:1.7rem;">NumaWiki 📖</div>
-        <div class="writing-card-excerpt">A free open knowledge base on blockchain, Web3, crypto art, and emerging technologies — written in clear, accessible language. A living resource for curious minds at any level.</div>
+        <div class="writing-card-cat" style="color:var(--green);" data-i18n="education.wiki_cat">Free Resource</div>
+        <div class="writing-card-title" style="font-size:1.7rem;" data-i18n="education.wiki_title">NumaWiki 📖</div>
+        <div class="writing-card-excerpt" data-i18n="education.wiki_desc">A free open knowledge base on blockchain, Web3, crypto art, and emerging technologies — written in clear, accessible language. A living resource for curious minds at any level.</div>
         <span class="writing-card-arrow writing-card-arrow--green" style="opacity:1;font-size:1.5rem;">✱</span>
       </a>
       <a class="writing-card">
-        <div class="writing-card-cat">Educational Training</div>
-        <div class="writing-card-title">Lectures & Workshops</div>
-        <div class="writing-card-excerpt">Presentations with hands-on activities on specific blockchain
+        <div class="writing-card-cat" data-i18n="education.lw_cat">Educational Training</div>
+        <div class="writing-card-title" data-i18n="education.lw_title">Lectures & Workshops</div>
+        <div class="writing-card-excerpt" data-i18n="education.lw_desc">Presentations with hands-on activities on specific blockchain
               topics that can be adapted for diverse audiences and objectives.
               Cryptoart, design, development, basic practices, etc.</div>
         <span class="writing-card-arrow">✱</span>
       </a>
       <a class="writing-card">
-        <div class="writing-card-cat">Mentorship</div>
-        <div class="writing-card-title">Introduction to blockchain</div>
-        <div class="writing-card-excerpt">Individual or group mentoring for professionals and students
+        <div class="writing-card-cat" data-i18n="education.m_cat">Mentorship</div>
+        <div class="writing-card-title" data-i18n="education.m_title">Introduction to blockchain</div>
+        <div class="writing-card-excerpt" data-i18n="education.m_desc">Individual or group mentoring for professionals and students
               who wish to enter or improve their knowledge of Web3. Focus on practice,
               technical literacy, career guidance, and community development.</div>
         <span class="writing-card-arrow">✱</span>
@@ -1672,37 +1687,37 @@
 <!-- EDUCATION & RESEARCH -->
 <section id="publications">
   <div class="section-inner">
-    <div class="section-label">Academic Output</div>
-    <h2 class="section-title fade-up">PUBLICATIONS<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="publications.label">Academic Output</div>
+    <h2 class="section-title fade-up" data-i18n-html="publications.title">PUBLICATIONS<span style="color:var(--orange)">.</span></h2>
     <div class="writing-grid fade-up" style="grid-template-columns: repeat(2, 1fr);">
       <a href="https://repositorio.ufpe.br/handle/123456789/65915" target="_blank" class="writing-card">
-        <div class="writing-card-cat">Dissertation (Portuguese Only)</div>
-        <div class="writing-card-title">"Computers Make Art" — Didactics for Web3</div>
-        <div class="writing-card-excerpt">
-          Master's dissertation investigating pedagogical frameworks for teaching blockchain, NFTs, and Web3 to diverse audiences. 
+        <div class="writing-card-cat" data-i18n="publications.diss_cat">Dissertation (Portuguese Only)</div>
+        <div class="writing-card-title" data-i18n="publications.diss_title">"Computers Make Art" — Didactics for Web3</div>
+        <div class="writing-card-excerpt" data-i18n="publications.diss_desc">
+          Master's dissertation investigating pedagogical frameworks for teaching blockchain, NFTs, and Web3 to diverse audiences.
           Developed at UFPE, it bridges design education and emerging digital technologies.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
       <a href="https://doi.org/10.54517/m.v5i1.2449" target="_blank" class="writing-card">
-        <div class="writing-card-cat">Paper</div>
-        <div class="writing-card-title">At the frontier of the metaverse: NFTs, artistic expression, and digital immersions</div>
-        <div class="writing-card-excerpt">
-          Explores NFTs beyond digital art tokenization, examining the tension between artistic autonomy and commercialization in Web3. 
+        <div class="writing-card-cat" data-i18n="publications.paper1_cat">Paper</div>
+        <div class="writing-card-title" data-i18n="publications.paper1_title">At the frontier of the metaverse: NFTs, artistic expression, and digital immersions</div>
+        <div class="writing-card-excerpt" data-i18n="publications.paper1_desc">
+          Explores NFTs beyond digital art tokenization, examining the tension between artistic autonomy and commercialization in Web3.
           Published in the Metaverse journal (2024), with case studies from immersive exhibitions.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
       <a href="https://sol.sbc.org.br/index.php/svr/article/view/27139" target="_blank" class="writing-card">
-        <div class="writing-card-cat">Paper</div>
-        <div class="writing-card-title">Metaverse and cultural preservation: an alternative through NFTs of social sustainability in Brazil</div>
-        <div class="writing-card-excerpt">
+        <div class="writing-card-cat" data-i18n="publications.paper2_cat">Paper</div>
+        <div class="writing-card-title" data-i18n="publications.paper2_title">Metaverse and cultural preservation: an alternative through NFTs of social sustainability in Brazil</div>
+        <div class="writing-card-excerpt" data-i18n="publications.paper2_desc">
           Presented at SVR'23, this paper investigates how NFTs and metaverse platforms can be used
           to preserve and promote Indigenous cultural heritage through authorship assurance.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
       <a href="https://doi.org/10.5753/sbc.17750.6.2" target="_blank" class="writing-card">
-        <div class="writing-card-cat">Book Chapter (Portuguese Only)</div>
-        <div class="writing-card-title">"Computers Make Art" — Blockchain & NFTs</div>
-        <div class="writing-card-excerpt">
+        <div class="writing-card-cat" data-i18n="publications.ch_cat">Book Chapter (Portuguese Only)</div>
+        <div class="writing-card-title" data-i18n="publications.ch_title">"Computers Make Art" — Blockchain & NFTs</div>
+        <div class="writing-card-excerpt" data-i18n="publications.ch_desc">
           Chapter from the collection of short courses from the WebMedia 2024 event. Translates blockchain and NFT concepts
           into an accessible educational language, result of my master's degree on teaching Web3 through artistic and design practice.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
@@ -1735,9 +1750,9 @@
   <div class="contact-bg-text">NUMA</div>
   <div class="contact-inner">
     <div class="fade-up">
-      <div class="section-label">Contact</div>
-      <h2 class="contact-headline">LET'S<br><span style="color:var(--green)">WORK</span><span style="color:var(--orange)">.</span></h2>
-      <p class="contact-text">
+      <div class="section-label" data-i18n="contact.label">Contact</div>
+      <h2 class="contact-headline" data-i18n-html="contact.headline">LET'S<br><span style="color:var(--green)">WORK</span><span style="color:var(--orange)">.</span></h2>
+      <p class="contact-text" data-i18n="contact.text">
         Open to design collaborations, art commissions, research partnerships, educational projects,
         and speaking invitations.
       </p>
@@ -1756,7 +1771,7 @@
       <a href="#" class="contact-email">[click and mail me]</a>
     </div>
     <div class="fade-up">
-      <div class="section-label" style="margin-bottom:1.5rem;">Find me online</div>
+      <div class="section-label" style="margin-bottom:1.5rem;" data-i18n="contact.social_label">Find me online</div>
       <div class="social-list">
         <a href="https://www.linkedin.com/in/numadessas/" target="_blank" class="social-item">
           <span class="social-name">LinkedIn</span>
@@ -1831,11 +1846,11 @@
       <path fill="#ee6f22" d="M1359.5,113.7c-17.4-10.2-40.5-4-50.7,13.3-19.2,32.5-42.5,54.9-75.8,71-25.6,12.4-54.9,17.1-87.9,14.8-26.4-1.9-58.8-12.1-84.3-27.2-27.4-16.3-48.3-37.6-64.2-66-21.2-37.9-86.9-12.4-71.7,30.2,15.5,43.3,30,87,44.2,130.7,12.7,39.2,24.8,78.5,36.6,118,11.7,39,19.8,82.7,39.3,118.7,15.7,28.8,56,13.4,58-15.7,2.8-39.6-12.1-83.1-22.4-121-10.6-38.7-22.3-77-34.5-115.2,31,14.1,64.7,22.6,98.9,24.8,36.4,2.3,71.6-3.7,103.8-16.5-25.1,62.1-49.7,124.5-73.1,187.3-11.8,31.7,40.5,54.1,55,23.2,49.6-105.5,95.6-212.6,141.8-319.6,7.9-18.3,5.4-39.7-13.3-50.7h0Z"/>
     </svg>
   </div>
-  <div class="footer-copy">© 2026 Numa — Design, Art & Education in Emerging Technologies</div>
+  <div class="footer-copy" data-i18n="footer.copy">© 2026 Numa — Design, Art & Education in Emerging Technologies</div>
   <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-i18n="footer.about">About</a>
+    <a href="#portfolio" data-i18n="footer.portfolio">Portfolio</a>
+    <a href="#contact" data-i18n="footer.contact">Contact</a>
   </div>
 </footer>
 
@@ -2003,6 +2018,46 @@
   },
   "datePublished": "2026-04-08"
 }
+</script>
+<script>
+(function() {
+  const STORAGE_KEY = 'numa-lang';
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  let translations = {};
+
+  function t(key) {
+    return key.split('.').reduce(function(obj, k) { return obj && obj[k]; }, translations) || key;
+  }
+
+  function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      el.innerHTML = t(el.dataset.i18nHtml);
+    });
+    var btn = document.getElementById('lang-toggle');
+    if (btn) btn.textContent = currentLang === 'en' ? 'PT' : 'EN';
+    document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+  }
+
+  function loadAndApply(lang) {
+    fetch('/assets/lang/' + lang + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        translations = data;
+        applyTranslations();
+      });
+  }
+
+  window.toggleLang = function() {
+    currentLang = currentLang === 'en' ? 'pt' : 'en';
+    localStorage.setItem(STORAGE_KEY, currentLang);
+    loadAndApply(currentLang);
+  };
+
+  loadAndApply(currentLang);
+})();
 </script>
 </body>
 </html>
