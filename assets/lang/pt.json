@@ -18,25 +18,26 @@
   "about": {
     "label": "Sobre",
     "title": "MATÉRIA DIGITAL,<br><span style=\"color:var(--green)\">TOQUE HUMANO</span><span style=\"color:var(--orange)\">.</span>",
-    "p1": "Sou Manuella Godoy, também conhecida como <strong>Numa</strong> — designer, artista, pesquisadora e educadora baseada no Brasil. Meu trabalho está na interseção entre <strong>tecnologias emergentes e prática cultural</strong>, com foco em <strong>ecossistemas blockchain e aplicações multimídia.</strong>",
-    "p2": "Na prática, trabalho com <strong>comunicação visual, branding, produtos digitais, direção criativa, webdesign, produção audiovisual, ilustração e modelagem 3D</strong>. Construo identidades visuais, trilhas sonoras, vídeos e experiências digitais diversas.",
+    "p1": "Sou Manuella Godoy, também conhecida como <strong>Numa</strong> — designer, artista, pesquisadora e educadora brasileira. Meu trabalho está na interseção entre <strong>tecnologias emergentes e a prática cultural</strong>, com foco em <strong>ecossistemas blockchain e aplicações multimídia.</strong>",
+    "p2": "Trabalho com <strong>comunicação visual, branding, produtos digitais, direção criativa, webdesign, produção audiovisual, ilustração e modelagem 3D</strong>. Construo identidades visuais, trilhas sonoras, vídeos e experiências digitais diversas.",
     "p3": "Também desenvolvo <strong>conteúdo educacional, workshops e cursos sobre blockchain</strong> para diferentes níveis de familiaridade — de iniciantes a profissionais que buscam aprofundar seus conhecimentos.",
     "stat_design": "Anos em Design",
     "stat_web3": "Anos em Web3"
   },
   "portfolio": {
     "label": "Portfólio",
+    "title": "PROJETOS<span style=\"color:var(--orange)\">.</span>",
     "see_more": "Ver portfólio completo no Behance →",
     "view_case": "Ver Case",
     "view": "Ver",
     "flui_cat": "Gestão Financeira On-chain",
-    "flui_desc": "Plataforma protótipo que transforma dados on-chain em informações financeiras claras, facilitando a organização e o relatório de renda.",
+    "flui_desc": "Protótipo de plataforma que transforma dados on-chain em informações financeiras claras, facilitando a organização e relatórios de renda.",
     "peera_cat": "App de Autenticação 2FA",
     "peera_desc": "Conceito de produto e campanha para um aplicativo de autenticação de dois fatores P2P. Identidade visual, posts para redes sociais, landing page e motion graphics.",
     "web3pe_cat": "Evento",
-    "web3pe_desc": "Na Web3PE 2025, realizada no IFPE Belo Jardim, apresentei a palestra \"Cripto e Sociedade\", discutindo aspectos socioeconômicos do blockchain, conduzi um workshop sobre carteiras de criptomoedas com Pine Stake e modersei um painel sobre Cripto Arte.",
+    "web3pe_desc": "No Web3PE 2025, realizado no IFPE Belo Jardim, apresentei a palestra \"Cripto e Sociedade\", discutindo aspectos socioeconômicos do blockchain, conduzi um workshop sobre carteiras de criptomoedas com a Pine Stake e moderei um painel sobre criptoarte.",
     "cfa_cat": "Material Educacional · Curso · Workshops",
-    "cfa_desc": "Identidade visual do projeto de educação introdutória sobre Web3 para o meu mestrado. O projeto envolveu 2 anos de pesquisa, orientação de três estudantes de iniciação científica, apresentações em eventos acadêmicos e cursos presenciais e virtuais para o público geral.",
+    "cfa_desc": "Identidade visual do projeto de educação introdutória sobre Web3 do meu mestrado. O projeto envolveu 2 anos de pesquisa, orientação de três estudantes de iniciação científica, apresentações em eventos acadêmicos e cursos presenciais e virtuais para o público geral.",
     "camapu_cat": "Exposição Internacional",
     "camapu_desc": "Minha obra na seção \"Held in Motion\" da exposição Interlace no ArtVerse Paris, produzida pela Mallow e Exchange.art.",
     "logofolio_cat": "Identidade Visual",
@@ -58,10 +59,10 @@
     "intro": "Estou disponível para palestras, workshops, mentorias e colaborações educacionais — especialmente com universidades e grupos de pesquisa. Geralmente são iniciativas abertas, mas estou aberta a propostas personalizadas ou mais institucionais.",
     "wiki_cat": "Recurso Gratuito",
     "wiki_title": "NumaWiki 📖",
-    "wiki_desc": "Uma base de conhecimento aberta e gratuita sobre blockchain, Web3, cripto arte e tecnologias emergentes — escrita em linguagem clara e acessível. Um recurso vivo para mentes curiosas em qualquer nível.",
+    "wiki_desc": "Uma base de conhecimento aberta e gratuita sobre blockchain, Web3, criptoarte e tecnologias emergentes — escrita em linguagem clara e acessível. Um recurso vivo para mentes curiosas em qualquer nível.",
     "lw_cat": "Treinamento Educacional",
     "lw_title": "Palestras & Workshops",
-    "lw_desc": "Apresentações com atividades práticas sobre tópicos específicos de blockchain que podem ser adaptadas para públicos e objetivos diversos. Cripto arte, design, desenvolvimento, práticas básicas, etc.",
+    "lw_desc": "Apresentações com atividades práticas sobre tópicos específicos de blockchain que podem ser adaptadas para públicos e objetivos diversos. Criptoarte, design, desenvolvimento, práticas básicas, etc.",
     "m_cat": "Mentoria",
     "m_title": "Introdução ao blockchain",
     "m_desc": "Mentoria individual ou em grupo para profissionais e estudantes que desejam entrar ou aprofundar seus conhecimentos em Web3. Foco em prática, letramento técnico, orientação de carreira e desenvolvimento comunitário."
@@ -69,9 +70,9 @@
   "publications": {
     "label": "Produção Acadêmica",
     "title": "PUBLICAÇÕES<span style=\"color:var(--orange)\">.</span>",
-    "diss_cat": "Dissertação (Somente em Português)",
+    "diss_cat": "Dissertação",
     "diss_title": "\"Computadores Fazem Arte\" — Didáticas para Web3",
-    "diss_desc": "Dissertação de mestrado investigando frameworks pedagógicos para ensinar blockchain, NFTs e Web3 para públicos diversos. Desenvolvida na UFPE, conecta educação em design e tecnologias digitais emergentes.",
+    "diss_desc": "Dissertação de mestrado investigando abordagens educativas sobre blockchain, NFTs e Web3 para públicos diversos. Desenvolvida na UFPE, conecta educação em design e tecnologias digitais emergentes.",
     "paper1_cat": "Artigo",
     "paper1_title": "Na fronteira do metaverso: NFTs, expressão artística e imersões digitais",
     "paper1_desc": "Explora os NFTs além da tokenização de arte digital, examinando a tensão entre autonomia artística e comercialização na Web3. Publicado na revista Metaverse (2024), com estudos de caso de exposições imersivas.",
@@ -80,12 +81,12 @@
     "paper2_desc": "Apresentado no SVR'23, este artigo investiga como NFTs e plataformas de metaverso podem ser usados para preservar e promover o patrimônio cultural indígena por meio da garantia de autoria.",
     "ch_cat": "Capítulo de Livro (Somente em Português)",
     "ch_title": "\"Computadores Fazem Arte\" — Blockchain & NFTs",
-    "ch_desc": "Capítulo da coletânea de minicursos do evento WebMedia 2024. Traduz conceitos de blockchain e NFTs em linguagem educacional acessível, resultado do meu mestrado sobre ensinar Web3 através da prática artística e de design."
+    "ch_desc": "Capítulo da coletânea de minicursos do evento WebMedia 2024. Traduz conceitos básicos em blockchain, com linguagem educacional acessível, também parte do resultado da minha pesquisa de mestrado."
   },
   "contact": {
     "label": "Contato",
     "headline": "VAMOS<br><span style=\"color:var(--green)\">TRABALHAR</span><span style=\"color:var(--orange)\">.</span>",
-    "text": "Aberta a colaborações de design, comissões de arte, parcerias de pesquisa, projetos educacionais e convites para palestras.",
+    "text": "Estou aberta a colaborações de design, comissões de arte, parcerias de pesquisa, projetos educacionais e convites para palestras.",
     "social_label": "Me encontre online"
   },
   "footer": {
