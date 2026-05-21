@@ -84,12 +84,12 @@
     justify-content: space-between;
     padding: 1.25rem 3rem;
     mix-blend-mode: normal;
-    transition: background 0.3s, backdrop-filter 0.3s;
   }
   nav.scrolled {
     background: rgba(10,10,10,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238,111,34,0.15);
+    transition: background 0.3s, backdrop-filter 0.3s;
   }
   .nav-logo {
     font-family: var(--font-display);
@@ -158,9 +158,13 @@
     background: transparent;
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s;
-    margin-left: 0.5rem;
   }
   .lang-toggle:hover { border-color: var(--white); color: var(--white); }
+  .nav-end {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   /* HAMBURGER */
   .hamburger {
@@ -243,10 +247,9 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(-45deg, #160a20, #241038, #331041, #241038, #160a20);
+    background: linear-gradient(-45deg, #43005E, #331041, #160A20, var(--off-black), #160A20, #331041);
     background-size: 400% 400%;
-    background-position: 0% 50%;
-    transition: background-position 0.5s ease;
+    animation: heroGrad 20s ease infinite;
     z-index: 0;
   }
   .hero-bg::before {
@@ -254,8 +257,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 15% 70%, rgba(52,16,65,0.8) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 70% at 85% 20%, rgba(36,16,56,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 15% 70%, rgba(67,0,94,0.8) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 20%, rgba(51,16,65,0.9) 0%, transparent 55%),
       radial-gradient(ellipse 50% 50% at 55% 90%, rgba(22,10,32,0.7) 0%, transparent 60%);
   }
   .hero-bg::after {
@@ -270,10 +273,6 @@
     background-size: 256px 256px;
     animation: grain 0.6s steps(1) infinite;
     pointer-events: none;
-  }
-  #hero:has(.btn-primary:hover) .hero-bg,
-  #hero:has(.btn-secondary:hover) .hero-bg {
-    animation: heroGrad 7s ease infinite;
   }
   @keyframes heroGrad {
     0%   { background-position: 0% 50%; }
@@ -1279,10 +1278,12 @@
     <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
-  <a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in touch</a>
-  <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">PT</button>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <div class="nav-end">
+    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">PT</button>
+    <a href="#contact" class="nav-cta" data-i18n="nav.contact">Get in touch</a>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -1411,7 +1412,7 @@
   <div class="section-inner">
     <div class="section-label" data-i18n="portfolio.label">Portfolio</div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
-      <h2 class="section-title" style="margin-bottom:0;">PROJECTS<span style="color:var(--orange)">.</span></h2>
+      <h2 class="section-title" style="margin-bottom:0;" data-i18n-html="portfolio.title">PROJECTS<span style="color:var(--orange)">.</span></h2>
        <!--<div class="portfolio-filter">
         <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
         <button class="filter-btn" onclick="filterProjects('design', this)">Design</button>
@@ -1485,10 +1486,10 @@
             discussing the socioeconomic in blockchain, conducted a workshop on cryptocurrency wallets with Pine Stake covering
             concepts and validation of the Solana network, and also moderated a panel on Crypto Art.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Education</span>
-            <span class="meta-tag">Art</span>
-            <span class="meta-tag">Culture & History</span>
-            <span class="meta-tag">validation mechanisms</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_education">Education</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_art">Art</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_culture">Culture & History</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_validation">validation mechanisms</span>
           </div>
         </div>
       </div>
@@ -1511,8 +1512,8 @@
             This project involved 2 years of research, mentoring of three undergraduate research students, presentations
             at academic events, and in-person and virtual courses for the general public.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Education</span>
-            <span class="meta-tag">Field research</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_education">Education</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_fieldresearch">Field research</span>
             <span class="meta-tag">Branding</span>
             <span class="meta-tag">Illustration</span>
           </div>
@@ -1557,7 +1558,7 @@
           <div class="project-desc" data-i18n="portfolio.logofolio_desc">Logos developed for various clients, in different fields of activity, over the years.</div>
           <div class="project-meta">
             <span class="meta-tag role">Branding</span>
-            <span class="meta-tag">Graphic Design</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_graphicdesign">Graphic Design</span>
           </div>
         </div>
       </div>
@@ -1577,9 +1578,9 @@
           <div class="project-title">Gate Nu</div>
           <div class="project-desc" data-i18n="portfolio.gatenu_desc">My first collection in Solana, released in 2022 and with more than 70 collaborations.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Art</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_art">Art</span>
             <span class="meta-tag">Illustration</span>
-            <span class="meta-tag">2D Animation</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_animation2d">2D Animation</span>
           </div>
         </div>
       </div>
@@ -1610,7 +1611,7 @@
       </div>
       <div class="area-item">
         <div class="area-num">02</div>
-        <div class="area-title"><span class="highlight">ART</span></div>
+        <div class="area-title"><span class="highlight" data-i18n="areas.art_title">ART</span></div>
         <p class="area-desc" data-i18n="areas.art_desc">
           Digital and traditional art, blending fantasy and cultural symbols
           with a dreamlike nature. On-chain works exhibited in Brasil, France and Thailand.
@@ -1619,7 +1620,7 @@
       </div>
       <div class="area-item">
         <div class="area-num">03</div>
-        <div class="area-title"><span class="highlight">MUSIC</span></div>
+        <div class="area-title"><span class="highlight" data-i18n="areas.music_title">MUSIC</span></div>
         <p class="area-desc" data-i18n="areas.music_desc">
           Music for various purposes. Soundtracks for films and games, DJing,
           sound design, remixes, and production of original instrumentals for artists.
@@ -1628,7 +1629,7 @@
       </div>
       <div class="area-item">
         <div class="area-num">04</div>
-        <div class="area-title"><span class="highlight">EDUCATION</span></div>
+        <div class="area-title"><span class="highlight" data-i18n="areas.edu_title">EDUCATION</span></div>
         <p class="area-desc" data-i18n="areas.edu_desc">
           Development of educational materials, workshops, lectures, and courses on
           blockchain — designed for different levels of prior knowledge.
@@ -1817,6 +1818,14 @@
           <span class="social-handle">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="16" viewBox="0 0 657 296" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M549.881 197.906C539.474 209.056 534.643 222.994 535.386 239.719C536.13 255.328 541.518 268.151 551.554 278.186C561.96 287.849 576.269 292.681 594.481 292.681C606.003 292.681 615.851 291.008 624.028 287.663C632.205 284.69 638.709 280.416 643.54 274.841C648.744 269.266 652.274 262.948 654.133 255.886C656.363 248.824 657.292 241.391 656.92 233.586C656.177 219.091 650.602 206.64 640.196 196.234C630.16 185.827 615.666 180.624 596.711 180.624C576.269 180.624 560.66 186.385 549.881 197.906ZM177.523 266.891C177.598 283.017 195.961 290.741 211.921 293.056C302.421 306.186 320.922 206.152 323.372 123.006C323.751 110.15 335.587 97.4665 343.421 107.667C349.189 115.177 351.001 127.092 351.001 136.587C351.001 146.56 349.982 157.251 348.939 168.196C345.952 199.521 342.767 232.929 362.709 257.563C414.143 317.569 527.228 301.44 497.456 224.219C490.188 199.3 490.883 170.269 491.574 141.372C492.651 96.388 493.719 51.7294 464.731 23.4148C448.749 7.80496 429.051 0 405.636 0C387.796 0 371.257 5.38914 356.019 16.1674C340.781 26.574 327.587 41.8122 316.437 61.8821C310.118 44.0422 300.269 29.3615 286.889 17.8399C273.509 5.94665 256.785 0 236.715 0C218.875 0 202.708 5.01746 188.213 15.0524C173.718 25.0873 161.081 39.5823 150.303 58.5371C145.1 38.4673 135.436 23.7865 121.313 14.4949C107.561 4.83163 90.6507 0 70.5808 0C50.0867 0 24.1706 4.26972 9.15885 20.1599C-5.05686 35.2075 0.22079 56.5941 5.44214 77.7525C7.02133 84.1519 8.59538 90.5304 9.62339 96.7063C14.4409 125.648 11.4439 156.893 8.47019 187.897C6.62515 207.134 4.78903 226.277 4.83377 244.719C4.89126 268.42 17.7832 291.389 41.2249 294.888C72.3841 299.539 112.154 289.419 128.099 257.563C141.005 231.779 149.356 183.031 152.135 130.373C153.01 113.782 168.826 100.173 176.16 115.081C188.468 140.1 183.449 193.473 180.157 228.482C179.175 238.92 178.347 247.726 178.178 253.661C178.178 255.622 178.023 257.683 177.864 259.803C177.691 262.115 177.512 264.496 177.523 266.891Z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="https://github.com/numadessas" target="_blank" class="social-item">
+          <span class="social-name">GitHub</span>
+          <span class="social-handle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
             </svg>
           </span>
         </a>
