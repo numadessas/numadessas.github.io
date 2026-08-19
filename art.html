@@ -1314,15 +1314,14 @@
     }
   }
 
-  /* ART — GALLERY (masonry) */
+  /* ART — GALLERY (square thumbnails) */
   .art-gallery {
-    columns: 3;
-    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
     margin-top: 2rem;
   }
   .art-item {
-    break-inside: avoid;
-    margin: 0 0 1rem;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -1332,11 +1331,13 @@
   }
   .art-item img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     display: block;
     filter: grayscale(1) contrast(1.03);
     transition: filter 0.5s ease, transform 0.6s ease;
   }
-  .art-item:hover img { filter: grayscale(0) contrast(1); transform: scale(1.03); }
+  .art-item:hover img { filter: grayscale(0) contrast(1); transform: scale(1.05); }
   .art-item::after {
     content: '';
     position: absolute;
@@ -1346,8 +1347,8 @@
     pointer-events: none;
   }
   .art-item:hover::after { box-shadow: inset 0 0 0 2px rgba(238,111,34,0.6); }
-  @media (max-width: 1024px) { .art-gallery { columns: 2; } }
-  @media (max-width: 560px) { .art-gallery { columns: 1; } }
+  @media (max-width: 1024px) { .art-gallery { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px)  { .art-gallery { grid-template-columns: repeat(2, 1fr); } }
 
   /* ART — LIGHTBOX */
   .lightbox {
@@ -1420,7 +1421,12 @@
 
   /* ART — CV */
   #art-cv { background: var(--off-black); }
-  .cv-list { margin-top: 2rem; }
+  .cv-list {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+  }
   .cv-item {
     display: grid;
     grid-template-columns: 70px 1fr;
@@ -1430,7 +1436,12 @@
     align-items: baseline;
     transition: background 0.2s;
   }
-  .cv-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+  .cv-item:first-child,
+  .cv-item:nth-child(2) { border-top: 1px solid rgba(255,255,255,0.06); }
+  @media (max-width: 760px) {
+    .cv-list { grid-template-columns: 1fr; column-gap: 0; }
+    .cv-item:nth-child(2) { border-top: none; }
+  }
   .cv-year {
     font-family: var(--font-mono);
     font-size: 0.85rem;
