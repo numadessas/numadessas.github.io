@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Art — Numa</title>
-<meta name="description" content="Lectures, workshops, mentorships, and academic publications on blockchain, Web3, and emerging technologies by Numa — designer, artist, researcher, and educator based in Brazil.">
-<meta property="og:title" content="Education — Numa">
-<meta property="og:description" content="Lectures, workshops, mentorships & academic publications | Web3 Specialist">
+<meta name="description" content="Numa is a Brazilian crypto artist and visual artist. Hybrid creatures born of fantasy, culture, and Brazilian fauna and flora — a dreamlike, intensely colorful universe across drawing, graffiti, sculpture, 3D, and virtual reality. Exhibited in the metaverse and in person across Brazil, France, Thailand, and Germany.">
+<meta property="og:title" content="Art — Numa">
+<meta property="og:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Thailand & Germany">
 <meta name="author" content="Numa">
 <meta property="og:type" content="website">
 
@@ -16,8 +16,8 @@
 
 <!-- Thumb Para Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Education — Numa">
-<meta name="twitter:description" content="Lectures, workshops, mentorships & academic publications | Web3 Specialist">
+<meta name="twitter:title" content="Art — Numa">
+<meta name="twitter:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Thailand & Germany">
 <meta name="twitter:image" content="https://www.numadessas.com.br/assets/img/numadessas-thumb-small.png">
 
 <!-- Favicon -->
@@ -1314,6 +1314,130 @@
     }
   }
 
+  /* MEDIUMS + EXHIBITIONS grids */
+  .mediums-grid, .exhib-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .exhib-grid { grid-template-columns: repeat(5, 1fr); }
+  .medium-box, .exhib-box {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--dark);
+    padding: 1.75rem 1.5rem;
+    transition: border-color 0.25s, transform 0.2s, background 0.25s;
+    position: relative;
+  }
+  .medium-box:hover, .exhib-box:hover {
+    border-color: rgba(238,111,34,0.5);
+    transform: translateY(-3px);
+    background: #1e1e1e;
+  }
+  .medium-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--purple);
+  }
+  .medium-box h3, .exhib-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    margin: 0.75rem 0 0.5rem;
+    color: var(--white);
+  }
+  .medium-box p, .exhib-box p {
+    font-size: 0.85rem;
+    color: var(--grey);
+    line-height: 1.55;
+  }
+  .exhib-flag { font-size: 2rem; line-height: 1; }
+  @media (max-width: 1024px) {
+    .mediums-grid { grid-template-columns: repeat(2, 1fr); }
+    .exhib-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .mediums-grid, .exhib-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* EXHIBITIONS — CV list */
+  .cv-list {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+  }
+  .cv-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: baseline;
+    transition: background 0.2s;
+  }
+  .cv-item:first-child,
+  .cv-item:nth-child(2) { border-top: 1px solid rgba(255,255,255,0.06); }
+  @media (max-width: 760px) {
+    .cv-list { grid-template-columns: 1fr; column-gap: 0; }
+    .cv-item:nth-child(2) { border-top: none; }
+  }
+  .cv-year {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--orange);
+  }
+  .cv-title { font-size: 1rem; font-weight: 500; color: var(--white); }
+  .cv-venue { font-size: 0.85rem; color: #888; margin-top: 0.15rem; }
+  .cv-type {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-left: 0.6rem;
+  }
+  @media (max-width: 560px) {
+    .cv-item { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
+
+  /* ON-CHAIN chain tabs */
+  .chain-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .chain-tab {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--grey);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .chain-tab:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .chain-tab.active {
+    color: var(--black);
+    background: var(--orange);
+    border-color: var(--orange);
+    font-weight: 700;
+  }
+  .chain-status {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 2rem;
+  }
+
   /* ART — GALLERY (square thumbnails) */
   .art-gallery {
     display: grid;
@@ -1518,24 +1642,162 @@
   </div>
 </nav>
 
-<!-- 404 / COMING SOON -->
-<section style="background:var(--black);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;">
-  <div class="section-inner" style="padding-top:8rem;padding-bottom:6rem;">
-    <div class="section-label" style="justify-content:center;">Art</div>
-    <div style="font-family:var(--font-banner);font-size:clamp(6rem,22vw,16rem);line-height:0.9;color:transparent;-webkit-text-stroke:1px rgba(238,111,34,0.35);letter-spacing:0.02em;">404</div>
-    <h1 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:0.03em;margin-top:1rem;">
-      This page is taking shape<span style="color:var(--orange)">.</span>
-    </h1>
-    <p style="font-size:1.05rem;color:#999;line-height:1.7;max-width:460px;margin:1.25rem auto 2.5rem;">
-      The Art section is coming soon. In the meantime, explore the rest of the work.
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Crypto Artist · Visual Artist</div>
+  <h1 class="hero-headline">ART<span class="accent">.</span></h1>
+  <div class="hero-sub">
+    <p class="hero-desc">
+      I build <strong>hybrid creatures</strong> from a dreamlike, intensely colorful universe —
+      fantasy, culture, and mainly Brazilian <strong>fauna and flora</strong> woven together.
+      On-chain and off, from <strong>graffiti walls</strong> to <strong>virtual reality</strong>.
     </p>
-    <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-      <a href="index.html" class="btn-primary">← Back home</a>
-      <a href="design.html" class="btn-secondary">Design</a>
-      <a href="music.html" class="btn-secondary">Music</a>
+    <div class="hero-ctas">
+      <a href="#onchain" class="btn-primary">On-chain work</a>
+      <a href="#exhibitions" class="btn-secondary">Exhibitions</a>
+    </div>
+  </div>
+  <div class="hero-pills">
+    <span class="pill pill-orange">Drawing</span>
+    <span class="pill pill-green">Graffiti</span>
+    <span class="pill pill-purple">Sculpture</span>
+    <span class="pill pill-orange">3D</span>
+    <span class="pill pill-green">Virtual Reality</span>
+    <span class="pill pill-purple">NFT</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STATEMENT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-number">01</div>
+        <div class="section-label">Statement</div>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">4</div>
+            <div class="stat-label">Countries · BR · FR · TH · DE</div>
+          </div>
+          <div>
+            <div class="stat-num">IRL<span style="color:var(--grey)">+</span></div>
+            <div class="stat-label">Metaverse &amp; in-person shows</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="fade-up">
+          I'm <strong>Numa</strong>, a Brazilian crypto artist and visual artist. I've drawn for as long
+          as I can remember, and that instinct grew into a whole visual language: an <strong>oneiric,
+          extremely colorful universe</strong> where fantasy, culture, and mainly Brazilian fauna and
+          flora merge into <strong>hybrid creatures</strong>.
+        </p>
+        <p class="fade-up">
+          My practice moves fluidly across mediums — <strong>drawing</strong> and <strong>graffiti</strong>,
+          <strong>handmade sculpture</strong>, <strong>3D</strong>, and <strong>virtual reality</strong>.
+          The same beings that live on a wall find new form on-chain and inside immersive worlds.
+        </p>
+        <p class="fade-up">
+          My work has been exhibited both in the <strong>metaverse</strong> and <strong>in person</strong>,
+          across several Brazilian states and in countries such as <strong>France</strong>,
+          <strong>Thailand</strong>, and <strong>Germany</strong>.
+        </p>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- MEDIUMS -->
+<section style="background:var(--black);">
+  <div class="section-inner">
+    <div class="section-label">Practice</div>
+    <h2 class="section-title fade-up">MEDIUMS<span style="color:var(--orange)">.</span></h2>
+    <div class="mediums-grid fade-up">
+      <div class="medium-box"><span class="medium-num">01</span><h3>Drawing &amp; Illustration</h3><p>Where every creature is born — line, character, and color first.</p></div>
+      <div class="medium-box"><span class="medium-num">02</span><h3>Graffiti</h3><p>The universe scaled up to walls and public space.</p></div>
+      <div class="medium-box"><span class="medium-num">03</span><h3>Sculpture</h3><p>Handmade and digital — creatures made physical.</p></div>
+      <div class="medium-box"><span class="medium-num">04</span><h3>3D &amp; VR</h3><p>Immersive, walk-in versions of the same colorful world.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXHIBITIONS -->
+<section id="exhibitions" style="background:var(--off-black);">
+  <div class="section-inner">
+    <div class="section-label">Exhibitions</div>
+    <h2 class="section-title fade-up">EXHIBITIONS<span style="color:var(--orange)">.</span></h2>
+    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:0.5rem;">
+      Shown in the metaverse and in person — across several Brazilian states and in France, Thailand, and Germany.
+    </p>
+    <p class="fade-up" style="font-size:0.8rem;color:#666;margin-bottom:1rem;">
+      <em>Template list — edit year / title / type / venue freely.</em>
+    </p>
+    <div class="cv-list fade-up">
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Interlace — “Held in Motion” <span class="cv-type">Group</span></div><div class="cv-venue">ArtVerse · Paris, France</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · Germany</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · Thailand</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
+      <div class="cv-item"><div class="cv-year">2020</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ON-CHAIN GALLERY (tezos + solana) -->
+<section id="onchain" style="background:var(--black);">
+  <div class="section-inner">
+    <div class="section-label">On-chain</div>
+    <h2 class="section-title fade-up">COLLECT<span style="color:var(--orange)">.</span></h2>
+    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:1.5rem;">
+      Original creatures, minted on-chain across two ecosystems.
+    </p>
+
+    <div class="chain-tabs fade-up">
+      <button class="chain-tab active" data-chain="tezos">Tezos · objkt</button>
+      <button class="chain-tab" data-chain="solana">Solana · mallow</button>
+    </div>
+
+    <!-- TEZOS -->
+    <div class="chain-panel" id="panel-tezos">
+      <div id="tezos-status" class="chain-status">Loading Tezos work…</div>
+      <div id="tezos-gallery" class="art-gallery"></div>
+      <div style="margin-top:2.5rem;">
+        <a href="https://objkt.com/profile/tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo/created" target="_blank" rel="noopener" class="btn-secondary">View full collection on objkt ↗</a>
+      </div>
+    </div>
+
+    <!-- SOLANA -->
+    <div class="chain-panel" id="panel-solana" style="display:none;">
+      <div id="mallow-status" class="chain-status">Loading Solana work…</div>
+      <div id="mallow-gallery" class="art-gallery"></div>
+      <div style="margin-top:2.5rem;">
+        <a href="https://mallow.art" target="_blank" rel="noopener" class="btn-secondary">View full collection on mallow ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-stage">
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1547,7 +1809,7 @@
       <path fill="#ee6f22" d="M1359.5,113.7c-17.4-10.2-40.5-4-50.7,13.3-19.2,32.5-42.5,54.9-75.8,71-25.6,12.4-54.9,17.1-87.9,14.8-26.4-1.9-58.8-12.1-84.3-27.2-27.4-16.3-48.3-37.6-64.2-66-21.2-37.9-86.9-12.4-71.7,30.2,15.5,43.3,30,87,44.2,130.7,12.7,39.2,24.8,78.5,36.6,118,11.7,39,19.8,82.7,39.3,118.7,15.7,28.8,56,13.4,58-15.7,2.8-39.6-12.1-83.1-22.4-121-10.6-38.7-22.3-77-34.5-115.2,31,14.1,64.7,22.6,98.9,24.8,36.4,2.3,71.6-3.7,103.8-16.5-25.1,62.1-49.7,124.5-73.1,187.3-11.8,31.7,40.5,54.1,55,23.2,49.6-105.5,95.6-212.6,141.8-319.6,7.9-18.3,5.4-39.7-13.3-50.7h0Z"/>
     </svg>
   </div>
-  <div class="footer-copy" data-i18n="footer.copy">© 2026 Numa — Design, Art & Education in Emerging Technologies</div>
+  <div class="footer-copy" data-i18n="footer.copy">© 2026 Numa — Creative Tech: Art, Design, Education</div>
   <div class="footer-links">
     <a href="index.html#about" data-i18n="footer.about">About</a>
     <a href="index.html#portfolio" data-i18n="footer.portfolio">Portfolio</a>
@@ -1604,6 +1866,107 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
+
+  /* ---- Lightbox ---- */
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('open');
+  }
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  /* ---- shared gallery renderer ----
+     art = { image, link, name } */
+  function renderGallery(gallery, status, items, opts) {
+    gallery.innerHTML = '';
+    items.forEach(art => {
+      const a = document.createElement('a');
+      a.className = 'art-item';
+      a.href = art.link || '#';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = art.name || 'Untitled';
+      const img = document.createElement('img');
+      img.src = art.image;
+      img.alt = art.name || 'Artwork';
+      img.loading = 'lazy';
+      img.addEventListener('error', () => { a.style.display = 'none'; });
+      a.appendChild(img);
+      a.addEventListener('click', ev => {
+        if (ev.metaKey || ev.ctrlKey || ev.button === 1) return; // let power-users open the marketplace
+        ev.preventDefault();
+        openLightbox(art.image, art.name);
+      });
+      gallery.appendChild(a);
+    });
+    status.textContent = items.length + ' works · click to view · ' + opts.marketLabel + ' ↗';
+  }
+
+  /* ---- Tezos gallery — live from objkt (public GraphQL, no key) ---- */
+  (function loadTezos() {
+    const TZ = 'tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo';
+    const gallery = document.getElementById('tezos-gallery');
+    const status = document.getElementById('tezos-status');
+    const query = `query($addr:String!){
+      token(where:{creators:{creator_address:{_eq:$addr}}, supply:{_gt:0}}, order_by:{timestamp:desc}, limit:24){
+        name fa_contract token_id display_uri
+      }
+    }`;
+    fetch('https://data.objkt.com/v3/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, variables: { addr: TZ } }),
+    })
+      .then(r => r.json())
+      .then(j => {
+        const toks = (j && j.data && j.data.token) || [];
+        if (toks.length === 0) throw new Error('empty');
+        const items = toks.map(t => ({
+          name: t.name || 'Untitled',
+          image: 'https://assets.objkt.media/file/assets-003/' + t.fa_contract + '/' + t.token_id + '/thumb400',
+          link: 'https://objkt.com/tokens/' + t.fa_contract + '/' + t.token_id,
+        }));
+        renderGallery(gallery, status, items, { marketLabel: 'open on objkt' });
+      })
+      .catch(() => {
+        status.innerHTML = 'See the full Tezos collection on <a href="https://objkt.com/profile/' + TZ + '/created" target="_blank" rel="noopener" style="color:var(--orange);">objkt ↗</a>';
+      });
+  })();
+
+  /* ---- Solana gallery — baked JSON from mallow (needs build-time API key) ---- */
+  (function loadMallow() {
+    const gallery = document.getElementById('mallow-gallery');
+    const status = document.getElementById('mallow-status');
+    const MALLOW_URL = 'https://mallow.art';
+    fetch('assets/data/mallow-artworks.json', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('no data'); return r.json(); })
+      .then(raw => {
+        if (!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
+        const items = raw.map(a => ({
+          name: a.name || 'Untitled',
+          image: a.image,
+          link: a.mintAccount ? MALLOW_URL + '/item/' + a.mintAccount : MALLOW_URL,
+        }));
+        renderGallery(gallery, status, items, { marketLabel: 'open on mallow' });
+      })
+      .catch(() => {
+        status.innerHTML = 'Solana gallery coming soon — see the full collection on <a href="' + MALLOW_URL + '" target="_blank" rel="noopener" style="color:var(--orange);">mallow ↗</a>';
+      });
+  })();
+
+  /* ---- chain tab switching ---- */
+  document.querySelectorAll('.chain-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const chain = tab.dataset.chain;
+      document.getElementById('panel-tezos').style.display = chain === 'tezos' ? '' : 'none';
+      document.getElementById('panel-solana').style.display = chain === 'solana' ? '' : 'none';
+    });
+  });
 </script>
 
 <script>
