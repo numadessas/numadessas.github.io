@@ -421,7 +421,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--green);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -433,7 +433,7 @@
     content: '';
     display: inline-block;
     width: 32px; height: 1px;
-    background: var(--purple);
+    background: var(--green);
   }
   .hero-headline {
     font-family: var(--font-banner);
@@ -1567,6 +1567,61 @@
     .cv-item { grid-template-columns: 1fr; gap: 0.25rem; }
   }
 
+  /* MEDIUMS background video */
+  .mediums-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ON-CHAIN — single-row horizontal gallery */
+  .chain-row { position: relative; }
+  .art-row {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    padding: 0.25rem 0 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) transparent;
+  }
+  .art-row::-webkit-scrollbar { height: 8px; }
+  .art-row::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+  .art-row .art-item {
+    flex: 0 0 auto;
+    width: 240px;
+    scroll-snap-align: start;
+  }
+  .row-arrow {
+    position: absolute;
+    top: calc(50% - 0.4rem);
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(10,10,10,0.8);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .row-arrow:hover { background: var(--orange); border-color: var(--orange); color: var(--black); }
+  .row-arrow--prev { left: -10px; }
+  .row-arrow--next { right: -10px; }
+  @media (max-width: 640px) { .row-arrow { display: none; } .art-row .art-item { width: 60vw; } }
+
   /* ON-CHAIN chain tabs */
   .chain-tabs {
     display: flex;
@@ -1891,8 +1946,11 @@
 <div class="divider"></div>
 
 <!-- MEDIUMS -->
-<section style="background:var(--black);">
-  <div class="section-inner">
+<section style="background:var(--black);position:relative;overflow:hidden;">
+  <video class="mediums-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="assets/img/art/mediums-bg.mp4" type="video/mp4">
+  </video>
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-label" data-i18n="art.mediums_label">Practice</div>
     <h2 class="section-title fade-up" data-i18n-html="art.mediums_title">MEDIUMS<span style="color:var(--orange)">.</span></h2>
     <div class="svc-boxes fade-up">
@@ -2050,7 +2108,11 @@
     <!-- TEZOS -->
     <div class="chain-panel" id="panel-tezos">
       <div id="tezos-status" class="chain-status">Loading Tezos work…</div>
-      <div id="tezos-gallery" class="art-gallery"></div>
+      <div class="chain-row">
+        <button class="row-arrow row-arrow--prev" data-target="tezos-gallery" aria-label="Scroll left">‹</button>
+        <div id="tezos-gallery" class="art-row"></div>
+        <button class="row-arrow row-arrow--next" data-target="tezos-gallery" aria-label="Scroll right">›</button>
+      </div>
       <div style="margin-top:2.5rem;">
         <a href="https://objkt.com/profile/tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo/created" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_objkt">View full collection on objkt ↗</a>
       </div>
@@ -2059,7 +2121,11 @@
     <!-- SOLANA -->
     <div class="chain-panel" id="panel-solana" style="display:none;">
       <div id="mallow-status" class="chain-status">Loading Solana work…</div>
-      <div id="mallow-gallery" class="art-gallery"></div>
+      <div class="chain-row">
+        <button class="row-arrow row-arrow--prev" data-target="mallow-gallery" aria-label="Scroll left">‹</button>
+        <div id="mallow-gallery" class="art-row"></div>
+        <button class="row-arrow row-arrow--next" data-target="mallow-gallery" aria-label="Scroll right">›</button>
+      </div>
       <div style="margin-top:2.5rem;">
         <a href="https://mallow.art" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_mallow">View full collection on mallow ↗</a>
       </div>
@@ -2153,6 +2219,16 @@
   lb.addEventListener('click', () => lb.classList.remove('open'));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 
+  /* ---- helpers ---- */
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   /* ---- shared gallery renderer ----
      art = { image, link, name } */
   function renderGallery(gallery, status, items, opts) {
@@ -2165,10 +2241,18 @@
       a.rel = 'noopener';
       a.title = art.name || 'Untitled';
       const img = document.createElement('img');
-      img.src = art.image;
       img.alt = art.name || 'Artwork';
       img.loading = 'lazy';
-      img.addEventListener('error', () => { a.style.display = 'none'; });
+      // objkt/CDN thumbnails can drop under burst — retry once before giving up
+      img.addEventListener('error', () => {
+        if (!img.dataset.retried) {
+          img.dataset.retried = '1';
+          setTimeout(() => { img.src = art.image + (art.image.indexOf('?') > -1 ? '&' : '?') + 'r=1'; }, 900);
+        } else {
+          a.style.display = 'none';
+        }
+      });
+      img.src = art.image;
       a.appendChild(img);
       a.addEventListener('click', ev => {
         if (ev.metaKey || ev.ctrlKey || ev.button === 1) return; // let power-users open the marketplace
@@ -2180,31 +2264,16 @@
     status.textContent = items.length + ' works · click to view · ' + opts.marketLabel + ' ↗';
   }
 
-  /* ---- Tezos gallery — live from objkt (public GraphQL, no key) ---- */
+  /* ---- Tezos gallery — baked WebP from objkt (scripts/fetch-tezos.mjs) ---- */
   (function loadTezos() {
     const TZ = 'tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo';
     const gallery = document.getElementById('tezos-gallery');
     const status = document.getElementById('tezos-status');
-    const query = `query($addr:String!){
-      token(where:{creators:{creator_address:{_eq:$addr}}, supply:{_gt:0}}, order_by:{timestamp:desc}, limit:24){
-        name fa_contract token_id display_uri
-      }
-    }`;
-    fetch('https://data.objkt.com/v3/graphql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, variables: { addr: TZ } }),
-    })
-      .then(r => r.json())
-      .then(j => {
-        const toks = (j && j.data && j.data.token) || [];
-        if (toks.length === 0) throw new Error('empty');
-        const items = toks.map(t => ({
-          name: t.name || 'Untitled',
-          image: 'https://assets.objkt.media/file/assets-003/' + t.fa_contract + '/' + t.token_id + '/thumb400',
-          link: 'https://objkt.com/tokens/' + t.fa_contract + '/' + t.token_id,
-        }));
-        renderGallery(gallery, status, items, { marketLabel: 'open on objkt' });
+    fetch('assets/data/tezos-artworks.json', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('no data'); return r.json(); })
+      .then(raw => {
+        if (!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
+        renderGallery(gallery, status, shuffle(raw), { marketLabel: 'open on objkt' });
       })
       .catch(() => {
         status.innerHTML = 'See the full Tezos collection on <a href="https://objkt.com/profile/' + TZ + '/created" target="_blank" rel="noopener" style="color:var(--orange);">objkt ↗</a>';
@@ -2221,7 +2290,7 @@
       .then(raw => {
         if (!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
         const total = raw.length;
-        const items = raw.slice(0, 30).map(a => ({
+        const items = shuffle(raw).slice(0, 30).map(a => ({
           name: a.name || 'Untitled',
           image: a.image,
           link: a.url || (a.mintAccount ? MALLOW_URL + '/artwork/' + a.mintAccount : MALLOW_URL),
@@ -2242,6 +2311,16 @@
       const chain = tab.dataset.chain;
       document.getElementById('panel-tezos').style.display = chain === 'tezos' ? '' : 'none';
       document.getElementById('panel-solana').style.display = chain === 'solana' ? '' : 'none';
+    });
+  });
+
+  /* ---- row arrows ---- */
+  document.querySelectorAll('.row-arrow').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const row = document.getElementById(btn.dataset.target);
+      if (!row) return;
+      const step = Math.max(row.clientWidth * 0.8, 260);
+      row.scrollBy({ left: btn.classList.contains('row-arrow--prev') ? -step : step, behavior: 'smooth' });
     });
   });
 </script>
