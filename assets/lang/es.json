@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "portfolio": "Portafolio",
+    "areas": "Áreas",
+    "education": "Educación",
+    "publications": "Publicaciones",
+    "wiki": "Wiki ↗",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "tag": "Diseñadora · Artista · Educadora",
+    "desc": "La tecnología puede crear<br><strong>ecosistemas sociales phygital conscientes y sostenibles.</strong>",
+    "cta_primary": "Ver Proyectos",
+    "cta_secondary": "Contacto",
+    "scroll": "Desliza"
+  },
+  "about": {
+    "label": "Sobre",
+    "title": "MATERIA DIGITAL,<br><span style=\"color:var(--green)\">TOQUE HUMANO</span><span style=\"color:var(--orange)\">.</span>",
+    "p1": "Soy Manuella Godoy, también conocida como <strong>Numa</strong> — diseñadora, artista, investigadora y educadora radicada en Brasil. Mi trabajo se sitúa en la intersección entre <strong>las tecnologías emergentes y la práctica cultural</strong>, con especial atención a los <strong>ecosistemas blockchain y las aplicaciones multimedia.</strong>",
+    "p2": "En la práctica, trabajo con <strong>comunicación visual, branding, productos digitales, dirección creativa, diseño web, producción audiovisual, ilustración y modelado 3D</strong>. Creo identidades visuales, bandas sonoras, videos y diversas experiencias digitales.",
+    "p3": "También desarrollo <strong>contenido educativo, talleres y cursos sobre blockchain</strong> para distintos niveles de familiaridad — desde principiantes hasta profesionales que buscan profundizar sus conocimientos.",
+    "stat_design": "Años en Diseño",
+    "stat_web3": "Años en Web3"
+  },
+  "portfolio": {
+    "label": "Portafolio",
+    "title": "PROYECTOS<span style=\"color:var(--orange)\">.</span>",
+    "see_more": "Ver portafolio completo en Behance →",
+    "view_case": "Ver Caso",
+    "view": "Ver",
+    "meta_education": "Educación",
+    "meta_art": "Arte",
+    "meta_culture": "Cultura e Historia",
+    "meta_validation": "mecanismos de validación",
+    "meta_fieldresearch": "Investigación de campo",
+    "meta_graphicdesign": "Diseño Gráfico",
+    "meta_animation2d": "Animación 2D",
+    "flui_cat": "Gestión Financiera On-chain",
+    "flui_desc": "Una plataforma prototipo que transforma datos on-chain en información financiera clara, facilitando la organización y presentación de ingresos.",
+    "threeland_cat": "Metaverso · Mercado cNFT",
+    "threeland_desc": "Hub creativo para el ciberespacio — un estudio que creció de un metaverso 3D a un mercado cNFT y herramientas de código abierto.",
+    "web3pe_cat": "Evento",
+    "web3pe_desc": "En WebPE 2025, celebrado en el IFPE Belo Jardim, presenté la charla \"Cripto y Sociedad\", abordando lo socioeconómico en blockchain, impartí un taller sobre billeteras de criptomonedas con Pine Stake cubriendo conceptos y validación de la red Solana, y también moderé un panel sobre Cripto Arte.",
+    "cfa_cat": "Material Educativo · Curso · Talleres",
+    "cfa_desc": "Identidad visual para mi proyecto de maestría. 2 años de investigación, supervisión de 3 estudiantes de grado, desarrollando contenido educativo presencial y virtual.",
+    "camapu_cat": "Exposición Internacional",
+    "camapu_desc": "Mi obra presentada en la sección \"Held in Motion\" de la exposición Interlace en ArtVerse Paris, producida por Mallow y Exchange.art.",
+    "logofolio_cat": "Identidad Visual",
+    "logofolio_desc": "Logotipos desarrollados para diversos clientes, en distintos campos de actividad, a lo largo de los años.",
+    "gatenu_cat": "Colección NFT",
+    "gatenu_desc": "Mi primera colección en Solana, lanzada en 2022 y con más de 70 colaboraciones."
+  },
+  "areas": {
+    "label": "Lo que hago",
+    "title": "ÁREAS<br>DE <span style=\"color:var(--green)\">TRABAJO</span><span style=\"color:var(--orange)\">.</span>",
+    "design_desc": "Comunicación visual, branding, producto digital y dirección creativa. Desde sistemas de identidad hasta diseño de interfaces, gráficos phygital.",
+    "art_title": "ARTE",
+    "art_desc": "Arte digital y tradicional, mezclando fantasía y símbolos culturales con una naturaleza onírica. Obras on-chain exhibidas en Brasil, Francia y Tailandia.",
+    "music_title": "MÚSICA",
+    "music_desc": "Música para diversos fines. Bandas sonoras para películas y juegos, DJing, diseño de sonido, remixes y producción de instrumentales originales para artistas.",
+    "edu_title": "EDUCACIÓN",
+    "edu_desc": "Desarrollo de materiales educativos, talleres, charlas y cursos sobre blockchain — diseñados para distintos niveles de conocimiento previo."
+  },
+  "education": {
+    "label": "Educación",
+    "title": "CREAR Y<br><span style=\"color:var(--green)\">ENSEÑAR</span><span style=\"color:var(--orange)\">.</span>",
+    "intro": "Estoy disponible para charlas, talleres, mentorías y colaboraciones educativas — especialmente con universidades y grupos de investigación. Suelen ser iniciativas abiertas, pero estoy abierta a propuestas más a medida o institucionales.",
+    "wiki_cat": "Recurso Gratuito",
+    "wiki_title": "NumaWiki 📖",
+    "wiki_desc": "Una base de conocimiento abierta y gratuita sobre blockchain, Web3, cripto arte y tecnologías emergentes — escrita en un lenguaje claro y accesible. Un recurso vivo para mentes curiosas de cualquier nivel.",
+    "lw_cat": "Formación Educativa",
+    "lw_title": "Charlas y Talleres",
+    "lw_desc": "Presentaciones con actividades prácticas sobre temas específicos de blockchain, adaptables a públicos y objetivos diversos. Cripto arte, diseño, desarrollo, prácticas básicas, etc.",
+    "m_cat": "Mentoría",
+    "m_title": "Introducción a blockchain",
+    "m_desc": "Mentoría individual o grupal para profesionales y estudiantes que desean ingresar o mejorar sus conocimientos de Web3. Enfoque en la práctica, alfabetización técnica, orientación profesional y desarrollo comunitario."
+  },
+  "publications": {
+    "label": "Producción Académica",
+    "title": "PUBLICACIONES<span style=\"color:var(--orange)\">.</span>",
+    "diss_cat": "Disertación (Solo en Portugués)",
+    "diss_title": "\"Las Computadoras Hacen Arte\" — Didáctica para Web3",
+    "diss_desc": "Disertación de maestría que investiga marcos pedagógicos para enseñar blockchain, NFTs y Web3 a públicos diversos. Desarrollada en la UFPE, conecta la educación en diseño con las tecnologías digitales emergentes.",
+    "paper1_cat": "Artículo",
+    "paper1_title": "En la frontera del metaverso: NFTs, expresión artística e inmersiones digitales",
+    "paper1_desc": "Explora los NFTs más allá de la tokenización del arte digital, examinando la tensión entre la autonomía artística y la comercialización en Web3. Publicado en la revista Metaverse (2024), con estudios de caso de exposiciones inmersivas.",
+    "paper2_cat": "Artículo",
+    "paper2_title": "Metaverso y preservación cultural: una alternativa a través de NFTs de sostenibilidad social en Brasil",
+    "paper2_desc": "Presentado en SVR'23, este artículo investiga cómo los NFTs y las plataformas de metaverso pueden usarse para preservar y promover el patrimonio cultural indígena mediante la garantía de autoría.",
+    "ch_cat": "Capítulo de Libro (Solo en Portugués)",
+    "ch_title": "\"Las Computadoras Hacen Arte\" — Blockchain y NFTs",
+    "ch_desc": "Capítulo de la colección de minicursos del evento WebMedia 2024. Traduce conceptos de blockchain y NFT a un lenguaje educativo accesible, resultado de mi maestría sobre la enseñanza de Web3 a través de la práctica artística y del diseño."
+  },
+  "contact": {
+    "label": "Contacto",
+    "headline": "TRABA-<br><span style=\"color:var(--green)\">JEMOS</span><span style=\"color:var(--orange)\">.</span>",
+    "text": "Abierta a colaboraciones de diseño, encargos de arte, alianzas de investigación, proyectos educativos e invitaciones para hablar en eventos.",
+    "social_label": "Encuéntrame en línea"
+  },
+  "footer": {
+    "copy": "© 2026 Numa — Creative Tech: Arte, Diseño, Educación",
+    "about": "Sobre",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  }
+}

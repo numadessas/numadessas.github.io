@@ -220,19 +220,53 @@
     transition: background 0.2s, color 0.2s;
   }
   .nav-cta:hover { background: var(--orange); color: var(--black); }
-  .lang-toggle {
+  .lang-switch { position: relative; }
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.4rem 0.75rem;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--grey);
-    background: transparent;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    background: rgba(255,255,255,0.04);
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
-  .lang-toggle:hover { border-color: var(--white); color: var(--white); }
+  .lang-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .lang-btn svg { width: 15px; height: 15px; display: block; }
+  .lang-btn .lang-caret { font-size: 0.6rem; transition: transform 0.2s; }
+  .lang-btn[aria-expanded="true"] .lang-caret { transform: rotate(180deg); }
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 148px;
+    background: var(--off-black);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: none;
+    flex-direction: column;
+    z-index: 120;
+    box-shadow: 0 16px 40px -16px rgba(0,0,0,0.8);
+  }
+  .lang-menu.open { display: flex; }
+  .lang-menu button {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+    padding: 0.65rem 0.95rem;
+    background: transparent;
+    border: none;
+    color: var(--light-grey);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-menu button:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+  .lang-menu button.active { color: var(--orange); }
   .nav-end {
     display: flex;
     align-items: center;
@@ -258,7 +292,7 @@
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: var(--black);
-    z-index: 99;
+    z-index: 200;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1363,7 +1397,19 @@
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
-    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">PT</button>
+    <div class="lang-switch" id="lang-switch">
+      <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+        <span id="lang-current">EN</span>
+        <span class="lang-caret">&#9662;</span>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button data-lang="en">English</button>
+        <button data-lang="pt">Portugu&ecirc;s</button>
+        <button data-lang="es">Espa&ntilde;ol</button>
+        <button data-lang="de">Deutsch</button>
+      </div>
+    </div>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -1544,7 +1590,11 @@
 <script>
 (function() {
   const STORAGE_KEY = 'numa-lang';
+  const LABEL = { en: 'EN', pt: 'PT', es: 'ES', de: 'DE' };
+  const HTMLLANG = { en: 'en', pt: 'pt-BR', es: 'es', de: 'de' };
+  const ORDER = ['en', 'pt', 'es', 'de'];
   let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  if (!LABEL[currentLang]) currentLang = 'en';
   let translations = {};
 
   function t(key) {
@@ -1558,9 +1608,12 @@
     document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
       el.innerHTML = t(el.dataset.i18nHtml);
     });
-    var btn = document.getElementById('lang-toggle');
-    if (btn) btn.textContent = currentLang === 'en' ? 'PT' : 'EN';
-    document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+    var cur = document.getElementById('lang-current');
+    if (cur) cur.textContent = LABEL[currentLang];
+    document.querySelectorAll('.lang-menu button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === currentLang);
+    });
+    document.documentElement.lang = HTMLLANG[currentLang] || 'en';
   }
 
   function loadAndApply(lang) {
@@ -1569,14 +1622,42 @@
       .then(function(data) {
         translations = data;
         applyTranslations();
-      });
+      })
+      .catch(function() {});
   }
 
-  window.toggleLang = function() {
-    currentLang = currentLang === 'en' ? 'pt' : 'en';
-    localStorage.setItem(STORAGE_KEY, currentLang);
-    loadAndApply(currentLang);
+  var langBtn = document.getElementById('lang-btn');
+  var langMenu = document.getElementById('lang-menu');
+
+  function closeLangMenu() {
+    if (langMenu) langMenu.classList.remove('open');
+    if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  window.setLang = function(lang) {
+    if (!LABEL[lang]) return;
+    currentLang = lang;
+    localStorage.setItem(STORAGE_KEY, lang);
+    loadAndApply(lang);
+    closeLangMenu();
   };
+  window.toggleLang = function() {
+    window.setLang(ORDER[(ORDER.indexOf(currentLang) + 1) % ORDER.length]);
+  };
+
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = langMenu.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    langMenu.querySelectorAll('button').forEach(function(b) {
+      b.addEventListener('click', function() { window.setLang(b.dataset.lang); });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#lang-switch')) closeLangMenu();
+    });
+  }
 
   loadAndApply(currentLang);
 })();
