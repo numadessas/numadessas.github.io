@@ -1702,7 +1702,7 @@
         </p>
         <p class="fade-up">
           My work has been exhibited both in the <strong>metaverse</strong> and <strong>in person</strong>,
-          across several Brazilian states and in countries such as <strong>France</strong>,
+          across <strong>several states in Brazil</strong> and in countries such as <strong>France</strong>,
           <strong>Thailand</strong>, and <strong>Germany</strong>.
         </p>
       </div>
@@ -1734,7 +1734,7 @@
     <div class="section-label">Exhibitions</div>
     <h2 class="section-title fade-up">EXHIBITIONS<span style="color:var(--orange)">.</span></h2>
     <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:0.5rem;">
-      Shown in the metaverse and in person — across several Brazilian states and in France, Thailand, and Germany.
+      Shown in the metaverse and in person — across <strong>several states in Brazil</strong> and in France, Thailand, and Germany.
     </p>
     <p class="fade-up" style="font-size:0.8rem;color:#666;margin-bottom:1rem;">
       <em>Template list — edit year / title / type / venue freely.</em>
@@ -1945,12 +1945,14 @@
       .then(r => { if (!r.ok) throw new Error('no data'); return r.json(); })
       .then(raw => {
         if (!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
-        const items = raw.map(a => ({
+        const total = raw.length;
+        const items = raw.slice(0, 30).map(a => ({
           name: a.name || 'Untitled',
           image: a.image,
-          link: a.mintAccount ? MALLOW_URL + '/item/' + a.mintAccount : MALLOW_URL,
+          link: a.url || (a.mintAccount ? MALLOW_URL + '/artwork/' + a.mintAccount : MALLOW_URL),
         }));
         renderGallery(gallery, status, items, { marketLabel: 'open on mallow' });
+        if (total > items.length) status.textContent = items.length + ' of ' + total + ' works · click to view · open on mallow ↗';
       })
       .catch(() => {
         status.innerHTML = 'Solana gallery coming soon — see the full collection on <a href="' + MALLOW_URL + '" target="_blank" rel="noopener" style="color:var(--orange);">mallow ↗</a>';

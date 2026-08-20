@@ -28,9 +28,17 @@ const API_KEY  = process.env.MALLOW_API_KEY;
 const CREATOR  = process.env.MALLOW_CREATOR || DEFAULT_CREATOR;
 const SORT     = process.env.MALLOW_SORT || 'recently-listed';
 const PAGESIZE = Math.min(Number(process.env.MALLOW_PAGESIZE || 30), 30);
-const MAXPAGES = Number(process.env.MALLOW_MAXPAGES || 5);
+const MAXPAGES = Number(process.env.MALLOW_MAXPAGES || 12);
 
-const ENDPOINT = 'https://api.mallow.art/api/artworks/artworks-by-creator';
+// mallow's own image CDN (fast, resized) instead of raw ipfs.io (slow/unreliable).
+function cdnImage(imageUrl) {
+  const m = String(imageUrl).match(/(?:ipfs:\/\/|\/ipfs\/)([^/?#]+)(\/.*)?$/i);
+  if (!m) return imageUrl;
+  const path = m[1] + (m[2] || '');
+  return 'https://images.mallow.art/600x600/inside/' + encodeURIComponent('ipfs://' + path) + '?still=true&quality=70';
+}
+
+const ENDPOINT = 'https://api.mallow.art/v1/artworks/byCreator';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, '../assets/data/mallow-artworks.json');
@@ -74,11 +82,12 @@ async function main() {
 
   // Keep only the fields the page needs.
   const clean = all
-    .filter(a => a && a.image)
+    .filter(a => a && a.imageUrl)
     .map(a => ({
       mintAccount: a.mintAccount || null,
       name: a.name || 'Untitled',
-      image: a.image,
+      image: cdnImage(a.imageUrl),
+      url: a.url || (a.mintAccount ? 'https://mallow.art/artwork/' + a.mintAccount : 'https://mallow.art'),
     }));
 
   await mkdir(dirname(OUT), { recursive: true });
