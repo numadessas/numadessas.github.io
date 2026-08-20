@@ -1314,67 +1314,115 @@
     }
   }
 
-  /* DESIGN — SERVICES */
-  .svc { margin-top: 1rem; }
-  .svc-cat { margin-bottom: 4rem; }
-  .svc-cat-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-  .svc-cat-num {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--purple);
-  }
-  .svc-cat-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    letter-spacing: 0.03em;
-    line-height: 1;
-  }
-  .svc-cat-title .highlight { color: var(--white); }
-  .svc-cat-desc {
-    font-size: 0.92rem;
-    color: #999;
-    line-height: 1.7;
-    max-width: 560px;
-    margin-bottom: 1.5rem;
-  }
-  .svc-images {
+  /* DESIGN — SERVICE BOXES */
+  .svc-boxes {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1rem;
   }
-  .svc-thumb {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
+  .svc-box {
     position: relative;
+    overflow: hidden;
+    padding: 2.25rem 1.75rem 2.5rem;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.07);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1), border-color 0.4s, box-shadow 0.4s;
   }
-  .svc-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .svc-thumb:hover img { transform: scale(1.06); }
-  .svc-thumb::after {
-    content: attr(data-label);
+  /* revealing gradient wash */
+  .svc-box::before {
+    content: '';
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    font-family: var(--font-mono);
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey);
-    padding: 0.4rem 0.5rem;
-    background: linear-gradient(to top, rgba(10,10,10,0.85), transparent);
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(238,111,34,0.16) 0%, rgba(115,69,120,0.10) 35%, transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.45s ease;
+  }
+  /* diagonal shine sweep */
+  .svc-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.10), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.7s ease;
     pointer-events: none;
   }
-  .svc-thumb:hover::after { opacity: 1; }
-  @media (max-width: 768px) {
-    .svc-images { grid-template-columns: 1fr 1fr; }
+  .svc-box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(238,111,34,0.55);
+    box-shadow: 0 18px 40px -18px rgba(238,111,34,0.45), 0 0 0 1px rgba(238,111,34,0.15);
   }
+  .svc-box:hover::before { opacity: 1; }
+  .svc-box:hover::after { left: 130%; }
+
+  .svc-box-num {
+    position: absolute;
+    top: 1rem; right: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.10);
+    transition: -webkit-text-stroke-color 0.4s, transform 0.4s;
+    pointer-events: none;
+  }
+  .svc-box:hover .svc-box-num {
+    -webkit-text-stroke-color: rgba(238,111,34,0.5);
+    transform: translateY(-2px);
+  }
+  .svc-box-icon {
+    width: 52px; height: 52px;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .svc-box-icon svg { width: 100%; height: 100%; display: block; }
+  .svc-box:hover .svc-box-icon {
+    color: var(--orange);
+    transform: translateY(-2px) rotate(-6deg) scale(1.08);
+  }
+  .svc-box-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .svc-box-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.65;
+    flex: 1;
+  }
+  .svc-box-arrow {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    color: var(--green);
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: opacity 0.35s, transform 0.35s;
+  }
+  .svc-box:hover .svc-box-arrow { opacity: 1; transform: translate(0,0); }
+  .svc-box-bar {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--purple));
+    transition: width 0.5s ease;
+  }
+  .svc-box:hover .svc-box-bar { width: 100%; }
+
+  @media (max-width: 1024px) { .svc-boxes { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .svc-boxes { grid-template-columns: 1fr; } .svc-box { min-height: 0; } }
 </style>
 </head>
 <body>
@@ -1447,61 +1495,61 @@
 <!-- SERVICES -->
 <section style="background:var(--off-black);">
   <div class="section-inner" style="padding-top:3rem;">
-    <div class="svc fade-up">
+    <div class="svc-boxes fade-up">
       <!-- Visual Identity -->
-      <div class="svc-cat">
-        <div class="svc-cat-head">
-          <span class="svc-cat-num">01</span>
-          <h3 class="svc-cat-title">Visual <span class="highlight">Identity</span></h3>
+      <div class="svc-box">
+        <span class="svc-box-num">01</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="11"/><rect x="19" y="19" width="21" height="21" rx="2"/>
+          </svg>
         </div>
-        <p class="svc-cat-desc">Logos, brand systems, and visual guidelines that give projects a distinct, consistent voice.</p>
-        <div class="svc-images">
-          <div class="svc-thumb pv-1" data-label="Identity 01"><img src="assets/img/design/identity-1.jpg" alt="Visual identity example 1" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-3" data-label="Identity 02"><img src="assets/img/design/identity-2.jpg" alt="Visual identity example 2" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-6" data-label="Identity 03"><img src="assets/img/design/identity-3.jpg" alt="Visual identity example 3" onerror="this.style.display='none'"></div>
-        </div>
+        <h3 class="svc-box-title">Visual Identity</h3>
+        <p class="svc-box-desc">Logos, brand systems, and visual guidelines that give projects a distinct, consistent voice.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
 
       <!-- Illustration -->
-      <div class="svc-cat">
-        <div class="svc-cat-head">
-          <span class="svc-cat-num">02</span>
-          <h3 class="svc-cat-title"><span class="highlight">Illustration</span></h3>
+      <div class="svc-box">
+        <span class="svc-box-num">02</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 8l10 10L18 40 8 40 8 30 30 8z"/><path d="M26 12l10 10"/>
+          </svg>
         </div>
-        <p class="svc-cat-desc">Original artwork and digital illustration — editorial pieces, characters, covers, and campaign visuals.</p>
-        <div class="svc-images">
-          <div class="svc-thumb pv-2" data-label="Illustration 01"><img src="assets/img/design/illustration-1.jpg" alt="Illustration example 1" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-4" data-label="Illustration 02"><img src="assets/img/design/illustration-2.jpg" alt="Illustration example 2" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-1" data-label="Illustration 03"><img src="assets/img/design/illustration-3.jpg" alt="Illustration example 3" onerror="this.style.display='none'"></div>
-        </div>
+        <h3 class="svc-box-title">Illustration</h3>
+        <p class="svc-box-desc">Original artwork and digital illustration — editorial pieces, characters, covers, and campaign visuals.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
 
       <!-- UI/UX -->
-      <div class="svc-cat">
-        <div class="svc-cat-head">
-          <span class="svc-cat-num">03</span>
-          <h3 class="svc-cat-title">UI<span class="highlight">/</span>UX</h3>
+      <div class="svc-box">
+        <span class="svc-box-num">03</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="9" width="34" height="26" rx="2"/><path d="M7 16h34"/><path d="M24 35v5M17 40h14"/>
+          </svg>
         </div>
-        <p class="svc-cat-desc">Product and interface design — web and app flows, prototypes, and design systems built for real use.</p>
-        <div class="svc-images">
-          <div class="svc-thumb pv-5" data-label="UI/UX 01"><img src="assets/img/design/uiux-1.jpg" alt="UI/UX example 1" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-3" data-label="UI/UX 02"><img src="assets/img/design/uiux-2.jpg" alt="UI/UX example 2" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-2" data-label="UI/UX 03"><img src="assets/img/design/uiux-3.jpg" alt="UI/UX example 3" onerror="this.style.display='none'"></div>
-        </div>
+        <h3 class="svc-box-title">UI/UX</h3>
+        <p class="svc-box-desc">Product and interface design — web and app flows, prototypes, and design systems built for real use.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
 
       <!-- 3D -->
-      <div class="svc-cat">
-        <div class="svc-cat-head">
-          <span class="svc-cat-num">04</span>
-          <h3 class="svc-cat-title"><span class="highlight">3D</span></h3>
+      <div class="svc-box">
+        <span class="svc-box-num">04</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6l16 9v18l-16 9-16-9V15z"/><path d="M24 24l16-9M24 24v18M24 24L8 15"/>
+          </svg>
         </div>
-        <p class="svc-cat-desc">Modeling, texturing, and rendering — product visuals, assets, and immersive scenes for the metaverse.</p>
-        <div class="svc-images">
-          <div class="svc-thumb pv-6" data-label="3D 01"><img src="assets/img/design/3d-1.jpg" alt="3D example 1" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-5" data-label="3D 02"><img src="assets/img/design/3d-2.jpg" alt="3D example 2" onerror="this.style.display='none'"></div>
-          <div class="svc-thumb pv-4" data-label="3D 03"><img src="assets/img/design/3d-3.jpg" alt="3D example 3" onerror="this.style.display='none'"></div>
-        </div>
+        <h3 class="svc-box-title">3D</h3>
+        <p class="svc-box-desc">Modeling, texturing, and rendering — product visuals, assets, and immersive scenes for the metaverse.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
     </div>
   </div>
