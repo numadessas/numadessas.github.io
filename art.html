@@ -365,6 +365,18 @@
     90%  { transform: translate(-10%, 10%); }
     100% { transform: translate(0, 0); }
   }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: url('assets/img/art/hero-sono.webp') center center / cover no-repeat;
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--black) 4%, rgba(10,10,10,0.55) 42%, rgba(10,10,10,0.25) 100%);
+  }
   .hero-tag {
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -1768,6 +1780,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
   <div class="hero-tag">Crypto Artist · Visual Artist</div>
   <h1 class="hero-headline">ART<span class="accent">.</span></h1>
   <div class="hero-sub">
