@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Art — Numa</title>
-<meta name="description" content="Numa is a Brazilian crypto artist and visual artist. Hybrid creatures born of fantasy, culture, and Brazilian fauna and flora — a dreamlike, intensely colorful universe across drawing, graffiti, sculpture, 3D, and virtual reality. Exhibited in the metaverse and in person across Brazil, France, Thailand, and Germany.">
+<meta name="description" content="Numa is a Brazilian crypto artist and visual artist. Hybrid creatures born of fantasy, culture, and Brazilian fauna and flora — a dreamlike, intensely colorful universe across drawing, graffiti, sculpture, 3D, and virtual reality. Exhibited in the metaverse and in person across Brazil, France, Germany, the Netherlands, Austria, Thailand, and Canada.">
 <meta property="og:title" content="Art — Numa">
-<meta property="og:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Thailand & Germany">
+<meta property="og:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Germany, Netherlands, Austria, Thailand & Canada">
 <meta name="author" content="Numa">
 <meta property="og:type" content="website">
 
@@ -17,7 +17,7 @@
 <!-- Thumb Para Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Art — Numa">
-<meta name="twitter:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Thailand & Germany">
+<meta name="twitter:description" content="Crypto artist & visual artist | Hybrid creatures from a colorful, oneiric universe | Exhibited across Brazil, France, Germany, Netherlands, Austria, Thailand & Canada">
 <meta name="twitter:image" content="https://www.numadessas.com.br/assets/img/numadessas-thumb-small.png">
 
 <!-- Favicon -->
@@ -1361,6 +1361,69 @@
     .mediums-grid, .exhib-grid { grid-template-columns: 1fr 1fr; }
   }
 
+  /* EXHIBITIONS — highlight cards */
+  .hl-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin: 2rem 0 3.5rem;
+  }
+  .hl-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: border-color 0.25s, transform 0.2s;
+  }
+  .hl-card:hover { border-color: rgba(238,111,34,0.5); transform: translateY(-3px); }
+  .hl-img {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--black) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hl-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hl-img::after {
+    content: 'REPLACE IMAGE';
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.35);
+    pointer-events: none;
+  }
+  .hl-img img:not([src=""]) ~ span { display:none; }
+  .hl-body { padding: 1.25rem 1.35rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .hl-type {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+  .hl-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+    margin: 0.5rem 0 0.25rem;
+    line-height: 1.15;
+  }
+  .hl-meta {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+  .hl-desc { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
+  .hl-desc em { color: #666; font-style: italic; }
+  @media (max-width: 860px) { .hl-cards { grid-template-columns: 1fr; } }
+
   /* EXHIBITIONS — CV list */
   .cv-list {
     margin-top: 2rem;
@@ -1679,8 +1742,8 @@
         <div class="section-label">Statement</div>
         <div class="about-stats">
           <div>
-            <div class="stat-num">4</div>
-            <div class="stat-label">Countries · BR · FR · TH · DE</div>
+            <div class="stat-num">7</div>
+            <div class="stat-label">Countries · BR · FR · DE · NL · AT · TH · CA</div>
           </div>
           <div>
             <div class="stat-num">IRL<span style="color:var(--grey)">+</span></div>
@@ -1702,8 +1765,9 @@
         </p>
         <p class="fade-up">
           My work has been exhibited both in the <strong>metaverse</strong> and <strong>in person</strong>,
-          across <strong>several states in Brazil</strong> and in countries such as <strong>France</strong>,
-          <strong>Thailand</strong>, and <strong>Germany</strong>.
+          across <strong>several states in Brazil</strong> and internationally — in <strong>France</strong>,
+          <strong>Germany</strong>, the <strong>Netherlands</strong>, <strong>Austria</strong>,
+          <strong>Thailand</strong>, and <strong>Canada</strong>.
         </p>
       </div>
     </div>
@@ -1734,24 +1798,74 @@
     <div class="section-label">Exhibitions</div>
     <h2 class="section-title fade-up">EXHIBITIONS<span style="color:var(--orange)">.</span></h2>
     <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:0.5rem;">
-      Shown in the metaverse and in person — across <strong>several states in Brazil</strong> and in France, Thailand, and Germany.
+      Shown in the metaverse and in person — across <strong>several states in Brazil</strong> and in France, Germany, the Netherlands, Austria, Thailand, and Canada.
     </p>
-    <p class="fade-up" style="font-size:0.8rem;color:#666;margin-bottom:1rem;">
-      <em>Template list — edit year / title / type / venue freely.</em>
-    </p>
+    <!-- highlight cards (image + description are placeholders to replace) -->
+    <div class="hl-cards fade-up">
+      <div class="hl-card">
+        <div class="hl-img"><img src="assets/img/art/highlights/interlace.jpg" alt="Interlace" onerror="this.remove()"><span></span></div>
+        <div class="hl-body">
+          <div class="hl-type">International Exhibition</div>
+          <div class="hl-title">Interlace</div>
+          <div class="hl-meta">2026 · Paris, France</div>
+          <p class="hl-desc">International group exhibition in Paris gathering digital and on-chain artists. <em>[ replace image + text ]</em></p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-img"><img src="assets/img/art/highlights/nft-brasil.jpg" alt="NFT Brasil" onerror="this.remove()"><span></span></div>
+        <div class="hl-body">
+          <div class="hl-type">Group · Two editions</div>
+          <div class="hl-title">NFT Brasil</div>
+          <div class="hl-meta">2023 &amp; 2024 · Bienal de São Paulo</div>
+          <p class="hl-desc">Featured across two editions of NFT Brasil at the Bienal pavilion in São Paulo. <em>[ replace image + text ]</em></p>
+        </div>
+      </div>
+      <a class="hl-card" href="https://www.pupiladilatada.xyz/pupiladilatada2" target="_blank" rel="noopener">
+        <div class="hl-img"><img src="assets/img/art/highlights/pupila-dilatada.jpg" alt="Pupila Dilatada 2" onerror="this.remove()"><span></span></div>
+        <div class="hl-body">
+          <div class="hl-type">Metaverse</div>
+          <div class="hl-title">Pupila Dilatada 2</div>
+          <div class="hl-meta">2021 · Virtual ↗</div>
+          <p class="hl-desc">Early metaverse group show, part of the Pupila Dilatada 2 virtual exhibition. <em>[ replace image + text ]</em></p>
+        </div>
+      </a>
+    </div>
+
     <div class="cv-list fade-up">
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Interlace — “Held in Motion” <span class="cv-type">Group</span></div><div class="cv-venue">ArtVerse · Paris, France</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · Germany</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · Thailand</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Metaverse</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2020</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Brazil</div></div></div>
+      <!-- 2026 -->
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Interlace Exhibition <span class="cv-type">International</span></div><div class="cv-venue">Paris, France</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Token Nation <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Solana Summit Germany <span class="cv-type">Group</span></div><div class="cv-venue">Berlin, Germany</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Blockchain Futurist Gallery <span class="cv-type">Group</span></div><div class="cv-venue">Toronto, Canada</div></div></div>
+      <!-- 2025 -->
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Ancient Tokens <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
+      <!-- 2024 -->
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">NFT Brasil <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Potência Criativa <span class="cv-type">Group</span></div><div class="cv-venue">São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Ancient Tokens <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
+      <!-- 2023 -->
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFT Brasil <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFTRio <span class="cv-type">Curation</span></div><div class="cv-venue">Curated “Ensolarada” · Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Ensolarada <span class="cv-type">Producer</span></div><div class="cv-venue">Produced &amp; exhibited 2 works · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Solana is Alive <span class="cv-type">Organizer</span></div><div class="cv-venue">Metaverse · organized &amp; exhibited</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakpoint VR: 3.land &amp; Collector <span class="cv-type">VR</span></div><div class="cv-venue">Amsterdam, Netherlands</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Galeria Lado B <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakout SP <span class="cv-type">Group</span></div><div class="cv-venue">São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Hotties Tech <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Identidades <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">No começo do mundo <span class="cv-type">Publication</span></div><div class="cv-venue">Guató-language children's book · Museu do Índio &amp; FEL</div></div></div>
+      <!-- 2022 -->
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFTRio <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">BRIFW · Wired Festival <span class="cv-type">Hybrid</span></div><div class="cv-venue">In-person + metaverse · São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT São Paulo <span class="cv-type">Group</span></div><div class="cv-venue">Museu do Imigrante · São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT Art Con <span class="cv-type">Group</span></div><div class="cv-venue">Chiang Mai, Thailand</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Bienal de Arte Digital · Delírios Digitais <span class="cv-type">Hybrid</span></div><div class="cv-venue">Oi Futuro · Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Recife Mágico <span class="cv-type">Group</span></div><div class="cv-venue">Recife, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Expo Miscelânea <span class="cv-type">Group</span></div><div class="cv-venue">Curitiba, Brazil</div></div></div>
+      <!-- 2021 -->
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Festival de Cultura Brasileira de Viena <span class="cv-type">Metaverse</span></div><div class="cv-venue">Metaverse edition · Vienna, Austria</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Brazucas nas NFTs <span class="cv-type">Metaverse</span></div><div class="cv-venue">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Pupila Dilatada 2 <span class="cv-type">Metaverse</span></div><div class="cv-venue">Virtual</div></div></div>
     </div>
   </div>
 </section>
