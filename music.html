@@ -1418,6 +1418,112 @@
     .sound-layout { grid-template-columns: 1fr; gap: 2rem; }
     .sound-mosaic { max-width: 420px; }
   }
+
+  /* SERVICE BOXES (same style as Design) */
+  .svc-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+  .svc-box {
+    position: relative;
+    overflow: hidden;
+    padding: 2.25rem 1.75rem 2.5rem;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.07);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1), border-color 0.4s, box-shadow 0.4s;
+  }
+  .svc-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(238,111,34,0.16) 0%, rgba(115,69,120,0.10) 35%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+  .svc-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.10), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+  }
+  .svc-box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(238,111,34,0.55);
+    box-shadow: 0 18px 40px -18px rgba(238,111,34,0.45), 0 0 0 1px rgba(238,111,34,0.15);
+  }
+  .svc-box:hover::before { opacity: 1; }
+  .svc-box:hover::after { left: 130%; }
+  .svc-box-num {
+    position: absolute;
+    top: 1.6rem; right: 1.9rem;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.10);
+    transition: -webkit-text-stroke-color 0.4s, transform 0.4s;
+    pointer-events: none;
+  }
+  .svc-box:hover .svc-box-num {
+    -webkit-text-stroke-color: rgba(245,245,240,0.8);
+    transform: translateY(-2px);
+  }
+  .svc-box-icon {
+    width: 52px; height: 52px;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .svc-box-icon svg { width: 100%; height: 100%; display: block; }
+  .svc-box:hover .svc-box-icon {
+    color: var(--green);
+    transform: translateY(-2px) rotate(-6deg) scale(1.08);
+  }
+  .svc-box-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .svc-box-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.65;
+    flex: 1;
+  }
+  .svc-box-arrow {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    color: var(--green);
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: opacity 0.35s, transform 0.35s;
+  }
+  .svc-box:hover .svc-box-arrow { opacity: 1; transform: translate(0,0); }
+  .svc-box-bar {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--purple));
+    transition: width 0.5s ease;
+  }
+  .svc-box:hover .svc-box-bar { width: 100%; }
+  @media (max-width: 1024px) { .svc-boxes { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .svc-boxes { grid-template-columns: 1fr; } .svc-box { min-height: 0; } }
 </style>
 </head>
 <body>
@@ -1498,26 +1604,61 @@
 <!-- SERVICES -->
 <section id="music-services" style="background:var(--off-black);">
   <div class="section-inner" style="padding-top:4rem;">
-    <div class="areas-grid fade-up">
-      <div class="area-item">
-        <h3 class="area-title">Music Production</h3>
-        <p class="area-desc">Original tracks produced on commission, adapting genre and mood to your project.</p>
-        <span class="area-bar"></span>
+    <div class="svc-boxes fade-up">
+      <!-- Music Production -->
+      <div class="svc-box">
+        <span class="svc-box-num">01</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="13" cy="35" r="5"/><circle cx="35" cy="31" r="5"/><path d="M18 35V12l22-4v23"/><path d="M18 18l22-4"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Music Production</h3>
+        <p class="svc-box-desc">Original tracks produced on commission, adapting genre and mood to your project.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
-      <div class="area-item">
-        <h3 class="area-title">Soundtracks</h3>
-        <p class="area-desc">Scoring for film, games, installations, and audiovisual work — from ambient beds to full themes.</p>
-        <span class="area-bar"></span>
+
+      <!-- Soundtracks -->
+      <div class="svc-box">
+        <span class="svc-box-num">02</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="12" width="34" height="28" rx="2"/><path d="M7 21h34"/><path d="M14 12l-3 9M23 12l-3 9M32 12l-3 9"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Soundtracks</h3>
+        <p class="svc-box-desc">Scoring for film, games, installations, and audiovisual work — from ambient beds to full themes.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
-      <div class="area-item">
-        <h3 class="area-title">Sound Design</h3>
-        <p class="area-desc">Textures, effects, and sonic identity for products, brands, and interactive experiences.</p>
-        <span class="area-bar"></span>
+
+      <!-- Sound Design -->
+      <div class="svc-box">
+        <span class="svc-box-num">03</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 40V27M12 21V8"/><circle cx="12" cy="24" r="3"/><path d="M24 40V31M24 25V8"/><circle cx="24" cy="28" r="3"/><path d="M36 40V21M36 15V8"/><circle cx="36" cy="18" r="3"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Sound Design</h3>
+        <p class="svc-box-desc">Textures, effects, and sonic identity for products, brands, and interactive experiences.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
-      <div class="area-item">
-        <h3 class="area-title">DJ Sets</h3>
-        <p class="area-desc">Live sets across jungle, drum &amp; bass, breakbeat, electro, and boom bap for clubs and events.</p>
-        <span class="area-bar"></span>
+
+      <!-- DJ Sets -->
+      <div class="svc-box">
+        <span class="svc-box-num">04</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="5"/><circle cx="24" cy="24" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">DJ Sets</h3>
+        <p class="svc-box-desc">Live sets across jungle, drum &amp; bass, breakbeat, electro, and boom bap for clubs and events.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
       </div>
     </div>
   </div>
