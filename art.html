@@ -1314,52 +1314,111 @@
     }
   }
 
-  /* MEDIUMS + EXHIBITIONS grids */
-  .mediums-grid, .exhib-grid {
+  /* MEDIUMS — service-style cards (matches design/music pages) */
+  .svc-boxes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.25rem;
+    margin-top: 1rem;
   }
-  .exhib-grid { grid-template-columns: repeat(5, 1fr); }
-  .medium-box, .exhib-box {
-    border: 1px solid rgba(255,255,255,0.08);
-    background: var(--dark);
-    padding: 1.75rem 1.5rem;
-    transition: border-color 0.25s, transform 0.2s, background 0.25s;
+  .svc-box {
     position: relative;
+    overflow: hidden;
+    padding: 2.25rem 1.75rem 2.5rem;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.07);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1), border-color 0.4s, box-shadow 0.4s;
   }
-  .medium-box:hover, .exhib-box:hover {
-    border-color: rgba(238,111,34,0.5);
-    transform: translateY(-3px);
-    background: #1e1e1e;
+  .svc-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(238,111,34,0.16) 0%, rgba(115,69,120,0.10) 35%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
   }
-  .medium-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--purple);
+  .svc-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.10), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
   }
-  .medium-box h3, .exhib-box h3 {
+  .svc-box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(238,111,34,0.55);
+    box-shadow: 0 18px 40px -18px rgba(238,111,34,0.45), 0 0 0 1px rgba(238,111,34,0.15);
+  }
+  .svc-box:hover::before { opacity: 1; }
+  .svc-box:hover::after { left: 130%; }
+  .svc-box-num {
+    position: absolute;
+    top: 1.6rem; right: 1.9rem;
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    letter-spacing: 0.02em;
-    margin: 0.75rem 0 0.5rem;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.10);
+    transition: -webkit-text-stroke-color 0.4s, transform 0.4s;
+    pointer-events: none;
+  }
+  .svc-box:hover .svc-box-num {
+    -webkit-text-stroke-color: rgba(245,245,240,0.8);
+    transform: translateY(-2px);
+  }
+  .svc-box-icon {
+    width: 52px; height: 52px;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .svc-box-icon svg { width: 100%; height: 100%; display: block; }
+  .svc-box:hover .svc-box-icon {
+    color: var(--green);
+    transform: translateY(-2px) rotate(-6deg) scale(1.08);
+  }
+  .svc-box-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
     color: var(--white);
+    margin-bottom: 0.75rem;
   }
-  .medium-box p, .exhib-box p {
-    font-size: 0.85rem;
-    color: var(--grey);
-    line-height: 1.55;
+  .svc-box-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.65;
+    flex: 1;
   }
-  .exhib-flag { font-size: 2rem; line-height: 1; }
-  @media (max-width: 1024px) {
-    .mediums-grid { grid-template-columns: repeat(2, 1fr); }
-    .exhib-grid { grid-template-columns: repeat(3, 1fr); }
+  .svc-box-arrow {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    color: var(--green);
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: opacity 0.35s, transform 0.35s;
   }
-  @media (max-width: 640px) {
-    .mediums-grid, .exhib-grid { grid-template-columns: 1fr 1fr; }
+  .svc-box:hover .svc-box-arrow { opacity: 1; transform: translate(0,0); }
+  .svc-box-bar {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--purple));
+    transition: width 0.5s ease;
   }
+  .svc-box:hover .svc-box-bar { width: 100%; }
+  @media (max-width: 1024px) { .svc-boxes { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .svc-boxes { grid-template-columns: 1fr; } .svc-box { min-height: 0; } }
 
   /* EXHIBITIONS — highlight cards */
   .hl-cards {
@@ -1738,7 +1797,7 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-left">
-        <div class="about-number">01</div>
+        <div class="about-number" style="font-size:clamp(3.2rem,6.5vw,5.5rem);line-height:0.8;margin-bottom:0.5rem;">numa<br>dessas</div>
         <div class="section-label">Statement</div>
         <div class="about-stats">
           <div>
@@ -1781,11 +1840,58 @@
   <div class="section-inner">
     <div class="section-label">Practice</div>
     <h2 class="section-title fade-up">MEDIUMS<span style="color:var(--orange)">.</span></h2>
-    <div class="mediums-grid fade-up">
-      <div class="medium-box"><span class="medium-num">01</span><h3>Drawing &amp; Illustration</h3><p>Where every creature is born — line, character, and color first.</p></div>
-      <div class="medium-box"><span class="medium-num">02</span><h3>Graffiti</h3><p>The universe scaled up to walls and public space.</p></div>
-      <div class="medium-box"><span class="medium-num">03</span><h3>Sculpture</h3><p>Handmade and digital — creatures made physical.</p></div>
-      <div class="medium-box"><span class="medium-num">04</span><h3>3D &amp; VR</h3><p>Immersive, walk-in versions of the same colorful world.</p></div>
+    <div class="svc-boxes fade-up">
+      <div class="svc-box">
+        <span class="svc-box-num">01</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 8l10 10L18 40 8 40 8 30 30 8z"/><path d="M26 12l10 10"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Drawing &amp; Illustration</h3>
+        <p class="svc-box-desc">Where every creature is born — line, character, and color first.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
+      </div>
+
+      <div class="svc-box">
+        <span class="svc-box-num">02</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <rect x="17" y="16" width="14" height="24" rx="2"/><path d="M21 16v-3h6v3"/><path d="M33 10h3M33 14h4M35 6h2"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Graffiti</h3>
+        <p class="svc-box-desc">The universe scaled up to walls and public space.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
+      </div>
+
+      <div class="svc-box">
+        <span class="svc-box-num">03</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="15" r="7"/><path d="M15 40c0-6 4-10 9-10s9 4 9 10"/><path d="M16 40h16"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">Sculpture</h3>
+        <p class="svc-box-desc">Handmade and digital — creatures made physical.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
+      </div>
+
+      <div class="svc-box">
+        <span class="svc-box-num">04</span>
+        <div class="svc-box-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 19h34a2 2 0 012 2v8a2 2 0 01-2 2H29l-5-5-5 5H7a2 2 0 01-2-2v-8a2 2 0 012-2z"/><circle cx="15" cy="25" r="2"/><circle cx="33" cy="25" r="2"/>
+          </svg>
+        </div>
+        <h3 class="svc-box-title">3D &amp; VR</h3>
+        <p class="svc-box-desc">Immersive, walk-in versions of the same colorful world.</p>
+        <span class="svc-box-arrow">↗</span>
+        <span class="svc-box-bar"></span>
+      </div>
     </div>
   </div>
 </section>
