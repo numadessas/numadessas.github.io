@@ -1518,168 +1518,24 @@
   </div>
 </nav>
 
-<!-- INTRO -->
-<section id="art" style="background:var(--black);">
-  <div class="section-inner" style="padding-top:10rem;padding-bottom:2rem;">
-    <div class="section-label">Art</div>
-    <h2 class="section-title fade-up">ART<span style="color:var(--orange)">.</span></h2>
-    <div class="fade-up" style="max-width:680px;">
-      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;">
-        <em>[ Placeholder — replace with your own words. ]</em> I work across digital and physical media —
-        illustration, generative and glitch imagery, collage, 3D, and moving image. My practice lives between
-        technology and the organic, often distorted, textured, and a little uncanny.
-      </p>
-      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;">
-        My visual personality leans into contrast: raw and refined, digital decay and vivid color, the Brazilian
-        imaginary filtered through emerging tools. Each piece is an experiment in how far a medium can be pushed
-        before it breaks — and what new meaning appears when it does.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section style="background:var(--off-black);">
-  <div class="section-inner" style="padding-top:2rem;">
-    <div class="section-label">Gallery</div>
-    <h2 class="section-title fade-up" style="margin-bottom:1rem;">SELECTED<br><span style="color:var(--green)">PIECES</span><span style="color:var(--orange)">.</span></h2>
-    <p class="fade-up" style="font-size:0.9rem;color:#888;margin-bottom:1rem;">Hover to reveal color · click to view full size and zoom.</p>
-    <div class="art-gallery fade-up" id="art-gallery"><!-- populated by JS --></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ARTISTIC CV -->
-<section id="art-cv">
-  <div class="section-inner">
-    <div class="section-label">Exhibitions</div>
-    <h2 class="section-title fade-up">ARTISTIC<br>CV<span style="color:var(--orange)">.</span></h2>
-    <p class="fade-up" style="font-size:0.9rem;color:#888;margin-bottom:1rem;">
-      Selected exhibitions and screenings. <em>[ Template with 25 entries — edit freely. ]</em>
+<!-- 404 / COMING SOON -->
+<section style="background:var(--black);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;">
+  <div class="section-inner" style="padding-top:8rem;padding-bottom:6rem;">
+    <div class="section-label" style="justify-content:center;">Art</div>
+    <div style="font-family:var(--font-banner);font-size:clamp(6rem,22vw,16rem);line-height:0.9;color:transparent;-webkit-text-stroke:1px rgba(238,111,34,0.35);letter-spacing:0.02em;">404</div>
+    <h1 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:0.03em;margin-top:1rem;">
+      This page is taking shape<span style="color:var(--orange)">.</span>
+    </h1>
+    <p style="font-size:1.05rem;color:#999;line-height:1.7;max-width:460px;margin:1.25rem auto 2.5rem;">
+      The Art section is coming soon. In the meantime, explore the rest of the work.
     </p>
-    <div class="cv-list fade-up">
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Online</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Online</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Online</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2020</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2020</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2020</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Online</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2019</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2019</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2018</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Solo</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2018</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2017</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2017</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Online</span></div><div class="cv-venue">Platform · Online</div></div></div>
-      <div class="cv-item"><div class="cv-year">2016</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
-      <div class="cv-item"><div class="cv-year">2015</div><div><div class="cv-title">Exhibition Title <span class="cv-type">Group</span></div><div class="cv-venue">Venue · City, Country</div></div></div>
+    <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn-primary">← Back home</a>
+      <a href="design.html" class="btn-secondary">Design</a>
+      <a href="music.html" class="btn-secondary">Music</a>
     </div>
   </div>
 </section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lb-close">✕</span>
-  <span class="lb-nav lb-prev" id="lb-prev">‹</span>
-  <span class="lb-nav lb-next" id="lb-next">›</span>
-  <div class="lightbox-stage">
-    <img class="lightbox-img" id="lb-img" src="" alt="Artwork">
-  </div>
-  <div class="lightbox-hint">Click image to zoom · Esc to close</div>
-</div>
-
-<script>
-(function () {
-  // === EDIT THIS LIST — add your artwork filenames from /assets/img/art/gallery/ ===
-  var galleryImages = [
-    'art-01.jpg','art-02.jpg','art-03.jpg','art-04.jpg','art-05.jpg',
-    'art-06.jpg','art-07.jpg','art-08.jpg','art-09.jpg'
-  ];
-  var BASE = 'assets/img/art/gallery/';
-
-  var grid = document.getElementById('art-gallery');
-  galleryImages.forEach(function (name, i) {
-    var fig = document.createElement('div');
-    fig.className = 'art-item';
-    fig.dataset.index = i;
-    var img = document.createElement('img');
-    img.loading = 'lazy';
-    img.src = BASE + name;
-    img.alt = 'Artwork ' + (i + 1);
-    img.onerror = function () { fig.style.display = 'none'; };
-    fig.appendChild(img);
-    fig.addEventListener('click', function () { openLightbox(i); });
-    grid.appendChild(fig);
-  });
-
-  var lb = document.getElementById('lightbox');
-  var lbImg = document.getElementById('lb-img');
-  var current = 0;
-
-  function openLightbox(i) {
-    current = i;
-    lbImg.src = BASE + galleryImages[i];
-    resetZoom();
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lb.classList.remove('open');
-    resetZoom();
-    document.body.style.overflow = '';
-  }
-  function step(dir) {
-    current = (current + dir + galleryImages.length) % galleryImages.length;
-    lbImg.src = BASE + galleryImages[current];
-    resetZoom();
-  }
-  function resetZoom() {
-    lb.classList.remove('zoomed');
-    lbImg.style.transform = 'scale(1)';
-  }
-
-  // Zoom + pan
-  var ZOOM = 2.4;
-  lbImg.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (lb.classList.contains('zoomed')) { resetZoom(); }
-    else { lb.classList.add('zoomed'); panTo(e); }
-  });
-  lbImg.addEventListener('mousemove', function (e) {
-    if (lb.classList.contains('zoomed')) panTo(e);
-  });
-  function panTo(e) {
-    var r = lbImg.getBoundingClientRect();
-    var x = ((e.clientX - r.left) / r.width - 0.5) * -1;
-    var y = ((e.clientY - r.top) / r.height - 0.5) * -1;
-    var maxX = r.width * (ZOOM - 1) / 2;
-    var maxY = r.height * (ZOOM - 1) / 2;
-    lbImg.style.transform = 'translate(' + (x * maxX) + 'px,' + (y * maxY) + 'px) scale(' + ZOOM + ')';
-  }
-
-  document.getElementById('lb-close').addEventListener('click', closeLightbox);
-  document.getElementById('lb-prev').addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
-  document.getElementById('lb-next').addEventListener('click', function (e) { e.stopPropagation(); step(1); });
-  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lightbox-stage')) closeLightbox(); });
-  document.addEventListener('keydown', function (e) {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    else if (e.key === 'ArrowLeft') step(-1);
-    else if (e.key === 'ArrowRight') step(1);
-  });
-})();
-</script>
 
 <!-- FOOTER -->
 <footer>
