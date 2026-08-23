@@ -101,7 +101,7 @@
 
   .overview{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,80px);align-items:center}
   .overview .alien{position:relative}
-  .alien-model{width:100%;max-width:420px;height:clamp(320px,42vw,460px);
+  .alien-model{width:100%;max-width:480px;height:clamp(380px,50vw,560px);
     display:block;margin-inline:auto;background:transparent;
     filter:drop-shadow(0 0 60px rgba(115,69,120,.45))}
   .arc{display:inline-block;margin:6px 0;font-family:var(--font-display);
@@ -174,9 +174,9 @@
       <h1>3<span class="dot">.</span>land</h1>
       <p class="lede">Creative hub for cyberspace — a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</p>
       <div class="metarow">
-        <div><div class="k">Role</div><div class="v">Brand · Socials · Front-end</div></div>
-        <div><div class="k">Years</div><div class="v">2022 — 2026</div></div>
-        <div><div class="k">Platform</div><div class="v">Solana</div></div>
+        <div><div class="k">Role</div><div class="v">Multimedia Designer</div></div>
+        <div><div class="k">Years</div><div class="v">2023 — 2026</div></div>
+        <div><div class="k">Sector</div><div class="v">Web3 &amp; Art</div></div>
         <div><div class="k">Scope</div><div class="v">Identity · Site · Product</div></div>
       </div>
     </div>
@@ -195,17 +195,19 @@
           class="alien-model"
           src="assets/img/projects/3land/alien.glb"
           alt="3.land alien mascot"
-          camera-controls
+          autoplay
+          animation-crossfade-duration="0"
           disable-zoom
           disable-pan
+          disable-tap
           interaction-prompt="none"
           shadow-intensity="1"
           shadow-softness="2"
           exposure="0.9"
           tone-mapping="commerce"
           environment-image="neutral"
-          camera-orbit="0deg 80deg 2.4m"
-          field-of-view="30deg"
+          camera-orbit="0deg 85deg 3.6m"
+          field-of-view="28deg"
           style="--poster-color: transparent;"
         ></model-viewer>
       </div>
