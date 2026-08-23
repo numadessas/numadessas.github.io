@@ -93,9 +93,10 @@
   .kicker .num{font-family:"Space Mono",monospace;font-size:13px;color:var(--violet);
     letter-spacing:.1em}
   .kicker .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
-  h2{font-family:var(--font-display);font-weight:600;
-    font-size:clamp(30px,5vw,58px);line-height:1.02;margin:0;letter-spacing:-.01em;
-    text-wrap:balance}
+  h2{font-family:var(--font-display);font-weight:400;
+    font-size:clamp(2.6rem,6vw,5.5rem);line-height:.95;margin:0;letter-spacing:.03em;
+    text-transform:uppercase;text-wrap:balance}
+  h2 .dot{color:var(--orange)}
   .body{max-width:60ch;color:#CFCFDF;font-size:clamp(15.5px,1.6vw,18px);margin-top:20px}
   .body strong{color:var(--ink);font-weight:600}
 
@@ -139,15 +140,49 @@
   .track .tmeta{margin-top:auto;font-family:"Space Mono",monospace;font-size:11.5px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-  .hx{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:34px}
-  .hx .card{border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;
+  .disc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:38px}
+  .disc .d{border:1px solid var(--line);border-radius:16px;padding:26px 24px 24px;
+    background:linear-gradient(180deg,rgba(147,255,120,.05),transparent);
+    display:flex;flex-direction:column;gap:10px;transition:border-color .3s,transform .3s}
+  .disc .d:hover{border-color:rgba(147,255,120,.4);transform:translateY(-4px)}
+  .disc .dn{font-family:var(--font-display);font-weight:700;font-size:34px;line-height:1;
+    color:transparent;-webkit-text-stroke:1px var(--violet)}
+  .disc .dt{font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--ink);margin-top:4px}
+  .disc .dd{color:#CFCFDF;font-size:14.5px;line-height:1.55}
+  .disc .dtools{margin-top:auto;font-family:"Space Mono",monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+  /* per-discipline galleries */
+  .rdisc{margin-top:clamp(48px,7vw,84px)}
+  .rdisc__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .rdisc__n{font-family:"Space Mono",monospace;font-size:12px;color:var(--violet);letter-spacing:.1em}
+  .rdisc h3{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,3vw,30px);
+    margin:0;color:var(--ink);letter-spacing:.01em}
+  .rdisc__tools{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--green)}
+  .rdisc p{max-width:62ch;color:#CFCFDF;font-size:15px;margin:10px 0 0}
+  .rgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:24px}
+  .rgal .figure{border-radius:14px}
+  .rgal .figure.tall{grid-row:span 2}
+  .rgal .figure img,.rgal .figure video{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:1/1}
+  .rgal .figure.wide{grid-column:span 2}
+  .rgal .figure.wide img,.rgal .figure.wide video{aspect-ratio:16/9}
+  @media(max-width:520px){.rgal .figure.wide{grid-column:span 1}}
+  .rgal .ph{display:flex;align-items:center;justify-content:center;text-align:center;
+    aspect-ratio:1/1;border:1px dashed rgba(147,255,120,.35);border-radius:14px;
+    background:repeating-linear-gradient(45deg,rgba(147,255,120,.03) 0 10px,transparent 10px 20px);
+    color:var(--green);font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;padding:14px;line-height:1.5}
+  .rgal .ph.wide{grid-column:span 2;aspect-ratio:16/9}
+  @media(max-width:520px){.rgal .ph.wide{grid-column:span 1}}
+  .hx{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:34px}
+  .hx .card{border:1px solid var(--line);border-radius:11px;padding:14px 15px 13px;
     background:linear-gradient(180deg,rgba(139,92,246,.06),transparent)}
-  .hx .rank{font-family:var(--font-display);font-weight:700;font-size:34px;
+  .hx .rank{font-family:var(--font-display);font-weight:700;font-size:24px;
     line-height:1;color:var(--green)}
   .hx .rank.small{color:var(--violet)}
-  .hx .name{margin-top:12px;font-weight:600;font-size:17px}
-  .hx .meta{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-top:6px;
-    letter-spacing:.04em}
+  .hx .name{margin-top:7px;font-weight:600;font-size:14px}
+  .hx .meta{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--muted);margin-top:4px;
+    letter-spacing:.03em}
 
   footer{border-top:1px solid rgba(237,237,245,.12);padding-block:40px;color:var(--muted)}
   footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
@@ -172,7 +207,7 @@
     <div class="wrap">
       <p class="eyebrow">Web3 Product Studio · Solana</p>
       <h1>3<span class="dot">.</span>land</h1>
-      <p class="lede">Creative hub for cyberspace — a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</p>
+      <p class="lede">A studio that grew from a 3D metaverse into a multilingual cNFT marketplace, open-source tooling, and an on-chain game. I was its first hire — and helped give every launch one visual language.</p>
       <div class="metarow">
         <div><div class="k">Role</div><div class="v">Multimedia Designer</div></div>
         <div><div class="k">Years</div><div class="v">2023 — 2026</div></div>
@@ -186,9 +221,9 @@
     <div class="wrap overview">
       <div>
         <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
-        <h2>One world,<br>many products.</h2>
-        <p class="body"><strong>3.land is a Web3 product studio building and experimenting on Solana.</strong> I shaped the studio's visual identity and site — a cyberspace of neon grids, an alien mascot, and an acid-green / violet / magenta palette that ties every product into a single language.</p>
-        <p class="body">The real challenge was narrative: telling a four-year arc —<br><span class="arc">metaverse → marketplace → tooling → game</span><br>— as one coherent story instead of four disconnected launches.</p>
+        <h2>One world,<br>many products<span class="dot">.</span></h2>
+        <p class="body"><strong>3.land was a Web3 product studio that rapidly prototyped, launched, and iterated on Solana.</strong> Joining as the first employee, I shaped the studio's visual identity and site — a cyberspace of neon grids, an alien mascot, and an acid-green / violet / magenta palette that tied every product into a single language.</p>
+        <p class="body">The real challenge was narrative: telling a four-year arc —<br><span class="arc">metaverse → marketplace → tooling → game</span><br>— as one coherent story instead of four disconnected launches, across five languages from day one.</p>
       </div>
       <div class="alien">
         <model-viewer
@@ -217,11 +252,11 @@
   <section>
     <div class="wrap">
       <div class="kicker"><span class="num">01 / METAVERSE</span><span class="line"></span></div>
-      <h2>Where it started</h2>
-      <p class="body">A 3D virtual gallery to showcase NFTs, presented at the Breakpoint Amsterdam VR Exhibition and Art Basel. This is where the identity was born: the alien mascot, the retrowave grid, the neon.</p>
+      <h2>Where it started<span class="dot">.</span></h2>
+      <p class="body">3.land began as a virtual metaverse where artists built immersive 3D galleries for their NFT collections. It brought an immersive VR exhibition to <strong>Breakpoint Amsterdam 2023</strong> and built <strong>Solana's virtual art gallery for Art Basel 2024</strong>. This is where the identity was born: the alien mascot, the retrowave grid, the neon.</p>
       <div class="product">
-        <figure class="figure"><span class="tag">2022 — 2023 · Metaverse</span><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse gallery"></figure>
-        <div class="cap"><span><b>Presented</b> Breakpoint Amsterdam</span><span><b>Also</b> Art Basel · VR Exhibitions</span><span><b>Build</b> 3D · WebGL</span></div>
+        <figure class="figure"><span class="tag">2022 — 2024 · Metaverse</span><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse gallery"></figure>
+        <div class="cap"><span><b>VR</b> Breakpoint Amsterdam '23</span><span><b>Gallery</b> Art Basel '24</span><span><b>Build</b> 3D · WebGL</span></div>
       </div>
     </div>
   </section>
@@ -229,11 +264,11 @@
   <section>
     <div class="wrap">
       <div class="kicker"><span class="num">02 / MARKETPLACE</span><span class="line"></span></div>
-      <h2>A launchpad for creators</h2>
-      <p class="body">A Solana-based NFT launchpad — creators mint, list, and sell in any SPL token. Art direction for the key visuals: liquid gradients floating inside an infinite grid room.</p>
+      <h2>A launchpad for creators<span class="dot">.</span></h2>
+      <p class="body">After the metaverse, the team pivoted to <strong>one of the first multilingual NFT marketplaces on Solana</strong>, later specialized in compressed NFTs (cNFTs). It supported on-chain traits, any SPL token as payment, and was one of the first to integrate <strong>Blinks — surpassing 100,000 NFTs minted</strong> through Blink-powered flows. I art-directed the key visuals: liquid gradients floating inside an infinite grid room.</p>
       <div class="product">
         <figure class="figure"><span class="tag">2024 · cNFT Marketplace</span><img src="assets/img/projects/3land/marketplace.jpg" alt="3.land marketplace key visual"></figure>
-        <div class="cap"><span><b>Mint</b> Compressed NFTs</span><span><b>Pay</b> Any SPL token</span><span><b>Focus</b> Creator-first</span></div>
+        <div class="cap"><span><b>Mint</b> Compressed NFTs</span><span><b>Pay</b> Any SPL token</span><span><b>Reach</b> 5 languages · 100k+ minted</span></div>
       </div>
     </div>
   </section>
@@ -241,8 +276,8 @@
   <section>
     <div class="wrap">
       <div class="kicker"><span class="num">03 / PARALLEL TRACKS</span><span class="line"></span></div>
-      <h2>Building sideways,<br>then all in on gib.meme</h2>
-      <p class="body">Between the big launches, the studio shipped a run of tools and experiments — each one feeding the next. All of it built toward the product the studio runs today: <strong>gib.meme</strong>.</p>
+      <h2>Building sideways,<br>then all in on gib.meme<span class="dot">.</span></h2>
+      <p class="body">Experimentation first: rather than spend years on one app, the studio shipped a run of tools and experiments — each validated with real users, each feeding the next. All of it built toward its final flagship: <strong>gib.meme</strong>, a competitive platform for memecoin trading cards.</p>
       <div class="tracks">
         <article class="track">
           <figure class="figure"><img src="assets/img/projects/3land/minter.jpg" alt="Open-source cNFT minter interface"></figure>
@@ -259,10 +294,89 @@
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">04 / MY ROLE</span><span class="line"></span></div>
+      <h2>What I did<span class="dot">.</span></h2>
+      <p class="body">As the studio's first employee, I wore many hats. Over four years my role spanned direction, production, and the systems that kept a small team shipping fast.</p>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">01</span>
+          <h3>Art Direction</h3>
+          <span class="rdisc__tools">Photoshop · Illustrator</span>
+        </div>
+        <p>Set the visual direction for launches and campaigns — key visuals, logos, banners, and card art — keeping every product on one language.</p>
+        <div class="rgal">
+          <figure class="figure"><img src="assets/img/projects/3land/role/art-02.png" alt="Trading card art" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/art-01.png" alt="Minting key visual" loading="lazy"></figure>
+          <figure class="figure wide"><img src="assets/img/projects/3land/role/art-03.jpg" alt="Circus event banner" loading="lazy"></figure>
+          <figure class="figure wide"><img src="assets/img/projects/3land/role/art-04.jpg" alt="3.land banner" loading="lazy"></figure>
+          <div class="ph">+ add<br>art-05.jpg</div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">02</span>
+          <h3>3D</h3>
+          <span class="rdisc__tools">Blender · glTF</span>
+        </div>
+        <p>Modeled and rendered the alien mascot, 3D logos, and scene art — growing from first experiments into the studio's signature 3D look.</p>
+        <div class="rgal">
+          <figure class="figure wide"><img src="assets/img/projects/3land/role/3d-01.png" alt="Avatar render" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/3d-02.png" alt="Elf character render" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/3d-03.png" alt="Custom avatar render" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/3d-04.gif" alt="Spinning desk animation" loading="lazy"></figure>
+          <div class="ph">+ add<br>3d-05.png</div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">03</span>
+          <h3>Motion &amp; Audio</h3>
+          <span class="rdisc__tools">Premiere · After Effects</span>
+        </div>
+        <p>Edited promo videos, event recaps, and interviews — cutting footage, animating, and building sound design from a custom SFX library.</p>
+        <div class="rgal">
+          <figure class="figure wide"><video src="assets/img/projects/3land/role/motion-01.mp4" autoplay muted loop playsinline></video></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/motion-02.gif" alt="Animated token loop" loading="lazy"></figure>
+          <div class="ph wide">+ add<br>motion-03.mp4</div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">04</span>
+          <h3>Social Strategy</h3>
+          <span class="rdisc__tools">Content · Strategy</span>
+        </div>
+        <p>Collaborated on the social media strategy — content planning, campaign rollouts, and milestone moments like the 15k and 100k mint posts.</p>
+        <div class="rgal">
+          <figure class="figure wide"><img src="assets/img/projects/3land/role/social-01.png" alt="100k mints milestone post" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/social-02.png" alt="15k milestone post" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/3land/role/social-03.png" alt="Send campaign post" loading="lazy"></figure>
+          <div class="ph">+ add<br>social-04.png</div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">05</span>
+          <h3>Team &amp; Process</h3>
+          <span class="rdisc__tools">Ops · Systems</span>
+        </div>
+        <p>Beyond the visuals, I helped establish how the creative team worked — file structure, naming conventions, and a repeatable asset pipeline that scaled with every new product.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="partners">
     <div class="wrap">
-      <div class="kicker"><span class="num">04 / ECOSYSTEM</span><span class="line"></span></div>
-      <h2>Backed by the ecosystem</h2>
+      <div class="kicker"><span class="num">05 / ECOSYSTEM</span><span class="line"></span></div>
+      <h2>Backed by the ecosystem<span class="dot">.</span></h2>
+      <p class="body">3.land believed growth came through collaboration — releasing infrastructure open source whenever possible. The team was selected for the <strong>Metaplex Startup Program</strong> and built alongside partners across Solana.</p>
       <div class="plist">
         <span class="chip">Solana Foundation</span>
         <span class="chip">Metaplex</span>
@@ -276,8 +390,8 @@
 
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">05 / TRACK RECORD</span><span class="line"></span></div>
-      <h2>Five wins in two years</h2>
+      <div class="kicker"><span class="num">06 / TRACK RECORD</span><span class="line"></span></div>
+      <h2>Five wins in two years<span class="dot">.</span></h2>
       <div class="hx">
         <div class="card"><div class="rank">1st</div><div class="name">SendAI 2025</div><div class="meta">Agent Token Tools</div></div>
         <div class="card"><div class="rank">1st</div><div class="name">Monolith 2025</div><div class="meta">Solana Mobile</div></div>
