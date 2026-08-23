@@ -160,20 +160,24 @@
   .rdisc__tools{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--green)}
   .rdisc p{max-width:62ch;color:#CFCFDF;font-size:15px;margin:10px 0 0}
-  .rgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:24px}
-  .rgal .figure{border-radius:14px}
-  .rgal .figure.tall{grid-row:span 2}
+  .rgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:24px}
+  .rgal .figure{border-radius:14px;grid-column:span 1;grid-row:span 1}
   .rgal .figure img,.rgal .figure video{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:1/1}
-  .rgal .figure.wide{grid-column:span 2}
-  .rgal .figure.wide img,.rgal .figure.wide video{aspect-ratio:16/9}
-  @media(max-width:520px){.rgal .figure.wide{grid-column:span 1}}
-  .rgal .ph{display:flex;align-items:center;justify-content:center;text-align:center;
+  .rgal .ph{display:flex;align-items:center;justify-content:center;text-align:center;grid-column:span 1;
     aspect-ratio:1/1;border:1px dashed rgba(147,255,120,.35);border-radius:14px;
     background:repeating-linear-gradient(45deg,rgba(147,255,120,.03) 0 10px,transparent 10px 20px);
     color:var(--green);font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;
     text-transform:uppercase;padding:14px;line-height:1.5}
-  .rgal .ph.wide{grid-column:span 2;aspect-ratio:16/9}
-  @media(max-width:520px){.rgal .ph.wide{grid-column:span 1}}
+  /* ecosystem logo strip (discreet, unnumbered) */
+  .ecolane{border-top:1px solid rgba(237,237,245,.1);border-bottom:1px solid rgba(237,237,245,.1);
+    padding-block:clamp(30px,5vw,46px)}
+  .ecolane__label{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 26px}
+  .ecolane__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:clamp(28px,5vw,60px)}
+  .ecolane__row img{height:26px;width:auto;max-width:150px;object-fit:contain;
+    opacity:.5;filter:grayscale(1);transition:opacity .25s,filter .25s}
+  .ecolane__row img:hover{opacity:.95;filter:grayscale(0)}
   .hx{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:34px}
   .hx .card{border:1px solid var(--line);border-radius:11px;padding:14px 15px 13px;
     background:linear-gradient(180deg,rgba(139,92,246,.06),transparent)}
@@ -372,25 +376,23 @@
     </div>
   </section>
 
-  <section class="partners">
+  <div class="ecolane">
     <div class="wrap">
-      <div class="kicker"><span class="num">05 / ECOSYSTEM</span><span class="line"></span></div>
-      <h2>Backed by the ecosystem<span class="dot">.</span></h2>
-      <p class="body">3.land believed growth came through collaboration — releasing infrastructure open source whenever possible. The team was selected for the <strong>Metaplex Startup Program</strong> and built alongside partners across Solana.</p>
-      <div class="plist">
-        <span class="chip">Solana Foundation</span>
-        <span class="chip">Metaplex</span>
-        <span class="chip">BONK</span>
-        <span class="chip">Solana Mobile</span>
-        <span class="chip">Mattle.fun</span>
-        <span class="chip">Moby</span>
+      <p class="ecolane__label">Built alongside the Solana ecosystem</p>
+      <div class="ecolane__row">
+        <img src="assets/img/projects/3land/partners/solana-foundation.svg" alt="Solana Foundation" loading="lazy">
+        <img src="assets/img/projects/3land/partners/metaplex.svg" alt="Metaplex" loading="lazy">
+        <img src="assets/img/projects/3land/partners/bonk.png" alt="BONK" loading="lazy">
+        <img src="assets/img/projects/3land/partners/solana-mobile.svg" alt="Solana Mobile" loading="lazy">
+        <img src="assets/img/projects/3land/partners/mattle.png" alt="Mattle.fun" loading="lazy">
+        <img src="assets/img/projects/3land/partners/moby.png" alt="Moby" loading="lazy">
       </div>
     </div>
-  </section>
+  </div>
 
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">06 / TRACK RECORD</span><span class="line"></span></div>
+      <div class="kicker"><span class="num">05 / TRACK RECORD</span><span class="line"></span></div>
       <h2>Five wins in two years<span class="dot">.</span></h2>
       <div class="hx">
         <div class="card"><div class="rank">1st</div><div class="name">SendAI 2025</div><div class="meta">Agent Token Tools</div></div>
