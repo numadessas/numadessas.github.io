@@ -1375,7 +1375,7 @@
 
     /* Model viewer: centralizado e ocupando todo o banner no mobile */
     .hero-model-viewer {
-      top: -20%;
+      top: 0;
       right: 0;
       bottom: 0;
       left: 0;
@@ -1386,7 +1386,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: scale(0.8);
+      transform: none;
     }
     .hero-overlay {
       background:
@@ -1479,6 +1479,29 @@
       background:
         linear-gradient(to top, var(--black) 35%, rgba(10,10,10,0.8) 55%, rgba(10,10,10,0.1) 75%, transparent 100%),
         linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, transparent 30%);
+    }
+  }
+
+  /* GLB igual ao mobile para qualquer janela <= 875px (sobrescreve blocos de tablet) */
+  @media (max-width: 875px) {
+    .hero-model-viewer {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 auto;
+      opacity: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: none;
+    }
+    .hero-overlay {
+      background:
+        linear-gradient(to top, var(--black) 10%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.1) 70%, transparent 100%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 5%);
     }
   }
 
@@ -2102,10 +2125,11 @@
       // converte para -AMPLITUDE → +AMPLITUDE
       const angle = (eased * 2 - 1) * AMPLITUDE;
 
-      // Responsive: zoom out more on mobile portrait so model isn't cut off
-      const isMobilePortrait = window.innerWidth <= 1080 && window.innerHeight > window.innerWidth;
-      const distance = isMobilePortrait ? '2.2m' : '2.5m';
-      const pitch = isMobilePortrait ? '70deg' : '80deg';
+      // Responsive: janelas <= 875px (ou tablet portrait) usam framing mobile (~20% menor, sem corte)
+      const isMobileView = window.innerWidth <= 875
+        || (window.innerWidth <= 1080 && window.innerHeight > window.innerWidth);
+      const distance = isMobileView ? '2.75m' : '2.5m';
+      const pitch = isMobileView ? '72deg' : '80deg';
 
       mv.setAttribute('camera-orbit', `${angle}deg ${pitch} ${distance}`);
 
