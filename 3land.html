@@ -6,18 +6,34 @@
 <title>3.land — Case Study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
   :root{
-    --bg:#05060A;
-    --bg-2:#0B0D16;
-    --ink:#EDEDF5;
-    --muted:#9A9AB4;
-    --line:rgba(139,92,246,.22);
-    --green:#46E54C;
-    --violet:#8B5CF6;
-    --magenta:#FF3DAE;
-    --cyan:#37E5D4;
+    /* numadessas visual identity */
+    --orange:#ee6f22;
+    --green:#93FF78;
+    --purple:#734578;
+    --black:#0a0a0a;
+    --off-black:#111111;
+    --dark:#1a1a1a;
+    --mid:#2a2a2a;
+    --grey:#888;
+    --light-grey:#ccc;
+    --white:#f5f5f0;
+    --font-banner:'Climate Crisis',sans-serif;
+    --font-display:'Instrument Sans',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    /* legacy aliases mapped to the identity palette */
+    --bg:var(--black);
+    --bg-2:var(--off-black);
+    --ink:var(--white);
+    --muted:var(--grey);
+    --line:rgba(115,69,120,.28);
+    --violet:var(--purple);
+    --magenta:var(--orange);
+    --cyan:var(--orange);
     --maxw:1160px;
     --pad:clamp(20px,5vw,64px);
   }
@@ -25,13 +41,13 @@
   html{scroll-behavior:smooth}
   body{
     margin:0;background:var(--bg);color:var(--ink);
-    font-family:"Inter",system-ui,sans-serif;font-weight:400;
+    font-family:var(--font-body),system-ui,sans-serif;font-weight:400;
     line-height:1.65;-webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
   .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
   .mono{font-family:"Space Mono",ui-monospace,monospace}
-  .disp{font-family:"Unbounded",sans-serif}
+  .disp{font-family:var(--font-display)}
 
   .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
     background:
@@ -60,8 +76,8 @@
     background:linear-gradient(180deg,rgba(5,6,10,.35) 0%,rgba(5,6,10,.2) 40%,rgba(5,6,10,.92) 88%,var(--bg) 100%),
       linear-gradient(90deg,rgba(5,6,10,.75),transparent 55%)}
   .hero .wrap{position:relative;z-index:1;width:100%}
-  .hero h1{font-family:"Unbounded",sans-serif;font-weight:700;
-    font-size:clamp(46px,10vw,128px);line-height:.94;margin:0;letter-spacing:-.03em;
+  .hero h1{font-family:var(--font-banner);font-weight:400;
+    font-size:clamp(42px,9vw,110px);line-height:.98;margin:0;letter-spacing:-.01em;
     text-wrap:balance}
   .hero h1 .dot{color:var(--green)}
   .hero .lede{max-width:42ch;font-size:clamp(16px,2vw,20px);color:#D6D6E6;margin:22px 0 0}
@@ -77,7 +93,7 @@
   .kicker .num{font-family:"Space Mono",monospace;font-size:13px;color:var(--violet);
     letter-spacing:.1em}
   .kicker .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
-  h2{font-family:"Unbounded",sans-serif;font-weight:600;
+  h2{font-family:var(--font-display);font-weight:600;
     font-size:clamp(30px,5vw,58px);line-height:1.02;margin:0;letter-spacing:-.01em;
     text-wrap:balance}
   .body{max-width:60ch;color:#CFCFDF;font-size:clamp(15.5px,1.6vw,18px);margin-top:20px}
@@ -85,12 +101,11 @@
 
   .overview{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,80px);align-items:center}
   .overview .alien{position:relative}
-  .overview .alien img{width:100%;max-width:420px;display:block;margin-inline:auto;
-    filter:drop-shadow(0 0 60px rgba(139,92,246,.45))}
-  .frog{position:absolute;top:-8px;right:6%;width:64px;height:64px;
-    animation:bob 4s ease-in-out infinite}
-  .frog img{width:100%;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5))}
-  @keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+  .alien-model{width:100%;max-width:420px;height:clamp(320px,42vw,460px);
+    display:block;margin-inline:auto;background:transparent;
+    filter:drop-shadow(0 0 60px rgba(115,69,120,.45))}
+  .arc{display:inline-block;margin:6px 0;font-family:var(--font-display);
+    font-weight:700;color:var(--green)}
 
   .product{margin-top:36px}
   .figure{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
@@ -119,7 +134,7 @@
   .track .tbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
   .track .tbody.solo{justify-content:center;min-height:180px;
     background:radial-gradient(120% 120% at 100% 0%,rgba(255,61,174,.1),transparent 60%)}
-  .track h3{font-family:"Unbounded",sans-serif;font-weight:600;font-size:19px;margin:0;color:var(--ink)}
+  .track h3{font-family:var(--font-display);font-weight:600;font-size:19px;margin:0;color:var(--ink)}
   .track p{margin:0;color:#CFCFDF;font-size:14.5px;line-height:1.55}
   .track .tmeta{margin-top:auto;font-family:"Space Mono",monospace;font-size:11.5px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -127,25 +142,12 @@
   .hx{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:34px}
   .hx .card{border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;
     background:linear-gradient(180deg,rgba(139,92,246,.06),transparent)}
-  .hx .rank{font-family:"Unbounded",sans-serif;font-weight:700;font-size:34px;
+  .hx .rank{font-family:var(--font-display);font-weight:700;font-size:34px;
     line-height:1;color:var(--green)}
   .hx .rank.small{color:var(--violet)}
   .hx .name{margin-top:12px;font-weight:600;font-size:17px}
   .hx .meta{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-top:6px;
     letter-spacing:.04em}
-
-  .closer{text-align:center;position:relative;overflow:hidden}
-  .closer::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
-    width:560px;height:560px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,61,174,.16),transparent 62%);filter:blur(8px)}
-  .closer .wrap{position:relative}
-  .closer h2{font-size:clamp(34px,6vw,72px)}
-  .gib{font-family:"Unbounded",sans-serif;color:var(--magenta)}
-  .closer .body{margin-inline:auto;text-align:center}
-  .btn{display:inline-block;margin-top:34px;font-family:"Space Mono",monospace;font-size:13px;
-    letter-spacing:.14em;text-transform:uppercase;padding:15px 30px;border-radius:999px;
-    color:var(--bg);background:var(--green);text-decoration:none;font-weight:700;
-    box-shadow:0 0 34px rgba(70,229,76,.4)}
 
   footer{border-top:1px solid rgba(237,237,245,.12);padding-block:40px;color:var(--muted)}
   footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
@@ -172,7 +174,7 @@
       <h1>3<span class="dot">.</span>land</h1>
       <p class="lede">Creative hub for cyberspace — a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</p>
       <div class="metarow">
-        <div><div class="k">Role</div><div class="v">Brand · UI/UX · Front-end</div></div>
+        <div><div class="k">Role</div><div class="v">Brand · Socials · Front-end</div></div>
         <div><div class="k">Years</div><div class="v">2022 — 2026</div></div>
         <div><div class="k">Platform</div><div class="v">Solana</div></div>
         <div><div class="k">Scope</div><div class="v">Identity · Site · Product</div></div>
@@ -186,11 +188,26 @@
         <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
         <h2>One world,<br>many products.</h2>
         <p class="body"><strong>3.land is a Web3 product studio building and experimenting on Solana.</strong> I shaped the studio's visual identity and site — a cyberspace of neon grids, an alien mascot, and an acid-green / violet / magenta palette that ties every product into a single language.</p>
-        <p class="body">The real challenge was narrative: telling a four-year arc — metaverse → marketplace → tooling → game — as one coherent story instead of four disconnected launches.</p>
+        <p class="body">The real challenge was narrative: telling a four-year arc —<br><span class="arc">metaverse → marketplace → tooling → game</span><br>— as one coherent story instead of four disconnected launches.</p>
       </div>
       <div class="alien">
-        <div class="frog"><img src="assets/img/projects/3land/frog.png" alt=""></div>
-        <img src="assets/img/projects/3land/alien.png" alt="3.land alien mascot">
+        <model-viewer
+          class="alien-model"
+          src="assets/img/projects/3land/alien.glb"
+          alt="3.land alien mascot"
+          camera-controls
+          disable-zoom
+          disable-pan
+          interaction-prompt="none"
+          shadow-intensity="1"
+          shadow-softness="2"
+          exposure="0.9"
+          tone-mapping="commerce"
+          environment-image="neutral"
+          camera-orbit="0deg 80deg 2.4m"
+          field-of-view="30deg"
+          style="--poster-color: transparent;"
+        ></model-viewer>
       </div>
     </div>
   </section>
@@ -266,15 +283,6 @@
         <div class="card"><div class="rank small">4th</div><div class="name">Bonkathon 2024</div><div class="meta">BONK ecosystem</div></div>
         <div class="card"><div class="rank small">Top 5</div><div class="name">Hyperdrive 2023</div><div class="meta">Solana hackathon</div></div>
       </div>
-    </div>
-  </section>
-
-  <section class="closer">
-    <div class="wrap">
-      <p class="eyebrow" style="color:var(--magenta)">The current chapter</p>
-      <h2>Next up: <span class="gib">gib.meme</span></h2>
-      <p class="body">The studio now runs gib.meme — a memecoin trading card game where card power updates in real time as the market moves. Its own case study lives separately on this profile.</p>
-      <a class="btn" href="https://numadessas.com.br/3land/" target="_blank" rel="noopener">View live site ↗</a>
     </div>
   </section>
 
