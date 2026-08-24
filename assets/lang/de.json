@@ -77,6 +77,11 @@
     "m_title": "Einführung in Blockchain",
     "m_desc": "Einzel- oder Gruppenmentoring für Fachleute und Studierende, die in Web3 einsteigen oder ihr Wissen vertiefen möchten. Fokus auf Praxis, technische Kompetenz, Karriereberatung und Community-Entwicklung."
   },
+  "teaching": {
+    "label": "Vorträge & Workshops",
+    "title": "LEHRE<span style=\"color:var(--orange)\">.</span>",
+    "intro": "Vorträge, Kurse, Mentorings und Workshops zu Blockchain, Web3 und Krypto-Kunst — für Universitäten, Forschungsgruppen, Communities und Events, vor Ort und online."
+  },
   "publications": {
     "label": "Wissenschaftliche Arbeit",
     "title": "PUBLIKATIONEN<span style=\"color:var(--orange)\">.</span>",

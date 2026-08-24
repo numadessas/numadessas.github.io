@@ -77,6 +77,11 @@
     "m_title": "Introdução ao blockchain",
     "m_desc": "Mentoria individual ou em grupo para profissionais e estudantes que desejam entrar ou aprofundar seus conhecimentos em Web3. Foco em prática, letramento técnico, orientação de carreira e desenvolvimento comunitário."
   },
+  "teaching": {
+    "label": "Palestras & Oficinas",
+    "title": "ENSINO<span style=\"color:var(--orange)\">.</span>",
+    "intro": "Palestras, cursos, mentorias e oficinas sobre blockchain, Web3 e cripto-arte — para universidades, grupos de pesquisa, comunidades e eventos, presenciais e online."
+  },
   "publications": {
     "label": "Produção Acadêmica",
     "title": "PUBLICAÇÕES<span style=\"color:var(--orange)\">.</span>",
