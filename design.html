@@ -381,6 +381,17 @@
     animation: grain 8s steps(1) infinite;
     pointer-events: none;
   }
+  .design-hero {
+    position: relative;
+    background: var(--black) url("assets/img/design/hero-bg.jpg") center / cover no-repeat;
+  }
+  .design-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.92) 100%);
+    z-index: 0;
+  }
   @keyframes heroGrad {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
@@ -1527,8 +1538,8 @@
 </nav>
 
 <!-- INTRO -->
-<section id="design" style="background:var(--black);">
-  <div class="section-inner" style="padding-top:10rem;padding-bottom:3rem;">
+<section id="design" class="design-hero">
+  <div class="section-inner" style="padding-top:10rem;padding-bottom:3rem;position:relative;z-index:1;">
     <div class="section-label">Design</div>
     <h2 class="section-title fade-up">DESIGN<span style="color:var(--orange)">.</span></h2>
     <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;">
