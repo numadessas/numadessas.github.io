@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual ID — Case Study</title>
+<meta name="description" content="A selection from years of logo and identity work by Numa — dozens of marks and brand applications built for startups, artists, and Web3 projects across many sectors.">
+<meta property="og:title" content="Visual ID — Case Study">
+<meta property="og:description" content="Dozens of logos and brand applications across many sectors | Numa">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.numadessas.com.br/assets/img/numadessas-thumb-small.png">
+<meta property="og:url" content="https://numadessas.com.br/visual-id.html">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#ee6f22;
+    --green:#93FF78;
+    --purple:#734578;
+    --black:#0a0a0a;
+    --off-black:#111111;
+    --dark:#1a1a1a;
+    --mid:#2a2a2a;
+    --grey:#888;
+    --light-grey:#ccc;
+    --white:#f5f5f0;
+    --font-banner:'Climate Crisis',sans-serif;
+    --font-display:'Instrument Sans',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    --bg:var(--black);
+    --bg-2:var(--off-black);
+    --ink:var(--white);
+    --muted:var(--grey);
+    --line:rgba(115,69,120,.28);
+    --violet:var(--purple);
+    --maxw:1160px;
+    --pad:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--font-body),system-ui,sans-serif;font-weight:400;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--orange);color:var(--black)}
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-track{background:var(--black)}
+  ::-webkit-scrollbar-thumb{background:var(--orange)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  .mono{font-family:var(--font-mono)}
+  .disp{font-family:var(--font-display)}
+
+  .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(120% 90% at 50% 0%,#000 25%,transparent 72%);
+    opacity:.55;}
+  main{position:relative;z-index:1}
+
+  .backlink{position:fixed;top:22px;left:22px;z-index:20;font-family:var(--font-mono);
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    text-decoration:none;padding:9px 15px;border:1px solid rgba(237,237,245,.2);
+    border-radius:999px;background:rgba(5,6,10,.55);backdrop-filter:blur(8px)}
+  .backlink:hover{border-color:var(--green);color:var(--green)}
+
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--green);margin:0 0 18px}
+
+  /* HERO */
+  .hero{position:relative;min-height:78vh;display:flex;flex-direction:column;
+    justify-content:flex-end;padding-block:clamp(40px,10vh,120px);overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;
+    background:linear-gradient(-45deg,#43005E,#331041,#160A20,var(--off-black),#160A20,#331041);
+    background-size:400% 400%;animation:heroGrad 20s ease infinite}
+  .hero__bg::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 60% at 15% 70%,rgba(238,111,34,.14) 0%,transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 20%,rgba(147,255,120,.1) 0%,transparent 55%),
+      linear-gradient(180deg,rgba(5,6,10,.3) 0%,rgba(5,6,10,.2) 40%,rgba(5,6,10,.92) 88%,var(--bg) 100%)}
+  @keyframes heroGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .wrap{position:relative;z-index:1;width:100%}
+  .hero h1{font-family:var(--font-banner);font-weight:400;
+    font-size:clamp(42px,9vw,120px);line-height:.98;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .hero h1 .dot{color:var(--green)}
+  .hero .lede{max-width:44ch;font-size:clamp(16px,2vw,20px);color:#D6D6E6;margin:22px 0 0}
+  .metarow{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:34px;
+    padding-top:24px;border-top:1px solid rgba(237,237,245,.14)}
+  .metarow div{min-width:110px}
+  .metarow .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted)}
+  .metarow .v{font-size:14.5px;margin-top:3px}
+
+  section{padding-block:clamp(56px,10vw,130px)}
+  .kicker{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .kicker .num{font-family:var(--font-mono);font-size:13px;color:var(--violet);letter-spacing:.1em}
+  .kicker .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  h2{font-family:var(--font-display);font-weight:400;
+    font-size:clamp(2.4rem,6vw,5rem);line-height:.95;margin:0;letter-spacing:.03em;
+    text-transform:uppercase;text-wrap:balance}
+  h2 .dot{color:var(--orange)}
+  .body{max-width:62ch;color:#CFCFDF;font-size:clamp(15.5px,1.6vw,18px);margin-top:20px}
+  .body strong{color:var(--ink);font-weight:600}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(237,237,245,.1);border:1px solid rgba(237,237,245,.1);margin-top:40px}
+  .stat{background:var(--bg-2);padding:30px 26px}
+  .stat .n{font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,5vw,3.6rem);
+    line-height:1;color:var(--orange)}
+  .stat .l{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:10px}
+  @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}}
+
+  /* LOGO WALL */
+  .logowall{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;
+    background:rgba(237,237,245,.09);border:1px solid rgba(237,237,245,.09);margin-top:40px}
+  .logo-cell{position:relative;aspect-ratio:1/1;background:var(--bg-2);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    transition:background .3s}
+  .logo-cell:hover{background:var(--dark)}
+  .logo-cell img{width:100%;height:100%;object-fit:contain;padding:18%}
+  /* placeholder look (swap the .ph span for an <img> when ready) */
+  .logo-cell .ph{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--grey);opacity:.5}
+  .logo-cell::after{content:"";position:absolute;inset:14px;border:1px dashed rgba(147,255,120,.16);
+    border-radius:8px;pointer-events:none}
+  .logo-cell:hover::after{border-color:rgba(147,255,120,.4)}
+  @media(max-width:860px){.logowall{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:520px){.logowall{grid-template-columns:repeat(3,1fr)}}
+
+  /* APPLICATIONS — per-category square galleries */
+  .rdisc{margin-top:clamp(44px,7vw,78px)}
+  .rdisc__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .rdisc__n{font-family:var(--font-mono);font-size:12px;color:var(--violet);letter-spacing:.1em}
+  .rdisc h3{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,3vw,30px);
+    margin:0;color:var(--ink);letter-spacing:.01em}
+  .rdisc__tools{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--green)}
+  .rdisc p{max-width:62ch;color:#CFCFDF;font-size:15px;margin:10px 0 0}
+  .rgal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .rgal--3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.rgal,.rgal--3{grid-template-columns:1fr 1fr}}
+  .sq{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:var(--bg-2);
+    box-shadow:0 24px 60px -44px rgba(0,0,0,.9)}
+  .sq img,.sq video{width:100%;height:100%;object-fit:cover;display:block}
+  /* placeholder look (swap contents for <img>/<video> when ready) */
+  .sq--ph{display:flex;align-items:center;justify-content:center;text-align:center;
+    border:1px dashed rgba(147,255,120,.32);
+    background:repeating-linear-gradient(45deg,rgba(147,255,120,.03) 0 10px,transparent 10px 20px)}
+  .sq--ph span{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--green);padding:14px;line-height:1.5}
+  .sq .tag{position:absolute;left:12px;top:12px;font-family:var(--font-mono);
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;
+    border-radius:999px;background:rgba(5,6,10,.7);backdrop-filter:blur(6px);
+    border:1px solid rgba(237,237,245,.16);color:var(--light-grey)}
+
+  /* CLIENT STRIP */
+  .ecolane{border-block:1px solid rgba(237,237,245,.1);background:rgba(255,255,255,.015)}
+  .ecolane__label{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 26px}
+  .ecolane__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:clamp(20px,4vw,44px)}
+  .ecolane__row .cph{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;
+    color:var(--grey);opacity:.55;border:1px solid rgba(237,237,245,.14);
+    border-radius:999px;padding:9px 18px;transition:opacity .25s,color .25s,border-color .25s}
+  .ecolane__row .cph:hover{opacity:1;color:var(--green);border-color:rgba(147,255,120,.4)}
+
+  /* CTA */
+  .endcta{text-align:center}
+  .endcta h2{margin-inline:auto}
+  .endcta .btn{display:inline-block;margin-top:30px;font-family:var(--font-mono);
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:14px 30px;
+    background:var(--orange);color:var(--black);text-decoration:none;font-weight:700;
+    transition:background .2s,transform .2s}
+  .endcta .btn:hover{background:var(--green);transform:translateY(-2px)}
+
+  footer{border-top:1px solid rgba(237,237,245,.12);padding-block:40px;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em}
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--violet)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<a class="backlink" href="design.html">← Design</a>
+<div class="grid-bg" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Logo &amp; Brand Identity · 2018 — 2026</p>
+      <h1>Visual ID<span class="dot">.</span></h1>
+      <p class="lede">Eight years of marks, wordmarks, and brand systems — built for startups, artists, collectives, and Web3 projects. This is a wide sweep across many clients, not a deep dive into a few.</p>
+      <div class="metarow">
+        <div><div class="k">Role</div><div class="v">Designer · Art Director</div></div>
+        <div><div class="k">Years</div><div class="v">2018 — 2026</div></div>
+        <div><div class="k">Focus</div><div class="v">Logo · Identity · Applications</div></div>
+        <div><div class="k">Sectors</div><div class="v">Web3 · Art · Startups</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW + STATS -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
+      <h2>Many marks,<br>one craft<span class="dot">.</span></h2>
+      <p class="body"><strong>Building a logo is only the start — a mark has to live everywhere.</strong> Across dozens of projects I've designed identities and carried them into real applications: social, print, merch, packaging, product, and events. This case study is about <strong>range</strong> — the sheer number of brands, styles, and contexts I've worked through.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">40+</div><div class="l">Logos designed</div></div>
+        <div class="stat"><div class="n">30+</div><div class="l">Clients &amp; projects</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">Sectors</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">Years</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOFOLIO -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">01 / LOGOFOLIO</span><span class="line"></span></div>
+      <h2>The logo wall<span class="dot">.</span></h2>
+      <p class="body">A selection of marks across many industries and visual registers — from playful and hand-drawn to strict and geometric. Each square is one identity.</p>
+      <div class="logowall">
+        <div class="logo-cell"><span class="ph">Logo 01</span></div>
+        <div class="logo-cell"><span class="ph">Logo 02</span></div>
+        <div class="logo-cell"><span class="ph">Logo 03</span></div>
+        <div class="logo-cell"><span class="ph">Logo 04</span></div>
+        <div class="logo-cell"><span class="ph">Logo 05</span></div>
+        <div class="logo-cell"><span class="ph">Logo 06</span></div>
+        <div class="logo-cell"><span class="ph">Logo 07</span></div>
+        <div class="logo-cell"><span class="ph">Logo 08</span></div>
+        <div class="logo-cell"><span class="ph">Logo 09</span></div>
+        <div class="logo-cell"><span class="ph">Logo 10</span></div>
+        <div class="logo-cell"><span class="ph">Logo 11</span></div>
+        <div class="logo-cell"><span class="ph">Logo 12</span></div>
+        <div class="logo-cell"><span class="ph">Logo 13</span></div>
+        <div class="logo-cell"><span class="ph">Logo 14</span></div>
+        <div class="logo-cell"><span class="ph">Logo 15</span></div>
+        <div class="logo-cell"><span class="ph">Logo 16</span></div>
+        <div class="logo-cell"><span class="ph">Logo 17</span></div>
+        <div class="logo-cell"><span class="ph">Logo 18</span></div>
+        <div class="logo-cell"><span class="ph">Logo 19</span></div>
+        <div class="logo-cell"><span class="ph">Logo 20</span></div>
+        <div class="logo-cell"><span class="ph">Logo 21</span></div>
+        <div class="logo-cell"><span class="ph">Logo 22</span></div>
+        <div class="logo-cell"><span class="ph">Logo 23</span></div>
+        <div class="logo-cell"><span class="ph">Logo 24</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">02 / APPLICATIONS</span><span class="line"></span></div>
+      <h2>Marks in the wild<span class="dot">.</span></h2>
+      <p class="body">Where the identities actually show up. Grouped by medium — each square is a real application from a different project.</p>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">A</span>
+          <h3>Brand Systems</h3>
+          <span class="rdisc__tools">Color · Type · Grid</span>
+        </div>
+        <p>Full identity toolkits — logo lockups, palettes, type scales, and usage rules.</p>
+        <div class="rgal">
+          <div class="sq sq--ph"><span class="tag">System</span><span>Guidelines 01</span></div>
+          <div class="sq sq--ph"><span class="tag">System</span><span>Palette 02</span></div>
+          <div class="sq sq--ph"><span class="tag">System</span><span>Type 03</span></div>
+          <div class="sq sq--ph"><span class="tag">System</span><span>Lockups 04</span></div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">B</span>
+          <h3>Social &amp; Digital</h3>
+          <span class="rdisc__tools">Profiles · Posts · Banners</span>
+        </div>
+        <p>Avatars, headers, post templates, and campaign key visuals adapted per brand.</p>
+        <div class="rgal">
+          <div class="sq sq--ph"><span class="tag">Social</span><span>Profile 01</span></div>
+          <div class="sq sq--ph"><span class="tag">Social</span><span>Post 02</span></div>
+          <div class="sq sq--ph"><span class="tag">Social</span><span>Banner 03</span></div>
+          <div class="sq sq--ph"><span class="tag">Social</span><span>Campaign 04</span></div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">C</span>
+          <h3>Print &amp; Merch</h3>
+          <span class="rdisc__tools">Apparel · Stationery · Stickers</span>
+        </div>
+        <p>Identity taken to physical goods — tees, cards, posters, and sticker packs.</p>
+        <div class="rgal">
+          <div class="sq sq--ph"><span class="tag">Merch</span><span>Apparel 01</span></div>
+          <div class="sq sq--ph"><span class="tag">Merch</span><span>Stationery 02</span></div>
+          <div class="sq sq--ph"><span class="tag">Print</span><span>Poster 03</span></div>
+          <div class="sq sq--ph"><span class="tag">Merch</span><span>Stickers 04</span></div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">D</span>
+          <h3>Packaging &amp; Product</h3>
+          <span class="rdisc__tools">Boxes · Labels · Mockups</span>
+        </div>
+        <p>Marks applied to boxes, labels, and product surfaces across a few brands.</p>
+        <div class="rgal rgal--3">
+          <div class="sq sq--ph"><span class="tag">Package</span><span>Box 01</span></div>
+          <div class="sq sq--ph"><span class="tag">Package</span><span>Label 02</span></div>
+          <div class="sq sq--ph"><span class="tag">Product</span><span>Mockup 03</span></div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">E</span>
+          <h3>Events &amp; Environmental</h3>
+          <span class="rdisc__tools">Booths · Signage · Screens</span>
+        </div>
+        <p>Identity at scale — event booths, stage screens, and physical signage.</p>
+        <div class="rgal rgal--3">
+          <div class="sq sq--ph"><span class="tag">Event</span><span>Booth 01</span></div>
+          <div class="sq sq--ph"><span class="tag">Event</span><span>Signage 02</span></div>
+          <div class="sq sq--ph"><span class="tag">Event</span><span>Screen 03</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT STRIP -->
+  <div class="ecolane">
+    <div class="wrap">
+      <p class="ecolane__label">A few of the brands &amp; projects</p>
+      <div class="ecolane__row">
+        <span class="cph">Client 01</span>
+        <span class="cph">Client 02</span>
+        <span class="cph">Client 03</span>
+        <span class="cph">Client 04</span>
+        <span class="cph">Client 05</span>
+        <span class="cph">Client 06</span>
+        <span class="cph">Client 07</span>
+        <span class="cph">Client 08</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="endcta">
+    <div class="wrap">
+      <div class="kicker"><span class="num">NEXT</span><span class="line"></span></div>
+      <h2>Need a mark<br>that travels<span class="dot">?</span></h2>
+      <p class="body" style="margin-inline:auto">From a single logo to a full identity system with every application ready to ship.</p>
+      <a class="btn" href="index.html#contact">Start a project ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Numa — Creative Tech: Art, Design, Education</span>
+      <span><a href="design.html">Back to Design</a></span>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
