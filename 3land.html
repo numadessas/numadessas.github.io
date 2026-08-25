@@ -170,6 +170,26 @@
   .rgal--pair{grid-template-columns:1fr 1fr;align-items:start}
   .rgal--pair .figure{aspect-ratio:auto}
   .rgal--pair .figure img{aspect-ratio:auto;height:auto}
+  /* metaverse: image + ecosystem orbit side by side */
+  .metaverse-split{display:grid;grid-template-columns:1.25fr .9fr;
+    gap:clamp(24px,4vw,52px);align-items:center}
+  .ecosystem-orbit{position:relative;width:100%;max-width:440px;aspect-ratio:1;margin:0 auto}
+  .orbit-lines{position:absolute;inset:0;width:100%;height:100%}
+  .orbit-ring{fill:none;stroke:var(--line);stroke-width:1}
+  .orbit-line{stroke:var(--green);stroke-width:1;opacity:.4}
+  .orbit-center{position:absolute;left:50%;top:50%;width:88px;height:88px;
+    transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;
+    border-radius:50%;background:rgba(255,255,255,.06);backdrop-filter:blur(12px);
+    box-shadow:0 0 60px rgba(115,69,120,.5)}
+  .orbit-logo-inner{width:52px;height:52px;border-radius:50%;
+    background:linear-gradient(90deg,var(--green),var(--orange))}
+  .orbit-node{position:absolute;padding:8px 15px;border-radius:100px;
+    background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid var(--line);
+    font-family:"Space Mono",monospace;font-size:12px;font-weight:700;color:var(--white);
+    white-space:nowrap;transform:translate(-50%,-50%)}
+  .orbit-node:nth-of-type(odd){box-shadow:inset 0 0 0 1px var(--green)}
+  .orbit-node:nth-of-type(even){box-shadow:inset 0 0 0 1px var(--orange)}
+  @media(max-width:760px){.metaverse-split{grid-template-columns:1fr;gap:32px}}
   .rgal--solo .figure--video{aspect-ratio:auto}
   .rgal--solo .figure--video video{height:auto;aspect-ratio:16/9;object-fit:cover}
   .figure--video{position:relative}
@@ -279,10 +299,15 @@
       <div class="kicker"><span class="num">01 / METAVERSE</span><span class="line"></span></div>
       <h2>Where it started<span class="dot">.</span></h2>
       <p class="body">3.land began as a virtual metaverse where artists built immersive 3D galleries for their NFT collections. It brought an immersive VR exhibition to <strong>Breakpoint Amsterdam 2023</strong> and built <strong>Solana's virtual art gallery for Art Basel 2024</strong>. This is where the identity was born: the alien mascot, the retrowave grid, the neon.</p>
-      <div class="product">
+      <div class="product metaverse-split">
         <figure class="figure"><span class="tag">2022 — 2024 · Metaverse</span><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse gallery"></figure>
-        <div class="cap"><span><b>VR</b> Breakpoint Amsterdam '23</span><span><b>Gallery</b> Art Basel '24</span><span><b>Build</b> 3D · WebGL</span></div>
+        <div class="ecosystem-orbit" id="orbit" aria-hidden="true">
+          <svg class="orbit-lines" viewBox="0 0 600 600" id="orbitSvg"></svg>
+          <div class="orbit-center"><div class="orbit-logo-inner"></div></div>
+          <div id="orbitNodes"></div>
+        </div>
       </div>
+      <div class="cap"><span><b>VR</b> Breakpoint Amsterdam '23</span><span><b>Gallery</b> Art Basel '24</span><span><b>Build</b> 3D · WebGL</span></div>
     </div>
   </section>
 
@@ -417,5 +442,26 @@
     </div>
   </footer>
 </main>
+<script>
+  // Ecosystem orbit (ref: 3land LandingPage) — static radial map of the studio's surface area
+  (function(){
+    var svg=document.getElementById("orbitSvg");
+    var nodes=document.getElementById("orbitNodes");
+    if(!svg||!nodes)return;
+    var labels=["Memes","Marketplace","Metaverse","Open Source","Hackathons","AI","Infrastructure"];
+    var svgContent='<circle cx="300" cy="300" r="140" class="orbit-ring"/><circle cx="300" cy="300" r="220" class="orbit-ring"/>';
+    var nodesHtml="";
+    labels.forEach(function(label,i){
+      var radius=i%2===0?220:140;
+      var angle=(i/labels.length)*Math.PI*2-Math.PI/2;
+      var x=300+Math.cos(angle)*radius;
+      var y=300+Math.sin(angle)*radius;
+      svgContent+='<line x1="300" y1="300" x2="'+x+'" y2="'+y+'" class="orbit-line"/>';
+      nodesHtml+='<div class="orbit-node" style="left:'+(x/600*100)+'%;top:'+(y/600*100)+'%">'+label+'</div>';
+    });
+    svg.innerHTML=svgContent;
+    nodes.innerHTML=nodesHtml;
+  })();
+</script>
 </body>
 </html>
