@@ -163,6 +163,20 @@
   .rgal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
   .rgal .figure{border-radius:14px;grid-column:span 1;grid-row:span 1}
   .rgal .figure img,.rgal .figure video{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:1/1}
+  .rgal--solo{grid-template-columns:1fr}
+  .rgal--solo .figure--video{aspect-ratio:auto}
+  .rgal--solo .figure--video video{height:auto;aspect-ratio:16/9;object-fit:cover}
+  .figure--video{position:relative}
+  .sound-toggle{position:absolute;right:12px;bottom:12px;z-index:2;display:inline-flex;align-items:center;
+    gap:6px;padding:8px 12px;border:1px solid rgba(237,237,245,.25);border-radius:999px;cursor:pointer;
+    background:rgba(10,10,14,.6);backdrop-filter:blur(6px);color:var(--fg,#EDEDF5);
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    transition:border-color .2s,background .2s}
+  .sound-toggle:hover{border-color:var(--green);background:rgba(10,10,14,.8)}
+  .sound-toggle .sound-toggle__on{display:none}
+  .sound-toggle.on{border-color:var(--green);color:var(--green)}
+  .sound-toggle.on .sound-toggle__on{display:inline}
+  .sound-toggle.on .sound-toggle__off{display:none}
   .rgal .ph{display:flex;align-items:center;justify-content:center;text-align:center;grid-column:span 1;
     aspect-ratio:1/1;border:1px dashed rgba(147,255,120,.35);border-radius:14px;
     background:repeating-linear-gradient(45deg,rgba(147,255,120,.03) 0 10px,transparent 10px 20px);
@@ -279,21 +293,14 @@
 
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">03 / PARALLEL TRACKS</span><span class="line"></span></div>
-      <h2>Building sideways,<br>then all in on gib.meme<span class="dot">.</span></h2>
-      <p class="body">Experimentation first: rather than spend years on one app, the studio shipped a run of tools and experiments — each validated with real users, each feeding the next. All of it built toward its final flagship: <strong>gib.meme</strong>, a competitive platform for memecoin trading cards.</p>
-      <div class="tracks">
-        <article class="track">
-          <figure class="figure"><img src="assets/img/projects/3land/minter.jpg" alt="Open-source cNFT minter interface"></figure>
-          <div class="tbody"><h3>Open-source cNFT minter</h3><p>Mint compressed NFTs at scale — dark UI, a clean three-step flow.</p><span class="tmeta">2024 · Open source</span></div>
-        </article>
-        <article class="track">
-          <figure class="figure"><img src="assets/img/projects/3land/humanship.jpg" alt="Humanship.id identity card"></figure>
-          <div class="tbody"><h3>Humanship.id</h3><p>A privacy-first human identity layer, built to signal trust.</p><span class="tmeta">2024 · Identity</span></div>
-        </article>
-        <article class="track">
-          <div class="tbody solo"><h3>Agent Token Tools</h3><p>Tooling for AI agents to act on-chain — 1st place at SendAI 2025.</p><span class="tmeta">2025 · Hackathon</span></div>
-        </article>
+      <div class="kicker"><span class="num">03 / HACKATHONS</span><span class="line"></span></div>
+      <h2>Five wins in two years<span class="dot">.</span></h2>
+      <div class="hx">
+        <div class="card"><div class="rank">1st</div><div class="name">SendAI 2025</div><div class="meta">Agent Token Tools</div></div>
+        <div class="card"><div class="rank">1st</div><div class="name">Monolith 2025</div><div class="meta">Solana Mobile</div></div>
+        <div class="card"><div class="rank">1st</div><div class="name">cHack Metaplex 2024</div><div class="meta">Compressed NFTs</div></div>
+        <div class="card"><div class="rank small">4th</div><div class="name">Bonkathon 2024</div><div class="meta">BONK ecosystem</div></div>
+        <div class="card"><div class="rank small">Top 5</div><div class="name">Hyperdrive 2023</div><div class="meta">Solana hackathon</div></div>
       </div>
     </div>
   </section>
@@ -312,10 +319,9 @@
         </div>
         <p>Set the visual direction for launches and campaigns — key visuals, logos, banners, and card art — keeping every product on one language.</p>
         <div class="rgal">
-          <figure class="figure"><img src="assets/img/projects/3land/role/art-02.png" alt="Trading card art" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/art-01.png" alt="Minting key visual" loading="lazy"></figure>
-          <figure class="figure wide"><img src="assets/img/projects/3land/role/art-03.jpg" alt="Circus event banner" loading="lazy"></figure>
-          <figure class="figure wide"><img src="assets/img/projects/3land/role/art-04.jpg" alt="3.land banner" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/art-direction/1-OKX-Wallet.webp" alt="OKX Wallet key visual" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/art-direction/2-multilingual.webp" alt="Multilingual campaign art" loading="lazy"></figure>
+          <figure class="figure"><video src="assets/img/design/art-direction/3-web30001-0070.mp4" autoplay muted loop playsinline></video></figure>
         </div>
       </div>
 
@@ -325,12 +331,11 @@
           <h3>3D</h3>
           <span class="rdisc__tools">Blender · glTF</span>
         </div>
-        <p>Modeled and rendered the alien mascot, 3D logos, and scene art — growing from first experiments into the studio's signature 3D look.</p>
+        <p>Working alongside two other artists, I animated and rendered the studio's 3D graphics — from the alien mascot to 3D logos and scene art. They led the modeling; I focused on final production, jumping into modeling myself when needed.</p>
         <div class="rgal">
-          <figure class="figure wide"><img src="assets/img/projects/3land/role/3d-01.png" alt="Avatar render" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/3d-02.png" alt="Elf character render" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/3d-03.png" alt="Custom avatar render" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/3d-04.gif" alt="Spinning desk animation" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/3d/1-cNFTs.webp" alt="cNFTs 3D render" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/3d/2-6.9k-Post.webp" alt="6.9k milestone 3D render" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/3d/3-scientists.webp" alt="Scientists 3D scene" loading="lazy"></figure>
         </div>
       </div>
 
@@ -341,9 +346,14 @@
           <span class="rdisc__tools">Premiere · After Effects</span>
         </div>
         <p>Edited promo videos, event recaps, and interviews — cutting footage, animating, and building sound design from a custom SFX library.</p>
-        <div class="rgal">
-          <figure class="figure wide"><video src="assets/img/projects/3land/role/motion-01.mp4" autoplay muted loop playsinline></video></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/motion-02.gif" alt="Animated token loop" loading="lazy"></figure>
+        <div class="rgal rgal--solo">
+          <figure class="figure figure--video">
+            <video src="assets/img/design/motion/packs_trailer_LOW.mp4" autoplay muted loop playsinline></video>
+            <button type="button" class="sound-toggle" aria-label="Toggle sound" aria-pressed="false" onclick="var v=this.parentNode.querySelector('video');v.muted=!v.muted;this.setAttribute('aria-pressed',String(!v.muted));this.classList.toggle('on',!v.muted)">
+              <span class="sound-toggle__off">🔇 Sound off</span>
+              <span class="sound-toggle__on">🔊 Sound on</span>
+            </button>
+          </figure>
         </div>
       </div>
 
@@ -353,11 +363,11 @@
           <h3>Social Strategy</h3>
           <span class="rdisc__tools">Content · Strategy</span>
         </div>
-        <p>Collaborated on the social media strategy — content planning, campaign rollouts, and milestone moments like the 15k and 100k mint posts.</p>
+        <p>Collaborated on the social media strategy — content planning, campaign rollouts, and milestone moments.</p>
         <div class="rgal">
-          <figure class="figure wide"><img src="assets/img/projects/3land/role/social-01.png" alt="100k mints milestone post" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/social-02.png" alt="15k milestone post" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/3land/role/social-03.png" alt="Send campaign post" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/social/1-GM.webp" alt="GM community post" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/social/2-Meme.webp" alt="Meme campaign post" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/design/social/3-delist.webp" alt="Delist announcement post" loading="lazy"></figure>
         </div>
       </div>
 
@@ -367,7 +377,7 @@
           <h3>Team &amp; Process</h3>
           <span class="rdisc__tools">Ops · Systems</span>
         </div>
-        <p>Beyond the visuals, I helped establish how the creative team worked — file structure, naming conventions, and a repeatable asset pipeline that scaled with every new product.</p>
+        <p>Beyond the visuals, I helped optimize the creative team's workflow — specifically regarding file structure and the use of process management platforms.</p>
       </div>
     </div>
   </section>
@@ -385,20 +395,6 @@
       </div>
     </div>
   </div>
-
-  <section>
-    <div class="wrap">
-      <div class="kicker"><span class="num">05 / TRACK RECORD</span><span class="line"></span></div>
-      <h2>Five wins in two years<span class="dot">.</span></h2>
-      <div class="hx">
-        <div class="card"><div class="rank">1st</div><div class="name">SendAI 2025</div><div class="meta">Agent Token Tools</div></div>
-        <div class="card"><div class="rank">1st</div><div class="name">Monolith 2025</div><div class="meta">Solana Mobile</div></div>
-        <div class="card"><div class="rank">1st</div><div class="name">cHack Metaplex 2024</div><div class="meta">Compressed NFTs</div></div>
-        <div class="card"><div class="rank small">4th</div><div class="name">Bonkathon 2024</div><div class="meta">BONK ecosystem</div></div>
-        <div class="card"><div class="rank small">Top 5</div><div class="name">Hyperdrive 2023</div><div class="meta">Solana hackathon</div></div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="wrap">
