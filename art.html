@@ -1472,11 +1472,19 @@
   @media (max-width: 560px)  { .svc-boxes { grid-template-columns: 1fr; } .svc-box { min-height: 0; } }
 
   /* EXHIBITIONS — highlight cards */
+  .hl-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin: 2.25rem 0 0;
+  }
   .hl-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
-    margin: 2rem 0 3.5rem;
+    margin: 0.9rem 0 3.5rem;
   }
   .hl-card {
     border: 1px solid rgba(255,255,255,0.08);
@@ -2014,12 +2022,13 @@
 <!-- EXHIBITIONS -->
 <section id="exhibitions" style="background:var(--off-black);">
   <div class="section-inner">
-    <div class="section-label" data-i18n="art.exhib_label">Exhibitions</div>
+    <div class="section-label" data-i18n="art.exhib_label">galleries, metaverses &amp; conferences</div>
     <h2 class="section-title fade-up" data-i18n-html="art.exhib_title">EXHIBITIONS<span style="color:var(--orange)">.</span></h2>
     <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;margin-bottom:0.5rem;" data-i18n-html="art.exhib_intro">
       Shown in the metaverse and in person — across <strong>several states in Brazil</strong> and in France, Germany, the Netherlands, Austria, Thailand, and Canada.
     </p>
     <!-- highlight cards (image + description are placeholders to replace) -->
+    <div class="hl-label fade-up" data-i18n="art.hl_label">Highlights</div>
     <div class="hl-cards fade-up">
       <div class="hl-card">
         <div class="hl-img"><img src="assets/img/art/highlights/interlace.webp" alt="Interlace — Camapu, ArtVerse Paris" onerror="this.remove()"><span></span></div>
@@ -2049,7 +2058,7 @@
         </div>
       </div>
       <div class="hl-card">
-        <div class="hl-img"><img src="assets/img/art/highlights/casa-nua.webp" alt="Arte Brasileira Pioneira na Blockchain — Casa Nua, São Paulo" onerror="this.remove()"><span></span></div>
+        <div class="hl-img"><img src="assets/img/art/highlights/pioneira-casanua.gif" alt="Arte Brasileira Pioneira na Blockchain — Casa Nua, São Paulo" onerror="this.remove()"><span></span></div>
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl4_type">Group · Blockchain art</div>
           <div class="hl-title" data-i18n="art.hl4_title">Arte Brasileira Pioneira na Blockchain</div>
@@ -2057,8 +2066,27 @@
           <p class="hl-desc" data-i18n-html="art.hl4_desc">An exhibition celebrating pioneering Brazilian art on the blockchain, held at <strong>Casa Nua</strong>, São Paulo.</p>
         </div>
       </div>
+      <div class="hl-card">
+        <div class="hl-img"><img src="assets/img/art/highlights/delirios-digitais.png" alt="Bienal de Arte Digital — Delírios Digitais, Oi Futuro, Rio de Janeiro" onerror="this.remove()"><span></span></div>
+        <div class="hl-body">
+          <div class="hl-type" data-i18n="art.hl5_type">Group · Hybrid</div>
+          <div class="hl-title" data-i18n="art.hl5_title">Digital Art Biennial</div>
+          <div class="hl-meta">2022 · Oi Futuro, Rio de Janeiro</div>
+          <p class="hl-desc" data-i18n-html="art.hl5_desc">Part of <strong>“Delírios Digitais”</strong> — a hybrid (in-person &amp; on-chain) edition of the Digital Art Biennial at <strong>Oi Futuro</strong>, Rio de Janeiro.</p>
+        </div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-img"><img src="assets/img/art/highlights/nft-rio.png" alt="NFT Rio — Escola de Artes Visuais do Parque Lage" onerror="this.remove()"><span></span></div>
+        <div class="hl-body">
+          <div class="hl-type" data-i18n="art.hl6_type">Group Show</div>
+          <div class="hl-title">NFT Rio</div>
+          <div class="hl-meta">2022 · Parque Lage, Rio de Janeiro</div>
+          <p class="hl-desc" data-i18n-html="art.hl6_desc">A group showcase of Brazilian NFT artists during <strong>NFT Rio</strong>, held at the <strong>Escola de Artes Visuais do Parque Lage</strong>.</p>
+        </div>
+      </div>
     </div>
 
+    <div class="hl-label fade-up" data-i18n="art.cv_label">Full exhibition record</div>
     <div class="cv-list fade-up">
       <!-- 2026 -->
       <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Interlace Exhibition <span class="cv-type">International</span></div><div class="cv-venue">Paris, France</div></div></div>
@@ -2084,7 +2112,7 @@
       <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Identidades <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
       <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">No começo do mundo <span class="cv-type">Publication</span></div><div class="cv-venue">Guató-language children's book · Museu do Índio &amp; FEL</div></div></div>
       <!-- 2022 -->
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFTRio <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFTRio <span class="cv-type">Group</span></div><div class="cv-venue">Escola de Artes Visuais do Parque Lage · Rio de Janeiro, Brazil</div></div></div>
       <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">BRIFW · Wired Festival <span class="cv-type">Hybrid</span></div><div class="cv-venue">In-person + metaverse · São Paulo, Brazil</div></div></div>
       <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT São Paulo <span class="cv-type">Group</span></div><div class="cv-venue">Museu do Imigrante · São Paulo, Brazil</div></div></div>
       <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT Art Con <span class="cv-type">Group</span></div><div class="cv-venue">Chiang Mai, Thailand</div></div></div>
