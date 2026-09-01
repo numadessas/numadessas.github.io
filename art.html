@@ -1668,6 +1668,32 @@
     color: var(--grey);
     margin-bottom: 2rem;
   }
+  /* ON-CHAIN — per-chain header (name + minted count + full-collection button) */
+  #panel-tezos { margin-top: 3.5rem; }
+  .chain-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .chain-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    margin: 0 0 0.3rem;
+    letter-spacing: 0.02em;
+  }
+  .chain-count {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .chain-head .btn-secondary { flex: 0 0 auto; }
 
   /* ART — GALLERY (square thumbnails) */
   .art-gallery {
@@ -2142,34 +2168,35 @@
       Original creatures, minted on-chain across two ecosystems.
     </p>
 
-    <div class="chain-tabs fade-up">
-      <button class="chain-tab active" data-chain="tezos">Tezos · objkt</button>
-      <button class="chain-tab" data-chain="solana">Solana · mallow</button>
-    </div>
-
-    <!-- TEZOS -->
-    <div class="chain-panel" id="panel-tezos">
-      <div id="tezos-status" class="chain-status">Loading Tezos work…</div>
-      <div class="chain-row">
-        <button class="row-arrow row-arrow--prev" data-target="tezos-gallery" aria-label="Scroll left">‹</button>
-        <div id="tezos-gallery" class="art-row"></div>
-        <button class="row-arrow row-arrow--next" data-target="tezos-gallery" aria-label="Scroll right">›</button>
-      </div>
-      <div style="margin-top:2.5rem;">
-        <a href="https://objkt.com/profile/tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo/created" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_objkt">View full collection on objkt ↗</a>
-      </div>
-    </div>
-
     <!-- SOLANA -->
-    <div class="chain-panel" id="panel-solana" style="display:none;">
-      <div id="mallow-status" class="chain-status">Loading Solana work…</div>
+    <div class="chain-panel" id="panel-solana">
+      <div class="chain-head fade-up">
+        <div>
+          <h3 class="chain-name">Solana · mallow</h3>
+          <span class="chain-count" id="mallow-status">Loading Solana work…</span>
+        </div>
+        <a href="https://mallow.art" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_mallow">View full collection on mallow ↗</a>
+      </div>
       <div class="chain-row">
         <button class="row-arrow row-arrow--prev" data-target="mallow-gallery" aria-label="Scroll left">‹</button>
         <div id="mallow-gallery" class="art-row"></div>
         <button class="row-arrow row-arrow--next" data-target="mallow-gallery" aria-label="Scroll right">›</button>
       </div>
-      <div style="margin-top:2.5rem;">
-        <a href="https://mallow.art" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_mallow">View full collection on mallow ↗</a>
+    </div>
+
+    <!-- TEZOS -->
+    <div class="chain-panel" id="panel-tezos">
+      <div class="chain-head fade-up">
+        <div>
+          <h3 class="chain-name">Tezos · objkt</h3>
+          <span class="chain-count" id="tezos-status">Loading Tezos work…</span>
+        </div>
+        <a href="https://objkt.com/profile/tz1fLdyJqakB3v9CQN8mLCFRxNfFThmYHGmo/created" target="_blank" rel="noopener" class="btn-secondary" data-i18n="art.collect_objkt">View full collection on objkt ↗</a>
+      </div>
+      <div class="chain-row">
+        <button class="row-arrow row-arrow--prev" data-target="tezos-gallery" aria-label="Scroll left">‹</button>
+        <div id="tezos-gallery" class="art-row"></div>
+        <button class="row-arrow row-arrow--next" data-target="tezos-gallery" aria-label="Scroll right">›</button>
       </div>
     </div>
   </div>
@@ -2296,14 +2323,11 @@
       });
       img.src = art.image;
       a.appendChild(img);
-      a.addEventListener('click', ev => {
-        if (ev.metaKey || ev.ctrlKey || ev.button === 1) return; // let power-users open the marketplace
-        ev.preventDefault();
-        openLightbox(art.image, art.name);
-      });
+      // clicking an artwork opens its page on the marketplace (link already set)
       gallery.appendChild(a);
     });
-    status.textContent = items.length + ' works · click to view · ' + opts.marketLabel + ' ↗';
+    const total = opts.total || items.length;
+    status.textContent = total + (total === 1 ? ' work minted' : ' works minted');
   }
 
   /* ---- Tezos gallery — baked WebP from objkt (scripts/fetch-tezos.mjs) ---- */
@@ -2315,7 +2339,7 @@
       .then(r => { if (!r.ok) throw new Error('no data'); return r.json(); })
       .then(raw => {
         if (!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
-        renderGallery(gallery, status, shuffle(raw), { marketLabel: 'open on objkt' });
+        renderGallery(gallery, status, shuffle(raw), { marketLabel: 'open on objkt', total: raw.length });
       })
       .catch(() => {
         status.innerHTML = 'See the full Tezos collection on <a href="https://objkt.com/profile/' + TZ + '/created" target="_blank" rel="noopener" style="color:var(--orange);">objkt ↗</a>';
@@ -2337,24 +2361,12 @@
           image: a.image,
           link: a.url || (a.mintAccount ? MALLOW_URL + '/artwork/' + a.mintAccount : MALLOW_URL),
         }));
-        renderGallery(gallery, status, items, { marketLabel: 'open on mallow' });
-        if (total > items.length) status.textContent = items.length + ' of ' + total + ' works · click to view · open on mallow ↗';
+        renderGallery(gallery, status, items, { marketLabel: 'open on mallow', total: total });
       })
       .catch(() => {
         status.innerHTML = 'Solana gallery coming soon — see the full collection on <a href="' + MALLOW_URL + '" target="_blank" rel="noopener" style="color:var(--orange);">mallow ↗</a>';
       });
   })();
-
-  /* ---- chain tab switching ---- */
-  document.querySelectorAll('.chain-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const chain = tab.dataset.chain;
-      document.getElementById('panel-tezos').style.display = chain === 'tezos' ? '' : 'none';
-      document.getElementById('panel-solana').style.display = chain === 'solana' ? '' : 'none';
-    });
-  });
 
   /* ---- row arrows ---- */
   document.querySelectorAll('.row-arrow').forEach(btn => {
