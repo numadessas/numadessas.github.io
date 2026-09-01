@@ -80,9 +80,18 @@ async function main() {
     if (batch.length < PAGESIZE) break; // last page
   }
 
+  // mallow's `creator` field is the shop/mint wallet — it reads as Numa for
+  // everything she has listed, including pieces she only collected. The reliable
+  // signal for authorship is the royalty split: her created works (and collabs
+  // she's part of) pay royalties to her wallet; collected works pay the original
+  // artist. Keep only artworks where she is a royalty recipient.
+  const isAuthoredByNuma = a =>
+    Array.isArray(a?.royalties?.shares) &&
+    a.royalties.shares.some(s => s.address === CREATOR && s.verified);
+
   // Keep only the fields the page needs.
   const clean = all
-    .filter(a => a && a.imageUrl)
+    .filter(a => a && a.imageUrl && isAuthoredByNuma(a))
     .map(a => ({
       mintAccount: a.mintAccount || null,
       name: a.name || 'Untitled',
