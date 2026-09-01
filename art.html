@@ -406,9 +406,13 @@
     background: url('assets/img/art/hero-sono.webp') right bottom / cover no-repeat;
     background-attachment: fixed;
   }
-  /* fixed attachment is buggy on mobile — fall back to normal there */
+  /* fixed attachment is buggy on mobile — fall back to normal there,
+     and center the image instead of the desktop right-alignment */
   @media (max-width: 768px) {
-    .hero-photo { background-attachment: scroll; }
+    .hero-photo {
+      background-attachment: scroll;
+      background-position: center bottom;
+    }
   }
   .hero-photo::after {
     content: '';
@@ -2058,7 +2062,7 @@
         </div>
       </div>
       <div class="hl-card">
-        <div class="hl-img"><img src="assets/img/art/highlights/pioneira-casanua.gif" alt="Arte Brasileira Pioneira na Blockchain — Casa Nua, São Paulo" onerror="this.remove()"><span></span></div>
+        <div class="hl-img"><img src="assets/img/art/highlights/pioneira-casanua.webp" alt="Arte Brasileira Pioneira na Blockchain — Casa Nua, São Paulo" onerror="this.remove()"><span></span></div>
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl4_type">Group · Blockchain art</div>
           <div class="hl-title" data-i18n="art.hl4_title">Arte Brasileira Pioneira na Blockchain</div>
@@ -2067,7 +2071,7 @@
         </div>
       </div>
       <div class="hl-card">
-        <div class="hl-img"><img src="assets/img/art/highlights/delirios-digitais.png" alt="Bienal de Arte Digital — Delírios Digitais, Oi Futuro, Rio de Janeiro" onerror="this.remove()"><span></span></div>
+        <div class="hl-img"><img src="assets/img/art/highlights/delirios-digitais.webp" alt="Bienal de Arte Digital — Delírios Digitais, Oi Futuro, Rio de Janeiro" onerror="this.remove()"><span></span></div>
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl5_type">Group · Hybrid</div>
           <div class="hl-title" data-i18n="art.hl5_title">Digital Art Biennial</div>
@@ -2076,7 +2080,7 @@
         </div>
       </div>
       <div class="hl-card">
-        <div class="hl-img"><img src="assets/img/art/highlights/nft-rio.png" alt="NFT Rio — Escola de Artes Visuais do Parque Lage" onerror="this.remove()"><span></span></div>
+        <div class="hl-img"><img src="assets/img/art/highlights/nft-rio.webp" alt="NFT Rio — Escola de Artes Visuais do Parque Lage" onerror="this.remove()"><span></span></div>
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl6_type">Group Show</div>
           <div class="hl-title">NFT Rio</div>
