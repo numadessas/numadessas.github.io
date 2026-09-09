@@ -17,7 +17,7 @@
 
 ## 🌐 What is this
 
-Personal website of **Numa (Manuella Godoy)** — designer, artist, researcher and educator from São Paulo. 13+ years in design, 5+ years in Web3. This repo is the **deployed source** of [numadessas.com.br](https://numadessas.com.br), a static site living on GitHub Pages.
+Personal website of **Numa (Numa G.)** — designer, artist, researcher and educator from São Paulo. 12+ years in design, 4+ years in Web3. This repo is the **deployed source** of [numadessas.com.br](https://numadessas.com.br), a static site living on GitHub Pages.
 
 The site spans four practices:
 
