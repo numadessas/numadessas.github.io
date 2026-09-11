@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computadores Fazem Arte — Case Study</title>
+<meta name="description" content="Visual identity and educational design for Computadores Fazem Arte — a master's research project introducing blockchain, NFTs, and Web3 to under-represented communities through art.">
+<meta property="og:title" content="Computadores Fazem Arte — Case Study">
+<meta property="og:description" content="Visual identity & educational design for a free blockchain/NFT course rooted in art | Numa">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.numadessas.com.br/assets/img/numadessas-thumb-small.png">
+<meta property="og:url" content="https://numadessas.com.br/computadores-fazem-arte.html">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#4D1C5B;
+    --purple-deep:#2b0f36;
+    --pink:#FF458F;
+    --yellow:#DDFF00;
+    --black:#0a0710;
+    --off-black:#120b18;
+    --dark:#1a1122;
+    --mid:#2a1c33;
+    --grey:#948a9c;
+    --light-grey:#d3cdd9;
+    --white:#f6f2f8;
+    --font-banner:'Climate Crisis',sans-serif;
+    --font-display:'Instrument Sans',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    --bg:var(--black);
+    --bg-2:var(--off-black);
+    --ink:var(--white);
+    --muted:var(--grey);
+    --line:rgba(255,69,143,.26);
+    --maxw:1160px;
+    --pad:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--font-body),system-ui,sans-serif;font-weight:400;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--yellow);color:var(--black)}
+  ::-webkit-scrollbar{width:4px;height:4px}
+  ::-webkit-scrollbar-track{background:var(--black)}
+  ::-webkit-scrollbar-thumb{background:var(--pink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  .mono{font-family:var(--font-mono)}
+  .disp{font-family:var(--font-display)}
+
+  .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(120% 90% at 50% 0%,#000 25%,transparent 72%);
+    opacity:.5;}
+  main{position:relative;z-index:1}
+
+  .backlink{position:fixed;top:22px;left:22px;z-index:20;font-family:var(--font-mono);
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    text-decoration:none;padding:9px 15px;border:1px solid rgba(246,242,248,.2);
+    border-radius:999px;background:rgba(10,7,16,.55);backdrop-filter:blur(8px)}
+  .backlink:hover{border-color:var(--yellow);color:var(--yellow)}
+
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.30em;
+    text-transform:uppercase;color:var(--yellow);margin:0 0 18px}
+
+  /* HERO */
+  .hero{position:relative;min-height:82vh;display:flex;flex-direction:column;
+    justify-content:flex-end;padding-block:clamp(40px,10vh,120px);overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;
+    background:linear-gradient(-45deg,#5a1c6e,#3a1148,#1c0d26,var(--off-black),#2b0f36,#7a1f5a);
+    background-size:400% 400%;animation:heroGrad 22s ease infinite}
+  /* organic blobs echoing the brand's fluid shapes */
+  .hero__blob{position:absolute;z-index:0;filter:blur(6px);opacity:.9;
+    border-radius:47% 53% 60% 40% / 42% 46% 54% 58%;mix-blend-mode:screen}
+  .hero__blob.b1{width:44vw;height:44vw;left:-8vw;top:-6vw;
+    background:radial-gradient(circle at 40% 40%,rgba(255,69,143,.55),transparent 62%)}
+  .hero__blob.b2{width:40vw;height:40vw;right:-10vw;top:8vw;
+    background:radial-gradient(circle at 50% 50%,rgba(221,255,0,.32),transparent 60%)}
+  .hero__blob.b3{width:34vw;height:34vw;right:6vw;bottom:-12vw;
+    background:radial-gradient(circle at 50% 50%,rgba(122,31,110,.6),transparent 62%)}
+  .hero__bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,7,16,.2) 0%,rgba(10,7,16,.18) 40%,rgba(10,7,16,.9) 86%,var(--bg) 100%)}
+  @keyframes heroGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero h1{font-family:var(--font-banner);font-weight:400;
+    font-size:clamp(38px,7.6vw,104px);line-height:.98;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .hero h1 .dot{color:var(--yellow)}
+  .hero .lede{max-width:50ch;font-size:clamp(16px,2vw,20px);color:#E7DDEC;margin:22px 0 0}
+  .metarow{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:34px;
+    padding-top:24px;border-top:1px solid rgba(246,242,248,.14)}
+  .metarow div{min-width:110px}
+  .metarow .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted)}
+  .metarow .v{font-size:14.5px;margin-top:3px}
+
+  section{padding-block:clamp(56px,10vw,128px)}
+  .kicker{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .kicker .num{font-family:var(--font-mono);font-size:13px;color:var(--pink);letter-spacing:.1em}
+  .kicker .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+  h2{font-family:var(--font-display);font-weight:400;
+    font-size:clamp(2.2rem,5.6vw,4.6rem);line-height:.95;margin:0;letter-spacing:.02em;
+    text-transform:uppercase;text-wrap:balance}
+  h2 .dot{color:var(--pink)}
+  .body{max-width:64ch;color:#D6CEDC;font-size:clamp(15.5px,1.6vw,18px);margin-top:20px}
+  .body strong{color:var(--ink);font-weight:600}
+  .body a{color:var(--yellow);text-decoration:none;border-bottom:1px solid rgba(221,255,0,.4)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(246,242,248,.1);border:1px solid rgba(246,242,248,.1);margin-top:40px}
+  .stat{background:var(--bg-2);padding:30px 26px}
+  .stat .n{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,5vw,3.4rem);
+    line-height:1;color:var(--pink)}
+  .stat .l{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:10px}
+  @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}}
+
+  /* BRAND / IDENTITY */
+  .brandgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin-top:40px}
+  @media(max-width:820px){.brandgrid{grid-template-columns:1fr}}
+  .brandcard{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:var(--bg-2);min-height:280px;display:flex;align-items:center;justify-content:center;padding:34px}
+  .brandcard--mark{background:
+      radial-gradient(circle at 20% 20%,rgba(221,255,0,.10),transparent 55%),
+      radial-gradient(circle at 85% 80%,rgba(255,69,143,.14),transparent 55%),var(--purple)}
+  .brandcard--mark img{width:min(78%,420px);height:auto;display:block;
+    filter:drop-shadow(0 18px 50px rgba(0,0,0,.5))}
+  .brandcard--cover{padding:0}
+  .brandcard--cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .palette{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:22px;
+    border:1px solid rgba(246,242,248,.1);background:rgba(246,242,248,.1);border-radius:14px;overflow:hidden}
+  .sw{padding:26px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
+  .sw .name{font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+  .sw .hex{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;margin-top:4px;opacity:.85}
+  .sw--p{background:var(--purple);color:var(--white)}
+  .sw--k{background:var(--pink);color:#2b0f36}
+  .sw--y{background:var(--yellow);color:#2b0f36}
+  @media(max-width:560px){.palette{grid-template-columns:1fr}}
+
+  /* GALLERIES */
+  .rdisc{margin-top:clamp(44px,7vw,78px)}
+  .rdisc__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .rdisc__n{font-family:var(--font-mono);font-size:12px;color:var(--pink);letter-spacing:.1em}
+  .rdisc h3{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,3vw,30px);
+    margin:0;color:var(--ink);letter-spacing:.01em}
+  .rdisc__tools{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--yellow)}
+  .rdisc p{max-width:64ch;color:#D6CEDC;font-size:15px;margin:10px 0 0}
+
+  .gal{display:grid;gap:14px;margin-top:26px}
+  .gal--posters{grid-template-columns:repeat(5,1fr)}
+  .gal--3{grid-template-columns:repeat(3,1fr)}
+  .gal--4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.gal--posters{grid-template-columns:repeat(3,1fr)}.gal--4{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.gal--posters,.gal--3{grid-template-columns:1fr 1fr}}
+
+  .tile{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+    background:var(--bg-2);box-shadow:0 24px 60px -44px rgba(0,0,0,.9)}
+  .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+  .tile:hover img{transform:scale(1.08)}
+  .tile--portrait{aspect-ratio:3/4.5}
+  .tile--square{aspect-ratio:1/1}
+  .tile--wide{aspect-ratio:4/3}
+  .tile--contain{background:
+      radial-gradient(circle at 30% 20%,rgba(122,31,110,.35),transparent 60%),var(--purple-deep)}
+  .tile--contain img{object-fit:contain;padding:14px}
+  .tile .tag{position:absolute;left:12px;top:12px;font-family:var(--font-mono);
+    font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;
+    border-radius:999px;background:rgba(10,7,16,.7);backdrop-filter:blur(6px);
+    border:1px solid rgba(246,242,248,.16);color:var(--light-grey)}
+
+  /* placeholder tile for images Numa can swap later */
+  .tile--ph{display:flex;align-items:center;justify-content:center;text-align:center;
+    border:1px dashed rgba(221,255,0,.32);
+    background:repeating-linear-gradient(45deg,rgba(221,255,0,.03) 0 10px,transparent 10px 20px)}
+  .tile--ph span{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--yellow);padding:14px;line-height:1.5}
+
+  /* TIMELINE */
+  .tl{margin-top:40px;border-left:2px solid var(--line);padding-left:26px;
+    display:flex;flex-direction:column;gap:26px}
+  .tl__item{position:relative}
+  .tl__item::before{content:"";position:absolute;left:-33px;top:6px;width:12px;height:12px;
+    border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(255,69,143,.18)}
+  .tl__date{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--yellow)}
+  .tl__t{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin:4px 0 4px}
+  .tl__d{color:#C9C0D0;font-size:15px;max-width:60ch}
+
+  /* SPLIT feature */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:stretch}
+  @media(max-width:820px){.split{grid-template-columns:1fr}}
+  .split .tile{aspect-ratio:auto;min-height:100%}
+  .split__text{align-self:center}
+  .split__text h3{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,3vw,28px);margin:0 0 12px}
+  .split__text p{color:#D6CEDC;font-size:15.5px;margin:0}
+
+  .quote{margin-top:clamp(40px,7vw,72px);padding:clamp(28px,5vw,52px);
+    border:1px solid var(--line);border-radius:20px;
+    background:linear-gradient(135deg,rgba(77,28,91,.5),rgba(18,11,24,.4))}
+  .quote p{font-family:var(--font-display);font-weight:400;font-size:clamp(1.3rem,3vw,2rem);
+    line-height:1.3;margin:0;color:var(--white)}
+  .quote .src{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--pink);margin-top:18px}
+
+  /* CTA */
+  .endcta{text-align:center}
+  .endcta h2{margin-inline:auto}
+  .endcta .btn{display:inline-block;margin-top:30px;font-family:var(--font-mono);
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:14px 30px;
+    background:var(--pink);color:var(--black);text-decoration:none;font-weight:700;
+    transition:background .2s,transform .2s}
+  .endcta .btn:hover{background:var(--yellow);transform:translateY(-2px)}
+
+  footer{border-top:1px solid rgba(246,242,248,.12);padding-block:40px;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em}
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<a class="backlink" href="design.html">← Design</a>
+<div class="grid-bg" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__blob b1" aria-hidden="true"></div>
+    <div class="hero__blob b2" aria-hidden="true"></div>
+    <div class="hero__blob b3" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Master's Research · Visual Identity &amp; Educational Design · 2023 — 2025</p>
+      <h1>Computadores<br>Fazem Arte<span class="dot">.</span></h1>
+      <p class="lede">"Computers Make Art" — the visual identity and teaching material I built for my master's research: a free, art-rooted introduction to blockchain, NFTs, and Web3, made for the people this field usually leaves out.</p>
+      <div class="metarow">
+        <div><div class="k">Role</div><div class="v">Designer · Illustrator · Researcher</div></div>
+        <div><div class="k">Years</div><div class="v">2023 — 2025</div></div>
+        <div><div class="k">Deliverables</div><div class="v">Identity · Manual · Slides · Notebook</div></div>
+        <div><div class="k">Context</div><div class="v">UFPE · MPArtDig · CNPq</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
+      <h2>Warm tech,<br>not cold chains<span class="dot">.</span></h2>
+      <p class="body"><strong>Web3 and NFTs are usually dressed in cold, futuristic, exclusionary visuals.</strong> This project does the opposite. The design is a core part of the pedagogy — an intentionally warm, organic, colorful language that treats technology with artistic sensibility and a social lens, making blockchain approachable for a genuinely diverse audience.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">Pilot classes</div></div>
+        <div class="stat"><div class="n">33</div><div class="l">Course applications</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">Lesson curriculum</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Printed formats</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTITY -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">01 · IDENTITY</span><span class="line"></span></div>
+      <h2>The visual system<span class="dot">.</span></h2>
+      <p class="body">A hand-drawn wordmark and a palette of <strong>fluorescent pink, lime yellow, and deep purple</strong> — the same chromatic register that runs through my own artwork. Organic blobs, expressive lettering, and generous breathing room build a friendly, unmistakable brand that stands apart from the usual crypto aesthetic.</p>
+      <div class="brandgrid">
+        <div class="brandcard brandcard--cover">
+          <img src="assets/img/design/cfa/cover.webp" alt="Computadores Fazem Arte brand cover">
+        </div>
+        <div class="brandcard brandcard--mark">
+          <img src="assets/img/design/cfa/logo.webp" alt="Computadores Fazem Arte wordmark">
+        </div>
+      </div>
+      <div class="palette">
+        <div class="sw sw--p"><div class="name">Purple</div><div class="hex">#4D1C5B</div></div>
+        <div class="sw sw--k"><div class="name">Pink</div><div class="hex">#FF458F</div></div>
+        <div class="sw sw--y"><div class="name">Yellow</div><div class="hex">#DDFF00</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRAPHIC MATERIAL -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">02 · GRAPHIC MATERIAL</span><span class="line"></span></div>
+      <h2>Teaching, designed<span class="dot">.</span></h2>
+      <p class="body">The didactic material spans three formats — a <strong>manual</strong>, a set of <strong>lecture slides</strong>, and a handmade <strong>seed-phrase notebook</strong> — each carrying the same warm language and avoiding dense, monotonous visual codes.</p>
+
+      <!-- Manual illustrations -->
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">2.1</span>
+          <h3>The manual &amp; its illustrations</h3>
+          <span class="rdisc__tools">Illustration · Infographics · Layout</span>
+        </div>
+        <p>Custom diagrams turn abstract concepts — how a blockchain transaction works, the generations of the web, consensus, metadata, seed phrases — into concrete, relatable pictures. Simple infographics do the pedagogical heavy lifting.</p>
+        <div class="gal gal--3">
+          <div class="tile tile--wide tile--contain"><span class="tag">Transaction</span><img src="assets/img/design/cfa/ilustra-blockchain.webp" alt="How a blockchain transaction works" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain"><span class="tag">Web 1 → 3</span><img src="assets/img/design/cfa/ilustra-web.webp" alt="Evolution of the web" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain"><span class="tag">Blockchain</span><img src="assets/img/design/cfa/ilustra-crypto.webp" alt="Blockchain concept illustration" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain"><span class="tag">Consensus</span><img src="assets/img/design/cfa/ilustra-consensus.webp" alt="Consensus mechanisms" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain"><span class="tag">Metadata</span><img src="assets/img/design/cfa/ilustra-metadados.webp" alt="NFT metadata" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain"><span class="tag">Seed phrase</span><img src="assets/img/design/cfa/ilustra-seed.webp" alt="Seed phrase illustration" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Notebook -->
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">2.2</span>
+          <h3>The seed-phrase notebook</h3>
+          <span class="rdisc__tools">Editorial · Handmade · Product</span>
+        </div>
+        <p>A compact "Caderno-Cofre" hand-bound by the Lich Bookbinder atelier, made to store crypto passwords and seed phrases offline. The cover carries the project's palette; the interior splits neatly between login fields and 24 numbered seed lines. Distributed free to students.</p>
+        <div class="gal gal--3">
+          <div class="tile tile--portrait"><span class="tag">Cover</span><img src="assets/img/design/cfa/caderno-frente.webp" alt="Seed-phrase notebook cover" loading="lazy"></div>
+          <div class="tile tile--portrait"><span class="tag">Back cover</span><img src="assets/img/design/cfa/caderno-contracapa.webp" alt="Seed-phrase notebook back cover with logo" loading="lazy"></div>
+          <div class="tile tile--portrait"><span class="tag">Interior</span><img src="assets/img/design/cfa/caderno-miolo.webp" alt="Seed-phrase notebook interior pages" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNICATION -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">03 · COMMUNICATION</span><span class="line"></span></div>
+      <h2>Out in the feed<span class="dot">.</span></h2>
+      <p class="body">Social posts and event art that carried the identity into recruitment and outreach — for the free course, its open lectures, and academic appearances like the WebMedia 2024 minicourse.</p>
+      <div class="gal gal--posters">
+        <div class="tile tile--portrait"><img src="assets/img/design/cfa/poster-intro.webp" alt="Intro lecture poster" loading="lazy"></div>
+        <div class="tile tile--portrait"><img src="assets/img/design/cfa/poster-story.webp" alt="Course details poster" loading="lazy"></div>
+        <div class="tile tile--portrait"><img src="assets/img/design/cfa/poster-inscricoes.webp" alt="Applications closed poster" loading="lazy"></div>
+        <div class="tile tile--portrait"><img src="assets/img/design/cfa/poster-resultado.webp" alt="Results announcement poster" loading="lazy"></div>
+        <div class="tile tile--portrait"><img src="assets/img/design/cfa/poster-webmedia.webp" alt="WebMedia 2024 minicourse art" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section>
+    <div class="wrap">
+      <div class="kicker"><span class="num">04 · IN PRACTICE</span><span class="line"></span></div>
+      <h2>From page<br>to classroom<span class="dot">.</span></h2>
+      <p class="body">The material was tested and refined across two main runs — an undergraduate research group, then the free <strong>Computadores Fazem Arte</strong> course centered on women, LGBTQIA+, Indigenous, Black, and peripheral communities — plus talks and workshops in Brazil, Thailand, and beyond.</p>
+
+      <div class="split">
+        <div class="tile"><img src="assets/img/design/cfa/encontros.webp" alt="In-person class of the course" loading="lazy"></div>
+        <div class="split__text">
+          <h3>Made with the community</h3>
+          <p>Built alongside activist-educators Débora Aguiar and Manu Marques, the course paired blockchain fundamentals with lessons on decoloniality and financial education — and brought in trans, Black, and non-binary NFT artists to make the field feel close, not distant.</p>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl__item">
+          <div class="tl__date">Jun 2023 — Mar 2024</div>
+          <div class="tl__t">Pilot classes</div>
+          <div class="tl__d">Seven experimental sessions — from a graffiti mutirão with VR headsets to design-school lectures — testing pedagogy and shaping the material before it existed as a finished object.</div>
+        </div>
+        <div class="tl__item">
+          <div class="tl__date">Mar — Aug 2024</div>
+          <div class="tl__t">Scientific initiation</div>
+          <div class="tl__d">Three undergraduates from Computer Science, Design, and Pedagogy validated the material, 3D-scanned paper sculptures, and minted their own NFTs on 3.land — later co-authoring a paper at XR4EDU / IMX 2025.</div>
+        </div>
+        <div class="tl__item">
+          <div class="tl__date">Jul — Sep 2024</div>
+          <div class="tl__t">The free course</div>
+          <div class="tl__d">33 applications, eight in-person lessons, meals and printed material provided. A warmly received introduction to Web3 with critical debate at its center.</div>
+        </div>
+        <div class="tl__item">
+          <div class="tl__date">2024 — 2025</div>
+          <div class="tl__t">Beyond the classroom</div>
+          <div class="tl__d">The material travelled: WebMedia 2024 minicourse, NFT Brasil at the São Paulo Biennial, IslandDAO in Koh Samui (Thailand), and an intensive at UFSJ — each adapting the same visual system.</div>
+        </div>
+      </div>
+
+      <div class="rdisc">
+        <div class="rdisc__head">
+          <span class="rdisc__n">4.1</span>
+          <h3>Artworks from the workshops</h3>
+          <span class="rdisc__tools">Illustration · 3D · NFT</span>
+        </div>
+        <p>Original pieces created for and during the formations — including an NFT made for the UFSJ intensive and artwork tied to the crypto-art community.</p>
+        <div class="gal gal--4">
+          <div class="tile tile--square"><span class="tag">UFSJ NFT</span><img src="assets/img/design/cfa/nft-ufsj.webp" alt="NFT artwork made for UFSJ intensive" loading="lazy"></div>
+          <div class="tile tile--square"><img src="assets/img/design/cfa/obra-gato.webp" alt="Original artwork" loading="lazy"></div>
+          <div class="tile tile--square"><img src="assets/img/design/cfa/encontros2.webp" alt="Workshop participants" loading="lazy"></div>
+          <div class="tile tile--square tile--ph"><span>Add artwork<br>/ screen</span></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>Design here is not decoration — it is mediation. A warmer, more organic language became the bridge between complex technology and the people it too often excludes.</p>
+        <div class="src">— From the research</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="endcta">
+    <div class="wrap">
+      <div class="kicker"><span class="num">NEXT</span><span class="line"></span></div>
+      <h2>Design that<br>teaches<span class="dot">?</span></h2>
+      <p class="body" style="margin-inline:auto">Identity, illustration, and editorial systems built to make hard ideas feel human.</p>
+      <a class="btn" href="index.html#contact">Start a project ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Numa — Creative Tech: Art, Design, Education</span>
+      <span><a href="design.html">Back to Design</a></span>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
