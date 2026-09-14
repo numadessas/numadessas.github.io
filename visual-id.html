@@ -185,24 +185,57 @@
     font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em}
   footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--violet)}
 
+  /* language switch */
+  .lang-switch{position:fixed;top:22px;right:22px;z-index:20}
+  .lang-btn{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);cursor:pointer;
+    padding:9px 14px;border:1px solid rgba(237,237,245,.2);border-radius:999px;
+    background:rgba(5,6,10,.55);backdrop-filter:blur(8px)}
+  .lang-btn:hover{border-color:var(--green);color:var(--green)}
+  .lang-btn svg{width:14px;height:14px;display:block}
+  .lang-btn .lang-caret{font-size:.6rem;transition:transform .2s}
+  .lang-btn[aria-expanded="true"] .lang-caret{transform:rotate(180deg)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;
+    min-width:150px;background:var(--dark);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
+  .lang-menu.open{display:flex}
+  .lang-menu button{background:none;border:0;text-align:left;padding:11px 16px;cursor:pointer;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--light-grey)}
+  .lang-menu button:hover{background:rgba(255,255,255,.06);color:var(--white)}
+  .lang-menu button.active{color:var(--green)}
+  @media(max-width:560px){.lang-btn span:not(.lang-caret){display:none}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<a class="backlink" href="design.html">← Design</a>
+<a class="backlink" href="design.html" data-i18n="visualid.backlink">← Design</a>
+<div class="lang-switch" id="lang-switch">
+  <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+    <span id="lang-current">EN</span>
+    <span class="lang-caret">&#9662;</span>
+  </button>
+  <div class="lang-menu" id="lang-menu">
+    <button data-lang="en">English</button>
+    <button data-lang="pt">Português</button>
+    <button data-lang="es">Español</button>
+    <button data-lang="de">Deutsch</button>
+  </div>
+</div>
 <div class="grid-bg" aria-hidden="true"></div>
 <main>
   <header class="hero">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow">Logo &amp; Brand Identity · 2018 — 2026</p>
+      <p class="eyebrow" data-i18n="visualid.eyebrow">Logo &amp; Brand Identity · 2018 — 2026</p>
       <h1>Visual ID<span class="dot">.</span></h1>
-      <p class="lede">Eight years of marks, wordmarks, and brand systems — built for startups, artists, collectives, and Web3 projects. This is a wide sweep across many clients, not a deep dive into a few.</p>
+      <p class="lede" data-i18n="visualid.lede">Eight years of marks, wordmarks, and brand systems — built for startups, artists, collectives, and Web3 projects. This is a wide sweep across many clients, not a deep dive into a few.</p>
       <div class="metarow">
-        <div><div class="k">Role</div><div class="v">Designer · Art Director</div></div>
-        <div><div class="k">Years</div><div class="v">2018 — 2026</div></div>
-        <div><div class="k">Focus</div><div class="v">Logo · Identity · Applications</div></div>
-        <div><div class="k">Sectors</div><div class="v">Web3 · Art · Startups</div></div>
+        <div><div class="k" data-i18n="visualid.k_role">Role</div><div class="v" data-i18n="visualid.v_role">Designer · Art Director</div></div>
+        <div><div class="k" data-i18n="visualid.k_years">Years</div><div class="v" data-i18n="visualid.v_years">2018 — 2026</div></div>
+        <div><div class="k" data-i18n="visualid.k_focus">Focus</div><div class="v" data-i18n="visualid.v_focus">Logo · Identity · Applications</div></div>
+        <div><div class="k" data-i18n="visualid.k_sectors">Sectors</div><div class="v" data-i18n="visualid.v_sectors">Web3 · Art · Startups</div></div>
       </div>
     </div>
   </header>
@@ -210,18 +243,18 @@
   <!-- OVERVIEW + STATS -->
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
-      <h2>Many marks,<br>one craft<span class="dot">.</span></h2>
-      <p class="body"><strong>Building a logo is only the start — a mark has to live everywhere.</strong> Across dozens of projects I've designed identities and carried them into real applications: social, print, merch, packaging, product, and events. This case study is about <strong>range</strong> — the sheer number of brands, styles, and contexts I've worked through.</p>
+      <div class="kicker"><span class="num" data-i18n="visualid.ov_num">OVERVIEW</span><span class="line"></span></div>
+      <h2 data-i18n-html="visualid.ov_h2">Many marks,<br>one craft<span class="dot">.</span></h2>
+      <p class="body" data-i18n-html="visualid.ov_body"><strong>Building a logo is only the start — a mark has to live everywhere.</strong> Across dozens of projects I've designed identities and carried them into real applications: social, print, merch, packaging, product, and events. This case study is about <strong>range</strong> — the sheer number of brands, styles, and contexts I've worked through.</p>
       <div class="stats">
-        <div class="stat"><div class="n">40+</div><div class="l">Logos designed</div></div>
-        <div class="stat"><div class="n">30+</div><div class="l">Clients &amp; projects</div></div>
-        <div class="stat"><div class="n">8</div><div class="l">Sectors</div></div>
-        <div class="stat"><div class="n">8</div><div class="l">Years</div></div>
+        <div class="stat"><div class="n">40+</div><div class="l" data-i18n="visualid.st1_l">Logos designed</div></div>
+        <div class="stat"><div class="n">30+</div><div class="l" data-i18n="visualid.st2_l">Clients &amp; projects</div></div>
+        <div class="stat"><div class="n">8</div><div class="l" data-i18n="visualid.st3_l">Sectors</div></div>
+        <div class="stat"><div class="n">8</div><div class="l" data-i18n="visualid.st4_l">Years</div></div>
       </div>
 
-      <h2 style="margin-top:clamp(56px,9vw,110px)">The logo wall<span class="dot">.</span></h2>
-      <p class="body">A selection of marks across many industries and visual registers — from playful and hand-drawn to strict and geometric. Each square is one identity.</p>
+      <h2 style="margin-top:clamp(56px,9vw,110px)" data-i18n-html="visualid.wall_h2">The logo wall<span class="dot">.</span></h2>
+      <p class="body" data-i18n="visualid.wall_body">A selection of marks across many industries and visual registers — from playful and hand-drawn to strict and geometric. Each square is one identity.</p>
       <div class="logowall">
         <div class="logo-cell"><img src="assets/img/design/visual-id/grao.webp" alt="Grão logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/mnq.webp" alt="MNQ logo" loading="lazy"></div>
@@ -241,8 +274,8 @@
         <div class="logo-cell"><img src="assets/img/design/visual-id/maravilhosamente.webp" alt="Maravilhosamente logo" loading="lazy"></div>
       </div>
 
-      <h2 style="margin-top:clamp(56px,9vw,110px)">Marks in the wild<span class="dot">.</span></h2>
-      <p class="body">Where the identities actually show up — social and digital, print and merch, packaging, and beyond. Each square is a real application from a different project.</p>
+      <h2 style="margin-top:clamp(56px,9vw,110px)" data-i18n-html="visualid.wild_h2">Marks in the wild<span class="dot">.</span></h2>
+      <p class="body" data-i18n="visualid.wild_body">Where the identities actually show up — social and digital, print and merch, packaging, and beyond. Each square is a real application from a different project.</p>
 
       <div class="rgal">
         <div class="sq"><img src="assets/img/design/visual-id/applications/peera.webp" alt="Peera social identity" loading="lazy"></div>
@@ -263,7 +296,7 @@
   <!-- CLIENT STRIP -->
   <div class="ecolane">
     <div class="wrap">
-      <p class="ecolane__label">A few of the brands &amp; projects</p>
+      <p class="ecolane__label" data-i18n="visualid.eco_label">A few of the brands &amp; projects</p>
       <div class="ecolane__row">
         <span class="cph">Client 01</span>
         <span class="cph">Client 02</span>
@@ -280,19 +313,53 @@
   <!-- CTA -->
   <section class="endcta">
     <div class="wrap">
-      <div class="kicker"><span class="num">NEXT</span><span class="line"></span></div>
-      <h2>Need a mark<br>that travels<span class="dot">?</span></h2>
-      <p class="body" style="margin-inline:auto">From a single logo to a full identity system with every application ready to ship.</p>
-      <a class="btn" href="index.html#contact">Start a project ↗</a>
+      <div class="kicker"><span class="num" data-i18n="visualid.cta_num">NEXT</span><span class="line"></span></div>
+      <h2 data-i18n-html="visualid.cta_h2">Need a mark<br>that travels<span class="dot">?</span></h2>
+      <p class="body" style="margin-inline:auto" data-i18n="visualid.cta_body">From a single logo to a full identity system with every application ready to ship.</p>
+      <a class="btn" href="index.html#contact" data-i18n="visualid.cta_btn">Start a project ↗</a>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <span>© 2026 Numa — Creative Tech: Art, Design, Education</span>
-      <span><a href="design.html">Back to Design</a></span>
+      <span data-i18n="footer.copy">© 2026 Numa — Creative Tech: Art, Design, Education</span>
+      <span><a href="design.html" data-i18n="visualid.foot_back">Back to Design</a></span>
     </div>
   </footer>
 </main>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'numa-lang';
+  const LABEL = { en: 'EN', pt: 'PT', es: 'ES', de: 'DE' };
+  const HTMLLANG = { en: 'en', pt: 'pt-BR', es: 'es', de: 'de' };
+  const ORDER = ['en', 'pt', 'es', 'de'];
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  if (!LABEL[currentLang]) currentLang = 'en';
+  let translations = {};
+  function t(key) { return key.split('.').reduce(function(o,k){return o&&o[k];}, translations) || key; }
+  function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){ el.innerHTML = t(el.dataset.i18nHtml); });
+    var cur = document.getElementById('lang-current'); if (cur) cur.textContent = LABEL[currentLang];
+    document.querySelectorAll('.lang-menu button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === currentLang); });
+    document.documentElement.lang = HTMLLANG[currentLang] || 'en';
+  }
+  function loadAndApply(lang) {
+    fetch('/assets/lang/' + lang + '.json').then(function(r){return r.json();}).then(function(data){ translations = data; applyTranslations(); }).catch(function(){});
+  }
+  var langBtn = document.getElementById('lang-btn');
+  var langMenu = document.getElementById('lang-menu');
+  function closeLangMenu(){ if (langMenu) langMenu.classList.remove('open'); if (langBtn) langBtn.setAttribute('aria-expanded','false'); }
+  window.setLang = function(lang){ if(!LABEL[lang])return; currentLang=lang; localStorage.setItem(STORAGE_KEY,lang); loadAndApply(lang); closeLangMenu(); };
+  window.toggleLang = function(){ window.setLang(ORDER[(ORDER.indexOf(currentLang)+1)%ORDER.length]); };
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', function(e){ e.stopPropagation(); var open=langMenu.classList.toggle('open'); langBtn.setAttribute('aria-expanded', open?'true':'false'); });
+    langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ window.setLang(b.dataset.lang); }); });
+    document.addEventListener('click', function(e){ if(!e.target.closest('#lang-switch')) closeLangMenu(); });
+  }
+  loadAndApply(currentLang);
+})();
+</script>
 </body>
 </html>

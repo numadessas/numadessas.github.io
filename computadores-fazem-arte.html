@@ -249,11 +249,44 @@
     font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em}
   footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pink)}
 
+  /* language switch */
+  .lang-switch{position:fixed;top:22px;right:22px;z-index:20}
+  .lang-btn{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);cursor:pointer;
+    padding:9px 14px;border:1px solid rgba(246,242,248,.2);border-radius:999px;
+    background:rgba(10,7,16,.55);backdrop-filter:blur(8px)}
+  .lang-btn:hover{border-color:var(--yellow);color:var(--yellow)}
+  .lang-btn svg{width:14px;height:14px;display:block}
+  .lang-btn .lang-caret{font-size:.6rem;transition:transform .2s}
+  .lang-btn[aria-expanded="true"] .lang-caret{transform:rotate(180deg)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;
+    min-width:150px;background:var(--dark);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
+  .lang-menu.open{display:flex}
+  .lang-menu button{background:none;border:0;text-align:left;padding:11px 16px;cursor:pointer;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--light-grey)}
+  .lang-menu button:hover{background:rgba(255,255,255,.06);color:var(--white)}
+  .lang-menu button.active{color:var(--yellow)}
+  @media(max-width:560px){.lang-btn span:not(.lang-caret){display:none}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<a class="backlink" href="design.html">← Design</a>
+<a class="backlink" href="design.html" data-i18n="cfa.backlink">← Design</a>
+<div class="lang-switch" id="lang-switch">
+  <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+    <span id="lang-current">EN</span>
+    <span class="lang-caret">&#9662;</span>
+  </button>
+  <div class="lang-menu" id="lang-menu">
+    <button data-lang="en">English</button>
+    <button data-lang="pt">Português</button>
+    <button data-lang="es">Español</button>
+    <button data-lang="de">Deutsch</button>
+  </div>
+</div>
 <div class="grid-bg" aria-hidden="true"></div>
 <main>
   <header class="hero">
@@ -262,15 +295,15 @@
     <div class="hero__blob b2" aria-hidden="true"></div>
     <div class="hero__blob b3" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow">Visual Identity &amp; Educational Design</p>
+      <p class="eyebrow" data-i18n="cfa.eyebrow">Visual Identity &amp; Educational Design</p>
       <h1>Computadores<br>Fazem Arte<span class="dot">.</span></h1>
-      <p class="lede">"Computers Make Art" — the visual identity and teaching material I built for my master's research: a free, art-rooted introduction to blockchain, NFTs, and Web3, made for the people this field usually leaves out.</p>
+      <p class="lede" data-i18n="cfa.lede">"Computers Make Art" — the visual identity and teaching material I built for my master's research: a free, art-rooted introduction to blockchain, NFTs, and Web3, made for the people this field usually leaves out.</p>
       <div class="metarow">
-        <div><div class="k">Role</div><div class="v">Designer · Illustrator · Researcher</div></div>
-        <div><div class="k">Years</div><div class="v">2023 — 2025</div></div>
-        <div><div class="k">Deliverables</div><div class="v">Identity · Manual · Slides · Notebook</div></div>
-        <div><div class="k">University</div><div class="v">UFPE · PPGDesign</div></div>
-        <div><div class="k">Scholarship</div><div class="v">MAI/DAI Program · CNPq</div></div>
+        <div><div class="k" data-i18n="cfa.k_role">Role</div><div class="v" data-i18n="cfa.v_role">Designer · Illustrator · Researcher</div></div>
+        <div><div class="k" data-i18n="cfa.k_years">Years</div><div class="v" data-i18n="cfa.v_years">2023 — 2025</div></div>
+        <div><div class="k" data-i18n="cfa.k_deliv">Deliverables</div><div class="v" data-i18n="cfa.v_deliv">Identity · Manual · Slides · Notebook</div></div>
+        <div><div class="k" data-i18n="cfa.k_uni">University</div><div class="v" data-i18n="cfa.v_uni">UFPE · PPGDesign</div></div>
+        <div><div class="k" data-i18n="cfa.k_schol">Scholarship</div><div class="v" data-i18n="cfa.v_schol">MAI/DAI Program · CNPq</div></div>
       </div>
     </div>
   </header>
@@ -278,9 +311,9 @@
   <!-- IDENTITY -->
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">01 · IDENTITY</span><span class="line"></span></div>
-      <h2>The visual system<span class="dot">.</span></h2>
-      <p class="body">A hand-drawn wordmark and a palette of <strong>fluorescent pink, lime yellow, and deep purple</strong> — the same chromatic register that runs through my own artwork. Organic blobs, expressive lettering, and generous breathing room build a friendly, unmistakable brand that stands apart from the usual crypto aesthetic.</p>
+      <div class="kicker"><span class="num" data-i18n="cfa.s1_num">01 · IDENTITY</span><span class="line"></span></div>
+      <h2 data-i18n-html="cfa.s1_h2">The visual system<span class="dot">.</span></h2>
+      <p class="body" data-i18n="cfa.s1_body">The palette of fluorescent pink, purple, lilac and lime yellow isn't just decorative, it's mine. It's the same chromatic language present in my own artwork, so bringing these colors into the project is a natural extension of my identity. Beyond that personal signature, it gave the project a distinct visual identity and let me approach technology with artistic sensibility and a social lens, moving away from the cold, usual aesthetic of the crypto world.</p>
       <div class="brandgrid">
         <div class="brandcard brandcard--cover">
           <img src="assets/img/design/cfa/cover.webp" alt="Computadores Fazem Arte brand cover">
@@ -290,9 +323,9 @@
         </div>
       </div>
       <div class="palette">
-        <div class="sw sw--p"><div class="name">Purple</div><div class="hex">#4D1C5B</div></div>
-        <div class="sw sw--k"><div class="name">Pink</div><div class="hex">#FF458F</div></div>
-        <div class="sw sw--y"><div class="name">Yellow</div><div class="hex">#DDFF00</div></div>
+        <div class="sw sw--p"><div class="name" data-i18n="cfa.pal_purple">Purple</div><div class="hex">#4D1C5B</div></div>
+        <div class="sw sw--k"><div class="name" data-i18n="cfa.pal_pink">Pink</div><div class="hex">#FF458F</div></div>
+        <div class="sw sw--y"><div class="name" data-i18n="cfa.pal_yellow">Yellow</div><div class="hex">#DDFF00</div></div>
       </div>
     </div>
   </section>
@@ -300,23 +333,23 @@
   <!-- GRAPHIC MATERIAL -->
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">02 · GRAPHIC MATERIAL</span><span class="line"></span></div>
-      <h2>Teaching, designed<span class="dot">.</span></h2>
-      <p class="body">The didactic material spans three formats — a <strong>manual</strong>, a set of <strong>lecture slides</strong>, and a handmade <strong>seed-phrase notebook</strong> — each carrying the same warm language and avoiding dense, monotonous visual codes.</p>
+      <div class="kicker"><span class="num" data-i18n="cfa.s2_num">02 · GRAPHIC MATERIAL</span><span class="line"></span></div>
+      <h2 data-i18n-html="cfa.s2_h2">Teaching, designed<span class="dot">.</span></h2>
+      <p class="body" data-i18n="cfa.s2_body">I wanted something organic and full of movement, expressive and impossible to ignore. I brought in fluid shapes, hand-drawn lettering, generous spacing and playful infographics that turn complex ideas into something people can absorb easily. The design is part of the pedagogy, not just packaging for it.</p>
 
       <!-- Manual illustrations -->
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">2.1</span>
-          <h3>The manual &amp; its illustrations</h3>
-          <span class="rdisc__tools">Illustration · Infographics · Layout</span>
+          <h3 data-i18n="cfa.r21_h3">The manual &amp; its illustrations</h3>
+          <span class="rdisc__tools" data-i18n="cfa.r21_tools">Illustration · Infographics · Layout</span>
         </div>
-        <p>Custom diagrams turn abstract concepts — how a blockchain transaction works, metadata, seed phrases — into concrete, relatable pictures. Simple infographics do the pedagogical heavy lifting.</p>
+        <p data-i18n="cfa.r21_p">Custom diagrams turn abstract concepts — how a blockchain transaction works, metadata, seed phrases — into concrete, relatable pictures. Simple infographics do the pedagogical heavy lifting.</p>
         <img class="illo-full" src="assets/img/design/cfa/folhas.png" alt="Manual illustration" loading="lazy">
         <div class="gal gal--3">
-          <div class="tile tile--wide tile--contain tile--white"><span class="tag">Transaction</span><img src="assets/img/design/cfa/ilustra-blockchain.webp" alt="How a blockchain transaction works" loading="lazy"></div>
-          <div class="tile tile--wide tile--contain tile--white"><span class="tag">Metadata</span><img src="assets/img/design/cfa/ilustra-metadados.webp" alt="NFT metadata" loading="lazy"></div>
-          <div class="tile tile--wide tile--contain tile--white"><span class="tag">Seed phrase</span><img src="assets/img/design/cfa/ilustra-seed.webp" alt="Seed phrase illustration" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain tile--white"><span class="tag" data-i18n="cfa.tag_transaction">Transaction</span><img src="assets/img/design/cfa/ilustra-blockchain.webp" alt="How a blockchain transaction works" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain tile--white"><span class="tag" data-i18n="cfa.tag_metadata">Metadata</span><img src="assets/img/design/cfa/ilustra-metadados.webp" alt="NFT metadata" loading="lazy"></div>
+          <div class="tile tile--wide tile--contain tile--white"><span class="tag" data-i18n="cfa.tag_seed">Seed phrase</span><img src="assets/img/design/cfa/ilustra-seed.webp" alt="Seed phrase illustration" loading="lazy"></div>
         </div>
       </div>
 
@@ -324,10 +357,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">2.2</span>
-          <h3>The lecture slides</h3>
-          <span class="rdisc__tools">Illustration · Slides · Layout</span>
+          <h3 data-i18n="cfa.r22_h3">The lecture slides</h3>
+          <span class="rdisc__tools" data-i18n="cfa.r22_tools">Illustration · Slides · Layout</span>
         </div>
-        <p>Slides drawn from the many classes derived from the project — the same warm visual language carried into every session.</p>
+        <p data-i18n="cfa.r22_p">Slides drawn from the many classes derived from the project — the same warm visual language carried into every session.</p>
         <div class="slidegrid">
           <div class="tile"><img src="assets/img/design/cfa/slides/aula.gif" alt="Lecture slide" loading="lazy"></div>
           <div class="tile"><img src="assets/img/design/cfa/slides/btc.png" alt="Lecture slide" loading="lazy"></div>
@@ -340,14 +373,14 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">2.3</span>
-          <h3>The seed-phrase notebook</h3>
-          <span class="rdisc__tools">Editorial · Handmade · Product</span>
+          <h3 data-i18n="cfa.r23_h3">The seed-phrase notebook</h3>
+          <span class="rdisc__tools" data-i18n="cfa.r23_tools">Editorial · Handmade · Product</span>
         </div>
-        <p>A compact "Caderno-Cofre" hand-bound by the Lich Bookbinder atelier, made to store crypto passwords and seed phrases offline. The cover carries the project's palette; the interior splits neatly between login fields and 24 numbered seed lines. Distributed free to students.</p>
+        <p data-i18n="cfa.r23_p">I created a handmade notebook to gather seed phrases in one place. People usually write these phrases down anywhere, often on loose scraps of paper. Hardware wallets come with a small sheet, but almost no one has an organized physical spot dedicated to all their wallets. I first made it for the students I worked with during my master's. Today I also make them as gifts for people I meet at in-person events. Turning something abstract and intimidating into an object you can hold in your hands and find beautiful.</p>
         <div class="gal gal--3">
-          <div class="tile tile--portrait"><span class="tag">Cover</span><img src="assets/img/design/cfa/caderno-frente.webp" alt="Seed-phrase notebook cover" loading="lazy"></div>
-          <div class="tile tile--portrait"><span class="tag">Back cover</span><img src="assets/img/design/cfa/caderno-contracapa.webp" alt="Seed-phrase notebook back cover with logo" loading="lazy"></div>
-          <div class="tile tile--portrait"><span class="tag">Interior</span><img src="assets/img/design/cfa/caderno-miolo.webp" alt="Seed-phrase notebook interior pages" loading="lazy"></div>
+          <div class="tile tile--portrait"><span class="tag" data-i18n="cfa.tag_cover">Cover</span><img src="assets/img/design/cfa/caderno-frente.webp" alt="Seed-phrase notebook cover" loading="lazy"></div>
+          <div class="tile tile--portrait"><span class="tag" data-i18n="cfa.tag_back">Back cover</span><img src="assets/img/design/cfa/caderno-contracapa.webp" alt="Seed-phrase notebook back cover with logo" loading="lazy"></div>
+          <div class="tile tile--portrait"><span class="tag" data-i18n="cfa.tag_interior">Interior</span><img src="assets/img/design/cfa/caderno-miolo.webp" alt="Seed-phrase notebook interior pages" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -356,9 +389,9 @@
   <!-- COMMUNICATION -->
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">03 · COMMUNICATION</span><span class="line"></span></div>
-      <h2>Out in the feed<span class="dot">.</span></h2>
-      <p class="body">Social posts and event art that carried the identity into recruitment and outreach — for the free course, its open lectures, and academic appearances like the WebMedia 2024 minicourse.</p>
+      <div class="kicker"><span class="num" data-i18n="cfa.s3_num">03 · COMMUNICATION</span><span class="line"></span></div>
+      <h2 data-i18n-html="cfa.s3_h2">Out in the feed<span class="dot">.</span></h2>
+      <p class="body" data-i18n="cfa.s3_body">Social posts and event art that carried the identity into recruitment and outreach — for the free course, its open lectures, and academic appearances like the WebMedia 2024 minicourse.</p>
       <div class="feedgrid">
         <div class="tile" style="flex-grow:100;aspect-ratio:1/1"><img src="assets/img/design/cfa/webmedia2024.png" alt="WebMedia 2024 minicourse art" loading="lazy"></div>
         <div class="tile" style="flex-grow:80;aspect-ratio:4/5"><img src="assets/img/design/cfa/anuncio_disciplina3.png" alt="Course announcement" loading="lazy"></div>
@@ -370,50 +403,50 @@
   <!-- APPLICATION -->
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">04 · IN PRACTICE</span><span class="line"></span></div>
-      <h2>From page<br>to classroom<span class="dot">.</span></h2>
-      <p class="body">The material was tested and refined across two main runs — an undergraduate research group, then the free <strong>Computadores Fazem Arte</strong> course centered on women, LGBTQIA+, Indigenous, Black, and peripheral communities — plus talks and workshops in Brazil, Thailand, and beyond.</p>
+      <div class="kicker"><span class="num" data-i18n="cfa.s4_num">04 · IN PRACTICE</span><span class="line"></span></div>
+      <h2 data-i18n-html="cfa.s4_h2">From page<br>to classroom<span class="dot">.</span></h2>
+      <p class="body" data-i18n="cfa.s4_body">I've always been involved with social movements and education. I was already running educational and community actions long before I entered the blockchain world. My research is the evolution of what I already did: using education as a tool for autonomy and care. Blockchain is the subject I'm immersed in right now, but my commitment to making knowledge accessible has always been the same.</p>
 
       <div class="split">
         <div class="tile"><img src="assets/img/design/cfa/encontros.webp" alt="In-person class of the course" loading="lazy"></div>
         <div class="split__text">
-          <h3>Made with the community</h3>
-          <p>Built alongside activist-educators Débora Aguiar and Manu Marques, the course paired blockchain fundamentals with lessons on decoloniality and financial education — and brought in trans, Black, and non-binary NFT artists to make the field feel close, not distant.</p>
-          <p>With academic guidance from <strong>João Marcelo Teixeira</strong> (master's advisor) and <strong>Leonardo Castillo</strong> (who invited Numa to teach <em>Design para Web3</em> at UFPE), and the scientific-initiation students who researched alongside the project — <strong>Milena Gomes</strong> (Pedagogy), <strong>Vitória Farias</strong> (Design), and <strong>Artur Couto</strong> (Computer Science, in memoriam).</p>
+          <h3 data-i18n="cfa.comm_h3">Made with the community</h3>
+          <p data-i18n-html="cfa.comm_p1">Built alongside activist-educators Débora Aguiar and Manu Marques, the course paired blockchain fundamentals with lessons on decoloniality and financial education — and brought in trans, Black, and non-binary NFT artists to make the field feel close, not distant.</p>
+          <p data-i18n-html="cfa.comm_p2">With academic guidance from <strong>João Marcelo Teixeira</strong> (master's advisor) and <strong>Leonardo Castillo</strong> (who invited Numa to teach <em>Design para Web3</em> at UFPE), and the scientific-initiation students who researched alongside the project — <strong>Milena Gomes</strong> (Pedagogy), <strong>Vitória Farias</strong> (Design), and <strong>Artur Couto</strong> (Computer Science, in memoriam).</p>
         </div>
       </div>
 
       <div class="tl">
         <div class="tl__item">
-          <div class="tl__date">Jun 2023 — Mar 2024</div>
-          <div class="tl__t">Pilot classes</div>
-          <div class="tl__d">Seven experimental sessions — from a graffiti mutirão with VR headsets to design-school lectures — testing pedagogy and shaping the material before it existed as a finished object.</div>
+          <div class="tl__date" data-i18n="cfa.tl1_date">Jun 2023 — Mar 2024</div>
+          <div class="tl__t" data-i18n="cfa.tl1_t">Pilot classes</div>
+          <div class="tl__d" data-i18n="cfa.tl1_d">Seven experimental sessions — from a graffiti mutirão with VR headsets to design-school lectures — testing pedagogy and shaping the material before it existed as a finished object.</div>
         </div>
         <div class="tl__item">
-          <div class="tl__date">Mar — Aug 2024</div>
-          <div class="tl__t">Scientific initiation</div>
-          <div class="tl__d">Three undergraduates from Computer Science, Design, and Pedagogy validated the material, 3D-scanned paper sculptures, and minted their own NFTs on 3.land — later co-authoring a paper at XR4EDU / IMX 2025.</div>
+          <div class="tl__date" data-i18n="cfa.tl2_date">Mar — Aug 2024</div>
+          <div class="tl__t" data-i18n="cfa.tl2_t">Scientific initiation</div>
+          <div class="tl__d" data-i18n="cfa.tl2_d">Three undergraduates from Computer Science, Design, and Pedagogy validated the material, 3D-scanned paper sculptures, and minted their own NFTs on 3.land — later co-authoring a paper at XR4EDU / IMX 2025.</div>
         </div>
         <div class="tl__item">
-          <div class="tl__date">Jul — Sep 2024</div>
-          <div class="tl__t">The free course</div>
-          <div class="tl__d">33 applications, eight in-person lessons, meals and printed material provided. A warmly received introduction to Web3 with critical debate at its center.</div>
+          <div class="tl__date" data-i18n="cfa.tl3_date">Jul — Sep 2024</div>
+          <div class="tl__t" data-i18n="cfa.tl3_t">The free course</div>
+          <div class="tl__d" data-i18n="cfa.tl3_d">33 applications, eight in-person lessons, meals and printed material provided. A warmly received introduction to Web3 with critical debate at its center.</div>
         </div>
         <div class="tl__item">
-          <div class="tl__date">2024 — 2025</div>
-          <div class="tl__t">Beyond the classroom</div>
-          <div class="tl__d">The material travelled: WebMedia 2024 minicourse, NFT Brasil at the São Paulo Biennial, IslandDAO in Koh Samui (Thailand), and an intensive at UFSJ — each adapting the same visual system.</div>
+          <div class="tl__date" data-i18n="cfa.tl4_date">2024 — 2025</div>
+          <div class="tl__t" data-i18n="cfa.tl4_t">Beyond the classroom</div>
+          <div class="tl__d" data-i18n="cfa.tl4_d">The material travelled: WebMedia 2024 minicourse, NFT Brasil at the São Paulo Biennial, IslandDAO in Koh Samui (Thailand), and an intensive at UFSJ — each adapting the same visual system.</div>
         </div>
       </div>
 
       <div class="quote">
-        <p>Design here is not decoration — it is mediation. A warmer, more organic language became the bridge between complex technology and the people it too often excludes.</p>
-        <div class="src">— From the research</div>
+        <p data-i18n="cfa.quote_p">Design here is not decoration — it is mediation. A warmer, more organic language became the bridge between complex technology and the people it too often excludes.</p>
+        <div class="src" data-i18n="cfa.quote_src">— From the research</div>
       </div>
 
       <div class="wikicta">
-        <p>Everything taught during the research — Blockchain, Web3, NFTs and digital art communities — lives in an open wiki I keep updating.</p>
-        <a class="btn" href="https://numadessas.com.br/wiki/" target="_blank" rel="noopener">Visit the Wiki ↗</a>
+        <p data-i18n="cfa.wiki_p">Everything taught during the research — Blockchain, Web3, NFTs and digital art communities — lives in an open wiki I keep updating.</p>
+        <a class="btn" href="https://numadessas.com.br/wiki/" target="_blank" rel="noopener" data-i18n="cfa.wiki_btn">Visit the Wiki ↗</a>
       </div>
     </div>
   </section>
@@ -421,19 +454,92 @@
   <!-- CTA -->
   <section class="endcta">
     <div class="wrap">
-      <div class="kicker"><span class="num">NEXT</span><span class="line"></span></div>
-      <h2>Design that<br>teaches<span class="dot">?</span></h2>
-      <p class="body" style="margin-inline:auto">Identity, illustration, and editorial systems built to make hard ideas feel human.</p>
-      <a class="btn" href="index.html#contact">Start a project ↗</a>
+      <div class="kicker"><span class="num" data-i18n="cfa.cta_num">NEXT</span><span class="line"></span></div>
+      <h2 data-i18n-html="cfa.cta_h2">Design that<br>teaches<span class="dot">?</span></h2>
+      <p class="body" style="margin-inline:auto" data-i18n="cfa.cta_body">Identity, illustration, and editorial systems built to make hard ideas feel human.</p>
+      <a class="btn" href="index.html#contact" data-i18n="cfa.cta_btn">Start a project ↗</a>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <span>© 2026 Numa — Creative Tech: Art, Design, Education</span>
-      <span><a href="design.html">Back to Design</a></span>
+      <span data-i18n="footer.copy">© 2026 Numa — Creative Tech: Art, Design, Education</span>
+      <span><a href="design.html" data-i18n="cfa.foot_back">Back to Design</a></span>
     </div>
   </footer>
 </main>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'numa-lang';
+  const LABEL = { en: 'EN', pt: 'PT', es: 'ES', de: 'DE' };
+  const HTMLLANG = { en: 'en', pt: 'pt-BR', es: 'es', de: 'de' };
+  const ORDER = ['en', 'pt', 'es', 'de'];
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  if (!LABEL[currentLang]) currentLang = 'en';
+  let translations = {};
+
+  function t(key) {
+    return key.split('.').reduce(function(obj, k) { return obj && obj[k]; }, translations) || key;
+  }
+
+  function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      el.innerHTML = t(el.dataset.i18nHtml);
+    });
+    var cur = document.getElementById('lang-current');
+    if (cur) cur.textContent = LABEL[currentLang];
+    document.querySelectorAll('.lang-menu button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === currentLang);
+    });
+    document.documentElement.lang = HTMLLANG[currentLang] || 'en';
+  }
+
+  function loadAndApply(lang) {
+    fetch('/assets/lang/' + lang + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { translations = data; applyTranslations(); })
+      .catch(function() {});
+  }
+
+  var langBtn = document.getElementById('lang-btn');
+  var langMenu = document.getElementById('lang-menu');
+
+  function closeLangMenu() {
+    if (langMenu) langMenu.classList.remove('open');
+    if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  window.setLang = function(lang) {
+    if (!LABEL[lang]) return;
+    currentLang = lang;
+    localStorage.setItem(STORAGE_KEY, lang);
+    loadAndApply(lang);
+    closeLangMenu();
+  };
+  window.toggleLang = function() {
+    window.setLang(ORDER[(ORDER.indexOf(currentLang) + 1) % ORDER.length]);
+  };
+
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = langMenu.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    langMenu.querySelectorAll('button').forEach(function(b) {
+      b.addEventListener('click', function() { window.setLang(b.dataset.lang); });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#lang-switch')) closeLangMenu();
+    });
+  }
+
+  loadAndApply(currentLang);
+})();
+</script>
 </body>
 </html>

@@ -256,24 +256,57 @@
     .metarow div{min-width:44%}
     .rgal,.rgal--pair{grid-template-columns:1fr}
   }
+  /* language switch */
+  .lang-switch{position:fixed;top:22px;right:22px;z-index:20}
+  .lang-btn{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);cursor:pointer;
+    padding:9px 14px;border:1px solid rgba(237,237,245,.2);border-radius:999px;
+    background:rgba(10,10,14,.55);backdrop-filter:blur(8px)}
+  .lang-btn:hover{border-color:var(--green);color:var(--green)}
+  .lang-btn svg{width:14px;height:14px;display:block}
+  .lang-btn .lang-caret{font-size:.6rem;transition:transform .2s}
+  .lang-btn[aria-expanded="true"] .lang-caret{transform:rotate(180deg)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;
+    min-width:150px;background:var(--dark);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
+  .lang-menu.open{display:flex}
+  .lang-menu button{background:none;border:0;text-align:left;padding:11px 16px;cursor:pointer;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--light-grey)}
+  .lang-menu button:hover{background:rgba(255,255,255,.06);color:var(--white)}
+  .lang-menu button.active{color:var(--green)}
+  @media(max-width:560px){.lang-btn span:not(.lang-caret){display:none}}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<a class="backlink" href="design.html">← Design</a>
+<a class="backlink" href="design.html" data-i18n="land3.backlink">← Design</a>
+<div class="lang-switch" id="lang-switch">
+  <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+    <span id="lang-current">EN</span>
+    <span class="lang-caret">&#9662;</span>
+  </button>
+  <div class="lang-menu" id="lang-menu">
+    <button data-lang="en">English</button>
+    <button data-lang="pt">Português</button>
+    <button data-lang="es">Español</button>
+    <button data-lang="de">Deutsch</button>
+  </div>
+</div>
 <div class="grid-bg" aria-hidden="true"></div>
 <main>
   <header class="hero">
     <div class="hero__img"><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse alien mascot in a neon cyberspace"></div>
     <div class="wrap">
-      <p class="eyebrow">Web3 Product Studio · Solana</p>
+      <p class="eyebrow" data-i18n="land3.eyebrow">Web3 Product Studio · Solana</p>
       <h1>3<span class="dot">.</span>land</h1>
-      <p class="lede">A studio that grew from a 3D metaverse into a multilingual cNFT marketplace, open-source tooling, and an on-chain game. I was its first hire — and helped give every launch one visual language.</p>
+      <p class="lede" data-i18n="land3.lede">A studio that grew from a 3D metaverse into a multilingual cNFT marketplace, open-source tooling, and an on-chain game. I was its first hire — and helped give every launch one visual language.</p>
       <div class="metarow">
-        <div><div class="k">Role</div><div class="v">Multimedia Designer</div></div>
-        <div><div class="k">Years</div><div class="v">2023 — 2026</div></div>
-        <div><div class="k">Sector</div><div class="v">Web3 &amp; Art</div></div>
-        <div><div class="k">Scope</div><div class="v">Identity · Site · Product</div></div>
+        <div><div class="k" data-i18n="land3.k_role">Role</div><div class="v" data-i18n="land3.v_role">Multimedia Designer</div></div>
+        <div><div class="k" data-i18n="land3.k_years">Years</div><div class="v" data-i18n="land3.v_years">2023 — 2026</div></div>
+        <div><div class="k" data-i18n="land3.k_sector">Sector</div><div class="v" data-i18n="land3.v_sector">Web3 &amp; Art</div></div>
+        <div><div class="k" data-i18n="land3.k_scope">Scope</div><div class="v" data-i18n="land3.v_scope">Identity · Site · Product</div></div>
       </div>
     </div>
   </header>
@@ -281,11 +314,11 @@
   <section>
     <div class="wrap overview">
       <div>
-        <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
-        <h2>One world,<br>many products<span class="dot">.</span></h2>
-        <p class="body">3.land was a Web3 product studio that prototyped, launched, and refined solutions on the Solana network. As the first employee, I enriched and solidified the studio's visual identity through multimedia graphics and multidisciplinary work.</p>
+        <div class="kicker"><span class="num" data-i18n="land3.ov_num">OVERVIEW</span><span class="line"></span></div>
+        <h2 data-i18n-html="land3.ov_h2">One world,<br>many products<span class="dot">.</span></h2>
+        <p class="body" data-i18n="land3.ov_p1">3.land was a Web3 product studio that prototyped, launched, and refined solutions on the Solana network. As the first employee, I enriched and solidified the studio's visual identity through multimedia graphics and multidisciplinary work.</p>
         <p class="body"><span class="arc">metaverse → marketplace → tools → game</span></p>
-        <p class="body">It was a journey that spanned various approaches alongside an international, creative, and proactive team.</p>
+        <p class="body" data-i18n="land3.ov_p3">It was a journey that spanned various approaches alongside an international, creative, and proactive team.</p>
       </div>
       <div class="alien">
         <model-viewer
@@ -314,17 +347,17 @@
 
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">MY ROLE</span><span class="line"></span></div>
-      <h2>What I did<span class="dot">.</span></h2>
-      <p class="body">As the studio's first employee, I wore many hats. Over four years my role spanned direction, production, and the systems that kept a small team shipping fast.</p>
+      <div class="kicker"><span class="num" data-i18n="land3.role_num">MY ROLE</span><span class="line"></span></div>
+      <h2 data-i18n-html="land3.role_h2">What I did<span class="dot">.</span></h2>
+      <p class="body" data-i18n="land3.role_body">As the studio's first employee, I wore many hats. Over four years my role spanned direction, production, and the systems that kept a small team shipping fast.</p>
 
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">01</span>
-          <h3>Art Direction</h3>
+          <h3 data-i18n="land3.r1_h3">Art Direction</h3>
           <span class="rdisc__tools">Photoshop · Illustrator</span>
         </div>
-        <p>Set the visual direction for launches and campaigns — key visuals, logos, banners, and card art — keeping every product on one language.</p>
+        <p data-i18n="land3.r1_p">Set the visual direction for launches and campaigns — key visuals, logos, banners, and card art — keeping every product on one language.</p>
         <div class="rgal">
           <figure class="figure"><video src="assets/img/design/art-direction/1-web30001-0070.mp4" autoplay muted loop playsinline></video></figure>
           <figure class="figure"><img src="assets/img/design/art-direction/2-multilingual.webp" alt="Multilingual campaign art" loading="lazy"></figure>
@@ -336,10 +369,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">02</span>
-          <h3>Landing Page</h3>
+          <h3 data-i18n="land3.r2_h3">Landing Page</h3>
           <span class="rdisc__tools">Web · Design</span>
         </div>
-        <p>Designed and built the studio's landing page — an interactive one-pager tying the whole identity together. <a class="rdisc__link" href="https://numadessas.com.br/3land/" target="_blank" rel="noopener">View the live page →</a></p>
+        <p><span data-i18n="land3.r2_p">Designed and built the studio's landing page — an interactive one-pager tying the whole identity together. </span><a class="rdisc__link" href="https://numadessas.com.br/3land/" target="_blank" rel="noopener" data-i18n="land3.r2_link">View the live page →</a></p>
         <div class="rgal rgal--solo">
           <figure class="figure figure--video">
             <video src="assets/img/design/3land-lp.mp4" autoplay muted loop playsinline></video>
@@ -350,10 +383,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">03</span>
-          <h3>3D</h3>
+          <h3 data-i18n="land3.r3_h3">3D</h3>
           <span class="rdisc__tools">Blender · glTF</span>
         </div>
-        <p>Working alongside two other artists, I animated and rendered the studio's 3D graphics — from the alien mascot to 3D logos and scene art. They led the modeling; I focused on final production, jumping into modeling myself when needed.</p>
+        <p data-i18n="land3.r3_p">Working alongside two other artists, I animated and rendered the studio's 3D graphics — from the alien mascot to 3D logos and scene art. They led the modeling; I focused on final production, jumping into modeling myself when needed.</p>
         <div class="rgal">
           <figure class="figure"><img src="assets/img/design/3d/1-cNFTs.webp" alt="cNFTs 3D render" loading="lazy"></figure>
           <figure class="figure"><img src="assets/img/design/3d/2-6.9k-Post.webp" alt="6.9k milestone 3D render" loading="lazy"></figure>
@@ -365,10 +398,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">04</span>
-          <h3>Motion &amp; Audio</h3>
+          <h3 data-i18n="land3.r4_h3">Motion &amp; Audio</h3>
           <span class="rdisc__tools">Premiere · After Effects</span>
         </div>
-        <p>Edited promo videos, event recaps, and interviews — cutting footage, animating, and building sound design from a custom SFX library.</p>
+        <p data-i18n="land3.r4_p">Edited promo videos, event recaps, and interviews — cutting footage, animating, and building sound design from a custom SFX library.</p>
         <div class="rgal rgal--solo">
           <figure class="figure figure--video">
             <video src="assets/img/design/motion/packs_trailer_LOW.mp4" autoplay muted loop playsinline></video>
@@ -383,10 +416,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">05</span>
-          <h3>Social Strategy</h3>
+          <h3 data-i18n="land3.r5_h3">Social Strategy</h3>
           <span class="rdisc__tools">Content · Strategy</span>
         </div>
-        <p>Collaborated on the social media strategy — content planning, campaign rollouts, and milestone moments.</p>
+        <p data-i18n="land3.r5_p">Collaborated on the social media strategy — content planning, campaign rollouts, and milestone moments.</p>
         <div class="rgal">
           <figure class="figure"><img src="assets/img/design/social/1-GM.webp" alt="GM community post" loading="lazy"></figure>
           <figure class="figure"><img src="assets/img/design/social/2-Meme.webp" alt="Meme campaign post" loading="lazy"></figure>
@@ -398,10 +431,10 @@
       <div class="rdisc">
         <div class="rdisc__head">
           <span class="rdisc__n">06</span>
-          <h3>Team &amp; Process</h3>
+          <h3 data-i18n="land3.r6_h3">Team &amp; Process</h3>
           <span class="rdisc__tools">Ops · Systems</span>
         </div>
-        <p>Part of a small, international team — two co-founders (project management and engineering), another developer, two 3D artists, and a product designer. Beyond the visuals, I set up the company's first file-organization system and introduced Trello to structure communication — a workflow the developers later adopted as well.</p>
+        <p data-i18n="land3.r6_p">Part of a small, international team — two co-founders (project management and engineering), another developer, two 3D artists, and a product designer. Beyond the visuals, I set up the company's first file-organization system and introduced Trello to structure communication — a workflow the developers later adopted as well.</p>
         <div class="rgal rgal--pair">
           <figure class="figure"><img src="assets/img/design/team_numa.webp" alt="The 3.land team" loading="lazy"></figure>
           <figure class="figure"><img src="assets/img/design/team_numa2.webp" alt="The 3.land team" loading="lazy"></figure>
@@ -412,20 +445,20 @@
 
   <section>
     <div class="wrap">
-      <div class="kicker"><span class="num">THE STUDIO</span><span class="line"></span></div>
-      <h2>Metaverse, marketplace &amp; wins<span class="dot">.</span></h2>
-      <p class="body">Five hackathon wins in two years, an immersive 3D metaverse, and a multilingual cNFT marketplace — the products and milestones I helped ship, and the graphics that carried each one.</p>
+      <div class="kicker"><span class="num" data-i18n="land3.studio_num">THE STUDIO</span><span class="line"></span></div>
+      <h2 data-i18n-html="land3.studio_h2">Metaverse, marketplace &amp; wins<span class="dot">.</span></h2>
+      <p class="body" data-i18n="land3.studio_body">Five hackathon wins in two years, an immersive 3D metaverse, and a multilingual cNFT marketplace — the products and milestones I helped ship, and the graphics that carried each one.</p>
 
       <div class="hx">
-        <div class="card"><div class="rank">1st</div><div class="name">SendAI 2025</div><div class="meta">Agent Token Tools</div></div>
-        <div class="card"><div class="rank">1st</div><div class="name">Monolith 2025</div><div class="meta">Solana Mobile</div></div>
-        <div class="card"><div class="rank">1st</div><div class="name">cHack Metaplex 2024</div><div class="meta">Compressed NFTs</div></div>
-        <div class="card"><div class="rank small">4th</div><div class="name">Bonkathon 2024</div><div class="meta">BONK ecosystem</div></div>
-        <div class="card"><div class="rank small">Top 5</div><div class="name">Hyperdrive 2023</div><div class="meta">Solana hackathon</div></div>
+        <div class="card"><div class="rank" data-i18n="land3.hx1_rank">1st</div><div class="name">SendAI 2025</div><div class="meta" data-i18n="land3.hx1_meta">Agent Token Tools</div></div>
+        <div class="card"><div class="rank" data-i18n="land3.hx2_rank">1st</div><div class="name">Monolith 2025</div><div class="meta" data-i18n="land3.hx2_meta">Solana Mobile</div></div>
+        <div class="card"><div class="rank" data-i18n="land3.hx3_rank">1st</div><div class="name">cHack Metaplex 2024</div><div class="meta" data-i18n="land3.hx3_meta">Compressed NFTs</div></div>
+        <div class="card"><div class="rank small" data-i18n="land3.hx4_rank">4th</div><div class="name">Bonkathon 2024</div><div class="meta" data-i18n="land3.hx4_meta">BONK ecosystem</div></div>
+        <div class="card"><div class="rank small" data-i18n="land3.hx5_rank">Top 5</div><div class="name">Hyperdrive 2023</div><div class="meta" data-i18n="land3.hx5_meta">Solana hackathon</div></div>
       </div>
 
       <div class="product metaverse-split">
-        <figure class="figure"><span class="tag">2022 — 2024 · Metaverse</span><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse gallery"></figure>
+        <figure class="figure"><span class="tag" data-i18n="land3.tag_metaverse">2022 — 2024 · Metaverse</span><img src="assets/img/projects/3land/metaverse.jpg" alt="3.land metaverse gallery"></figure>
         <div class="ecosystem-orbit" id="orbit" aria-hidden="true">
           <svg class="orbit-lines" viewBox="0 0 600 600" id="orbitSvg"></svg>
           <div class="orbit-center"><div class="orbit-logo-inner"></div></div>
@@ -434,14 +467,14 @@
       </div>
 
       <div class="product">
-        <figure class="figure"><span class="tag">2024 · cNFT Marketplace</span><img src="assets/img/projects/3land/marketplace.jpg" alt="3.land marketplace key visual"></figure>
+        <figure class="figure"><span class="tag" data-i18n="land3.tag_marketplace">2024 · cNFT Marketplace</span><img src="assets/img/projects/3land/marketplace.jpg" alt="3.land marketplace key visual"></figure>
       </div>
     </div>
   </section>
 
   <div class="ecolane">
     <div class="wrap">
-      <p class="ecolane__label">Built alongside the Solana ecosystem</p>
+      <p class="ecolane__label" data-i18n="land3.eco_label">Built alongside the Solana ecosystem</p>
       <div class="ecolane__row">
         <img src="assets/img/projects/3land/partners/solana-foundation.svg" alt="Solana Foundation" loading="lazy">
         <img src="assets/img/projects/3land/partners/metaplex.svg" alt="Metaplex" loading="lazy">
@@ -455,8 +488,8 @@
 
   <footer>
     <div class="wrap">
-      <span>© 2026 3.land — Creative Hub for Cyberspace</span>
-      <span class="memoriam">In memory of 3.land 💚</span>
+      <span data-i18n="land3.foot_copy">© 2026 3.land — Creative Hub for Cyberspace</span>
+      <span class="memoriam" data-i18n="land3.foot_memoriam">In memory of 3.land 💚</span>
     </div>
   </footer>
 </main>
@@ -497,6 +530,39 @@
     }
     apply();
     mq.addEventListener?mq.addEventListener("change",apply):mq.addListener(apply);
+  })();
+
+  // i18n
+  (function() {
+    var STORAGE_KEY = 'numa-lang';
+    var LABEL = { en: 'EN', pt: 'PT', es: 'ES', de: 'DE' };
+    var HTMLLANG = { en: 'en', pt: 'pt-BR', es: 'es', de: 'de' };
+    var ORDER = ['en', 'pt', 'es', 'de'];
+    var currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+    if (!LABEL[currentLang]) currentLang = 'en';
+    var translations = {};
+    function t(key) { return key.split('.').reduce(function(o,k){return o&&o[k];}, translations) || key; }
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el){ el.innerHTML = t(el.dataset.i18nHtml); });
+      var cur = document.getElementById('lang-current'); if (cur) cur.textContent = LABEL[currentLang];
+      document.querySelectorAll('.lang-menu button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === currentLang); });
+      document.documentElement.lang = HTMLLANG[currentLang] || 'en';
+    }
+    function loadAndApply(lang) {
+      fetch('/assets/lang/' + lang + '.json').then(function(r){return r.json();}).then(function(data){ translations = data; applyTranslations(); }).catch(function(){});
+    }
+    var langBtn = document.getElementById('lang-btn');
+    var langMenu = document.getElementById('lang-menu');
+    function closeLangMenu(){ if (langMenu) langMenu.classList.remove('open'); if (langBtn) langBtn.setAttribute('aria-expanded','false'); }
+    window.setLang = function(lang){ if(!LABEL[lang])return; currentLang=lang; localStorage.setItem(STORAGE_KEY,lang); loadAndApply(lang); closeLangMenu(); };
+    window.toggleLang = function(){ window.setLang(ORDER[(ORDER.indexOf(currentLang)+1)%ORDER.length]); };
+    if (langBtn && langMenu) {
+      langBtn.addEventListener('click', function(e){ e.stopPropagation(); var open=langMenu.classList.toggle('open'); langBtn.setAttribute('aria-expanded', open?'true':'false'); });
+      langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ window.setLang(b.dataset.lang); }); });
+      document.addEventListener('click', function(e){ if(!e.target.closest('#lang-switch')) closeLangMenu(); });
+    }
+    loadAndApply(currentLang);
   })();
 </script>
 </body>
