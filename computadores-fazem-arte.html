@@ -183,6 +183,15 @@
     border:1px solid rgba(246,242,248,.16);color:var(--light-grey)}
   /* keep the label below the image on zoom for the manual illustrations */
   .tile--contain .tag{top:auto;bottom:12px}
+  /* lecture slides: two per row, never cropped */
+  .slidegrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .slidegrid .tile{aspect-ratio:16/10}
+  @media(max-width:620px){.slidegrid{grid-template-columns:1fr}}
+  /* feed layout: one large post on top, two equal ones below */
+  .feedgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .feedgrid .tile{aspect-ratio:1/1}
+  .feedgrid__big{grid-column:1/-1;aspect-ratio:16/9}
+  @media(max-width:620px){.feedgrid{grid-template-columns:1fr}.feedgrid__big{aspect-ratio:1/1}}
 
   /* placeholder tile for images Numa can swap later */
   .tile--ph{display:flex;align-items:center;justify-content:center;text-align:center;
@@ -245,32 +254,18 @@
     <div class="hero__blob b2" aria-hidden="true"></div>
     <div class="hero__blob b3" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow">Master's Research · Visual Identity &amp; Educational Design · 2023 — 2025</p>
+      <p class="eyebrow">Visual Identity &amp; Educational Design</p>
       <h1>Computadores<br>Fazem Arte<span class="dot">.</span></h1>
       <p class="lede">"Computers Make Art" — the visual identity and teaching material I built for my master's research: a free, art-rooted introduction to blockchain, NFTs, and Web3, made for the people this field usually leaves out.</p>
       <div class="metarow">
         <div><div class="k">Role</div><div class="v">Designer · Illustrator · Researcher</div></div>
         <div><div class="k">Years</div><div class="v">2023 — 2025</div></div>
         <div><div class="k">Deliverables</div><div class="v">Identity · Manual · Slides · Notebook</div></div>
-        <div><div class="k">Context</div><div class="v">UFPE · MPArtDig · CNPq</div></div>
+        <div><div class="k">University</div><div class="v">UFPE · PPGDesign</div></div>
+        <div><div class="k">Scholarship</div><div class="v">MAI/DAI Program · CNPq</div></div>
       </div>
     </div>
   </header>
-
-  <!-- OVERVIEW -->
-  <section>
-    <div class="wrap">
-      <div class="kicker"><span class="num">OVERVIEW</span><span class="line"></span></div>
-      <h2>Warm tech,<br>not cold chains<span class="dot">.</span></h2>
-      <p class="body"><strong>Web3 and NFTs are usually dressed in cold, futuristic, exclusionary visuals.</strong> This project does the opposite. The design is a core part of the pedagogy — an intentionally warm, organic, colorful language that treats technology with artistic sensibility and a social lens, making blockchain approachable for a genuinely diverse audience.</p>
-      <div class="stats">
-        <div class="stat"><div class="n">7</div><div class="l">Pilot classes</div></div>
-        <div class="stat"><div class="n">33</div><div class="l">Course applications</div></div>
-        <div class="stat"><div class="n">8</div><div class="l">Lesson curriculum</div></div>
-        <div class="stat"><div class="n">3</div><div class="l">Printed formats</div></div>
-      </div>
-    </div>
-  </section>
 
   <!-- IDENTITY -->
   <section>
@@ -325,11 +320,11 @@
           <span class="rdisc__tools">Illustration · Slides · Layout</span>
         </div>
         <p>Slides drawn from the many classes derived from the project — the same warm visual language carried into every session.</p>
-        <div class="gal gal--4">
-          <div class="tile tile--wide"><img src="assets/img/design/cfa/slides/aula.gif" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--wide"><img src="assets/img/design/cfa/slides/btc.png" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--wide"><img src="assets/img/design/cfa/slides/carteiras.png" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--wide"><img src="assets/img/design/cfa/slides/como-comecar.png" alt="Lecture slide" loading="lazy"></div>
+        <div class="slidegrid">
+          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/aula.gif" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/btc.png" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/carteiras.png" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/como-comecar.png" alt="Lecture slide" loading="lazy"></div>
         </div>
       </div>
 
@@ -356,10 +351,10 @@
       <div class="kicker"><span class="num">03 · COMMUNICATION</span><span class="line"></span></div>
       <h2>Out in the feed<span class="dot">.</span></h2>
       <p class="body">Social posts and event art that carried the identity into recruitment and outreach — for the free course, its open lectures, and academic appearances like the WebMedia 2024 minicourse.</p>
-      <div class="gal gal--3">
-        <div class="tile tile--square"><img src="assets/img/design/cfa/webmedia2024.png" alt="WebMedia 2024 minicourse art" loading="lazy"></div>
-        <div class="tile tile--portrait"><img src="assets/img/design/cfa/anuncio_disciplina3.png" alt="Course announcement" loading="lazy"></div>
-        <div class="tile tile--portrait"><img src="assets/img/design/cfa/anuncio_disciplina4.png" alt="Course announcement" loading="lazy"></div>
+      <div class="feedgrid">
+        <div class="tile tile--contain feedgrid__big"><img src="assets/img/design/cfa/webmedia2024.png" alt="WebMedia 2024 minicourse art" loading="lazy"></div>
+        <div class="tile tile--contain"><img src="assets/img/design/cfa/anuncio_disciplina3.png" alt="Course announcement" loading="lazy"></div>
+        <div class="tile tile--contain"><img src="assets/img/design/cfa/anuncio_disciplina4.png" alt="Course announcement" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -376,7 +371,7 @@
         <div class="split__text">
           <h3>Made with the community</h3>
           <p>Built alongside activist-educators Débora Aguiar and Manu Marques, the course paired blockchain fundamentals with lessons on decoloniality and financial education — and brought in trans, Black, and non-binary NFT artists to make the field feel close, not distant.</p>
-          <p>With academic guidance from <strong>João Marcelo Teixeira</strong> (master's advisor) and <strong>Leonardo Castillo</strong> (who opened the design-school classroom), and the scientific-initiation students who researched alongside the project — <strong>Milena</strong>, <strong>Vitória</strong>, and <strong>Artur</strong> (in memoriam).</p>
+          <p>With academic guidance from <strong>João Marcelo Teixeira</strong> (master's advisor) and <strong>Leonardo Castillo</strong> (who invited Numa to teach <em>Design para Web3</em> at UFPE), and the scientific-initiation students who researched alongside the project — <strong>Milena Gomes</strong> (Pedagogy), <strong>Vitória Farias</strong> (Design), and <strong>Artur Couto</strong> (Computer Science, in memoriam).</p>
         </div>
       </div>
 
