@@ -183,9 +183,9 @@
     border:1px solid rgba(246,242,248,.16);color:var(--light-grey)}
   /* keep the label below the image on zoom for the manual illustrations */
   .tile--contain .tag{top:auto;bottom:12px}
-  /* lecture slides: two per row, never cropped */
-  .slidegrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-  .slidegrid .tile{aspect-ratio:16/10}
+  /* lecture slides: two per row, image fills the card, never cropped */
+  .slidegrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;align-items:start}
+  .slidegrid .tile img{width:100%;height:auto;object-fit:fill;padding:0}
   @media(max-width:620px){.slidegrid{grid-template-columns:1fr}}
   /* feed layout: one large post on top, two equal ones below */
   .feedgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
@@ -321,10 +321,10 @@
         </div>
         <p>Slides drawn from the many classes derived from the project — the same warm visual language carried into every session.</p>
         <div class="slidegrid">
-          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/aula.gif" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/btc.png" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/carteiras.png" alt="Lecture slide" loading="lazy"></div>
-          <div class="tile tile--contain"><img src="assets/img/design/cfa/slides/como-comecar.png" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile"><img src="assets/img/design/cfa/slides/aula.gif" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile"><img src="assets/img/design/cfa/slides/btc.png" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile"><img src="assets/img/design/cfa/slides/carteiras.png" alt="Lecture slide" loading="lazy"></div>
+          <div class="tile"><img src="assets/img/design/cfa/slides/como-comecar.png" alt="Lecture slide" loading="lazy"></div>
         </div>
       </div>
 
