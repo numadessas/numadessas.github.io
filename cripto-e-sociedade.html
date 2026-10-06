@@ -171,8 +171,11 @@
   @media (max-width: 860px) { .tl { grid-template-columns: 1fr 1fr; row-gap: 1.2rem; } .tl::before { display: none; } }
 
   /* SECTION DIVIDER */
-  .divnum { font-family: var(--font-banner); font-size: clamp(5rem, 18vw, 15rem); line-height: 0.8; color: transparent; -webkit-text-stroke: 1px rgba(238,111,34,0.7); }
-  .divtitle { font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 6.5rem); text-transform: uppercase; line-height: 0.92; margin-top: 1rem; }
+  .divnum { display: block; height: clamp(5.5rem, 20vw, 15rem); width: auto; overflow: visible; }
+  .divnum text { font-family: var(--font-banner); font-size: 200px; fill: none; stroke: var(--orange); stroke-opacity: .85; stroke-width: 1.5px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  .fade { opacity: 0; transition: opacity .8s ease; }
+  .slide.in .fade { opacity: 1; }
+  .divtitle { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 5.4rem); text-transform: uppercase; line-height: 0.92; margin-top: 1rem; overflow-wrap: anywhere; }
   .divtitle .g { color: var(--green); }
 
   /* 3D INTRO */
@@ -229,10 +232,28 @@
   .hud button { background: rgba(10,10,10,0.6); color: var(--light-grey); border: 1px solid rgba(255,255,255,0.15); width: 2.2rem; height: 2.2rem;
     cursor: pointer; font-family: var(--font-mono); font-size: 0.85rem; backdrop-filter: blur(8px); }
   .hud button:hover { border-color: var(--orange); color: var(--orange); }
-  .brand { position: fixed; left: 1.25rem; top: 1rem; z-index: 50; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
-  .brand span { color: var(--orange); }
+  .brand { position: fixed; left: 1.25rem; top: 1rem; z-index: 50; display: block; line-height: 0; }
+  .brand svg { height: 26px; width: auto; }
   .sec { position: fixed; left: 1.25rem; bottom: 1.1rem; z-index: 50; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lilac); }
   @media (max-width: 600px) { .sec { display: none; } }
+  .menu { position: fixed; top: 0.85rem; right: 1.25rem; z-index: 60; }
+  .menu-btn { display: flex; align-items: center; gap: .5rem; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--light-grey); background: rgba(10,10,10,.6); border: 1px solid rgba(255,255,255,.18); padding: .55rem .9rem; cursor: pointer; backdrop-filter: blur(8px); }
+  .menu-btn:hover, .menu-btn[aria-expanded="true"] { border-color: var(--orange); color: var(--orange); }
+  .menu-btn .caret { font-size: .6rem; transition: transform .2s; }
+  .menu-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .menu-panel { position: absolute; top: calc(100% + .5rem); right: 0; width: min(380px, calc(100vw - 2.5rem)); max-height: 78vh; overflow-y: auto;
+    background: rgba(17,17,17,.97); border: 1px solid rgba(115,69,120,.5); display: none; padding: .5rem 0; box-shadow: 0 24px 60px -20px rgba(0,0,0,.9); }
+  .menu-panel.open { display: block; }
+  .menu-group { padding: .35rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .menu-group:last-child { border-bottom: 0; }
+  .menu-group h4 { font-family: var(--font-mono); font-weight: 400; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--lilac); padding: .45rem 1rem .3rem; }
+  .menu-group h4 b { color: var(--orange); font-weight: 700; margin-right: .4rem; }
+  .menu-item { display: flex; gap: .7rem; width: 100%; text-align: left; background: none; border: 0; cursor: pointer; padding: .4rem 1rem; color: var(--light-grey); font-family: var(--font-body); font-size: .85rem; line-height: 1.3; }
+  .menu-item span { font-family: var(--font-mono); font-size: .7rem; color: var(--grey); min-width: 1.6rem; padding-top: .1rem; }
+  .menu-item:hover { background: rgba(255,255,255,.05); color: var(--white); }
+  .menu-item.current { color: var(--green); }
+  .menu-item.current span { color: var(--green); }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .bar .fill { width: var(--v); } .rv, .flip { opacity: 1; transform: none; } }
   @media print {
     body { overflow: visible; } .deck { height: auto; overflow: visible; } .hud, .progress, .brand, .sec { display: none; }
@@ -243,8 +264,17 @@
 <body>
 
 <div class="progress" id="progress"></div>
-<a class="brand" href="/" title="numadessas.com.br">NUMA<span>.</span></a>
+<a class="brand" href="/" title="numadessas.com.br"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1938.9 637.2" height="26" aria-label="Numa" style="display:block;">
+      <path fill="#ee6f22" d="M628.7,158.9c1.2-11.1-2.8-21.9-13.6-28.2-11.9-7-31.9-4.2-39,8.9-10.4,12.2-19.4,24.1-26.5,38.8-12.5,25.7-23.6,52-35.1,78.1-17.3,39-34.5,78-51.8,117.1-26.7-74.7-62.8-147.1-104.5-212.5-30.7-48.2-80.8-96.2-142.9-75.9-53,17.3-84.6,69.7-101.8,119.6-19.8,57.8-22.3,124.2-4.9,182.9,23.6,79.6,83,137.1,160.5,164.7,15.4,5.5,33.1-6.2,37.2-21.2,4.7-17-5.8-31.5-21.1-37.2-27.8-10.4-51-25.2-70.7-46.3-9.9-10.6-13.1-14.9-21.1-28.5-3.4-5.7-6.4-11.6-9.2-17.5-.6-1.1-1.1-2.3-1.6-3.5-1.5-3.7-2.8-7.4-4.1-11.1-4.4-12.9-7.3-26-9.6-39.3-.1-.6-.2-1-.2-1.4,0-.4,0-.8-.1-1.4-.3-3-.6-5.9-.8-8.9-.6-6.9-.9-13.8-1-20.8,0-6.4.1-12.8.5-19.2.2-3.4.5-6.8.8-10.2.1-1,.6-5,.8-6.9.3-1.7.7-4.6.8-5.3.6-3.3,1.2-6.6,1.8-9.8,1.3-6.4,2.9-12.8,4.6-19.2,1.5-5.3,3.1-10.6,4.9-15.8,1-3,2.2-5.9,3.2-8.9.2-.7.4-1.1.5-1.6.1-.2.2-.5.4-.8,4.8-10.3,9.9-20.3,16-29.8,1.8-2.8,8.8-11.9,6.3-9.1,2.7-3.2,5.4-6.4,8.4-9.4,1.3-1.3,5.1-4.6,7-6.4,2.1-1.3,7.2-4.7,8.8-5.6.8-.5,1.3-.8,1.7-1.1.4-.1.9-.2,1.5-.4,1.7-.5,3.5-.9,5.2-1.4,2.2.4,6.3.3,9,.1,1.8.6,3.9,1.3,5.8,1.8,1.9,1.3,4.1,2.2,6.1,3.4,1.4.9,2.7,1.8,4.1,2.7,1.1.9,2.2,1.9,3.3,2.9,4.1,4,8.1,8.1,11.9,12.5.7.8,1.5,1.8,2.1,2.6,1.9,2.7,3.8,5.4,5.7,8.1,60.7,91.4,107.5,199.6,130.4,307,6.5,30.7,56.8,39.4,70.4,9.2,44.3-98.5,90-197.1,129.8-297.5,5.6-14.1,11.6-32.3,10.3-48.5h0ZM248.4,154.5s0,0,.1,0c-3-.3-4.6-1.7-.1,0ZM282.9,181.5c.4.5.5.6,0,0h0Z"/>
+      <path fill="#ee6f22" d="M957.5,360.2c-12.7-39.2-24.8-78.5-36.6-118-11.7-39-19.8-82.7-39.3-118.7-15.7-28.8-56-13.4-58,15.7-2.8,39.6,12.1,83.1,22.4,121,10.6,38.7,22.3,77,34.5,115.2-31-14.1-64.7-22.6-98.9-24.8-36.4-2.3-71.6,3.7-103.8,16.5,25.1-62.1,49.7-124.5,73.1-187.3,11.8-31.7-40.5-54.1-55-23.2-49.6,105.5-95.5,212.6-141.8,319.6-7.9,18.3-5.4,39.7,13.3,50.6,17.4,10.2,40.5,4,50.7-13.3,19.2-32.5,42.5-54.9,75.8-71,25.6-12.4,54.9-17.1,87.9-14.8,26.5,1.9,58.8,12,84.3,27.2,27.4,16.3,48.3,37.5,64.2,66,21.2,37.9,86.9,12.4,71.7-30.2-15.5-43.3-30-87-44.2-130.7h0Z"/>
+      <path fill="#ee6f22" d="M1818.2,252.9c-23.6-79.6-83-137.1-160.5-164.7-15.4-5.5-33.1,6.2-37.2,21.2-4.7,17,5.8,31.5,21.2,37.3,27.8,10.4,51,25.2,70.7,46.3,9.9,10.6,13.1,14.9,21.1,28.5,3.4,5.7,6.4,11.6,9.2,17.6.6,1.1,1.1,2.3,1.6,3.5,1.5,3.7,2.8,7.4,4.1,11.1,4.3,12.8,7.3,26,9.6,39.3.1.6.2,1,.2,1.4,0,.4,0,.8.1,1.4.3,3,.6,5.9.8,8.9.6,6.9.9,13.8,1,20.8,0,6.4-.1,12.8-.5,19.2-.2,3.4-.5,6.8-.8,10.2,0,1-.6,5-.8,6.9-.3,1.7-.7,4.6-.8,5.3-.6,3.3-1.2,6.6-1.8,9.8-1.3,6.4-2.9,12.8-4.6,19.2-1.5,5.3-3.1,10.6-4.9,15.8-1,3-2.2,5.9-3.2,8.9-.2.7-.4,1.1-.5,1.6-.1.2-.2.5-.4.8-4.8,10.3-9.9,20.3-16,29.8-1.8,2.8-8.8,11.9-6.3,9-2.7,3.2-5.4,6.4-8.4,9.4-1.3,1.3-5.1,4.6-7,6.4-2.1,1.3-7.2,4.7-8.8,5.6-.8.5-1.3.8-1.7,1.1-.4.1-.9.2-1.5.4-1.7.5-3.5.9-5.2,1.4-2.2-.4-6.3-.3-9-.1-1.8-.6-3.9-1.3-5.8-1.8-1.9-1.3-4.1-2.2-6.1-3.4-1.4-.9-2.7-1.8-4.1-2.7-1.1-.9-2.2-1.9-3.3-2.9-4.2-4-8.1-8.1-11.9-12.5-.7-.8-1.5-1.8-2.1-2.6-1.9-2.7-3.8-5.4-5.7-8.1-60.7-91.4-107.5-199.6-130.4-307-6.5-30.7-56.8-39.4-70.4-9.2-44.3,98.5-90,197.1-129.8,297.5-5.6,14.1-11.6,32.3-10.3,48.5-1.2,11,2.8,21.9,13.6,28.2,11.9,7,31.9,4.2,39-8.9,10.4-12.2,19.4-24.1,26.5-38.8,12.5-25.7,23.6-52,35.1-78.1,17.3-39,34.5-78.1,51.8-117.1,26.7,74.7,62.8,147.1,104.4,212.5,30.7,48.2,80.8,96.2,142.9,75.9,53-17.3,84.6-69.7,101.8-119.6,19.8-57.8,22.3-124.2,4.9-182.9h0ZM1643.9,459.1c-.4-.5-.5-.6,0,0h0ZM1678.4,486.2s0,0-.1,0c3,.3,4.7,1.7.1,0Z"/>
+      <path fill="#ee6f22" d="M1359.5,113.7c-17.4-10.2-40.5-4-50.7,13.3-19.2,32.5-42.5,54.9-75.8,71-25.6,12.4-54.9,17.1-87.9,14.8-26.4-1.9-58.8-12.1-84.3-27.2-27.4-16.3-48.3-37.6-64.2-66-21.2-37.9-86.9-12.4-71.7,30.2,15.5,43.3,30,87,44.2,130.7,12.7,39.2,24.8,78.5,36.6,118,11.7,39,19.8,82.7,39.3,118.7,15.7,28.8,56,13.4,58-15.7,2.8-39.6-12.1-83.1-22.4-121-10.6-38.7-22.3-77-34.5-115.2,31,14.1,64.7,22.6,98.9,24.8,36.4,2.3,71.6-3.7,103.8-16.5-25.1,62.1-49.7,124.5-73.1,187.3-11.8,31.7,40.5,54.1,55,23.2,49.6-105.5,95.6-212.6,141.8-319.6,7.9-18.3,5.4-39.7-13.3-50.7h0Z"/>
+    </svg></a>
 <div class="sec" id="sec"></div>
+<div class="menu" id="menu">
+  <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">Seções <span class="caret">&#9662;</span></button>
+  <nav class="menu-panel" id="menu-panel" aria-label="Seções da aula"></nav>
+</div>
 <div class="hud">
   <button id="prev" aria-label="Slide anterior">←</button>
   <span id="count">1 / 1</span>
@@ -255,7 +285,7 @@
 <main class="deck" id="deck">
 
 <!-- 01 · CAPA -->
-<section class="slide grain" data-sec="Cripto & Sociedade">
+<section class="slide grain" data-sec="Cripto & Sociedade" data-title="Capa">
   <div class="bg-hero"></div>
   <div class="inner">
     <div class="label rv">Aula · Ciência da Computação</div>
@@ -270,7 +300,7 @@
 </section>
 
 <!-- 02 · QUEM SOU -->
-<section class="slide grain" data-sec="Quem sou">
+<section class="slide grain" data-sec="Quem sou" data-title="Quem sou">
   <div class="bg-hero"></div>
   <div class="me-overlay"></div>
   <model-viewer id="me-model" class="me-model" src="EuWebsite2026compressed.glb" alt="Numa em 3D"
@@ -328,7 +358,7 @@
 </section>
 
 <!-- 05 · DADO: ONDE ESTÃO AS CRIPTOS -->
-<section class="slide" data-sec="Abertura">
+<section class="slide" data-sec="Abertura" data-title="Onde estão as criptos">
   <div class="bg-soft"></div>
   <div class="inner">
     <div class="label rv">No Brasil, quem já colocou dinheiro em cripto usou…</div>
@@ -347,7 +377,7 @@
 </section>
 
 <!-- 06 · PERGUNTA -->
-<section class="slide grain" data-sec="Abertura">
+<section class="slide grain" data-sec="Abertura" data-title="O que foi descentralizado?">
   <div class="bg-hero"></div>
   <div class="inner">
     <p class="statement rv">Se a tecnologia é <em>descentralizada</em> mas o uso é <span class="o">centralizado</span>…</p>
@@ -359,7 +389,7 @@
 <section class="slide" data-sec="01 · Não é neutra">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="divnum rv">01</div>
+    <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">01</text></svg>
     <h2 class="divtitle rv d1">A tecnologia<br><span class="g">não é neutra</span><span class="accent" style="color:var(--orange)">.</span></h2>
   </div>
 </section>
@@ -429,8 +459,8 @@
 <section class="slide" data-sec="02 · Cypherpunks">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="divnum rv">02</div>
-    <h2 class="divtitle rv d1">Cypher&shy;punks<span style="color:var(--orange)">:</span><br><span class="g">de onde vem o sonho</span></h2>
+    <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">02</text></svg>
+    <h2 class="divtitle rv d1">Cypherpunks<span style="color:var(--orange)">:</span><br><span class="g">de onde vem o sonho</span></h2>
     <div class="pills rv d2"><span class="pill p-o">not your keys, not your coins</span><span class="pill p-g">trustless</span><span class="pill p-p">code is law</span></div>
   </div>
 </section>
@@ -470,7 +500,7 @@
 </section>
 
 <!-- 15 · PROVOCAÇÕES -->
-<section class="slide" data-sec="02 · Cypherpunks">
+<section class="slide" data-sec="02 · Cypherpunks" data-title="Provocações: Hughes, May, Barlow">
   <div class="inner">
     <div class="cols c3">
       <div class="card rv"><div class="k">Hughes</div><h3>O detalhe</h3><p>A privacidade só vai até onde vai a <strong>cooperação dos outros</strong> na sociedade.<br><br>→ Até o manifesto mais individualista depende do <strong>coletivo</strong>.</p></div>
@@ -513,7 +543,7 @@
 </section>
 
 <!-- 17 · VIRADA -->
-<section class="slide" data-sec="02 · Cypherpunks">
+<section class="slide" data-sec="02 · Cypherpunks" data-title="O slogan invertido">
   <div class="bg-soft"></div>
   <div class="inner">
     <div class="label rv">E a blockchain cumpre o slogan?</div>
@@ -533,7 +563,7 @@
 <section class="slide" data-sec="03 · Economia política">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="divnum rv">03</div>
+    <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">03</text></svg>
     <h2 class="divtitle rv d1">Economia<br><span class="g">política</span><span style="color:var(--orange)">.</span></h2>
     <p class="lede rv d2" style="margin-top:1.5rem">Não existe economia sem política. <strong>Todo protocolo econômico é também um arranjo de poder.</strong></p>
   </div>
@@ -688,7 +718,7 @@
 <section class="slide" data-sec="04 · Comunidade">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="divnum rv">04</div>
+    <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">04</text></svg>
     <h2 class="divtitle rv d1">O que é uma<br><span class="g">comunidade?</span></h2>
     <div class="src rv d2">Recuero · Comunidades virtuais: uma abordagem teórica (2001)</div>
   </div>
@@ -754,7 +784,7 @@
 <section class="slide grain" data-sec="05 · Atividade">
   <div class="bg-hero"></div>
   <div class="inner">
-    <div class="divnum rv">05</div>
+    <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">05</text></svg>
     <div class="label rv d1" style="margin-top:1.5rem">Atividade · Quem segura a chave?</div>
     <p class="q-big rv d2">Quem pode impedir essa pessoa de usar o <span class="hl">próprio dinheiro</span>?</p>
     <div class="timer rv d3"><span><b>2'</b> cartões</span><span><b>8'</b> discussão</span><span><b>10'</b> lousa</span></div>
@@ -909,6 +939,9 @@
   document.addEventListener('keydown', function (e) {
     if (e.target.closest && e.target.closest('model-viewer')) return;
     var k = e.key;
+    if (k === 'Escape') { window.__setMenu && window.__setMenu(false); return; }
+    if (k === 'm' || k === 'M') { window.__setMenu && window.__setMenu(!window.__menuOpen()); return; }
+    if (window.__menuOpen && window.__menuOpen()) return;
     if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); go(current + 1); }
     else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); go(current - 1); }
     else if (k === 'Home') { e.preventDefault(); go(0); }
@@ -932,8 +965,59 @@
     })(performance.now());
   }
 
+  // section outline numbers: fit the SVG viewBox to the real glyphs
+  function fitNums() {
+    document.querySelectorAll('svg.divnum').forEach(function (svg) {
+      try { var b = svg.querySelector('text').getBBox(); if (b.width) svg.setAttribute('viewBox', (b.x - 4) + ' ' + (b.y - 4) + ' ' + (b.width + 8) + ' ' + (b.height + 8)); } catch (e) {}
+    });
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNums); else fitNums();
+
+  // section menu
+  var NAMES = { '01': 'A tecnologia não é neutra', '02': 'Cypherpunks', '03': 'Economia política', '04': 'Comunidade', '05': 'Atividade' };
+  var panel = document.getElementById('menu-panel');
+  var mbtn = document.getElementById('menu-btn');
+  var groups = [], seenNum = false;
+  slides.forEach(function (sl, i) {
+    var m = (sl.dataset.sec || '').match(/^(0\d)/);
+    var key = m ? m[1] : (seenNum ? 'end' : 'start');
+    if (m) seenNum = true;
+    var g = groups[groups.length - 1];
+    if (!g || g.key !== key) { g = { key: key, items: [] }; groups.push(g); }
+    var t = sl.dataset.title;
+    if (!t) {
+      var h = sl.querySelector('h1, h2') || sl.querySelector('.statement, .quote, .q-big') || sl.querySelector('.label');
+      if (h) { var c = h.cloneNode(true); c.querySelectorAll('br').forEach(function (b) { b.replaceWith(' '); }); t = c.textContent; } else { t = 'Slide ' + (i + 1); }
+    }
+    t = t.replace(/\s+/g, ' ').replace(/\u00ad/g, '').trim();
+    if (t.length > 52) t = t.slice(0, 50).trim() + '…';
+    g.items.push({ i: i, t: t });
+  });
+  panel.innerHTML = groups.map(function (g) {
+    var head = g.key === 'start' ? 'Abertura' : g.key === 'end' ? 'Fechamento' : '<b>' + g.key + '</b>' + NAMES[g.key];
+    return '<div class="menu-group"><h4>' + head + '</h4>' + g.items.map(function (it) {
+      return '<button class="menu-item" data-i="' + it.i + '"><span>' + (it.i + 1) + '</span>' + it.t + '</button>';
+    }).join('') + '</div>';
+  }).join('');
+  function setMenu(open) {
+    panel.classList.toggle('open', open);
+    mbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      panel.querySelectorAll('.menu-item').forEach(function (b) { b.classList.toggle('current', +b.dataset.i === current); });
+      var cur = panel.querySelector('.menu-item.current'); if (cur) cur.scrollIntoView({ block: 'nearest' });
+    }
+  }
+  mbtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!panel.classList.contains('open')); });
+  panel.addEventListener('click', function (e) {
+    var b = e.target.closest('.menu-item'); if (!b) return;
+    setMenu(false); deck.style.scrollBehavior = 'auto'; deck.scrollTop = slides[+b.dataset.i].offsetTop; deck.style.scrollBehavior = '';
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('#menu')) setMenu(false); });
+  window.__menuOpen = function () { return panel.classList.contains('open'); };
+  window.__setMenu = setMenu;
+
   var start = parseInt((location.hash || '').slice(1), 10);
-  if (start > 1) setTimeout(function () { slides[Math.min(start, slides.length) - 1].scrollIntoView({ block: 'start' }); }, 50);
+  if (start > 1) setTimeout(function () { deck.style.scrollBehavior = 'auto'; deck.scrollTop = slides[Math.min(start, slides.length) - 1].offsetTop; deck.style.scrollBehavior = ''; }, 300);
   update(0);
 })();
 </script>
