@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cripto &amp; Sociedade — Numa</title>
+<meta name="description" content="Slides da aula Cripto & Sociedade: pensamento crítico, cypherpunks, economia política e comunidades virtuais.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<style>
+  :root {
+    --orange: #ee6f22;
+    --green: #93FF78;
+    --purple: #734578;
+    --lilac: #b87fbf;
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --dark: #1a1a1a;
+    --mid: #2a2a2a;
+    --grey: #888;
+    --light-grey: #ccc;
+    --white: #f5f5f0;
+    --font-banner: 'Climate Crisis', sans-serif;
+    --font-display: 'Instrument Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --pad: clamp(1.25rem, 5vw, 5rem);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--black); color: var(--white);
+    font-family: var(--font-body); font-weight: 300; line-height: 1.5;
+    overflow: hidden; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--orange); color: var(--black); }
+
+  /* DECK */
+  .deck {
+    height: 100vh; height: 100dvh; overflow-y: auto; overflow-x: hidden;
+    scroll-snap-type: y mandatory; scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .deck::-webkit-scrollbar { display: none; }
+  .slide {
+    position: relative; min-height: 100vh; min-height: 100dvh;
+    scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem var(--pad) 3.5rem; overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .inner { position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto; }
+
+  /* BACKGROUNDS (same as homepage hero) */
+  .bg-hero { position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(-45deg, #43005E, #331041, #160A20, var(--off-black), #160A20, #331041);
+    background-size: 400% 400%; animation: heroGrad 20s ease infinite; }
+  .bg-hero::before { content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 70%, rgba(67,0,94,0.8) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 85% 20%, rgba(51,16,65,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 90%, rgba(22,10,32,0.7) 0%, transparent 60%); }
+  .grain::after { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 256px 256px; animation: grain 8s steps(1) infinite; pointer-events: none; z-index: 1; }
+  .bg-soft { position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 85% 15%, rgba(115,69,120,0.22), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 10% 90%, rgba(67,0,94,0.25), transparent 60%); }
+  @keyframes heroGrad { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  @keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-15%,5%)} 40%{transform:translate(-5%,20%)} 60%{transform:translate(15%,0%)} 80%{transform:translate(3%,30%)} 100%{transform:translate(0,0)} }
+
+  /* TYPE */
+  .label { font-family: var(--font-mono); font-size: clamp(0.65rem, 1.1vw, 0.8rem); letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--lilac); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .label::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+  .banner { font-family: var(--font-banner); font-size: clamp(3rem, 11vw, 10rem); line-height: 0.9; letter-spacing: 0.01em; }
+  .banner .accent, .title .accent { color: var(--orange); }
+  .title { font-family: var(--font-display); font-size: clamp(2.2rem, 5.6vw, 5rem); line-height: 0.95;
+    letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 2rem; }
+  .title .g { color: var(--green); }
+  .lede { font-size: clamp(1.05rem, 2vw, 1.5rem); color: var(--light-grey); max-width: 46ch; }
+  .lede strong { color: var(--white); font-weight: 500; }
+  .mono { font-family: var(--font-mono); }
+  .src { font-family: var(--font-mono); font-size: clamp(0.62rem, 1vw, 0.75rem); letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey); margin-top: 1.75rem; }
+
+  /* LISTS */
+  .bullets { list-style: none; display: grid; gap: clamp(0.7rem, 1.6vh, 1.1rem); max-width: 60ch; }
+  .bullets li { position: relative; padding-left: 1.6rem; font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--light-grey); }
+  .bullets li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 0.6rem; height: 0.6rem; background: var(--orange); }
+  .bullets li:nth-child(3n+2)::before { background: var(--green); }
+  .bullets li:nth-child(3n+3)::before { background: var(--lilac); }
+  .bullets strong { color: var(--white); font-weight: 500; }
+
+  /* PILLS */
+  .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .pill { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.75rem); letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.9rem; border: 1px solid; line-height: 1; }
+  .p-o { border-color: var(--orange); color: var(--orange); }
+  .p-g { border-color: var(--green); color: var(--green); }
+  .p-p { border-color: var(--purple); color: var(--lilac); }
+
+  /* GRID / CARDS */
+  .cols { display: grid; gap: clamp(0.8rem, 2vw, 1.5rem); }
+  .c2 { grid-template-columns: repeat(2, 1fr); }
+  .c3 { grid-template-columns: repeat(3, 1fr); }
+  .c5 { grid-template-columns: repeat(5, 1fr); }
+  @media (max-width: 860px) { .c2, .c3 { grid-template-columns: 1fr; } .c5 { grid-template-columns: 1fr 1fr; } }
+  .card { background: rgba(26,26,26,0.72); border: 1px solid rgba(255,255,255,0.08); padding: clamp(1rem, 2.4vw, 1.75rem);
+    position: relative; backdrop-filter: blur(6px); }
+  .card::before { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 3px; background: var(--orange); }
+  .card.g::before { background: var(--green); }
+  .card.p::before { background: var(--lilac); }
+  .card .k { font-family: var(--font-mono); font-size: clamp(0.6rem, 1vw, 0.72rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey); }
+  .card h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.4vw, 2rem); text-transform: uppercase; letter-spacing: 0.02em; margin: 0.35rem 0 0.75rem; line-height: 1; }
+  .card p, .card li { color: var(--light-grey); font-size: clamp(0.92rem, 1.4vw, 1.08rem); }
+  .card ul { list-style: none; display: grid; gap: 0.45rem; }
+  .card ul li::before { content: '→ '; color: var(--orange); font-family: var(--font-mono); }
+  .card.g ul li::before { color: var(--green); }
+  .card.p ul li::before { color: var(--lilac); }
+
+  /* BIG STATEMENT / QUOTE */
+  .statement { font-family: var(--font-display); font-size: clamp(2rem, 5.4vw, 4.8rem); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; max-width: 20ch; }
+  .statement em { font-style: normal; color: var(--green); }
+  .statement .o { color: var(--orange); }
+  .quote { font-family: var(--font-display); font-size: clamp(1.6rem, 3.8vw, 3.2rem); line-height: 1.12; max-width: 26ch; }
+  .quote::before { content: '“'; display: block; font-family: var(--font-banner); color: var(--orange); font-size: 2em; line-height: 0.6; margin-bottom: 0.3em; }
+
+  /* STATS */
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 4rem); margin-top: 2rem; }
+  .stats.compact .stat .n { font-size: clamp(2.2rem, 5vw, 4rem); }
+  .stat .n { font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 6rem); line-height: 1; color: var(--orange); }
+  .stat:nth-child(2) .n { color: var(--green); }
+  .stat:nth-child(3) .n { color: var(--lilac); }
+  .stat .l { font-family: var(--font-mono); font-size: clamp(0.62rem, 1vw, 0.78rem); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-top: 0.5rem; max-width: 22ch; }
+
+  /* BAR CHART */
+  .bars { display: grid; gap: clamp(0.6rem, 1.6vh, 1rem); width: 100%; max-width: 900px; }
+  .bar { display: grid; grid-template-columns: minmax(7rem, 13rem) 1fr 3.5rem; align-items: center; gap: 1rem; }
+  .bar .bl { font-family: var(--font-mono); font-size: clamp(0.65rem, 1.1vw, 0.85rem); letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-grey); }
+  .bar .track { height: clamp(1.1rem, 3vh, 1.8rem); background: rgba(255,255,255,0.05); position: relative; }
+  .bar .fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--orange); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .bar.g .fill { background: var(--green); }
+  .bar.p .fill { background: var(--lilac); }
+  .bar.dim .fill { background: var(--mid); }
+  .bar .bv { font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.5rem); text-align: right; }
+  .slide.in .bar .fill { width: var(--v); }
+  @media (max-width: 600px) { .bar { grid-template-columns: 1fr 3rem; } .bar .bl { grid-column: 1 / -1; } }
+
+  /* DOTS (waffle) */
+  .waffle { display: grid; gap: 4px; }
+  .waffle i { display: block; aspect-ratio: 1; background: rgba(255,255,255,0.09); transition: background .4s; }
+  .slide.in .waffle i.on { background: var(--orange); }
+  .slide.in .waffle i.on.g { background: var(--green); }
+
+  /* TIMELINE */
+  .tl { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 1rem; }
+  .tl::before { content: ''; position: absolute; left: 0; right: 0; top: 0.55rem; height: 1px; background: linear-gradient(90deg, var(--orange), var(--green), var(--lilac)); }
+  .tl .ev { position: relative; padding: 2rem 1rem 0 0; }
+  .tl .ev::before { content: ''; position: absolute; left: 0; top: 0.2rem; width: 0.7rem; height: 0.7rem; background: var(--orange); }
+  .tl .ev:nth-child(even)::before { background: var(--green); }
+  .tl .y { font-family: var(--font-display); font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: 1; }
+  .tl .t { font-size: clamp(0.85rem, 1.25vw, 1rem); color: var(--light-grey); margin-top: 0.4rem; }
+  .tl .t strong { color: var(--white); font-weight: 500; }
+  .tl.row2 { margin-top: 2.2rem; }
+  @media (max-width: 860px) { .tl { grid-template-columns: 1fr 1fr; row-gap: 1.2rem; } .tl::before { display: none; } }
+
+  /* SECTION DIVIDER */
+  .divnum { font-family: var(--font-banner); font-size: clamp(5rem, 18vw, 15rem); line-height: 0.8; color: transparent; -webkit-text-stroke: 1px rgba(238,111,34,0.7); }
+  .divtitle { font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 6.5rem); text-transform: uppercase; line-height: 0.92; margin-top: 1rem; }
+  .divtitle .g { color: var(--green); }
+
+  /* 3D INTRO */
+  .me-model { position: absolute; top: 0; right: 0; width: 50%; height: 100%; z-index: 1; pointer-events: none;
+    --progress-bar-color: transparent; --progress-mask: none; background: transparent; }
+  .me-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(to right, var(--black) 22%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.05) 70%, transparent 100%); }
+  .me-text { max-width: 640px; position: relative; z-index: 2; }
+  @media (max-width: 860px) {
+    .me-model { width: 100%; height: 55%; top: auto; bottom: 0; opacity: 0.55; }
+    .me-overlay { background: linear-gradient(to bottom, var(--black) 35%, rgba(10,10,10,0.4) 70%, transparent 100%); }
+  }
+
+  /* MISC */
+  .strike { position: relative; display: inline-block; color: var(--grey); }
+  .strike::after { content: ''; position: absolute; left: -2%; top: 52%; height: 0.08em; width: 0; background: var(--orange); transition: width .9s .4s ease; }
+  .slide.in .strike::after { width: 104%; }
+  .flip { color: var(--orange); opacity: 0; transform: translateY(12px); transition: all .7s 1.2s ease; display: block; }
+  .slide.in .flip { opacity: 1; transform: none; }
+  .logo-w3e { width: clamp(80px, 11vw, 150px); height: auto; display: block; margin-bottom: 1.25rem; }
+  .imgframe { border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+  .imgframe img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+  .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .q-big { font-family: var(--font-display); font-size: clamp(1.8rem, 4.6vw, 4rem); line-height: 1.02; text-transform: uppercase; }
+  .q-big .hl { color: var(--green); }
+  .timer { display: flex; gap: 0.6rem; margin-top: 2rem; flex-wrap: wrap; }
+  .timer span { font-family: var(--font-mono); font-size: clamp(0.7rem, 1.2vw, 0.9rem); letter-spacing: 0.1em; padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.18); }
+  .timer b { color: var(--orange); font-weight: 700; }
+  .refs { columns: 2; column-gap: 2.5rem; font-size: clamp(0.72rem, 1vw, 0.85rem); color: var(--grey); }
+  .refs p { break-inside: avoid; margin-bottom: 0.5rem; }
+  @media (max-width: 860px) { .refs { columns: 1; } }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .btn { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 1.8rem;
+    background: var(--orange); color: var(--black); text-decoration: none; font-weight: 700; transition: background .2s; }
+  .btn:hover { background: var(--green); }
+  .btn.ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+  .btn.ghost:hover { border-color: var(--green); color: var(--green); }
+
+  /* SVG diagrams */
+  .diag { width: 100%; max-width: 640px; height: auto; display: block; }
+  .diag text { font-family: 'Space Mono', monospace; fill: var(--light-grey); }
+
+  /* REVEAL */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .slide.in .rv { opacity: 1; transform: none; }
+  .slide.in .rv.d1 { transition-delay: .15s; } .slide.in .rv.d2 { transition-delay: .3s; } .slide.in .rv.d3 { transition-delay: .45s; } .slide.in .rv.d4 { transition-delay: .6s; }
+
+  /* HUD */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--green)); width: 0; z-index: 50; transition: width .3s; }
+  .hud { position: fixed; right: 1.25rem; bottom: 1rem; z-index: 50; display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; color: var(--grey); }
+  .hud button { background: rgba(10,10,10,0.6); color: var(--light-grey); border: 1px solid rgba(255,255,255,0.15); width: 2.2rem; height: 2.2rem;
+    cursor: pointer; font-family: var(--font-mono); font-size: 0.85rem; backdrop-filter: blur(8px); }
+  .hud button:hover { border-color: var(--orange); color: var(--orange); }
+  .brand { position: fixed; left: 1.25rem; top: 1rem; z-index: 50; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
+  .brand span { color: var(--orange); }
+  .sec { position: fixed; left: 1.25rem; bottom: 1.1rem; z-index: 50; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lilac); }
+  @media (max-width: 600px) { .sec { display: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .bar .fill { width: var(--v); } .rv, .flip { opacity: 1; transform: none; } }
+  @media print {
+    body { overflow: visible; } .deck { height: auto; overflow: visible; } .hud, .progress, .brand, .sec { display: none; }
+    .slide { page-break-after: always; min-height: 100vh; } .rv, .flip { opacity: 1; transform: none; } .bar .fill { width: var(--v); }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<a class="brand" href="/" title="numadessas.com.br">NUMA<span>.</span></a>
+<div class="sec" id="sec"></div>
+<div class="hud">
+  <button id="prev" aria-label="Slide anterior">←</button>
+  <span id="count">1 / 1</span>
+  <button id="next" aria-label="Próximo slide">→</button>
+  <button id="fs" aria-label="Tela cheia" title="Tela cheia (F)">⤢</button>
+</div>
+
+<main class="deck" id="deck">
+
+<!-- 01 · CAPA -->
+<section class="slide grain" data-sec="Cripto & Sociedade">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <div class="label rv">Aula · Ciência da Computação</div>
+    <h1 class="banner rv d1" style="font-size:clamp(2.4rem,8.6vw,8.2rem)">CRIPTO &amp;<br>SOCIEDADE<span class="accent">.</span></h1>
+    <div class="pills rv d2">
+      <span class="pill p-o">Pensamento crítico</span>
+      <span class="pill p-g">Cypherpunks</span>
+      <span class="pill p-p">Economia política</span>
+      <span class="pill p-o">Comunidades virtuais</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · QUEM SOU -->
+<section class="slide grain" data-sec="Quem sou">
+  <div class="bg-hero"></div>
+  <div class="me-overlay"></div>
+  <model-viewer id="me-model" class="me-model" src="EuWebsite2026compressed.glb" alt="Numa em 3D"
+    disable-zoom disable-pan interaction-prompt="none"
+    shadow-intensity="1" shadow-softness="2" exposure="0.5" tone-mapping="commerce" environment-image="neutral"
+    camera-orbit="0deg 80deg 2.5m" field-of-view="30deg" style="--poster-color: transparent;"></model-viewer>
+  <div class="inner">
+    <div class="me-text">
+      <div class="label rv">Oi, eu sou</div>
+      <h2 class="banner rv d1" style="font-size:clamp(3.5rem,11vw,9rem)">NUMA<span class="accent">.</span></h2>
+      <ul class="bullets rv d2" style="margin-top:1.75rem">
+        <li><strong>Designer, artista, pesquisadora e educadora</strong></li>
+        <li><strong>Mestra em Design (UFPE)</strong>, com a dissertação <em>Computadores Fazem Arte: Didática para Web3</em></li>
+        <li>Cripto-artista nas redes <strong>Tezos e Solana</strong></li>
+        <li>Coautora da disciplina <strong>Design para Web3</strong> (UFPE)</li>
+      </ul>
+      <div class="stats rv d3">
+        <div class="stat"><div class="n">+12</div><div class="l">anos em design</div></div>
+        <div class="stat"><div class="n">+4</div><div class="l">anos em Web3</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · WEB3EDUBRASIL -->
+<section class="slide" data-sec="Web3EduBrasil">
+  <div class="bg-soft"></div>
+  <div class="inner split">
+    <div>
+      <div class="rv"><svg class="logo-w3e" viewBox="0 0 259.9 245.9" aria-hidden="true"><path fill="#fff" d="M177.7,155.3c6.5,0,11.9-1.1,17.5-4s4.3-2.6,6.4-4.2c6.3-4.6,10.7-11.2,12.4-18.8s.8-6.9.2-10.5c-1.1-6.4-4.7-11.8-10.2-15.3-10.8-6.8-25.5-4.4-35.5,3-.6.4-1,.9-1.8,1l-14.7-4.3c-.4-.1-.8-.5-.9-.7s0-1,.2-1.4l15.1-24c.5-.8.9-1.3,1.9-1.3h8.4c3.1,0,6.1-.5,9.1-1.1,7.3-1.5,14.3-4.2,20.7-8s11.3-9.3,13.8-15.6c.9-2.3,1.1-4.5.7-6.9s-2-5.3-4.4-7-4.8-2.5-7.5-2.7-7.3-.4-10.9,0c-7.7.8-16.1,5.4-21.9,10.5l-3.5,3.7c-3.6,4.2-6.9,8.6-10.2,13.1-.9.4-1.9.7-2.9.7l-7.3.3h-28.9c-.3,0-.6-.4-.7-.7s.1-.8.3-1l9.3-9.7,11.5-11.3c9.5-9.4,19.3-18.3,29.2-27.3l3.8-3.2c.2-.2.4-.7.3-.9s-.8-.5-1.2-.3l-7.7,5.5-25.3,17.9-25.6,17.3-5.5,3.4s-.3,0-.3,0l.2-.3L145.5,0h74.1c3.4,0,6.6.4,9.9,1.3,6.4,1.6,12,5.2,16.3,10.2s8.1,12.4,8.1,20.1c0,9.2-2.6,18.5-8.2,25.8l-3.8,5c-2.9,3.8-6.7,6.7-10.6,9.4s-9.2,5.2-14.4,6.6-10.5,2.5-15.9,3c.5,1,1.4,1.3,2.3,1.4l4.4.3c8.4.6,16.2,4.2,22.2,10.2,3.6,3.6,6.5,7.7,8.8,12.1,2.9,5.5,4.4,11.4,4.7,17.6.3,6.3-.6,12.4-2.7,18.3-1.6,4.4-3.5,8.6-5.8,12.6s-6.8,9.7-11.5,13.4-6,4.5-9.3,6.5c-6.1,3.7-15.7,6.8-22.8,8.2l-4.6.6h-41c-5.6,0-10.9-1.7-15.7-4.5s-4.8-3.5-6.9-5.7c-3.6-3.8-6.1-8.4-6.9-13.6-1.6-10.6,1.5-19.7,6.8-28.7l3.6-5.8h22.2c-1.5,7.6-1.7,15.2-.3,22.8,1.6,8.4,5.6,14.5,12.1,19.9,3.7,3.1,7.8,5.5,12.3,7.5s.6.1.8.1.4-.4.3-.5-.3-.3-.5-.4c-8.3-4.4-14.4-11.9-17-20.9-1-3.4-1.4-6.7-1.5-10.2v-.4c0,0,0,0,.1,0l.2.4c5.1,7.6,12.7,12.6,22.1,12.7Z"/><path fill="#fff" d="M111.6,133.9c-4.9,10.4-7.4,22.2-5.3,33.7s3.2,11.3,7.2,14.8c-.7.4-1.4.7-2.2.7H45.3c-.4,0-.9-.2-1-.4s-.1-.8,0-1.2l31.8-51,34.3-53.9h13.4c3.6,0,6.9,1.3,9.8,3.4,2.3,1.8,4.2,3.9,5.7,6.4s.4,1.4,0,2.2l-9.8,16.2-12.2,18.9c-2.1,3.3-4,6.5-5.7,10.1Z"/><path fill="#fff" d="M95.6,73.7l-51.3,82.6-7.9,12.9c-2.3,3.7-5,7.1-8.4,9.8-4.8,3.8-10.4,5.6-16.3,4.1s-6.7-6-6.4-10.9.3-3.9.8-5.8l3.2-11.9,8-26.7,17.8-56.8,10.2-32.2,2.7-9c.7-2.3,1.6-4.4,2.6-6.6,1.5-3.2,3.5-5.9,5.6-8.7s5.8-6.4,9.6-8.7C71.4,2.4,77.6.5,84.1,0h5.9c.2,0,.3,0,.1.2l-4.6,4.3-7.8,6.8-16.7,14.2c-5.4,4.6-9.6,10.3-12.3,16.8s-3.2,10-3.9,15.2l-2.5,19.7-2.1,12.9-2.3,11.8-5.2,23-4.7,20.7c-.5,2.1-.8,3.9-.9,6.2l25.5-37.4c8.6-12.7,22.1-30.4,35.4-37.9,2.4-1.3,4.9-2.5,7.8-2.9Z"/><path fill="#fff" d="M40.3,124.8l-6,9.6,3.8-15.9c2.4-11.6,4.6-23.1,6.5-34.8l3.5-19.2c.8-4.5,2-8.7,3.4-13,3-9.5,6.2-15.3,13-22.5,3.7-4,7.7-7.5,11.9-10.9l4.8-3.9,13.7-10.9,3.9-3.2h27.5c-7.1,9.7-13.8,19.1-20.3,28.9l-11.4,18.4-7.3,12-.6-.3.5.6c-5.9,9.2-12.1,18.1-18.4,27.1l-9.1,12.3-9.7,12.8-9.4,13.1Z"/><polygon fill="#fff" points="22 223.7 26.4 223.7 21.8 245.9 17.7 245.9 13.2 230.1 8.7 245.9 4.6 245.9 0 223.7 4.4 223.7 7.1 239.5 11.6 223.6 14.9 223.7 19.3 239.5 22 223.7"/><path fill="#fff" d="M168.3,234.4l2.3,2.3v5.8s-3.4,3.4-3.4,3.4h-14.7s0-22.3,0-22.3h14s3.2,3.2,3.2,3.2v6.3s-1.3,1.3-1.3,1.3ZM165.4,231.8v-3.5s-1.1-1.1-1.1-1.1h-7.5s0,5.7,0,5.7h7.5s1.2-1.2,1.2-1.2ZM166.4,240.9v-3s-1.4-1.4-1.4-1.4h-8.3s0,5.9,0,5.9h8.3s1.4-1.4,1.4-1.4Z"/><path fill="#fff" d="M64.4,234.4l2.2,2.3v5.8s-3.4,3.5-3.4,3.5h-14.7s0-22.3,0-22.3h14s3.2,3.2,3.2,3.2v6.2s-1.3,1.3-1.3,1.3ZM61.4,231.8v-3.4s-1.1-1.1-1.1-1.1h-7.6s0,5.7,0,5.7h7.5s1.2-1.2,1.2-1.2ZM62.4,240.9v-3.1s-1.4-1.4-1.4-1.4h-8.3s0,5.9,0,5.9h8.3s1.4-1.4,1.4-1.4Z"/><path fill="#fff" d="M126.4,242.1l-3.8,3.9h-14.2s0-22.3,0-22.3h14.3s3.8,3.8,3.8,3.8v14.6ZM122,240.6v-11.6s-1.6-1.6-1.6-1.6h-7.8s0,14.9,0,14.9h7.8s1.6-1.7,1.6-1.7Z"/><path fill="#fff" d="M191.3,245.9h-4.3s0-6.4,0-6.4l-1.9-2.1h-6.9s0,8.5,0,8.5h-4.3s0-22.3,0-22.3h14s3.4,3.4,3.4,3.4v6.8s-2.2,2.2-2.2,2.2l2.3,2.5v7.4ZM186.9,232.7v-4.3s-1.2-1.1-1.2-1.1h-7.6s0,6.6,0,6.6h7.7s1.1-1.1,1.1-1.1Z"/><polygon fill="#fff" points="228.6 245.9 218.3 245.9 214.9 242.5 214.9 239.3 219.1 239.3 219.1 241.2 220.2 242.2 226.7 242.2 227.8 241.2 227.8 237.5 226.8 236.4 218.4 236.4 214.9 233 214.9 227.1 218.4 223.6 228.4 223.7 231.8 227.1 231.9 230.3 227.6 230.3 227.6 228.4 226.5 227.3 220.3 227.3 219.2 228.4 219.2 231.7 220.2 232.7 228.7 232.7 232.1 236.1 232.1 242.4 228.6 245.9"/><polygon fill="#fff" points="44.4 236.5 33.6 236.5 33.6 242.3 45.3 242.3 45.3 245.9 29.2 245.9 29.2 223.6 45.3 223.6 45.3 227.3 33.6 227.3 33.6 232.9 44.4 232.9 44.4 236.5"/><polygon fill="#fff" points="104.2 236.5 93.4 236.5 93.4 242.3 105.1 242.3 105.1 245.9 89 245.9 89 223.6 105.1 223.6 105.1 227.3 93.4 227.3 93.4 232.9 104.2 232.9 104.2 236.5"/><polygon fill="#fff" points="79.9 242.2 81 241.2 81 237.5 80 236.6 73.6 236.6 73.6 232.9 80 232.9 81 231.9 81 228.4 80 227.3 74.5 227.3 73.4 228.4 73.4 230.6 69.1 230.6 69.1 227.1 72.5 223.6 81.9 223.6 85.3 227.1 85.4 233.1 83.7 234.7 85.4 236.3 85.3 242.5 81.9 245.9 72.3 245.9 68.9 242.5 68.9 239 73.2 239 73.2 241.2 74.2 242.2 79.9 242.2"/><polygon fill="#fff" points="144 223.7 148.3 223.6 148.3 242.1 144.5 245.9 134 245.9 130.2 242.1 130.2 223.7 134.5 223.7 134.5 240.6 136.1 242.2 142.4 242.2 144 240.6 144 223.7"/><path fill="#fff" d="M207.4,241h-7.8s-1.8,4.9-1.8,4.9h-4.4s8.1-22.3,8.1-22.3h4s8.1,22.2,8.1,22.2h-4.4s-1.8-4.9-1.8-4.9ZM206.4,237.4l-3-8.5-2.9,8.5h5.9Z"/><polygon fill="#fff" points="87.5 215.6 84.3 215.6 76 203.1 75.9 215.6 72.5 215.6 72.5 197.1 75.7 197.1 84 209.7 84 197.1 87.5 197.1 87.5 215.6"/><path fill="#fff" d="M191.5,215.6h-9.6s-3.1-3-3.1-3v-12.5s3-3.1,3-3.1h9.5s3.1,3,3.1,3v12.5s-3,3-3,3ZM189.6,212.6l1.3-1.4v-9.7s-1.4-1.3-1.4-1.3h-5.7s-1.4,1.4-1.4,1.4v9.7s1.3,1.4,1.3,1.4h5.8Z"/><path fill="#fff" d="M102,215.6h-8.6s-2.9-2.9-2.9-2.9v-2.6s3.5,0,3.5,0v1.5s.9.9.9.9h5.5c.3-.2.9-.7.9-1v-2.9s-.9-1-.9-1h-7s-2.8-2.9-2.8-2.9v-4.9s2.9-2.8,2.9-2.8h8.4s2.8,2.8,2.8,2.8v2.7s-3.5,0-3.5,0v-1.5c0-.3-.7-.8-1-1h-5.1c-.3.2-.8.7-1,1v2.6c.2.3.7.8,1,1h6.9s2.9,2.9,2.9,2.9v5.2s-2.9,2.9-2.9,2.9Z"/><polygon fill="#fff" points="157 197.1 160.6 197.1 160.6 212.4 157.4 215.6 148.6 215.6 145.4 212.4 145.4 197.1 149.1 197.1 149.1 211.2 150.4 212.6 155.6 212.6 157 211.2 157 197.1"/><polygon fill="#fff" points="259.9 242.3 259.9 245.9 244.4 245.9 244.4 223.7 248.7 223.6 248.7 242.3 259.9 242.3"/><polygon fill="#fff" points="115 215.6 111.4 215.6 111.4 200.1 105.9 200.1 105.9 197.1 120.6 197.1 120.5 200.1 115 200.1 115 215.6"/><polygon fill="#fff" points="171.8 215.6 168.2 215.6 168.2 200.1 162.7 200.1 162.7 197.1 177.4 197.1 177.4 200.1 171.8 200.1 171.8 215.6"/><polygon fill="#fff" points="137.8 215.6 134.2 215.6 134.2 200.1 128.7 200.1 128.7 197.1 143.3 197.1 143.4 200.1 137.8 200.1 137.8 215.6"/><polygon fill="#fff" points="240.1 245.9 235.8 245.9 235.8 223.6 240.1 223.6 240.1 245.9"/><polygon fill="#fff" points="68.9 215.6 65.3 215.6 65.3 197.1 68.9 197.1 68.9 215.6"/><polygon fill="#fff" points="126.4 215.6 122.8 215.6 122.8 197.1 126.4 197.1 126.4 215.6"/></svg></div>
+      <div class="label rv d1">Head of Community</div>
+      <h2 class="title rv d1" style="margin-bottom:1rem">Web3Edu<span class="g">Brasil</span><span class="accent">.</span></h2>
+      <p class="lede rv d2">Comunidade de <strong>aprendizado livre</strong> dedicada à educação e adoção da Web3 no Brasil. Criada pelo pernambucano <strong>Cassio Chagas</strong>.</p>
+    </div>
+    <div class="cols rv d3" style="gap:.75rem">
+      <div class="card"><div class="k">Frente</div><h3>Mentorias</h3><p>Gratuitas, de 3 meses: Web3, dev, cibersegurança, direito, design, carreira, liderança feminina…</p></div>
+      <div class="card g"><div class="k">Frente</div><h3>Eventos</h3><p>Como o <strong>WEB3 PE</strong>, no Centro de Informática da UFPE.</p></div>
+      <div class="card p"><div class="k">Frente</div><h3>Conteúdo</h3><p>Material educativo aberto, como a cartilha para escolas públicas na <strong>NFT Brasil</strong> (Bienal de SP).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · QUEM TEM CRIPTO -->
+<section class="slide grain" data-sec="Abertura">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <div class="label rv">Mão pra cima</div>
+    <h2 class="title rv d1">Quem aqui<br>tem <span class="g">cripto</span><span class="accent">?</span></h2>
+    <div class="cols c3 rv d2">
+      <div class="card"><div class="k">01</div><h3>Já teve ou tem?</h3></div>
+      <div class="card g"><div class="k">02</div><h3>Comprou por app ou corretora?</h3></div>
+      <div class="card p"><div class="k">03</div><h3>Guarda as próprias chaves?</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · DADO: ONDE ESTÃO AS CRIPTOS -->
+<section class="slide" data-sec="Abertura">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">No Brasil, quem já colocou dinheiro em cripto usou…</div>
+    <div class="bars rv d1">
+      <div class="bar"><span class="bl">App do banco</span><span class="track"><span class="fill" style="--v:83%"></span></span><span class="bv">83%</span></div>
+      <div class="bar g"><span class="bl">Carteira própria</span><span class="track"><span class="fill" style="--v:26%"></span></span><span class="bv">26%</span></div>
+      <div class="bar p"><span class="bl">Corretora</span><span class="track"><span class="fill" style="--v:20%"></span></span><span class="bv">20%</span></div>
+      <div class="bar dim"><span class="bl">Fundo ou ETF</span><span class="track"><span class="fill" style="--v:18%"></span></span><span class="bv">18%</span></div>
+    </div>
+    <div class="stats rv d2">
+      <div class="stat"><div class="n">4,2×</div><div class="l">mais gente com cripto no banco do que numa exchange</div></div>
+      <div class="stat"><div class="n">4%</div><div class="l">da população já usou autocustódia</div></div>
+    </div>
+    <div class="src">Fonte: 2ª Pesquisa Nacional das Criptomoedas — Paradigma / Datafolha, 2026</div>
+  </div>
+</section>
+
+<!-- 06 · PERGUNTA -->
+<section class="slide grain" data-sec="Abertura">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <p class="statement rv">Se a tecnologia é <em>descentralizada</em> mas o uso é <span class="o">centralizado</span>…</p>
+    <p class="q-big rv d2" style="margin-top:2rem;color:var(--light-grey)">o que exatamente foi <span class="hl">descentralizado?</span></p>
+  </div>
+</section>
+
+<!-- 07 · DIVISOR 01 -->
+<section class="slide" data-sec="01 · Não é neutra">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="divnum rv">01</div>
+    <h2 class="divtitle rv d1">A tecnologia<br><span class="g">não é neutra</span><span class="accent" style="color:var(--orange)">.</span></h2>
+  </div>
+</section>
+
+<!-- 08 · KRANZBERG / WINNER -->
+<section class="slide" data-sec="01 · Não é neutra">
+  <div class="inner split">
+    <div>
+      <p class="quote rv">A tecnologia não é boa nem má; e também não é neutra.</p>
+      <div class="src rv d1">Kranzberg, 1986 — 1ª lei</div>
+    </div>
+    <div class="rv d2">
+      <div class="label">Winner · Do Artifacts Have Politics? (1980)</div>
+      <p class="lede" style="margin-bottom:1.25rem"><strong>Parâmetro de protocolo é decisão política.</strong></p>
+      <div class="pills">
+        <span class="pill p-o">Tamanho do bloco</span>
+        <span class="pill p-g">Emissão</span>
+        <span class="pill p-p">Quem valida</span>
+        <span class="pill p-o">Custo de validar</span>
+        <span class="pill p-g">Quem decide o fork</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · RHEINGOLD: MESMAS PROMESSAS -->
+<section class="slide" data-sec="01 · Não é neutra">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Rheingold · The Virtual Community (1993)</div>
+    <h2 class="title rv d1">As mesmas<br><span class="g">promessas</span><span class="accent">.</span></h2>
+    <div class="tl rv d2">
+      <div class="ev"><div class="y">Vapor</div><div class="t">"vai descentralizar o poder"</div></div>
+      <div class="ev"><div class="y">Eletricidade</div><div class="t">"vai equalizar o cidadão"</div></div>
+      <div class="ev"><div class="y">TV</div><div class="t">"o maior meio educacional da história"</div></div>
+      <div class="ev"><div class="y">Internet</div><div class="t">"a ágora eletrônica"</div></div>
+      <div class="ev"><div class="y">Cripto</div><div class="t">"<strong>?</strong>"</div></div>
+    </div>
+    <ul class="bullets rv d3" style="margin-top:2.5rem">
+      <li><strong>"Retórica do sublime tecnológico"</strong> (Carey): a máquina como força fora da história</li>
+      <li>Entusiastas viram <strong>anunciantes não pagos</strong> de quem lucra com a adoção</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 · PRODIGY × X × HEN -->
+<section class="slide" data-sec="01 · Não é neutra">
+  <div class="inner">
+    <div class="label rv">Quem controla a rede?</div>
+    <div class="cols c3">
+      <div class="card rv d1"><div class="k">1993</div><h3>Prodigy</h3><ul><li>IBM + Sears</li><li>Toda postagem moderada</li><li>Usuários driblam com e-mail → <strong>e-mail passa a ser cobrado</strong></li></ul></div>
+      <div class="card g rv d2"><div class="k">2021</div><h3>hic et nunc</h3><ul><li>Encerrado por <strong>uma pessoa</strong>, sem aviso</li><li>Código aberto + comunidade</li><li>→ nasce a <strong>TEIA</strong></li></ul></div>
+      <div class="card p rv d3"><div class="k">2024</div><h3>X no Brasil</h3><ul><li>Bloqueio no país</li><li>A comunidade cripto perde seu canal</li><li>A aula de mintagem <strong>não aconteceu</strong></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · WEB 2.5 -->
+<section class="slide grain" data-sec="01 · Não é neutra">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <p class="quote rv">A Web3 que eu vivo é uma <span style="color:var(--green)">Web 2.5</span>. Ela depende das mesmas estruturas que diz combater.</p>
+  </div>
+</section>
+
+<!-- 12 · DIVISOR 02 -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="divnum rv">02</div>
+    <h2 class="divtitle rv d1">Cypher&shy;punks<span style="color:var(--orange)">:</span><br><span class="g">de onde vem o sonho</span></h2>
+    <div class="pills rv d2"><span class="pill p-o">not your keys, not your coins</span><span class="pill p-g">trustless</span><span class="pill p-p">code is law</span></div>
+  </div>
+</section>
+
+<!-- 13 · LINHA DO TEMPO -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="inner">
+    <div class="label rv">Cripto não nasceu em 2008</div>
+    <div class="tl rv d1">
+      <div class="ev"><div class="y">1982–85</div><div class="t"><strong>Chaum</strong>: assinaturas cegas, dinheiro anônimo, alerta da "sociedade de dossiês"</div></div>
+      <div class="ev"><div class="y">1988</div><div class="t"><strong>May</strong>: The Crypto Anarchist Manifesto</div></div>
+      <div class="ev"><div class="y">1991</div><div class="t">Projeto de lei nos EUA exige acesso do governo às comunicações</div></div>
+      <div class="ev"><div class="y">1993</div><div class="t"><strong>Hughes</strong>: A Cypherpunk's Manifesto · <strong>Rheingold</strong> já cita os cypherpunks</div></div>
+      <div class="ev"><div class="y">anos 90</div><div class="t"><strong>Crypto Wars</strong> contra NSA e FBI: "código é discurso"</div></div>
+    </div>
+    <div class="tl row2 rv d2">
+      <div class="ev"><div class="y">1996</div><div class="t"><strong>Barlow</strong>: Declaração de Independência do Ciberespaço, em <strong>Davos</strong></div></div>
+      <div class="ev"><div class="y">2006</div><div class="t"><strong>WikiLeaks</strong>: transparência para os poderosos</div></div>
+      <div class="ev"><div class="y">2008</div><div class="t"><strong>Nakamoto</strong>: white paper do Bitcoin</div></div>
+      <div class="ev"><div class="y">2009</div><div class="t">Bloco gênesis</div></div>
+      <div class="ev"><div class="y">2012</div><div class="t">Livro <strong>Cypherpunks</strong> (Assange et al.)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · TRÊS MANIFESTOS -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Em 3 grupos · 3 min: o que promete? para quem? contra quem?</div>
+    <div class="cols c3">
+      <div class="card rv d1"><div class="k">Eric Hughes · 1993</div><h3>Privacidade ≠ segredo</h3><ul><li>Poder de <strong>se revelar seletivamente</strong></li><li>Transações anônimas, como dinheiro vivo</li><li><strong>"Cypherpunks write code"</strong>, livre pra todos</li></ul></div>
+      <div class="card g rv d2"><div class="k">Tim May · 1988</div><h3>Cripto-anarquia</h3><ul><li>Anonimato + <strong>reputação</strong> no lugar do crédito</li><li>Estado sem vigilância e <strong>sem impostos</strong></li><li>Mercado líquido de qualquer informação</li></ul></div>
+      <div class="card p rv d3"><div class="k">John Perry Barlow · 1996</div><h3>Ciberespaço independente</h3><ul><li>Governos <strong>sem soberania</strong> online</li><li>Feito de pensamento, não de matéria</li><li>Todos entram sem privilégio</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · PROVOCAÇÕES -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="inner">
+    <div class="cols c3">
+      <div class="card rv"><div class="k">Hughes</div><h3>O detalhe</h3><p>A privacidade só vai até onde vai a <strong>cooperação dos outros</strong> na sociedade.<br><br>→ Até o manifesto mais individualista depende do <strong>coletivo</strong>.</p></div>
+      <div class="card g rv d1"><div class="k">May</div><h3>A pergunta</h3><p>Num mundo sem arrecadação de impostos…<br><br><strong style="font-size:1.25em;color:var(--white)">quem paga a universidade pública onde vocês estão agora?</strong></p></div>
+      <div class="card p rv d2"><div class="k">Barlow</div><h3>A contraprova</h3><p>Escrita <strong>em Davos</strong>.<br><br>Em 2024, o Estado brasileiro exerceu soberania sobre o X. O virtual não é o oposto do real: ele o <strong>complexifica</strong> (Recuero).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · ANDERSON: SLOGAN + BURACO NEGRO -->
+<section class="slide grain" data-sec="02 · Cypherpunks">
+  <div class="bg-hero"></div>
+  <div class="inner split">
+    <div>
+      <div class="label rv">Anderson · Of Cypherpunks and Sousveillance (2022)</div>
+      <p class="statement rv d1" style="font-size:clamp(1.8rem,4.4vw,3.8rem)">Privacidade para os <em>fracos</em>, transparência para os <span class="o">poderosos</span>.</p>
+      <ul class="bullets rv d2" style="margin-top:1.75rem">
+        <li>Privacidade × segredo = <strong>relação de poder</strong></li>
+        <li>NSA e Google são <strong>"buracos negros"</strong>: coletam tudo, não vazam nada</li>
+        <li>Resposta: proteger seus dados + <strong>vigiar de baixo pra cima</strong> (sousveillance)</li>
+      </ul>
+    </div>
+    <svg class="diag rv d3" viewBox="0 0 400 360" aria-label="Diagrama de fluxo de informação: buraco negro">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ee6f22"/></marker>
+        <radialGradient id="bh"><stop offset="0%" stop-color="#000"/><stop offset="70%" stop-color="#160A20"/><stop offset="100%" stop-color="#734578"/></radialGradient>
+      </defs>
+      <circle cx="200" cy="180" r="70" fill="url(#bh)" stroke="#734578" stroke-width="1.5"/>
+      <text x="200" y="176" text-anchor="middle" font-size="15" style="fill:#f5f5f0">NSA</text>
+      <text x="200" y="196" text-anchor="middle" font-size="15" style="fill:#f5f5f0">Google</text>
+      <g stroke="#ee6f22" stroke-width="2" fill="none" marker-end="url(#ah)">
+        <line x1="30" y1="40" x2="140" y2="128"/><line x1="370" y1="40" x2="260" y2="128"/>
+        <line x1="20" y1="180" x2="122" y2="180"/><line x1="380" y1="180" x2="278" y2="180"/>
+        <line x1="30" y1="320" x2="140" y2="232"/><line x1="370" y1="320" x2="260" y2="232"/>
+      </g>
+      <g font-size="11"><text x="8" y="30">seus dados</text><text x="300" y="30">metadados</text><text x="8" y="168">buscas</text><text x="320" y="168">mensagens</text><text x="8" y="345">localização</text><text x="305" y="345">transações</text></g>
+      <text x="200" y="282" text-anchor="middle" font-size="12" style="fill:#93FF78">entra tudo · não sai nada</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 17 · VIRADA -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">E a blockchain cumpre o slogan?</div>
+    <p class="statement rv d1" style="font-size:clamp(1.6rem,4vw,3.4rem);max-width:none">
+      <span class="strike">Privacidade para os fracos, transparência para os poderosos</span>
+      <span class="flip">→ Transparência para os fracos, segredo para os poderosos.</span>
+    </p>
+    <div class="cols c3" style="margin-top:2.5rem">
+      <div class="card rv d2"><h3>Ledger público</h3><p>Toda transação de qualquer pessoa, exposta <strong>pra sempre</strong>. Pseudônima, não anônima.</p></div>
+      <div class="card g rv d3"><h3>Fora da cadeia</h3><p>Exchanges, fundos e emissores com <strong>contabilidade interna</strong> que ninguém audita em tempo real.</p></div>
+      <div class="card p rv d4"><h3>App do banco</h3><p><strong>83%</strong> compram com identificação obrigatória: o "sou obrigado a me revelar sempre" de Hughes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 · MARKETING -->
+<section class="slide" data-sec="02 · Cypherpunks">
+  <div class="inner split">
+    <div>
+      <div class="label rv">O vocabulário virou marketing</div>
+      <p class="quote rv d1" style="font-size:clamp(1.4rem,3.2vw,2.6rem)">"Aumentar a liberdade econômica de mais de um bilhão de pessoas"</p>
+      <div class="src rv d1">Missão da Coinbase, patrocinadora da Pesquisa Nacional</div>
+    </div>
+    <ul class="bullets rv d2">
+      <li>A Coinbase é a <strong>maior custodiante de cripto do mundo</strong></li>
+      <li>Custodia <strong>8 dos 11 ETFs</strong> globais de Bitcoin</li>
+      <li>O questionário pergunta se você tem medo de o governo <strong>proibir carteiras próprias</strong> ou <strong>monitorar conversas</strong></li>
+      <li>Medos cypherpunks a serviço de uma <strong>agenda de lobby</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 19 · DIVISOR 03 -->
+<section class="slide" data-sec="03 · Economia política">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="divnum rv">03</div>
+    <h2 class="divtitle rv d1">Economia<br><span class="g">política</span><span style="color:var(--orange)">.</span></h2>
+    <p class="lede rv d2" style="margin-top:1.5rem">Não é "economia de esquerda". É fazer <strong>threat modeling do poder</strong>.</p>
+  </div>
+</section>
+
+<!-- 20 · AS 5 PERGUNTAS -->
+<section class="slide grain" data-sec="03 · Economia política">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <div class="label rv">As cinco perguntas</div>
+    <div class="cols c5">
+      <div class="card rv d1"><div class="k">01</div><h3>Quem produz?</h3></div>
+      <div class="card g rv d1"><div class="k">02</div><h3>Quem decide?</h3></div>
+      <div class="card p rv d2"><div class="k">03</div><h3>Quem lucra?</h3></div>
+      <div class="card rv d2"><div class="k">04</div><h3>Quem assume o risco?</h3></div>
+      <div class="card g rv d3"><div class="k">05 · cypherpunk</div><h3>Quem vê o quê?</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 · DISTRIBUIÇÃO -->
+<section class="slide" data-sec="03 · Quem lucra?">
+  <div class="inner split">
+    <div>
+      <div class="label rv">Quem fica com o excedente?</div>
+      <div class="stats rv d1" style="margin-top:0"><div class="stat"><div class="n">1,8%</div><div class="l">dos endereços concentram a maior parte das reservas de BTC</div></div></div>
+      <ul class="bullets rv d2" style="margin-top:1.75rem">
+        <li>A acumulação está na <strong>origem</strong> da rede</li>
+        <li>Quem entra hoje chega sempre <strong>"atrasado"</strong></li>
+        <li><strong>Objeção:</strong> endereço ≠ pessoa. Exchange agrega milhões → concentração também na <strong>custódia</strong></li>
+      </ul>
+      <div class="src">BitInfoCharts (abr. 2025), via dissertação · Menotti, 2021</div>
+    </div>
+    <div class="waffle rv d2" id="waffle" style="grid-template-columns:repeat(25,1fr)"></div>
+  </div>
+</section>
+
+<!-- 22 · É DINHEIRO? -->
+<section class="slide" data-sec="03 · Quem lucra?">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Paraná · Bitcoin: a utopia tecnocrática do dinheiro apolítico (2020)</div>
+    <h2 class="title rv d1">Isso é<br><span class="g">dinheiro</span><span class="accent">?</span></h2>
+    <div class="cols c3 rv d2">
+      <div class="card"><div class="k">Função</div><h3>Unidade de conta</h3><p>Ninguém precifica o pão em BTC.</p></div>
+      <div class="card g"><div class="k">Função</div><h3>Meio de troca</h3><p>Instável demais pro dia a dia.</p></div>
+      <div class="card p"><div class="k">Função</div><h3>Reserva de valor</h3><p>A especulação engole a função monetária.</p></div>
+    </div>
+    <ul class="bullets rv d3" style="margin-top:2rem">
+      <li><strong>Paradoxo:</strong> quanto mais parece dinheiro, menos "disruptivo"</li>
+      <li>A defesa das <strong>stablecoins</strong> (lastro em dólar) é quase uma admissão</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 23 · TRUSTLESS? -->
+<section class="slide" data-sec="03 · Quem decide?">
+  <div class="inner split">
+    <div>
+      <div class="label rv">Trustless?</div>
+      <h2 class="title rv d1">A confiança<br>não some.<br><span class="g">Ela se desloca</span><span class="accent">.</span></h2>
+      <ul class="bullets rv d2">
+        <li>Dinheiro é <strong>instituição social e política</strong></li>
+        <li>"1 token = 1 voto" é <strong>plutocracia</strong> com outro nome</li>
+        <li>Arranjo institucional é <strong>escolha de projeto</strong></li>
+      </ul>
+    </div>
+    <svg class="diag rv d3" viewBox="0 0 400 380" aria-label="Para onde a confiança se desloca">
+      <g stroke="#734578" stroke-width="1.5">
+        <line x1="200" y1="190" x2="200" y2="50"/><line x1="200" y1="190" x2="345" y2="125"/><line x1="200" y1="190" x2="335" y2="290"/>
+        <line x1="200" y1="190" x2="65" y2="290"/><line x1="200" y1="190" x2="55" y2="125"/>
+      </g>
+      <circle cx="200" cy="190" r="52" fill="#ee6f22"/>
+      <text x="200" y="195" text-anchor="middle" font-size="14" style="fill:#0a0a0a;font-weight:700">confiança</text>
+      <g font-size="12">
+        <circle cx="200" cy="44" r="7" fill="#93FF78"/><text x="200" y="24" text-anchor="middle">exchanges</text>
+        <circle cx="345" cy="125" r="7" fill="#b87fbf"/><text x="345" y="105" text-anchor="middle">emissores de</text><text x="345" y="152" text-anchor="middle">stablecoin</text>
+        <circle cx="335" cy="290" r="7" fill="#93FF78"/><text x="335" y="318" text-anchor="middle">pools de</text><text x="335" y="334" text-anchor="middle">mineração</text>
+        <circle cx="65" cy="290" r="7" fill="#b87fbf"/><text x="65" y="318" text-anchor="middle">lojas de app</text>
+        <circle cx="55" cy="125" r="7" fill="#93FF78"/><text x="55" y="105" text-anchor="middle">mantenedores</text><text x="55" y="152" text-anchor="middle">do software</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 24 · RISCO: RENDA -->
+<section class="slide" data-sec="03 · Quem assume o risco?">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Quanto ganha quem já colocou dinheiro em cripto</div>
+    <div class="split" style="align-items:end">
+      <div class="bars rv d1">
+        <div class="bar"><span class="bl">Até 1 SM</span><span class="track"><span class="fill" style="--v:31.6%"></span></span><span class="bv">31,6</span></div>
+        <div class="bar"><span class="bl">1 a 2 SM</span><span class="track"><span class="fill" style="--v:31.9%"></span></span><span class="bv">31,9</span></div>
+        <div class="bar"><span class="bl">2 a 3 SM</span><span class="track"><span class="fill" style="--v:14.2%"></span></span><span class="bv">14,2</span></div>
+        <div class="bar dim"><span class="bl">3 a 5 SM</span><span class="track"><span class="fill" style="--v:11.8%"></span></span><span class="bv">11,8</span></div>
+        <div class="bar dim"><span class="bl">+ de 5 SM</span><span class="track"><span class="fill" style="--v:10.6%"></span></span><span class="bv">10,6</span></div>
+      </div>
+      <div class="rv d2">
+        <div class="stats" style="margin-top:0"><div class="stat"><div class="n">77,6%</div><div class="l">ganha até 3 salários mínimos</div></div></div>
+        <p class="q-big" style="margin-top:1.5rem;font-size:clamp(1.3rem,2.8vw,2.4rem)">Democratização ou <span class="hl">transferência de risco</span>?</p>
+      </div>
+    </div>
+    <div class="src">2ª Pesquisa Nacional das Criptomoedas, 2026 · % da cripto-população</div>
+  </div>
+</section>
+
+<!-- 25 · GÊNERO -->
+<section class="slide" data-sec="03 · Quem assume o risco?">
+  <div class="inner split">
+    <div>
+      <div class="label rv">O gap de gênero</div>
+      <div class="bars rv d1">
+        <div class="bar"><span class="bl">Conhecem · homens</span><span class="track"><span class="fill" style="--v:74.6%"></span></span><span class="bv">74,6</span></div>
+        <div class="bar p"><span class="bl">Conhecem · mulheres</span><span class="track"><span class="fill" style="--v:58.9%"></span></span><span class="bv">58,9</span></div>
+        <div class="bar"><span class="bl">Investiram · homens</span><span class="track"><span class="fill" style="--v:23.6%"></span></span><span class="bv">23,6</span></div>
+        <div class="bar p"><span class="bl">Investiram · mulheres</span><span class="track"><span class="fill" style="--v:11.3%"></span></span><span class="bv">11,3</span></div>
+      </div>
+      <div class="src">Pesquisa Nacional, 2026 · % de cada grupo</div>
+    </div>
+    <div class="stats rv d2 compact" style="flex-direction:column;gap:1rem">
+      <div class="stat"><div class="n">2,1×</div><div class="l">mais chance de um homem ter investido</div></div>
+      <div class="stat"><div class="n">34,2%</div><div class="l">da cripto-população são mulheres</div></div>
+      <div class="stat"><div class="n">85%</div><div class="l">do público do Bitcoin é masculino (Coin.Dance, via dissertação)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 · BRENDY -->
+<section class="slide grain" data-sec="03 · Quem assume o risco?">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <p class="quote rv">Calma, você não vai enriquecer, mas tem que estar presente pra fazer um dinheiro.</p>
+    <div class="src rv d1">Brendy, artista · entrevista da dissertação</div>
+    <p class="lede rv d2" style="margin-top:2rem">A renda pequena e real da criptoarte para artistas trans e periféricas <strong>também é dado</strong>. A crítica não pode apagar quem usa a tecnologia pra sobreviver.</p>
+  </div>
+</section>
+
+<!-- 27 · QUEM CONTA A HISTÓRIA -->
+<section class="slide" data-sec="03 · Quem vê o quê?">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Quem conta a história?</div>
+    <div class="cols c3">
+      <div class="card rv d1"><div class="k">Realização</div><h3>Paradigma + Datafolha</h3><p>Visão declarada da Paradigma: "mais de 51% dos brasileiros com exposição ao Bitcoin".</p></div>
+      <div class="card g rv d2"><div class="k">Patrocínio · apoio</div><h3>Coinbase · Hashdex · ABcripto</h3><p>Exchange, gestora de cripto e a associação do setor.</p></div>
+      <div class="card p rv d3"><div class="k">Manchetes</div><h3>"A moeda do povo"</h3><p>"Cripto não é um fenômeno da elite" · "Maior que a torcida do Corinthians"</p></div>
+    </div>
+    <p class="q-big rv d4" style="margin-top:2.5rem;font-size:clamp(1.3rem,3vw,2.6rem)">Metodologia séria (2.004 entrevistas, ±2 p.p.). <span class="hl">Separe o dado do enquadramento.</span></p>
+  </div>
+</section>
+
+<!-- 28 · DIVISOR 04 -->
+<section class="slide" data-sec="04 · Comunidade">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="divnum rv">04</div>
+    <h2 class="divtitle rv d1">O que é uma<br><span class="g">comunidade?</span></h2>
+    <div class="src rv d2">Recuero · Comunidades virtuais: uma abordagem teórica (2001)</div>
+  </div>
+</section>
+
+<!-- 29 · TÖNNIES -->
+<section class="slide" data-sec="04 · Comunidade">
+  <div class="inner">
+    <div class="label rv">Tönnies → Weber e Durkheim</div>
+    <div class="cols c2">
+      <div class="card g rv d1"><div class="k">Gemeinschaft</div><h3>Comunidade</h3><ul><li>Afeto, laço, costume</li><li>Aldeia, família</li><li>"O ideal"</li></ul></div>
+      <div class="card rv d2"><div class="k">Gesellschaft</div><h3>Sociedade</h3><ul><li>Cálculo, contrato, interesse</li><li>Metrópole, Estado, mercado</li><li>"A corrupção do ideal"</li></ul></div>
+    </div>
+    <p class="lede rv d3" style="margin-top:2rem;max-width:60ch">No marketing cripto, "comunidade" é vendida como <strong style="color:var(--green)">Gemeinschaft</strong>… e entregue como <strong style="color:var(--orange)">Gesellschaft</strong>: contrato e expectativa de valorização.</p>
+  </div>
+</section>
+
+<!-- 30 · 3 FERRAMENTAS -->
+<section class="slide" data-sec="04 · Comunidade">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Três ferramentas para olhar a cripto</div>
+    <div class="cols c3">
+      <div class="card rv d1"><div class="k">Jones</div><h3>Suporte ≠ comunidade</h3><p>Um servidor com mil canais sem relação entre si não é comunidade.</p><p style="margin-top:.8rem;color:var(--white)"><strong>Discord, blockchain, lista de holders são?</strong></p></div>
+      <div class="card g rv d2"><div class="k">Primo</div><h3>Mútua × reativa</h3><p>Comunidade é troca negociada e imprevisível, não estímulo e resposta.</p><p style="margin-top:.8rem;color:var(--white)"><strong>Mintar, curtir, dar "gm" é o quê?</strong></p></div>
+      <div class="card p rv d3"><div class="k">Palacios</div><h3>Permanência</h3><p>Sem continuidade, os laços não se aprofundam. E o pertencimento é <strong>eletivo</strong>.</p><p style="margin-top:.8rem;color:var(--white)"><strong>Quando o preço cai, quem fica?</strong></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 31 · 5 DE 14 -->
+<section class="slide" data-sec="04 · Comunidade">
+  <div class="inner split">
+    <div>
+      <div class="label rv">Pesquisa de mestrado</div>
+      <div class="stats rv d1" style="margin-top:0"><div class="stat"><div class="n">5 / 14</div><div class="l">participantes continuaram ativos depois da formação</div></div></div>
+      <div class="waffle rv d2" id="waffle14" style="grid-template-columns:repeat(7,1fr);max-width:360px;margin-top:1.75rem;gap:8px"></div>
+      <ul class="bullets rv d3" style="margin-top:1.75rem">
+        <li>Ficar exige <strong>tempo, inglês e uma rede</strong></li>
+        <li>Ensinar amigos engajou mais que o curso formal</li>
+        <li><strong>A permanência é coletiva</strong></li>
+      </ul>
+    </div>
+    <div class="imgframe rv d2" style="aspect-ratio:4/3"><img src="/assets/img/design/cfa/encontros.webp" alt="Aula presencial da formação Computadores Fazem Arte" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- 32 · RHEINGOLD BENS COLETIVOS -->
+<section class="slide" data-sec="04 · Comunidade">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Rheingold · o que segura uma comunidade</div>
+    <div class="cols c3">
+      <div class="card rv d1"><h3>Capital de rede</h3><p>Chegar num lugar novo e já ter gente.</p></div>
+      <div class="card g rv d2"><h3>Capital de conhecimento</h3><p>Perguntar e a comunidade responder.</p></div>
+      <div class="card p rv d3"><h3>Comunhão</h3><p>Apoio quando a coisa aperta.</p></div>
+    </div>
+    <div class="card g rv d4" style="margin-top:1.5rem"><div class="k">Economia da dádiva</div><p style="font-size:clamp(1rem,1.8vw,1.35rem);color:var(--white)">No hic et nunc, artistas mandavam XTZ pra iniciantes mintarem a primeira obra. Eu entrei assim: <strong>3 XTZ do foradecompasso</strong>.</p></div>
+  </div>
+</section>
+
+<!-- 33 · DIVISOR 05 / ATIVIDADE -->
+<section class="slide grain" data-sec="05 · Atividade">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <div class="divnum rv">05</div>
+    <div class="label rv d1" style="margin-top:1.5rem">Atividade · Quem segura a chave?</div>
+    <p class="q-big rv d2">Quem pode impedir essa pessoa de usar o <span class="hl">próprio dinheiro</span>?</p>
+    <div class="timer rv d3"><span><b>2'</b> cartões</span><span><b>8'</b> discussão</span><span><b>10'</b> lousa</span></div>
+  </div>
+</section>
+
+<!-- 34 · CENÁRIOS -->
+<section class="slide" data-sec="05 · Atividade">
+  <div class="inner">
+    <div class="label rv">Cada grupo: um cenário · um ponto de controle · quem está nele</div>
+    <div class="cols c3">
+      <div class="card rv d1"><div class="k">Cenário A</div><h3>Dona Célia</h3><p>52 anos, Recife, ganha 1,5 SM. Comprou <strong>R$ 200 de Bitcoin no app do banco</strong> depois de ver uma propaganda. Nunca ouviu falar de chave privada.</p></div>
+      <div class="card g rv d2"><div class="k">Cenário B</div><h3>Artista trans</h3><p>24 anos, cria pelo celular. Minta na <strong>Zora</strong>, recebe em ETH, saca numa <strong>exchange</strong> pra pagar a conta de luz. Divulga no <strong>X</strong>.</p></div>
+      <div class="card p rv d3"><div class="k">Cenário C</div><h3>Nó próprio</h3><p>Estudante que roda um nó de Bitcoin, guarda as próprias chaves e valida as próprias transações. O <strong>"cypherpunk ideal"</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 35 · LEITURA -->
+<section class="slide" data-sec="05 · Atividade">
+  <div class="bg-soft"></div>
+  <div class="inner split">
+    <div>
+      <div class="label rv">O que apareceu</div>
+      <ul class="bullets rv d1">
+        <li><strong>A e B:</strong> o controle está <strong>fora da blockchain</strong>: banco, exchange, X</li>
+        <li><strong>C:</strong> quase sem terceiros. Mas… <strong>quem consegue ser essa pessoa?</strong></li>
+        <li>Tempo, hardware, conhecimento, inglês: <strong>soberania é privilégio</strong></li>
+      </ul>
+    </div>
+    <svg class="diag rv d2" viewBox="0 0 420 320" aria-label="A centralização se acumula nas bordas">
+      <rect x="150" y="110" width="120" height="100" fill="#93FF78" opacity=".9"/>
+      <text x="210" y="155" text-anchor="middle" font-size="14" style="fill:#0a0a0a;font-weight:700">blockchain</text>
+      <text x="210" y="175" text-anchor="middle" font-size="11" style="fill:#0a0a0a">descentralizada</text>
+      <g fill="#ee6f22">
+        <rect x="10" y="30" width="110" height="46"/><rect x="300" y="30" width="110" height="46"/>
+        <rect x="10" y="244" width="110" height="46"/><rect x="300" y="244" width="110" height="46"/>
+        <rect x="10" y="137" width="110" height="46"/><rect x="300" y="137" width="110" height="46"/>
+      </g>
+      <g font-size="11" text-anchor="middle" style="fill:#0a0a0a;font-weight:700">
+        <text x="65" y="57" style="fill:#0a0a0a">banco</text><text x="355" y="57" style="fill:#0a0a0a">exchange</text>
+        <text x="65" y="164" style="fill:#0a0a0a">loja de app</text><text x="355" y="164" style="fill:#0a0a0a">rede social</text>
+        <text x="65" y="271" style="fill:#0a0a0a">custódia</text><text x="355" y="271" style="fill:#0a0a0a">stablecoin</text>
+      </g>
+      <g stroke="#734578" stroke-width="1.5"><line x1="120" y1="53" x2="150" y2="120"/><line x1="300" y1="53" x2="270" y2="120"/><line x1="120" y1="160" x2="150" y2="160"/><line x1="300" y1="160" x2="270" y2="160"/><line x1="120" y1="267" x2="150" y2="200"/><line x1="300" y1="267" x2="270" y2="200"/></g>
+    </svg>
+  </div>
+</section>
+
+<!-- 36 · CONCLUSÃO -->
+<section class="slide grain" data-sec="Fechamento">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <p class="statement rv">O protocolo pode ser <em>descentralizado</em>.</p>
+    <p class="statement rv d2" style="margin-top:1rem">A vida de quem usa o protocolo, <span class="o">não</span>.</p>
+    <p class="lede rv d3" style="margin-top:2rem">A economia política mora nessa diferença.</p>
+  </div>
+</section>
+
+<!-- 37 · BUG REPORT -->
+<section class="slide" data-sec="Fechamento">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Quem escreve o código escreve as regras</div>
+    <p class="statement rv d1" style="max-width:24ch">"Cypherpunks write code" é um bom <em>começo</em>.</p>
+    <ul class="bullets rv d2" style="margin-top:2rem">
+      <li>Cada parâmetro decide <strong>quem entra, quem fica, quem paga e quem é vigiado</strong></li>
+      <li>Código sem leitura política forma bons executores do projeto de outra pessoa</li>
+      <li>Rheingold: chamar os críticos pra mesa → <strong>tratar a crítica como relatório de bug</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 38 · OBRIGADA -->
+<section class="slide grain" data-sec="Obrigada">
+  <div class="bg-hero"></div>
+  <div class="inner">
+    <h2 class="banner rv" style="font-size:clamp(2.2rem,9vw,8.5rem)">OBRIGADA<span class="accent">.</span></h2>
+    <div class="links rv d1">
+      <a class="btn" href="/" target="_blank" rel="noopener">numadessas.com.br ↗</a>
+      <a class="btn ghost" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- 39 · REFERÊNCIAS -->
+<section class="slide" data-sec="Referências">
+  <div class="inner">
+    <div class="label">Referências</div>
+    <div class="refs">
+      <p>ANDERSON, P. D. Of Cypherpunks and Sousveillance. <em>Surveillance &amp; Society</em>, 20(1), 2022.</p>
+      <p>BARLOW, J. P. <em>A Declaration of the Independence of Cyberspace</em>. Davos, 1996.</p>
+      <p>CHAUM, D. Blind signatures for untraceable payments. <em>Advances in Cryptology</em>, 1982.</p>
+      <p>HUGHES, E. <em>A Cypherpunk's Manifesto</em>. 1993.</p>
+      <p>KRANZBERG, M. Technology and History: "Kranzberg's Laws". <em>Technology and Culture</em>, 27(3), 1986.</p>
+      <p>MAY, T. C. <em>The Crypto Anarchist Manifesto</em>. 1988.</p>
+      <p>PARADIGMA; DATAFOLHA. <em>2ª Pesquisa Nacional das Criptomoedas</em>. 2026.</p>
+      <p>PARANÁ, E. <em>Bitcoin: a utopia tecnocrática do dinheiro apolítico</em>. Autonomia Literária, 2020.</p>
+      <p>RECUERO, R. Comunidades virtuais: uma abordagem teórica. V Seminário Internacional de Comunicação, PUCRS, 2001.</p>
+      <p>RHEINGOLD, H. <em>The Virtual Community</em>. 1993.</p>
+      <p>SILVA, M. G. <em>Computadores Fazem Arte: Didática para Web3</em>. Dissertação, UFPE, 2025.</p>
+      <p>WINNER, L. Do Artifacts Have Politics? <em>Daedalus</em>, 109(1), 1980.</p>
+      <p>ZUBOFF, S. <em>A era do capitalismo de vigilância</em>. Intrínseca, 2021.</p>
+      <p>Manifestos em domínio público: cypherpunkbooks.com</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var deck = document.getElementById('deck');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var count = document.getElementById('count');
+  var progress = document.getElementById('progress');
+  var sec = document.getElementById('sec');
+  var current = 0;
+
+  // waffles
+  var w = document.getElementById('waffle');
+  if (w) { var html = ''; for (var i = 0; i < 500; i++) html += '<i' + (i < 9 ? ' class="on"' : '') + '></i>'; w.innerHTML = html; }
+  var w14 = document.getElementById('waffle14');
+  if (w14) { var h = ''; for (var j = 0; j < 14; j++) h += '<i' + (j < 5 ? ' class="on g"' : '') + '></i>'; w14.innerHTML = h; }
+
+  function update(i) {
+    current = i;
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    sec.textContent = slides[i].dataset.sec || '';
+    if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); update(slides.indexOf(e.target)); }
+    });
+  }, { root: deck, threshold: 0.55 });
+  slides.forEach(function (s) { io.observe(s); });
+
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.getElementById('next').onclick = function () { go(current + 1); };
+  document.getElementById('prev').onclick = function () { go(current - 1); };
+  function fullscreen() {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  }
+  document.getElementById('fs').onclick = fullscreen;
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('model-viewer')) return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); go(current + 1); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); go(current - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(slides.length - 1); }
+    else if (k === 'f' || k === 'F') { fullscreen(); }
+  });
+
+  // 3D: same oscillation as the homepage hero
+  var mv = document.getElementById('me-model');
+  if (mv) {
+    var t0 = null;
+    var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+    (function tick(time) {
+      if (!t0) t0 = time;
+      var p = ((time - t0) % 6000) / 6000;
+      var pp = p < 0.5 ? p * 2 : (1 - p) * 2;
+      var angle = (ease(pp) * 2 - 1) * 30;
+      var mobile = window.innerWidth <= 875 || (window.innerWidth <= 1080 && window.innerHeight > window.innerWidth);
+      mv.setAttribute('camera-orbit', angle + 'deg ' + (mobile ? '72deg 2.75m' : '80deg 2.5m'));
+      requestAnimationFrame(tick);
+    })(performance.now());
+  }
+
+  var start = parseInt((location.hash || '').slice(1), 10);
+  if (start > 1) setTimeout(function () { slides[Math.min(start, slides.length) - 1].scrollIntoView({ block: 'start' }); }, 50);
+  update(0);
+})();
+</script>
+</body>
+</html>
