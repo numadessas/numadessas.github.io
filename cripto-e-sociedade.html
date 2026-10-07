@@ -258,6 +258,14 @@
   .wiki-qr .t { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.3rem); text-transform: uppercase; letter-spacing: .02em; color: var(--green); text-align: center; line-height: 1.05; }
   @media (max-width: 860px) { .bye { justify-content: flex-start; } }
 
+  /* GIFT ECONOMY + artwork */
+  .gift { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(1rem, 3vw, 3rem); align-items: center; margin-top: 1.5rem; }
+  .gift-art { margin: 0; display: flex; flex-direction: column; align-items: center; }
+  .gift-art model-viewer { width: 100%; height: clamp(240px, 42vh, 420px); background: transparent; cursor: grab; }
+  .gift-art figcaption a { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); text-decoration: none; }
+  .gift-art figcaption a:hover { color: var(--green); }
+  @media (max-width: 860px) { .gift { grid-template-columns: 1fr; } }
+
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
   .strike::after { content: ''; position: absolute; left: -2%; top: 52%; height: 0.08em; width: 0; background: var(--orange); transition: width .9s .4s ease; }
@@ -599,7 +607,7 @@
     <div class="tl rv d1">
       <div class="ev"><div class="y">1982–85</div><div class="t"><strong>Chaum</strong>: assinaturas cegas, dinheiro anônimo, alerta da "sociedade de dossiês"</div></div>
       <div class="ev"><div class="y">1988</div><div class="t"><strong>May</strong>: The Crypto Anarchist Manifesto</div></div>
-      <div class="ev"><div class="y">1991</div><div class="t">Projeto de lei nos EUA exige acesso do governo às comunicações</div></div>
+      <div class="ev"><div class="y">1992</div><div class="t"><strong>Hughes</strong> envia o primeiro e-mail da lista de discussão Cypherpunk (21/09)</div></div>
       <div class="ev"><div class="y">1993</div><div class="t"><strong>Hughes</strong>: A Cypherpunk's Manifesto · <strong>Rheingold</strong> já cita os cypherpunks</div></div>
       <div class="ev"><div class="y">anos 90</div><div class="t"><strong>Crypto Wars</strong> contra NSA e FBI: "código é discurso"</div></div>
     </div>
@@ -614,25 +622,27 @@
 </section>
 
 <!-- 14 · TRÊS MANIFESTOS -->
-<section class="slide" data-sec="02 · Cypherpunks">
+<section class="slide" data-sec="02 · Cypherpunks" data-title="Três manifestos">
   <div class="bg-soft"></div>
   <div class="inner">
     <div class="label rv">Em 3 grupos · 3 min: o que promete? para quem? contra quem?</div>
     <div class="cols c3">
-      <div class="card rv d1"><div class="k">Eric Hughes · 1993</div><h3>Privacidade ≠ segredo</h3><ul><li>Poder de <strong>se revelar seletivamente</strong></li><li>Transações anônimas, como dinheiro vivo</li><li><strong>"Cypherpunks write code"</strong>, livre pra todos</li></ul></div>
-      <div class="card g rv d2"><div class="k">Tim May · 1988</div><h3>Cripto-anarquia</h3><ul><li>Anonimato + <strong>reputação</strong> no lugar do crédito</li><li>Estado sem vigilância e <strong>sem impostos</strong></li><li>Mercado líquido de qualquer informação</li></ul></div>
-      <div class="card p rv d3"><div class="k">John Perry Barlow · 1996</div><h3>Ciberespaço independente</h3><ul><li>Governos <strong>sem soberania</strong> online</li><li>Feito de pensamento, não de matéria</li><li>Todos entram sem privilégio</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- 15 · PROVOCAÇÕES -->
-<section class="slide" data-sec="02 · Cypherpunks" data-title="Provocações: Hughes, May, Barlow">
-  <div class="inner">
-    <div class="cols c3">
-      <div class="card rv"><div class="k">Hughes</div><h3>O detalhe</h3><p>A privacidade só vai até onde vai a <strong>cooperação dos outros</strong> na sociedade.<br><br>→ Até o manifesto mais individualista depende do <strong>coletivo</strong>.</p></div>
-      <div class="card g rv d1"><div class="k">May</div><h3>A pergunta</h3><p>Num mundo sem arrecadação de impostos…<br><br><strong style="font-size:1.25em;color:var(--white)">quem paga a universidade pública onde vocês estão agora?</strong></p></div>
-      <div class="card p rv d2"><div class="k">Barlow</div><h3>A contraprova</h3><p>Escrita <strong>em Davos</strong>.<br><br>Em 2024, o X foi bloqueado no Brasil por não colaborar com a Justiça: o Estado exerceu soberania. O virtual não é o oposto do real: ele o <strong>complexifica</strong> (Recuero).</p></div>
+      <div class="card rv d1"><div class="k">Eric Hughes · 1993</div><h3>A Cypherpunk's Manifesto</h3><ul>
+        <li>Privacidade é poder escolher o que revelar sobre si</li>
+        <li>Defende transações anônimas, como dinheiro em espécie</li>
+        <li>Propõe escrever e distribuir software livre para proteger a privacidade</li>
+        <li><strong>Ponto de atenção:</strong> reconhece que a privacidade depende da cooperação das outras pessoas</li>
+      </ul></div>
+      <div class="card g rv d2"><div class="k">Tim May · 1988</div><h3>The Crypto Anarchist Manifesto</h3><ul>
+        <li>Comunicação e comércio anônimos, com a reputação no lugar do crédito</li>
+        <li>Prevê um Estado sem capacidade de vigiar e de cobrar impostos</li>
+        <li><strong>Ponto de atenção:</strong> sem impostos, como se financiam os serviços públicos, como esta universidade?</li>
+      </ul></div>
+      <div class="card p rv d3"><div class="k">John Perry Barlow · 1996</div><h3>Declaração de Independência do Ciberespaço</h3><ul>
+        <li>Governos não teriam autoridade sobre o ciberespaço</li>
+        <li>O ciberespaço seria feito de ideias, não de matéria</li>
+        <li><strong>Ponto de atenção:</strong> em 2024, o X foi bloqueado no Brasil por não colaborar com a Justiça. O Estado continua tendo autoridade sobre plataformas</li>
+      </ul></div>
     </div>
   </div>
 </section>
@@ -890,8 +900,18 @@
       <div class="card g rv d2"><h3>Capital de conhecimento</h3><p>Perguntar e a comunidade responder.</p></div>
       <div class="card p rv d3"><h3>Comunhão</h3><p>Apoio quando a coisa aperta.</p></div>
     </div>
-    <div class="label rv d4" style="margin-top:2.5rem">Economia da dádiva</div>
-    <p class="statement rv d4" style="font-size:clamp(1.4rem,3vw,2.6rem);max-width:34ch">No <em>hic et nunc</em>, artistas mandavam XTZ pra iniciantes mintarem a primeira obra.<br>Eu entrei assim: <span class="o">3 XTZ do foradecompasso</span>.</p>
+    <div class="gift rv d4">
+      <div>
+        <div class="label">Economia da dádiva</div>
+        <p class="statement" style="font-size:clamp(1.3rem,2.6vw,2.3rem);max-width:30ch">No <em>hic et nunc</em>, artistas mandavam XTZ pra iniciantes mintarem a primeira obra.<br>Eu entrei assim: <span class="o">3 XTZ do foradecompasso</span>.</p>
+      </div>
+      <figure class="gift-art">
+        <model-viewer src="/assets/img/aulas/sunchain.web.glb" alt="SUNCHAIN, obra 3D de FORADECOMPASSO" auto-rotate auto-rotate-delay="0" rotation-per-second="14deg"
+          camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1" shadow-intensity="0"
+          style="--poster-color: transparent; --progress-bar-color: transparent;"></model-viewer>
+        <figcaption><a href="https://objkt.com/tokens/hicetnunc/193076" target="_blank" rel="noopener">SUNCHAIN · FORADECOMPASSO · 2021 ↗</a></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -1030,6 +1050,7 @@
       <p>Modelos 3D (Cube Cascade, Conga Cubes): Tycho Magnetic Anomaly, Sketchfab — sketchfab.com/Tycho_Magnetic_Anomaly</p>
       <p>Modelo 3D (Money Effect): vicente betoret ferrero, Sketchfab — sketchfab.com/deathcow</p>
       <p>Modelo 3D (Laptop): yakuphan, Sketchfab — sketchfab.com/yakuphan</p>
+      <p>FORADECOMPASSO. <em>SUNCHAIN</em>. Obra 3D (NFT), hic et nunc, 2021 — objkt.com/tokens/hicetnunc/193076</p>
     </div>
   </div>
 </section>
