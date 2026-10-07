@@ -247,15 +247,13 @@
   .book-item:nth-child(3) .book-meta h3 { color: var(--lilac); }
 
   /* CLOSING: wiki QR */
-  .bye { display: flex; align-items: center; justify-content: space-between; gap: clamp(1.5rem, 4vw, 4rem); flex-wrap: wrap; }
+  .bye { display: flex; align-items: center; justify-content: flex-start; gap: clamp(2rem, 5vw, 5rem); flex-wrap: wrap; }
   .wiki-qr { display: flex; flex-direction: column; align-items: center; gap: .9rem; text-decoration: none; color: var(--white); }
   .wiki-qr img { width: clamp(150px, min(18vw, 30vh), 240px); height: auto; display: block; background: #fff;
     padding: clamp(14px, 1.6vw, 22px); border-radius: 22px; box-shadow: 0 24px 60px -24px rgba(0,0,0,.8);
     transition: transform .3s ease; image-rendering: pixelated; }
   .wiki-qr:hover img { transform: translateY(-4px) rotate(-1.5deg); }
-  .wiki-qr .k { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--lilac); }
   .wiki-qr .t { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.3rem); text-transform: uppercase; letter-spacing: .02em; color: var(--green); text-align: center; line-height: 1.05; }
-  .wiki-qr .u { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; color: var(--light-grey); }
   @media (max-width: 860px) { .bye { justify-content: flex-start; } }
 
   /* MISC */
@@ -997,22 +995,20 @@
 <!-- 38 · OBRIGADA -->
 <section class="slide grain" data-sec="Obrigada">
   <div class="bg-hero"></div>
-  <model-viewer class="deco3d hero left" src="/assets/img/aulas/cube-cascade.web.glb" alt="" aria-hidden="true" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" camera-orbit="35deg 70deg auto"></model-viewer>
+  <model-viewer class="deco3d hero" src="/assets/img/aulas/cube-cascade.web.glb" alt="" aria-hidden="true" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" camera-orbit="35deg 70deg auto"></model-viewer>
   <a class="credit3d" href="https://sketchfab.com/Tycho_Magnetic_Anomaly" target="_blank" rel="noopener">3D: Cube Cascade · Tycho Magnetic Anomaly ↗</a>
   <div class="inner bye">
+    <a class="wiki-qr rv" href="https://numadessas.com.br/wiki/" target="_blank" rel="noopener">
+      <img src="/assets/img/aulas/qr-wiki.png" alt="QR Code para a wiki Computadores Fazem Arte" width="500" height="500">
+      <span class="t">Computadores<br>Fazem Arte</span>
+    </a>
     <div>
-      <h2 class="banner rv" style="font-size:clamp(2.2rem,8vw,7.5rem)">OBRIGADA<span class="accent">.</span></h2>
-      <div class="links rv d1">
+      <h2 class="banner rv d1" style="font-size:clamp(2rem,5.6vw,5.2rem)">OBRIGADA<span class="accent">.</span></h2>
+      <div class="links rv d2">
         <a class="btn" href="/" target="_blank" rel="noopener">numadessas.com.br ↗</a>
         <a class="btn ghost" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
       </div>
     </div>
-    <a class="wiki-qr rv d2" href="https://numadessas.com.br/wiki/" target="_blank" rel="noopener">
-      <span class="k">Wiki</span>
-      <img src="/assets/img/aulas/qr-wiki.png" alt="QR Code para a wiki Computadores Fazem Arte" width="500" height="500">
-      <span class="t">Computadores<br>Fazem Arte</span>
-      <span class="u">numadessas.com.br/wiki ↗</span>
-    </a>
   </div>
 </section>
 
