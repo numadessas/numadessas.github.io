@@ -276,6 +276,18 @@
   .card.g .att-ico { color: var(--green); }
   .card.p .att-ico { color: var(--lilac); }
 
+  /* REAL CASES + counter-example */
+  .cases { display: grid; grid-template-columns: 1fr minmax(220px, .42fr); gap: .9rem; align-items: stretch; }
+  .counter { border: 1px dashed var(--green); background: linear-gradient(160deg, rgba(147,255,120,.12), rgba(147,255,120,.03));
+    padding: clamp(1rem, 2.2vw, 1.6rem); display: flex; flex-direction: column; justify-content: center; }
+  .counter .k { font-family: var(--font-mono); font-size: clamp(.6rem, 1vw, .72rem); letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
+  .counter h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 2.2rem); text-transform: uppercase; margin: .4rem 0 .8rem; line-height: 1; }
+  .counter ul { list-style: none; display: grid; gap: .55rem; }
+  .counter li { color: var(--light-grey); font-size: clamp(.9rem, 1.3vw, 1.05rem); padding-left: 1.1rem; position: relative; }
+  .counter li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-family: var(--font-mono); }
+  .counter li:first-child::before { content: '✕'; color: var(--orange); }
+  @media (max-width: 860px) { .cases { grid-template-columns: 1fr; } }
+
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
   .strike::after { content: ''; position: absolute; left: -2%; top: 52%; height: 0.08em; width: 0; background: var(--orange); transition: width .9s .4s ease; }
@@ -580,18 +592,6 @@
   </div>
 </section>
 
-<!-- 10 · PRODIGY × X × HEN -->
-<section class="slide" data-sec="01 · Não é neutra">
-  <div class="inner">
-    <div class="label rv">Quem controla a rede?</div>
-    <div class="cols c3">
-      <div class="card rv d1"><div class="k">1993</div><h3>Prodigy</h3><ul><li>IBM + Sears</li><li>Toda postagem moderada</li><li>Usuários driblam com e-mail → <strong>e-mail passa a ser cobrado</strong></li></ul></div>
-      <div class="card g rv d2"><div class="k">2021</div><h3>hic et nunc</h3><ul><li>Encerrado por <strong>uma pessoa</strong>, sem aviso</li><li>Código aberto + comunidade</li><li>→ nasce a <strong>TEIA</strong></li></ul></div>
-      <div class="card p rv d3"><div class="k">2026</div><h3>BonkDAO</h3><ul><li>Governança por token: <strong>~US$ 4,4 mi</strong> compram votos</li><li>Só <strong>7 carteiras</strong> de 18 mil+ votam</li><li><strong>~US$ 20 mi</strong> drenados do tesouro, seguindo as regras</li></ul></div>
-    </div>
-  </div>
-</section>
-
 <!-- 11 · WEB 2.5 -->
 <section class="slide grain" data-sec="01 · Não é neutra">
   <div class="bg-hero"></div>
@@ -750,17 +750,17 @@
 
 <!-- 23 · TRUSTLESS? -->
 <section class="slide" data-sec="03 · Quem decide?">
-  <div class="inner split">
+  <div class="inner split" style="grid-template-columns:.85fr 1.15fr">
     <div>
       <div class="label rv">Trustless?</div>
-      <h2 class="title rv d1">A confiança<br>passa para<br><span class="g">outros intermediários</span><span class="accent">.</span></h2>
+      <h2 class="title rv d1" style="font-size:clamp(1.7rem,3.4vw,3rem)">A confiança passa para<br><span class="g">outros intermediários</span><span class="accent">.</span></h2>
       <ul class="bullets rv d2">
         <li>Dinheiro é <strong>instituição social e política</strong></li>
         <li>Com "1 token = 1 voto", quem tem mais tokens tem mais <strong>poder de decisão</strong>: na BonkDAO, quem comprou votos retirou o dinheiro do caixa da DAO</li>
         <li>Arranjo institucional é <strong>escolha de projeto</strong></li>
       </ul>
     </div>
-    <svg class="diag rv d3" viewBox="0 0 400 380" aria-label="Para onde a confiança se desloca">
+    <svg class="diag rv d3" viewBox="0 0 400 380" aria-label="Para onde a confiança se desloca" style="max-width:none;max-height:78vh">
       <g stroke="#734578" stroke-width="1.5">
         <line x1="200" y1="190" x2="200" y2="50"/><line x1="200" y1="190" x2="345" y2="125"/><line x1="200" y1="190" x2="335" y2="290"/>
         <line x1="200" y1="190" x2="65" y2="290"/><line x1="200" y1="190" x2="55" y2="125"/>
@@ -927,21 +927,20 @@
   <div class="bg-hero"></div>
   <div class="inner">
     <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">05</text></svg>
-    <div class="label rv d1" style="margin-top:1.5rem">Atividade · Quem tem o controle?</div>
-    <p class="q-big rv d2">Quem pode impedir essa pessoa de usar o <span class="hl">próprio dinheiro</span>?</p>
-    <div class="timer rv d3"><span><b>2'</b> cartões</span><span><b>8'</b> discussão</span><span><b>10'</b> lousa</span></div>
+    <div class="label rv d1" style="margin-top:1.5rem">Atividade</div>
+    <p class="q-big rv d2">Quem tem o <span class="hl">controle</span>?</p>
   </div>
 </section>
 
 <!-- 34 · CENÁRIOS -->
-<section class="slide" data-sec="05 · Atividade">
+<section class="slide" data-sec="05 · Atividade" data-title="Diferentes cenários">
   <div class="inner">
-    <div class="label rv">Cada grupo: um cenário · um ponto de controle · quem está nele</div>
+    <div class="label rv">Diferentes cenários</div>
     <div class="cols c2" style="gap:.9rem">
-      <div class="card rv d1"><div class="k">Cenário A</div><h3>Cripto no banco</h3><p>Comprou cripto <strong>pelo app do banco</strong>. Nunca ouviu falar de chave privada. Um dia, o banco <strong>suspende a negociação sem aviso</strong> (como o Nubank fez com a Nucoin).</p></div>
+      <div class="card rv d1"><div class="k">Cenário A</div><h3>Cliente de banco</h3><p>Comprou cripto <strong>pelo app do banco</strong> e não sabe o que é chave privada. O banco <strong>suspende a negociação sem aviso</strong>, como o Nubank fez com a Nucoin.</p></div>
       <div class="card g rv d2"><div class="k">Cenário B</div><h3>Artista</h3><p>Cria pelo celular. Minta na <strong>Zora</strong>, recebe em ETH e saca numa <strong>exchange</strong> pra pagar as contas do dia a dia. Divulga nas redes sociais.</p></div>
-      <div class="card p rv d3"><div class="k">Cenário C</div><h3>Nó próprio</h3><p>Roda um nó de Bitcoin, guarda as próprias chaves e valida as próprias transações. O <strong>"cypherpunk ideal"</strong>.</p></div>
-      <div class="card rv d4"><div class="k">Cenário D</div><h3>Muito dinheiro e audiência</h3><p>Tem milhões de seguidores e acesso a investidores. Promove um token novo, o preço dispara e poucas carteiras sacam. <strong>Aqui a pergunta inverte: quem pode impedir essa pessoa de usar o dinheiro dos outros?</strong></p></div>
+      <div class="card p rv d3"><div class="k">Cenário C</div><h3>Estudante de computação</h3><p>Roda <strong>um nó próprio</strong> de Bitcoin, guarda as próprias chaves e valida as próprias transações.</p></div>
+      <div class="card rv d4"><div class="k">Cenário D</div><h3>Figura pública com muito dinheiro</h3><p>Tem milhões de seguidores e acesso a investidores. Promove um token novo, o preço sobe e <strong>poucas carteiras vendem no topo</strong>.</p></div>
     </div>
   </div>
 </section>
@@ -983,12 +982,23 @@
   <div class="bg-hero"></div>
   <div class="inner">
     <div class="label rv">A tecnologia é distribuída. O poder, não.</div>
-    <h2 class="title rv d1" style="margin-bottom:1.5rem">Descentralizado<br><span class="g">pra quem</span><span class="accent">?</span></h2>
+    <h2 class="title rv d1" style="margin-bottom:1.25rem;font-size:clamp(1.9rem,4.2vw,3.6rem)">Descentralizado <span class="g">pra quem</span><span class="accent">?</span></h2>
+    <div class="cases">
     <div class="cols c2" style="gap:.9rem">
       <div class="card rv d1"><div class="k">Banco · 2024</div><h3>Nubank e a Nucoin</h3><p>Programa com <strong>16 mi de usuários</strong>. Por e-mail, a negociação é <strong>suspensa na hora</strong> e o token vira pontos de fidelidade. Quem decide é o banco, não o protocolo.</p></div>
       <div class="card g rv d2"><div class="k">Governança · 2026</div><h3>BonkDAO</h3><p>~US$ 4,4 mi em votos comprados, 7 carteiras votando, <strong>~US$ 20 mi drenados</strong>. Tudo dentro das regras.</p></div>
       <div class="card p rv d3"><div class="k">Distribuição</div><h3>Bitcoin</h3><p><strong>1,8% dos endereços</strong> concentram a maior parte das reservas.</p></div>
       <div class="card rv d4"><div class="k">Poder político · 2025</div><h3>Milei e a $LIBRA</h3><p>Um post do presidente leva o token a <strong>US$ 4 bi</strong>; poucas carteiras sacam <strong>~US$ 90 mi</strong>. Prejuízo de pelo menos US$ 100 mi.</p></div>
+    </div>
+    <div class="counter rv d4">
+      <div class="k">Contraponto · 2021</div>
+      <h3>hic et nunc</h3>
+      <ul>
+        <li>A plataforma foi encerrada <strong>por uma pessoa</strong>, sem aviso</li>
+        <li>Mas as obras e os tokens estavam <strong>registrados na Tezos</strong> e continuaram lá</li>
+        <li>Com o código aberto, a comunidade reconstruiu a plataforma: nasceu a <strong>TEIA</strong></li>
+      </ul>
+    </div>
     </div>
   </div>
 </section>
