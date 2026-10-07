@@ -299,6 +299,13 @@
   .srclink { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(147,255,120,.45); }
   .srclink:hover { color: var(--green); }
 
+  /* ACTIVITY GUIDING QUESTIONS */
+  .guide { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1.1rem; }
+  .guide span { display: flex; gap: .7rem; align-items: flex-start; color: var(--white); font-size: clamp(.9rem, 1.4vw, 1.1rem); line-height: 1.3;
+    padding: .8rem .95rem; border-left: 3px solid var(--green); background: rgba(147,255,120,.06); }
+  .guide b { font-family: var(--font-mono); color: var(--green); font-weight: 700; }
+  @media (max-width: 860px) { .guide { grid-template-columns: 1fr; } }
+
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
   .strike::after { content: ''; position: absolute; left: -2%; top: 52%; height: 0.08em; width: 0; background: var(--orange); transition: width .9s .4s ease; }
@@ -525,6 +532,7 @@
     <div class="stats rv d2">
       <div class="stat"><div class="n">4,2×</div><div class="l">mais gente com cripto no banco do que numa exchange</div></div>
       <div class="stat"><div class="n">4%</div><div class="l">da população já usou autocustódia</div></div>
+      <p class="why-self" style="align-self:center;max-width:24ch;color:var(--green);font-size:clamp(1rem,1.8vw,1.4rem);line-height:1.3">Tempo, hardware, conhecimento, inglês: <strong>soberania é privilégio</strong>.</p>
     </div>
     <div class="src">Fonte: 2ª Pesquisa Nacional das Criptomoedas — Paradigma / Datafolha, 2026</div>
   </div>
@@ -945,10 +953,15 @@
   <div class="inner">
     <div class="label rv">Diferentes cenários</div>
     <div class="cols c2" style="gap:.9rem">
-      <div class="card rv d1"><div class="k">Cenário A</div><h3>Cliente de banco</h3><p>Comprou cripto <strong>pelo app do banco</strong> e não sabe o que é chave privada. O banco <strong>suspende a negociação sem aviso</strong>, como o Nubank fez com a Nucoin.</p></div>
+      <div class="card rv d1"><div class="k">Cenário A</div><h3>Cliente de banco</h3><p>Comprou cripto <strong>pelo app do banco</strong> e não sabe o que é chave privada, nem seed-phrase e autocustódia.</p></div>
       <div class="card g rv d2"><div class="k">Cenário B</div><h3>Artista</h3><p>Cria pelo celular. Minta na <strong>Zora</strong>, recebe em ETH e saca numa <strong>exchange</strong> pra pagar as contas do dia a dia. Divulga nas redes sociais.</p></div>
       <div class="card p rv d3"><div class="k">Cenário C</div><h3>Estudante de computação</h3><p>Roda <strong>um nó próprio</strong> de Bitcoin, guarda as próprias chaves e valida as próprias transações.</p></div>
-      <div class="card rv d4"><div class="k">Cenário D</div><h3>Figura pública com muito dinheiro</h3><p>Tem milhões de seguidores e acesso a investidores. Promove um token novo, o preço sobe e <strong>poucas carteiras vendem no topo</strong>.</p></div>
+      <div class="card rv d4"><div class="k">Cenário D</div><h3>Figura pública com muito dinheiro</h3><p>Tem milhões de seguidores e acesso a investidores e <strong>vai lançar um token novo</strong>.</p></div>
+    </div>
+    <div class="guide rv d4">
+      <span><b>1</b>Por onde o dinheiro passa?</span>
+      <span><b>2</b>Quem pode bloquear, congelar, mudar as regras e os preços?</span>
+      <span><b>3</b>O controle está na blockchain ou fora dela?</span>
     </div>
   </div>
 </section>
@@ -962,7 +975,6 @@
       <ul class="bullets rv d1">
         <li><strong>A e B:</strong> o controle está <strong>fora da blockchain</strong>: banco, exchange, redes sociais</li>
         <li><strong>C:</strong> quase sem terceiros. Mas… <strong>quem consegue ser essa pessoa?</strong></li>
-        <li>Tempo, hardware, conhecimento, inglês: <strong>soberania é privilégio</strong></li>
         <li><strong>D:</strong> quem tem dinheiro e audiência <strong>move o mercado</strong>, e o protocolo não impede</li>
       </ul>
     </div>
