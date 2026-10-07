@@ -266,6 +266,16 @@
   .gift-art figcaption a:hover { color: var(--green); }
   @media (max-width: 860px) { .gift { grid-template-columns: 1fr; } }
 
+  /* ATTENTION CALLOUT (inside manifesto cards) */
+  .card .att { display: flex; gap: .6rem; align-items: flex-start; margin-top: 1rem; padding: .75rem .85rem;
+    color: var(--white); font-size: clamp(.88rem, 1.3vw, 1rem); line-height: 1.35;
+    border: 1px solid rgba(238,111,34,.45); background: rgba(238,111,34,.08); }
+  .card.g .att { border-color: rgba(147,255,120,.4); background: rgba(147,255,120,.07); }
+  .card.p .att { border-color: rgba(184,127,191,.5); background: rgba(184,127,191,.09); }
+  .att-ico { width: 1.05rem; height: 1.05rem; flex-shrink: 0; margin-top: .1rem; color: var(--orange); opacity: .85; }
+  .card.g .att-ico { color: var(--green); }
+  .card.p .att-ico { color: var(--lilac); }
+
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
   .strike::after { content: ''; position: absolute; left: -2%; top: 52%; height: 0.08em; width: 0; background: var(--orange); transition: width .9s .4s ease; }
@@ -552,10 +562,10 @@
 <section class="slide" data-sec="01 · Não é neutra" data-title="Aceleracionismo">
   <div class="inner">
     <div class="label rv">Danowski &amp; Viveiros de Castro · Há mundo por vir? (2014)</div>
-    <h2 class="title rv d1" style="margin-bottom:1.5rem">Acelerar<br><span class="g">a aceleração</span><span class="accent">?</span></h2>
+    <h2 class="title rv d1" style="margin-bottom:1.5rem">Acelera<span class="g">cionismo</span><span class="accent">.</span></h2>
     <div class="split" style="align-items:start">
       <ul class="bullets rv d2">
-        <li><strong>Aceleracionismo:</strong> pôr a "megamáquina capitalista em overdrive" até ela se autodestruir e nascer um mundo novo</li>
+        <li><strong>A ideia:</strong> acelerar o capitalismo até ele se esgotar e dar lugar a outro sistema</li>
         <li>Versão "de esquerda": o <strong>Manifesto Aceleracionista</strong> (Williams &amp; Srnicek, 2013), com automação total e renda básica</li>
       </ul>
       <div class="card g rv d3">
@@ -586,7 +596,7 @@
 <section class="slide grain" data-sec="01 · Não é neutra">
   <div class="bg-hero"></div>
   <div class="inner">
-    <p class="quote rv">A Web3 que eu vivo é uma <span style="color:var(--green)">Web 2.5</span>. Ela depende das mesmas estruturas que diz combater.</p>
+    <p class="quote rv"><span style="color:var(--green)">Web 2.5:</span> Na prática, a Web3 ainda depende de plataformas da Web 2.0, como o X.</p>
   </div>
 </section>
 
@@ -625,24 +635,21 @@
 <section class="slide" data-sec="02 · Cypherpunks" data-title="Três manifestos">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="label rv">Em 3 grupos · 3 min: o que promete? para quem? contra quem?</div>
+    <div class="label rv">Três manifestos</div>
     <div class="cols c3">
       <div class="card rv d1"><div class="k">Eric Hughes · 1993</div><h3>A Cypherpunk's Manifesto</h3><ul>
         <li>Privacidade é poder escolher o que revelar sobre si</li>
         <li>Defende transações anônimas, como dinheiro em espécie</li>
         <li>Propõe escrever e distribuir software livre para proteger a privacidade</li>
-        <li><strong>Ponto de atenção:</strong> reconhece que a privacidade depende da cooperação das outras pessoas</li>
-      </ul></div>
+      </ul><p class="att"><svg class="att-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 22 20.5H2L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.3" r=".9" fill="currentColor"/></svg><span>Reconhece que a privacidade depende da cooperação das outras pessoas.</span></p></div>
       <div class="card g rv d2"><div class="k">Tim May · 1988</div><h3>The Crypto Anarchist Manifesto</h3><ul>
         <li>Comunicação e comércio anônimos, com a reputação no lugar do crédito</li>
         <li>Prevê um Estado sem capacidade de vigiar e de cobrar impostos</li>
-        <li><strong>Ponto de atenção:</strong> sem impostos, como se financiam os serviços públicos, como esta universidade?</li>
-      </ul></div>
+      </ul><p class="att"><svg class="att-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 22 20.5H2L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.3" r=".9" fill="currentColor"/></svg><span>Sem impostos, como se financiam os serviços públicos, como esta universidade?</span></p></div>
       <div class="card p rv d3"><div class="k">John Perry Barlow · 1996</div><h3>Declaração de Independência do Ciberespaço</h3><ul>
         <li>Governos não teriam autoridade sobre o ciberespaço</li>
         <li>O ciberespaço seria feito de ideias, não de matéria</li>
-        <li><strong>Ponto de atenção:</strong> em 2024, o X foi bloqueado no Brasil por não colaborar com a Justiça. O Estado continua tendo autoridade sobre plataformas</li>
-      </ul></div>
+      </ul><p class="att"><svg class="att-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 22 20.5H2L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.3" r=".9" fill="currentColor"/></svg><span>Em 2024, o X foi bloqueado no Brasil por não colaborar com a Justiça. O Estado continua tendo autoridade sobre plataformas.</span></p></div>
     </div>
   </div>
 </section>
@@ -730,13 +737,13 @@
     <div class="label rv">Paraná · Bitcoin: a utopia tecnocrática do dinheiro apolítico (2020)</div>
     <h2 class="title rv d1">Isso é<br><span class="g">dinheiro</span><span class="accent">?</span></h2>
     <div class="cols c3 rv d2">
-      <div class="card"><div class="k">Função</div><h3>Unidade de conta</h3><p>Ninguém precifica o pão em BTC.</p></div>
+      <div class="card"><div class="k">Função</div><h3>Unidade de conta</h3><p>Os preços do dia a dia não são definidos em BTC.</p></div>
       <div class="card g"><div class="k">Função</div><h3>Meio de troca</h3><p>Instável demais pro dia a dia.</p></div>
-      <div class="card p"><div class="k">Função</div><h3>Reserva de valor</h3><p>A especulação engole a função monetária.</p></div>
+      <div class="card p"><div class="k">Função</div><h3>Reserva de valor</h3><p>O uso especulativo predomina sobre o uso como dinheiro.</p></div>
     </div>
     <ul class="bullets rv d3" style="margin-top:2rem">
       <li><strong>Paradoxo:</strong> quanto mais parece dinheiro, menos "disruptivo"</li>
-      <li>A defesa das <strong>stablecoins</strong> (lastro em dólar) é quase uma admissão</li>
+      <li>O crescimento das <strong>stablecoins</strong> (lastro em dólar) indica a necessidade de lastro em moeda estatal</li>
     </ul>
   </div>
 </section>
@@ -746,10 +753,10 @@
   <div class="inner split">
     <div>
       <div class="label rv">Trustless?</div>
-      <h2 class="title rv d1">A confiança<br>não some.<br><span class="g">Ela se desloca</span><span class="accent">.</span></h2>
+      <h2 class="title rv d1">A confiança<br>passa para<br><span class="g">outros intermediários</span><span class="accent">.</span></h2>
       <ul class="bullets rv d2">
         <li>Dinheiro é <strong>instituição social e política</strong></li>
-        <li>"1 token = 1 voto" é <strong>plutocracia</strong> com outro nome: na BonkDAO, quem comprou votos drenou o tesouro</li>
+        <li>Com "1 token = 1 voto", quem tem mais tokens tem mais <strong>poder de decisão</strong>: na BonkDAO, quem comprou votos retirou o dinheiro do caixa da DAO</li>
         <li>Arranjo institucional é <strong>escolha de projeto</strong></li>
       </ul>
     </div>
@@ -856,7 +863,7 @@
       <div class="card g rv d1"><div class="k">Gemeinschaft</div><h3>Comunidade</h3><ul><li>Afeto, laço, costume</li><li>Aldeia, família</li><li>"O ideal"</li></ul></div>
       <div class="card rv d2"><div class="k">Gesellschaft</div><h3>Sociedade</h3><ul><li>Cálculo, contrato, interesse</li><li>Metrópole, Estado, mercado</li><li>"A corrupção do ideal"</li></ul></div>
     </div>
-    <p class="lede rv d3" style="margin-top:2rem;max-width:60ch">No marketing cripto, "comunidade" é vendida como <strong style="color:var(--green)">Gemeinschaft</strong>… e entregue como <strong style="color:var(--orange)">Gesellschaft</strong>: contrato e expectativa de valorização.</p>
+    <p class="lede rv d3" style="margin-top:2rem;max-width:60ch">O marketing cripto fala em <strong style="color:var(--green)">comunidade</strong> (afeto), mas a relação costuma ser de <strong style="color:var(--orange)">interesse financeiro</strong>.</p>
   </div>
 </section>
 
@@ -894,11 +901,11 @@
 <section class="slide" data-sec="04 · Comunidade">
   <div class="bg-soft"></div>
   <div class="inner">
-    <div class="label rv">Rheingold · o que segura uma comunidade</div>
+    <div class="label rv">Rheingold · o que mantém uma comunidade</div>
     <div class="cols c3">
-      <div class="card rv d1"><h3>Capital de rede</h3><p>Chegar num lugar novo e já ter gente.</p></div>
+      <div class="card rv d1"><h3>Capital de rede</h3><p>Contatos em outros lugares.</p></div>
       <div class="card g rv d2"><h3>Capital de conhecimento</h3><p>Perguntar e a comunidade responder.</p></div>
-      <div class="card p rv d3"><h3>Comunhão</h3><p>Apoio quando a coisa aperta.</p></div>
+      <div class="card p rv d3"><h3>Comunhão</h3><p>Apoio em momentos difíceis.</p></div>
     </div>
     <div class="gift rv d4">
       <div>
@@ -906,7 +913,7 @@
         <p class="statement" style="font-size:clamp(1.3rem,2.6vw,2.3rem);max-width:30ch">No <em>hic et nunc</em>, artistas mandavam XTZ pra iniciantes mintarem a primeira obra.<br>Eu entrei assim: <span class="o">3 XTZ do foradecompasso</span>.</p>
       </div>
       <figure class="gift-art">
-        <model-viewer src="/assets/img/aulas/sunchain.web.glb" alt="SUNCHAIN, obra 3D de FORADECOMPASSO" auto-rotate auto-rotate-delay="0" rotation-per-second="14deg"
+        <model-viewer src="/assets/img/aulas/sunchain.web.glb" alt="SUNCHAIN, obra 3D de FORADECOMPASSO"
           camera-controls disable-zoom disable-pan interaction-prompt="none" environment-image="neutral" exposure="1" shadow-intensity="0"
           style="--poster-color: transparent; --progress-bar-color: transparent;"></model-viewer>
         <figcaption><a href="https://objkt.com/tokens/hicetnunc/193076" target="_blank" rel="noopener">SUNCHAIN · FORADECOMPASSO · 2021 ↗</a></figcaption>
@@ -920,7 +927,7 @@
   <div class="bg-hero"></div>
   <div class="inner">
     <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">05</text></svg>
-    <div class="label rv d1" style="margin-top:1.5rem">Atividade · Quem segura a chave?</div>
+    <div class="label rv d1" style="margin-top:1.5rem">Atividade · Quem tem o controle?</div>
     <p class="q-big rv d2">Quem pode impedir essa pessoa de usar o <span class="hl">próprio dinheiro</span>?</p>
     <div class="timer rv d3"><span><b>2'</b> cartões</span><span><b>8'</b> discussão</span><span><b>10'</b> lousa</span></div>
   </div>
