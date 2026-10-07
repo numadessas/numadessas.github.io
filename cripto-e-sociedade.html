@@ -151,6 +151,9 @@
   .bar.dim .fill { background: var(--mid); }
   .bar .bv { font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.5rem); text-align: right; }
   .slide.in .bar .fill { width: var(--v); }
+  .bar-head { padding-bottom: .35rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .bar-head .bl, .bar-head .bv { font-family: var(--font-mono); font-size: clamp(.58rem, .9vw, .7rem); letter-spacing: .14em; text-transform: uppercase; color: var(--lilac); }
+  .bar-head .bv { white-space: nowrap; justify-self: end; }
   @media (max-width: 600px) { .bar { grid-template-columns: 1fr 3rem; } .bar .bl { grid-column: 1 / -1; } }
 
   /* DOTS (waffle) */
@@ -785,15 +788,18 @@
     <div class="label rv">Quanto ganha quem já colocou dinheiro em cripto</div>
     <div class="split" style="align-items:end">
       <div class="bars rv d1">
-        <div class="bar"><span class="bl">Até 1 SM</span><span class="track"><span class="fill" style="--v:31.6%"></span></span><span class="bv">31,6</span></div>
-        <div class="bar"><span class="bl">1 a 2 SM</span><span class="track"><span class="fill" style="--v:31.9%"></span></span><span class="bv">31,9</span></div>
-        <div class="bar"><span class="bl">2 a 3 SM</span><span class="track"><span class="fill" style="--v:14.2%"></span></span><span class="bv">14,2</span></div>
-        <div class="bar dim"><span class="bl">3 a 5 SM</span><span class="track"><span class="fill" style="--v:11.8%"></span></span><span class="bv">11,8</span></div>
-        <div class="bar dim"><span class="bl">+ de 5 SM</span><span class="track"><span class="fill" style="--v:10.6%"></span></span><span class="bv">10,6</span></div>
+        <div class="bar bar-head"><span class="bl">Renda (Salário Mínimo)</span><span></span><span class="bv">Percentual</span></div>
+        <div class="bar"><span class="bl">Até 1</span><span class="track"><span class="fill" style="--v:31.6%"></span></span><span class="bv">31,6</span></div>
+        <div class="bar"><span class="bl">1 a 2</span><span class="track"><span class="fill" style="--v:31.9%"></span></span><span class="bv">31,9</span></div>
+        <div class="bar"><span class="bl">2 a 3</span><span class="track"><span class="fill" style="--v:14.2%"></span></span><span class="bv">14,2</span></div>
+        <div class="bar dim"><span class="bl">3 a 5</span><span class="track"><span class="fill" style="--v:11.8%"></span></span><span class="bv">11,8</span></div>
+        <div class="bar dim"><span class="bl">Mais de 5</span><span class="track"><span class="fill" style="--v:10.6%"></span></span><span class="bv">10,6</span></div>
       </div>
       <div class="rv d2">
-        <div class="stats" style="margin-top:0"><div class="stat"><div class="n">77,6%</div><div class="l">ganha até 3 salários mínimos</div></div></div>
-        <p class="q-big" style="margin-top:1.5rem;font-size:clamp(1.3rem,2.8vw,2.4rem)">Democratização ou <span class="hl">transferência de risco</span>?</p>
+        <div class="stats" style="margin-top:0;flex-direction:column;gap:1.5rem">
+          <div class="stat"><div class="n" style="color:var(--green)">29 milhões</div><div class="l">de brasileiros já investiram em cripto</div></div>
+          <div class="stat"><div class="n" style="color:var(--orange)">77,6%</div><div class="l">deles ganham até 3 salários mínimos</div></div>
+        </div>
       </div>
     </div>
     <div class="src">2ª Pesquisa Nacional das Criptomoedas, 2026 · % da cripto-população</div>
@@ -832,7 +838,7 @@
         <li><strong>Neoliberalismo:</strong> menos Estado, mais poder para a iniciativa privada</li>
         <li>Prega <strong>individualismo</strong> e <strong>dinheirismo</strong>: o sucesso (e o prejuízo) é só seu</li>
         <li>Bitcoin, "filho rebelde do neoliberalismo e da internet" (Paraná)</li>
-        <li>Quem chega por último compra o topo: <strong>77,6% ganham até 3 SM</strong></li>
+        <li>Quem chega por último compra o topo: <strong>77,6% ganham até 3 salários mínimos</strong></li>
       </ul>
     </div>
     <div class="card g rv d3">
