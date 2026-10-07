@@ -151,6 +151,11 @@
   .bar.dim .fill { background: var(--mid); }
   .bar .bv { font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.5rem); text-align: right; }
   .slide.in .bar .fill { width: var(--v); }
+  .bars.big { max-width: none; gap: clamp(1rem, 2.6vh, 1.6rem); }
+  .bars.big .bar { grid-template-columns: minmax(9rem, 16rem) 1fr 4.5rem; }
+  .bars.big .track { height: clamp(1.6rem, 5vh, 2.8rem); }
+  .bars.big .bl { font-size: clamp(.75rem, 1.3vw, 1rem); }
+  .bars.big .bv { font-size: clamp(1.3rem, 2.6vw, 2.1rem); }
   .bar-head { padding-bottom: .35rem; border-bottom: 1px solid rgba(255,255,255,.12); }
   .bar-head .bl, .bar-head .bv { font-family: var(--font-mono); font-size: clamp(.58rem, .9vw, .7rem); letter-spacing: .14em; text-transform: uppercase; color: var(--lilac); }
   .bar-head .bv { white-space: nowrap; justify-self: end; }
@@ -290,6 +295,9 @@
   .counter li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-family: var(--font-mono); }
   .counter li:first-child::before { content: '✕'; color: var(--orange); }
   @media (max-width: 860px) { .cases { grid-template-columns: 1fr; } }
+
+  .srclink { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(147,255,120,.45); }
+  .srclink:hover { color: var(--green); }
 
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
@@ -740,9 +748,9 @@
     <div class="label rv">Paraná · Bitcoin: a utopia tecnocrática do dinheiro apolítico (2020)</div>
     <h2 class="title rv d1">Isso é<br><span class="g">dinheiro</span><span class="accent">?</span></h2>
     <div class="cols c3 rv d2">
-      <div class="card"><div class="k">Função</div><h3>Unidade de conta</h3><p>Os preços do dia a dia não são definidos em BTC.</p></div>
-      <div class="card g"><div class="k">Função</div><h3>Meio de troca</h3><p>Instável demais pro dia a dia.</p></div>
-      <div class="card p"><div class="k">Função</div><h3>Reserva de valor</h3><p>O uso especulativo predomina sobre o uso como dinheiro.</p></div>
+      <div class="card"><h3>Unidade de conta</h3><p>Os preços do dia a dia não são definidos em BTC.</p></div>
+      <div class="card g"><h3>Meio de troca</h3><p>Instável demais pro dia a dia.</p></div>
+      <div class="card p"><h3>Reserva de valor</h3><p>O uso especulativo predomina sobre o uso como dinheiro.</p></div>
     </div>
     <ul class="bullets rv d3" style="margin-top:2rem">
       <li><strong>Paradoxo:</strong> quanto mais parece dinheiro, menos "disruptivo"</li>
@@ -808,10 +816,10 @@
 
 <!-- 25 · GÊNERO -->
 <section class="slide" data-sec="03 · Quem assume o risco?">
-  <div class="inner split">
+  <div class="inner split" style="grid-template-columns:1.45fr .55fr">
     <div>
       <div class="label rv">O gap de gênero</div>
-      <div class="bars rv d1">
+      <div class="bars big rv d1">
         <div class="bar"><span class="bl">Conhecem · homens</span><span class="track"><span class="fill" style="--v:74.6%"></span></span><span class="bv">74,6</span></div>
         <div class="bar p"><span class="bl">Conhecem · mulheres</span><span class="track"><span class="fill" style="--v:58.9%"></span></span><span class="bv">58,9</span></div>
         <div class="bar"><span class="bl">Investiram · homens</span><span class="track"><span class="fill" style="--v:23.6%"></span></span><span class="bv">23,6</span></div>
@@ -830,7 +838,7 @@
 <!-- 26 · ENRIQUECIMENTO FÁCIL -->
 <section class="slide grain" data-sec="03 · Quem assume o risco?">
   <div class="bg-hero"></div>
-  <div class="inner split">
+  <div class="inner">
     <div>
       <div class="label rv">A promessa</div>
       <h2 class="title rv d1" style="font-size:clamp(1.9rem,4.4vw,4rem)">Enriquecimento<br><span class="g">fácil</span><span class="accent">?</span></h2>
@@ -838,13 +846,7 @@
         <li><strong>Neoliberalismo:</strong> menos Estado, mais poder para a iniciativa privada</li>
         <li>Prega <strong>individualismo</strong> e <strong>dinheirismo</strong>: o sucesso (e o prejuízo) é só seu</li>
         <li>Bitcoin, "filho rebelde do neoliberalismo e da internet" (Paraná)</li>
-        <li>Quem chega por último compra o topo: <strong>77,6% ganham até 3 salários mínimos</strong></li>
       </ul>
-    </div>
-    <div class="card g rv d3">
-      <div class="k">De dentro da comunidade</div>
-      <p style="font-size:clamp(1.2rem,2.4vw,1.9rem);color:var(--white);font-family:var(--font-display);line-height:1.2;margin-top:.5rem">“Calma, você não vai enriquecer.”</p>
-      <p style="margin-top:.75rem">Brendy, artista, sobre como apresenta as NFTs para quem está chegando: longe da ilusão.</p>
     </div>
   </div>
 </section>
@@ -857,7 +859,7 @@
   <div class="inner">
     <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">04</text></svg>
     <h2 class="divtitle rv d1">O que é uma<br><span class="g">comunidade?</span></h2>
-    <div class="src rv d2">Recuero · Comunidades virtuais: uma abordagem teórica (2001)</div>
+    <div class="src rv d2"><a class="srclink" href="https://www.comunidadesvirtuais.pro.br/hipertexto/home/recuero.texto43.pdf" target="_blank" rel="noopener">Recuero · Comunidades virtuais: uma abordagem teórica (2001) ↗</a></div>
   </div>
 </section>
 
@@ -991,18 +993,17 @@
     <h2 class="title rv d1" style="margin-bottom:1.25rem;font-size:clamp(1.9rem,4.2vw,3.6rem)">Descentralizado <span class="g">pra quem</span><span class="accent">?</span></h2>
     <div class="cases">
     <div class="cols c2" style="gap:.9rem">
-      <div class="card rv d1"><div class="k">Banco · 2024</div><h3>Nubank e a Nucoin</h3><p>Programa com <strong>16 mi de usuários</strong>. Por e-mail, a negociação é <strong>suspensa na hora</strong> e o token vira pontos de fidelidade. Quem decide é o banco, não o protocolo.</p></div>
+      <div class="card rv d1"><div class="k">Nubank · 2024</div><h3>Nucoin</h3><p>Programa com <strong>16 mi de usuários</strong>. Por e-mail, a negociação é <strong>suspensa na hora</strong> e o token vira pontos de fidelidade. Quem decide é o banco, não o protocolo.</p></div>
       <div class="card g rv d2"><div class="k">Governança · 2026</div><h3>BonkDAO</h3><p>~US$ 4,4 mi em votos comprados, 7 carteiras votando, <strong>~US$ 20 mi drenados</strong>. Tudo dentro das regras.</p></div>
       <div class="card p rv d3"><div class="k">Distribuição</div><h3>Bitcoin</h3><p><strong>1,8% dos endereços</strong> concentram a maior parte das reservas.</p></div>
       <div class="card rv d4"><div class="k">Poder político · 2025</div><h3>Milei e a $LIBRA</h3><p>Um post do presidente leva o token a <strong>US$ 4 bi</strong>; poucas carteiras sacam <strong>~US$ 90 mi</strong>. Prejuízo de pelo menos US$ 100 mi.</p></div>
     </div>
     <div class="counter rv d4">
-      <div class="k">Contraponto · 2021</div>
       <h3>hic et nunc</h3>
       <ul>
         <li>A plataforma foi encerrada <strong>por uma pessoa</strong>, sem aviso</li>
         <li>Mas as obras e os tokens estavam <strong>registrados na Tezos</strong> e continuaram lá</li>
-        <li>Com o código aberto, a comunidade reconstruiu a plataforma: nasceu a <strong>TEIA</strong></li>
+        <li>Com o código aberto, a comunidade reconstruiu a plataforma: nasceu a <a class="srclink" href="https://teia.art" target="_blank" rel="noopener"><strong>teia.art</strong></a></li>
       </ul>
     </div>
     </div>
@@ -1065,7 +1066,7 @@
       <p>UOL. Nubank encerra negociação de sua criptomoeda: o que muda para clientes. 11 set. 2024.</p>
       <p>RECLAME AQUI. Nubank: "Nucoin desapareceu". Reclamação de cliente.</p>
       <p>PARANÁ, E. <em>Bitcoin: a utopia tecnocrática do dinheiro apolítico</em>. Autonomia Literária, 2020.</p>
-      <p>RECUERO, R. Comunidades virtuais: uma abordagem teórica. V Seminário Internacional de Comunicação, PUCRS, 2001.</p>
+      <p>RECUERO, R. Comunidades virtuais: uma abordagem teórica. V Seminário Internacional de Comunicação, PUCRS, 2001. Disponível em: <a class="srclink" href="https://www.comunidadesvirtuais.pro.br/hipertexto/home/recuero.texto43.pdf" target="_blank" rel="noopener">comunidadesvirtuais.pro.br</a></p>
       <p>RHEINGOLD, H. <em>The Virtual Community</em>. 1993.</p>
       <p>SILVA, M. G. <em>Computadores Fazem Arte: Didática para Web3</em>. Dissertação, UFPE, 2025.</p>
       <p>ZUBOFF, S. <em>A era do capitalismo de vigilância</em>. Intrínseca, 2021.</p>
