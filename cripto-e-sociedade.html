@@ -208,6 +208,7 @@
   .deco3d.hero { top: -38%; right: -24%; width: 84%; height: 176%; opacity: .55; }
   .deco3d.hero.left { right: auto; left: -24%; }
   .deco3d.side { top: -84%; right: -38%; width: 132%; height: 252%; opacity: .85; transform: rotate(30deg); }
+  .deco3d.rain { top: 0; right: 0; width: 62%; height: 100%; opacity: .9; }
   .deco-fade { position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background: linear-gradient(to right, rgba(10,10,10,.55) 0%, rgba(10,10,10,.15) 40%, transparent 60%); }
   .credit3d { position: absolute; right: 1.25rem; bottom: 3.6rem; z-index: 3; font-family: var(--font-mono); font-size: .6rem;
@@ -216,6 +217,7 @@
   @media (max-width: 860px) {
     .deco3d.hero, .deco3d.hero.left { width: 160%; height: 90%; top: 20%; left: -30%; right: auto; opacity: .35; }
     .deco3d.side { width: 200%; height: 110%; top: 10%; right: -50%; opacity: .5; }
+    .deco3d.rain { width: 100%; height: 100%; top: 0; right: 0; opacity: .5; }
   }
 
   /* READING LIST: CSS 3D books */
@@ -685,6 +687,8 @@
 <!-- 19 · DIVISOR 03 -->
 <section class="slide" data-sec="03 · Economia política">
   <div class="bg-soft"></div>
+  <model-viewer class="deco3d rain" src="/assets/img/aulas/money-effect.web.glb" alt="" aria-hidden="true" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan camera-orbit="0deg 80deg auto"></model-viewer>
+  <a class="credit3d" href="https://sketchfab.com/deathcow" target="_blank" rel="noopener">3D: Money Effect · vicente betoret ferrero ↗</a>
   <div class="inner">
     <svg class="divnum fade" viewBox="0 0 400 200" aria-hidden="true"><text x="0" y="170" text-rendering="geometricPrecision">03</text></svg>
     <h2 class="divtitle rv d1">Economia<br><span class="g">política</span><span style="color:var(--orange)">.</span></h2>
@@ -1040,6 +1044,7 @@
       <p>ZUBOFF, S. <em>A era do capitalismo de vigilância</em>. Intrínseca, 2021.</p>
       <p>Manifestos em domínio público: cypherpunkbooks.com</p>
       <p>Modelos 3D (Cube Cascade, Conga Cubes): Tycho Magnetic Anomaly, Sketchfab — sketchfab.com/Tycho_Magnetic_Anomaly</p>
+      <p>Modelo 3D (Money Effect): vicente betoret ferrero, Sketchfab — sketchfab.com/deathcow</p>
     </div>
   </div>
 </section>
