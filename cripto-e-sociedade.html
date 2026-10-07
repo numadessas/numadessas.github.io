@@ -205,18 +205,44 @@
   /* DECORATIVE 3D (Tycho Magnetic Anomaly) */
   .deco3d { position: absolute; z-index: 1; background: transparent; --poster-color: transparent;
     --progress-bar-color: transparent; --progress-mask: none; pointer-events: none; }
-  .deco3d.hero { top: 6%; right: -3%; width: 42%; height: 88%; opacity: .55; }
-  .deco3d.side { top: 8%; right: 2%; width: 44%; height: 84%; opacity: .85; }
-  .deco3d.play { top: 10%; right: -2%; width: 38%; height: 80%; pointer-events: auto; cursor: grab; }
+  .deco3d.hero { top: -38%; right: -24%; width: 84%; height: 176%; opacity: .55; }
+  .deco3d.hero.left { right: auto; left: -24%; }
+  .deco3d.side { top: -84%; right: -38%; width: 132%; height: 252%; opacity: .85; transform: rotate(30deg); }
   .deco-fade { position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background: linear-gradient(to right, rgba(10,10,10,.55) 0%, rgba(10,10,10,.15) 40%, transparent 60%); }
   .credit3d { position: absolute; right: 1.25rem; bottom: 3.6rem; z-index: 3; font-family: var(--font-mono); font-size: .6rem;
     letter-spacing: .14em; text-transform: uppercase; color: var(--grey); text-decoration: none; }
   .credit3d:hover { color: var(--green); }
-  .hint3d { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--lilac); margin-top: 1.5rem; }
   @media (max-width: 860px) {
-    .deco3d.hero, .deco3d.side, .deco3d.play { width: 100%; height: 45%; top: auto; bottom: 6%; right: 0; opacity: .45; }
+    .deco3d.hero, .deco3d.hero.left { width: 160%; height: 90%; top: 20%; left: -30%; right: auto; opacity: .35; }
+    .deco3d.side { width: 200%; height: 110%; top: 10%; right: -50%; opacity: .5; }
   }
+
+  /* READING LIST: CSS 3D books */
+  .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: start; margin-top: 1rem; }
+  @media (max-width: 860px) { .shelf { grid-template-columns: 1fr; gap: 2.5rem; justify-items: center; } }
+  .book-item { display: flex; flex-direction: column; align-items: center; text-align: center; perspective: 1400px; }
+  .book { --w: clamp(120px, min(13vw, 26vh), 200px); --d: 26px; position: relative; width: var(--w); aspect-ratio: 7 / 10;
+    transform-style: preserve-3d; transform: rotateY(-24deg) rotateX(3deg);
+    transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .book img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: translateZ(calc(var(--d) / 2)); border-radius: 1px 4px 4px 1px;
+    box-shadow: inset 4px 0 8px rgba(255,255,255,.18); }
+  .book::before { /* page block on the right edge */
+    content: ''; position: absolute; top: 3px; bottom: 3px; right: 0; width: calc(var(--d) - 4px);
+    transform: translateX(calc(var(--d) / 2 - 2px)) rotateY(90deg);
+    background: repeating-linear-gradient(90deg, #f3eee6 0 1px, #d9d2c6 1px 2px); }
+  .book::after { /* back cover + floor shadow */
+    content: ''; position: absolute; inset: 0; transform: translateZ(calc(var(--d) / -2));
+    background: #1d1324; border-radius: 1px 4px 4px 1px;
+    box-shadow: -18px 22px 40px rgba(0,0,0,.65); }
+  .book-item:hover .book { transform: rotateY(-8deg) rotateX(2deg) translateY(-12px); }
+  .book-meta { margin-top: 1.6rem; max-width: 22ch; }
+  .book-meta h3 { font-family: var(--font-display); font-size: clamp(.95rem, 1.5vw, 1.2rem); text-transform: uppercase; letter-spacing: .02em; line-height: 1.1; }
+  .book-meta p { font-family: var(--font-mono); font-size: clamp(.6rem, .9vw, .72rem); letter-spacing: .12em; text-transform: uppercase; color: var(--grey); margin-top: .5rem; }
+  .book-item:nth-child(1) .book-meta h3 { color: var(--orange); }
+  .book-item:nth-child(2) .book-meta h3 { color: var(--green); }
+  .book-item:nth-child(3) .book-meta h3 { color: var(--lilac); }
 
   /* MISC */
   .strike { position: relative; display: inline-block; color: var(--grey); }
@@ -938,10 +964,24 @@
   </div>
 </section>
 
+<!-- 35b · SUGESTÕES DE LEITURA -->
+<section class="slide" data-sec="Fechamento" data-title="Sugestões de leitura">
+  <div class="bg-soft"></div>
+  <div class="inner">
+    <div class="label rv">Para continuar</div>
+    <h2 class="title rv d1" style="margin-bottom:1.5rem">Sugestões de<br><span class="g">leitura</span><span class="accent">.</span></h2>
+    <div class="shelf">
+      <div class="book-item rv d1"><div class="book"><img src="/assets/img/aulas/livros/parana-bitcoin.webp" alt="Capa do livro Bitcoin: a utopia tecnocrática do dinheiro apolítico" loading="lazy"></div><div class="book-meta"><h3>Bitcoin: a utopia tecnocrática do dinheiro apolítico</h3><p>Edemilson Paraná</p></div></div>
+      <div class="book-item rv d2"><div class="book"><img src="/assets/img/aulas/livros/antunes-braga-infoproletarios.webp" alt="Capa do livro Infoproletários: degradação real do trabalho virtual" loading="lazy"></div><div class="book-meta"><h3>Infoproletários: degradação real do trabalho virtual</h3><p>Ricardo Antunes e Ruy Braga (org.)</p></div></div>
+      <div class="book-item rv d3"><div class="book"><img src="/assets/img/aulas/livros/zuboff-capitalismo-de-vigilancia.webp" alt="Capa do livro A era do capitalismo de vigilância" loading="lazy"></div><div class="book-meta"><h3>A era do capitalismo de vigilância</h3><p>Shoshana Zuboff</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 38 · OBRIGADA -->
 <section class="slide grain" data-sec="Obrigada">
   <div class="bg-hero"></div>
-  <model-viewer class="deco3d play" src="/assets/img/aulas/cube-cascade.web.glb" alt="Cube Cascade, modelo 3D interativo" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan camera-controls camera-orbit="-30deg 65deg auto"></model-viewer>
+  <model-viewer class="deco3d hero left" src="/assets/img/aulas/cube-cascade.web.glb" alt="" aria-hidden="true" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" camera-orbit="35deg 70deg auto"></model-viewer>
   <a class="credit3d" href="https://sketchfab.com/Tycho_Magnetic_Anomaly" target="_blank" rel="noopener">3D: Cube Cascade · Tycho Magnetic Anomaly ↗</a>
   <div class="inner">
     <h2 class="banner rv" style="font-size:clamp(2.2rem,9vw,8.5rem)">OBRIGADA<span class="accent">.</span></h2>
@@ -949,7 +989,6 @@
       <a class="btn" href="/" target="_blank" rel="noopener">numadessas.com.br ↗</a>
       <a class="btn ghost" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
     </div>
-    <div class="hint3d rv d2">↻ arraste o cubo</div>
   </div>
 </section>
 
