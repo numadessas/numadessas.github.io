@@ -292,6 +292,20 @@
   .ext-names { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.4rem; }
   .ext-names span { background: var(--violet); color: var(--white); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); padding: .4rem 1.1rem; border-radius: 8px; box-shadow: 0 .3rem 0 var(--purple); }
 
+  /* WEB3EDUBRASIL */
+  .w3e-big { width: clamp(240px, 34vw, 440px); aspect-ratio: 1774 / 402; display: block; margin-bottom: 1.4rem; background: var(--plum);
+    -webkit-mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; }
+  .role { display: inline-block; background: var(--violet); color: var(--white); font-weight: 700; font-size: clamp(.8rem, 1.2vw, .95rem); letter-spacing: .12em;
+    text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.1rem; }
+  .btnlink { display: inline-block; margin-top: 1.5rem; background: var(--violet); color: var(--white); text-decoration: none; font-weight: 900; font-size: clamp(1rem, 1.6vw, 1.3rem);
+    padding: .6rem 1.4rem; border-radius: 8px; box-shadow: 0 .3rem 0 var(--purple); transition: transform .2s; }
+  .btnlink:hover { transform: translateY(-2px); }
+  .w3cards { display: grid; gap: .8rem; }
+  .w3card { background: var(--white); border-radius: 14px; padding: clamp(1rem, 2vw, 1.4rem) clamp(1.1rem, 2.2vw, 1.6rem); border-left: 6px solid var(--violet); }
+  .w3card:nth-child(2) { border-left-color: var(--yellow); } .w3card:nth-child(3) { border-left-color: var(--plum); }
+  .w3card h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1; margin-bottom: .45rem; }
+  .w3card p { font-size: clamp(.95rem, 1.4vw, 1.15rem); }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -395,6 +409,25 @@
       <p>No hip hop desde 2009<br>No Design desde 2013<br>Na Web3 desde 2021</p>
       <div class="gap"></div>
       <p>Graduada em Design Gráfico (UTFPR)<br>Mestre em Design (UFPE)<br>Prêmio de influência Tezos Commons 2026<br>Prêmio Most Influential Redot 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02b · WEB3EDUBRASIL -->
+<section class="slide" data-sec="" data-title="Web3EduBrasil">
+  <span class="shape tri y far" aria-hidden="true" style="width:20vw;height:18vw;left:-6vw;bottom:-7vw;--r:14deg"></span>
+  <span class="shape bolt p near" aria-hidden="true" style="width:3.4vw;height:5vw;left:47%;top:10%;--r:-8deg;--t:12s"></span>
+  <div class="inner split">
+    <div>
+      <span class="w3e-big rv" role="img" aria-label="Instituto Web3EduBrasil"></span>
+      <div class="role rv d1">Head of Community &amp; Mentor</div>
+      <p class="lede rv d2">Comunidade de <strong>aprendizado livre</strong> dedicada à educação e adoção da Web3 no Brasil.</p>
+      <a class="btnlink rv d2" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
+    </div>
+    <div class="w3cards rv d3">
+      <div class="w3card"><h3>Mentorias</h3><p>Com valor simbólico de inscrição, duração de 3 meses. Diversas áreas: Introdução à web3, programação, cibersegurança, direito, carreira, etc…</p></div>
+      <div class="w3card"><h3>Eventos</h3><p>Aulões mensais, Semana Verde, WEB3 PE, Web3Experts e participações em eventos externos.</p></div>
+      <div class="w3card"><h3>Comunidade</h3><p>Networking e grupos de estudos em diversas plataformas, como Discord, WhatsApp, LinkedIn, YouTube, etc.</p></div>
     </div>
   </div>
 </section>
