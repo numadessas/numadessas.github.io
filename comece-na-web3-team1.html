@@ -321,8 +321,15 @@
   .av-dots { position: absolute; right: -4vw; top: 50%; transform: translateY(-50%); height: 92%; width: auto; z-index: 1; opacity: .55; pointer-events: none; }
   .av-logo { width: clamp(200px, 26vw, 360px); height: auto; display: block; margin-bottom: 1.6rem; }
   .av-fast { background: var(--violet); color: var(--white); border-radius: 18px; padding: clamp(1.2rem, 2.6vw, 2rem); box-shadow: 0 .4rem 0 var(--purple); }
+  .av-side { display: grid; gap: .9rem; }
+  .av-net { display: flex; gap: .9rem; align-items: center; background: var(--plum); color: var(--white); border-radius: 14px; padding: .8rem; }
+  .av-net img { width: clamp(80px, 9vw, 120px); aspect-ratio: 1; object-fit: cover; border-radius: 10px; flex: none; background: #000; }
+  .av-net b { display: block; font-weight: 900; color: var(--yellow); font-size: clamp(1rem, 1.5vw, 1.2rem); margin-bottom: .2rem; }
+  .av-net p { font-size: clamp(.82rem, 1.15vw, .98rem); line-height: 1.3; }
+  .av-net a { color: var(--violet-lt); font-weight: 700; }
   .av-fast img { width: clamp(64px, 7vw, 96px); display: block; margin-bottom: 1rem; }
-  .av-fast p { font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1.25; }
+  .av-fast p { font-size: clamp(1rem, 1.7vw, 1.4rem); line-height: 1.25; }
+  .av-side .av-fast img { width: clamp(48px, 5vw, 70px); margin-bottom: .6rem; }
   .gen3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.8rem, 1.8vw, 1.3rem); }
   @media (max-width: 860px) { .gen3 { grid-template-columns: 1fr; } }
   .g3 { background: var(--white); border-radius: 14px; padding: clamp(1rem, 2vw, 1.5rem); box-shadow: 0 .35rem 0 var(--purple); }
@@ -1177,6 +1184,25 @@
   </div>
 </section>
 
+<!-- AV3 · GERAÇÕES -->
+<section class="slide tight" data-sec="04 · Aplicações" data-title="Gerações de blockchain">
+  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;right:-5vw;bottom:-6vw;--r:200deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Gerações de blockchain</h2>
+    <div class="gen3">
+      <div class="g3 rv d1"><span class="g3n">Gen 1</span><h3>Uma cadeia,<br>um ativo</h3><p>Bitcoin, Zcash…</p></div>
+      <div class="g3 rv d2"><span class="g3n">Gen 2</span><h3>Uma cadeia,<br>vários ativos</h3><p>Ethereum: vários ativos numa mesma cadeia, por meio de smart contracts.</p></div>
+      <div class="g3 hot rv d3"><span class="g3n">Gen 3</span><h3>Várias cadeias,<br>vários ativos</h3><p>Avalanche, Cosmos, Polkadot: redes de blockchains interoperáveis e especializadas.</p></div>
+    </div>
+    <p class="ktitle rv d3" style="margin-top:1.4rem">Por que blockchains especializadas?</p>
+    <div class="av-why rv d4">
+      <span><b>Econômico</b> algumas soluções ficam caras demais em redes públicas (gas alto)</span>
+      <span><b>Compliance</b> restrições regulatórias (KYC, KYB…)</span>
+      <span><b>Empresas</b> blockchains privadas</span>
+    </div>
+  </div>
+</section>
+
 <!-- 26 -->
 <section class="slide light" data-sec="04 · Aplicações" data-title="Tokens">
     <div class="inner split">
@@ -1622,7 +1648,7 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   <div class="inner">
     <img class="av-logo rv" src="/assets/img/aulas/avax/avalanche-logo-red.webp" alt="Avalanche">
     <h2 class="display h1 rv d1" style="font-size:clamp(2.8rem,7vw,6.4rem)">Uma rede<br>de redes</h2>
-    <p class="lede wht rv d2" style="margin-top:1rem">Avalanche, Team1 e Builder Hub: como começar a construir em Avax.</p>
+    <p class="lede wht rv d2" style="margin-top:1rem">Como começar a construir em Avax.</p>
   </div>
 </section>
 
@@ -1635,31 +1661,17 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
       <p class="lede rv d1" style="margin-bottom:1rem">Uma plataforma <strong>open source</strong> para criar aplicações descentralizadas (dApps) num ecossistema <strong>interoperável</strong> e <strong>altamente escalável</strong>.</p>
       <p class="lede rv d1" style="font-weight:300">Com sua arquitetura <strong>Layer 0</strong>, a Avalanche dá liberdade para criar <strong>Layer 1 personalizadas</strong> para cada necessidade. A rede primária tem sua própria L1, e qualquer pessoa pode criar uma L1 que é ao mesmo tempo independente e interoperável.</p>
     </div>
-    <div class="av-fast rv d2">
+    <div class="av-side"><div class="av-fast rv d2">
       <img src="/assets/img/aulas/avax/avax-round.webp" alt="" aria-hidden="true">
       <p>A plataforma de smart contracts <strong>mais rápida do setor</strong> em tempo de finalização: transação confirmada em <strong>menos de 1 segundo</strong>.</p>
     </div>
+    <div class="av-net rv d3">
+      <img src="/assets/img/aulas/avax/network-overview.webp" alt="Mapa da rede Avalanche: Rede Primária conectada a várias L1s" loading="lazy">
+      <div><b>Visão geral da rede</b><p>A Rede Primária oferece os serviços centrais; as L1s trazem especialização. Validadores podem participar de várias L1s, com ferramentas e liquidez compartilhadas e independência. <a href="https://snowpeer.io/network" target="_blank" rel="noopener">snowpeer.io/network ↗</a></p></div>
+    </div></div>
   </div>
 </section>
 
-<!-- AV3 · GERAÇÕES -->
-<section class="slide tight" data-sec="06 · Avalanche" data-title="Gerações de blockchain">
-  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;right:-5vw;bottom:-6vw;--r:200deg"></span>
-  <div class="inner">
-    <h2 class="display h2 rv">Gerações de blockchain</h2>
-    <div class="gen3">
-      <div class="g3 rv d1"><span class="g3n">Gen 1</span><h3>Uma cadeia,<br>um ativo</h3><p>Bitcoin, Zcash…</p></div>
-      <div class="g3 rv d2"><span class="g3n">Gen 2</span><h3>Uma cadeia,<br>vários ativos</h3><p>Ethereum: vários ativos numa mesma cadeia, por meio de smart contracts.</p></div>
-      <div class="g3 hot rv d3"><span class="g3n">Gen 3</span><h3>Várias cadeias,<br>vários ativos</h3><p>Avalanche, Cosmos, Polkadot: redes de blockchains interoperáveis e especializadas.</p></div>
-    </div>
-    <p class="ktitle rv d3" style="margin-top:1.4rem">Por que blockchains especializadas?</p>
-    <div class="av-why rv d4">
-      <span><b>Econômico</b> algumas soluções ficam caras demais em redes públicas (gas alto)</span>
-      <span><b>Compliance</b> restrições regulatórias (KYC, KYB…)</span>
-      <span><b>Empresas</b> blockchains privadas</span>
-    </div>
-  </div>
-</section>
 
 <!-- AV4 · ARQUITETURA -->
 <section class="slide light tight" data-sec="06 · Avalanche" data-title="Arquitetura da rede">
@@ -1737,21 +1749,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- AV8 · TAXAS -->
-<section class="slide light tight" data-sec="06 · Avalanche" data-title="Independência: isolamento de taxas">
-  <div class="inner">
-    <span class="role rv">Independência</span>
-    <h2 class="display h2 rv">Isolamento de taxas</h2>
-    <div class="split" style="grid-template-columns:1.1fr .9fr">
-      <figure class="rv d1"><img class="media round" src="/assets/img/aulas/avax/eth-gas.webp" alt="Gráfico do preço médio do gas na Ethereum com vários picos" loading="lazy" style="border:1px solid #ddd"><figcaption class="small" style="margin-top:.5rem">Picos de gas na Ethereum: bull market, FOMO, drops de NFT, airdrops…</figcaption></figure>
-      <ul class="bullets rv d2">
-        <li>Taxas funcionam como <b>pedágio</b>: oferta e demanda. Rede congestionada, pedágio sobe; rede vazia, pedágio desce.</li>
-        <li>Layer 2 ainda pagam a camada base (ex.: Arbitrum na Ethereum): se a Ethereum congestiona, as taxas sobem junto.</li>
-        <li>Na Avalanche, <b>cada L1 gerencia suas próprias taxas</b>. Se uma chain congestiona, as outras não são afetadas.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
 <!-- AV9 · PERSONALIZAÇÃO -->
 <section class="slide" data-sec="06 · Avalanche" data-title="Personalização">
@@ -1782,20 +1779,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- AV11 · AVALANCHE9000 -->
-<section class="slide black" data-sec="06 · Avalanche" data-title="Avalanche9000 (upgrade Etna)">
-  <div class="inner split" style="grid-template-columns:1fr 1fr">
-    <img class="media round rv" src="/assets/img/aulas/avax/avalanche9000.webp" alt="Pôster Building on Avalanche 9000" loading="lazy">
-    <div class="rv d1">
-      <h2 class="display h3">Avalanche9000</h2>
-      <p class="lede wht" style="margin-bottom:1.2rem">Desde o upgrade <b>Etna</b> (dezembro de 2024), quem valida uma L1 <b>não precisa mais fazer stake de 2.000 AVAX</b> na Rede Primária. Criar uma L1 ficou viável para muito mais projetos.</p>
-      <div class="cost">
-        <div><span>Antes · Subnet</span><b>2.000 AVAX</b><small>por validador<br>mínimo de 10.000 AVAX por subnet</small></div>
-        <div class="hot"><span>Agora · L1</span><b>1,33 AVAX</b><small>por validador / mês<br>≈ 79,8 AVAX por ano por L1</small></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- AV12 · INTEROPERABILIDADE -->
 <section class="slide light tight" data-sec="06 · Avalanche" data-title="Interoperabilidade nativa">
@@ -1815,17 +1798,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- AV13 · VISÃO GERAL DA REDE -->
-<section class="slide black" data-sec="06 · Avalanche" data-title="Visão geral da rede">
-  <div class="inner split" style="grid-template-columns:1fr 1fr">
-    <img class="media rv" src="/assets/img/aulas/avax/network-overview.webp" alt="Mapa da rede Avalanche: Rede Primária no centro conectada a várias L1s e seus validadores" loading="lazy" style="max-height:78vh;width:auto;max-width:100%;margin:0 auto">
-    <div class="rv d1">
-      <h2 class="display h3">Visão geral da rede</h2>
-      <p class="lede wht">A <b>Rede Primária</b> oferece os serviços centrais; as <b>L1s</b> trazem especialização. Validadores podem participar de várias L1s, e cada blockchain aproveita as ferramentas e a liquidez do ecossistema mantendo sua independência.</p>
-      <a class="btnlink" href="https://snowpeer.io/network" target="_blank" rel="noopener">snowpeer.io/network ↗</a>
-    </div>
-  </div>
-</section>
 
 <!-- AV14 · SOLUÇÕES -->
 <section class="slide tight" data-sec="06 · Avalanche" data-title="Soluções Avalanche">
@@ -1912,22 +1884,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- AV19 · NORTH STAR -->
-<section class="slide tight" data-sec="06 · Avalanche" data-title="Team1: North Star 2026">
-  <div class="inner">
-    <h2 class="display h2 rv" style="margin-bottom:.4rem">North Star 2026</h2>
-    <p class="lede rv d1" style="max-width:none;margin-bottom:1.1rem">Construir uma comunidade global que impulsione o crescimento da Avalanche e cultive uma <b>cultura builder</b> para apoiar founders e startups. Ser o <b>terceiro braço da Avalanche</b>, ao lado da Ava Labs e da Avalanche Foundation.</p>
-    <ol class="tips rv d2">
-      <li><span><b>Crescimento</b> e engajamento da comunidade</span></li>
-      <li><span><b>Escala regional</b> e localização</span></li>
-      <li><span><b>Cultura builder</b> e atração de talentos</span></li>
-      <li><span><b>Storytelling</b></span></li>
-      <li><span><b>Parcerias</b> e adoção no mundo real</span></li>
-      <li><span><b>Eficiência operacional</b> e autonomia dos membros</span></li>
-    </ol>
-    <p class="small rv d3" style="margin-top:.9rem">Os 6 pilares de 2026: cada iniciativa e programa deve alimentar um ou mais deles.</p>
-  </div>
-</section>
 
 <!-- AV20 · COMO COMEÇAR EM AVAX -->
 <section class="slide tight" data-sec="06 · Avalanche" data-title="Como começar em Avax?">
