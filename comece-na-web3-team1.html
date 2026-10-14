@@ -317,6 +317,70 @@
   @media (max-width: 860px) { .seedgrid { grid-template-columns: 1fr; } }
   .tips li span { display: block; }
 
+  /* AVALANCHE SECTION */
+  .av-dots { position: absolute; right: -4vw; top: 50%; transform: translateY(-50%); height: 92%; width: auto; z-index: 1; opacity: .55; pointer-events: none; }
+  .av-logo { width: clamp(200px, 26vw, 360px); height: auto; display: block; margin-bottom: 1.6rem; }
+  .av-fast { background: var(--violet); color: var(--white); border-radius: 18px; padding: clamp(1.2rem, 2.6vw, 2rem); box-shadow: 0 .4rem 0 var(--purple); }
+  .av-fast img { width: clamp(64px, 7vw, 96px); display: block; margin-bottom: 1rem; }
+  .av-fast p { font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1.25; }
+  .gen3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.8rem, 1.8vw, 1.3rem); }
+  @media (max-width: 860px) { .gen3 { grid-template-columns: 1fr; } }
+  .g3 { background: var(--white); border-radius: 14px; padding: clamp(1rem, 2vw, 1.5rem); box-shadow: 0 .35rem 0 var(--purple); }
+  .g3.hot { background: var(--violet); color: var(--white); }
+  .g3n { font-weight: 900; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+  .g3.hot .g3n { color: var(--violet-lt); }
+  .g3 h3 { font-weight: 900; font-size: clamp(1.3rem, 2.3vw, 2rem); line-height: 1.05; margin: .4rem 0 .6rem; color: var(--plum); }
+  .g3.hot h3 { color: var(--white); }
+  .g3 p { font-size: clamp(.92rem, 1.35vw, 1.1rem); }
+  .av-why { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .av-why span { background: var(--white); border-radius: 10px; padding: .55rem .9rem; font-size: clamp(.9rem, 1.3vw, 1.08rem); }
+  .av-why b { color: var(--violet); font-weight: 900; margin-right: .35rem; }
+  .av-why.dark span { background: rgba(255,255,255,.08); color: var(--white); border: 1px solid rgba(255,255,255,.18); font-weight: 700; }
+  .primary { background: var(--plum); color: var(--white); border-radius: 12px; padding: .9rem 1.2rem; font-size: clamp(1rem, 1.6vw, 1.3rem); text-align: center; margin-bottom: .9rem; }
+  .primary b { color: var(--yellow); font-weight: 900; }
+  .chains { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.7rem, 1.6vw, 1.1rem); }
+  @media (max-width: 860px) { .chains { grid-template-columns: 1fr; } }
+  .chain3 { background: var(--green); border-radius: 14px; padding: clamp(1rem, 2vw, 1.4rem); position: relative; }
+  .chain3 .cl { position: absolute; right: 1rem; top: .6rem; font-weight: 900; font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: 1; color: var(--violet); opacity: .25; }
+  .chain3 h3 { font-weight: 900; color: var(--violet); font-size: clamp(1.3rem, 2.3vw, 1.9rem); line-height: 1; margin-bottom: .5rem; }
+  .chain3 h3 small { display: block; font-size: .5em; letter-spacing: .14em; text-transform: uppercase; color: var(--plum); margin-top: .2rem; }
+  .chain3 p { font-size: clamp(.92rem, 1.35vw, 1.1rem); }
+  .av-demo { width: 100%; height: auto; display: block; border-radius: 12px; background: #fff; box-shadow: 0 .4rem 0 var(--purple); }
+  .av-tips li { font-size: clamp(1rem, 1.6vw, 1.3rem); padding: .75rem 1rem; }
+  .mtable { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: clamp(.95rem, 1.5vw, 1.25rem); }
+  .mtable th, .mtable td { padding: .65rem .9rem; text-align: center; }
+  .mtable thead th { font-weight: 700; color: var(--plum); font-size: .85em; line-height: 1.1; }
+  .mtable tbody th { text-align: left; font-weight: 900; color: var(--plum); }
+  .mtable tbody tr { background: var(--white); }
+  .mtable tbody tr.hot { background: var(--violet); }
+  .mtable tbody tr.hot th, .mtable tbody tr.hot td { color: var(--white); }
+  .mtable td { font-weight: 900; font-size: 1.2em; }
+  .mtable small { font-weight: 400; font-size: .7em; }
+  .mtable tbody tr > :first-child { border-radius: 10px 0 0 10px; } .mtable tbody tr > :last-child { border-radius: 0 10px 10px 0; }
+  .vmstack { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: .6rem; align-items: center; max-width: 900px; }
+  .vmstack .lbl { font-weight: 700; color: var(--plum); font-size: clamp(.9rem, 1.4vw, 1.15rem); padding-right: .6rem; }
+  .vmstack b { background: var(--violet); color: var(--white); font-weight: 900; text-align: center; padding: .8rem .5rem; border-radius: 8px; font-size: clamp(1rem, 1.7vw, 1.4rem); box-shadow: 0 .3rem 0 var(--purple); }
+  .vmstack b.more { background: var(--white); color: var(--violet); }
+  .vmstack b.wide { grid-column: span 4; }
+  @media (max-width: 600px) { .vmstack { grid-template-columns: repeat(2, 1fr); } .vmstack .lbl { grid-column: 1 / -1; } .vmstack b.wide { grid-column: 1 / -1; } }
+  .cost { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .cost div { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; padding: 1rem; color: var(--white); }
+  .cost div.hot { background: var(--violet); border-color: var(--violet); }
+  .cost span { display: block; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+  .cost b { display: block; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.1; margin: .3rem 0; color: var(--yellow); }
+  .cost small { font-size: clamp(.85rem, 1.2vw, 1rem); line-height: 1.3; display: block; }
+  .hubgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .hubgrid div { background: var(--green); border-radius: 10px; padding: .65rem .85rem; }
+  .hubgrid b { display: block; color: var(--violet); font-weight: 900; font-size: clamp(1rem, 1.6vw, 1.3rem); }
+  .hubgrid span { font-size: clamp(.85rem, 1.2vw, 1rem); line-height: 1.25; display: block; }
+  .ext-names a { text-decoration: none; }
+  .links6 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  @media (max-width: 700px) { .links6 { grid-template-columns: 1fr; } }
+  .links6 a { display: block; text-decoration: none; background: var(--green); border-radius: 12px; padding: .9rem 1.1rem; border-left: 6px solid var(--violet); transition: transform .2s; }
+  .links6 a:hover { transform: translateY(-2px); }
+  .links6 b { display: block; color: var(--violet); font-weight: 900; font-size: clamp(1.1rem, 1.9vw, 1.6rem); line-height: 1.1; }
+  .links6 span { font-size: clamp(.88rem, 1.3vw, 1.05rem); color: var(--ink); }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -1060,7 +1124,7 @@
 <section class="slide light" data-sec="03 · História" data-title="Consumo de energia do Bitcoin">
   <div class="inner">
     <p class="small rv" style="margin-bottom:1rem">Cambridge Bitcoin Electricity Consumption Index (CBECI) <a href="https://ccaf.io/cbnsi/cbeci" target="_blank" rel="noopener"><b>ccaf.io/cbnsi/cbeci</b></a></p>
-    <img class="media rv d1" src="/assets/img/aulas/comece-web3/cbeci.webp" alt="Country Ranking Chart: consumo de eletricidade do Bitcoin comparado ao consumo de países" loading="lazy" style="max-height:76vh;width:auto;max-width:100%;margin:0 auto">
+    <img class="media rv d1" src="/assets/img/aulas/comece-web3/cbeci.webp" alt="Country Ranking Chart: consumo de eletricidade do Bitcoin comparado ao consumo de países" loading="lazy" style="max-height:68vh;width:auto;max-width:100%;margin:0 auto">
   </div>
 </section>
 
@@ -1205,7 +1269,7 @@
 <!-- 32 -->
 <section class="slide" data-sec="04 · Aplicações" data-title="Carteiras físicas">
   <div class="inner">
-    <img class="media rv" src="/assets/img/aulas/comece-web3/hardwallets.webp" alt="Diversos modelos de carteiras físicas (hardware wallets)" loading="lazy" style="max-width:900px;margin:0 auto;mix-blend-mode:multiply">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/hardwallets.webp" alt="Diversos modelos de carteiras físicas (hardware wallets)" loading="lazy" style="max-height:76vh;width:auto;max-width:min(100%,900px);margin:0 auto;mix-blend-mode:multiply">
   </div>
 </section>
 
@@ -1503,7 +1567,7 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
 <!-- 35 -->
 <section class="slide light" data-sec="04 · Aplicações" data-title="dNFT: casa 2022 → 2037">
   <div class="inner">
-    <img class="media rv" src="/assets/img/aulas/comece-web3/dnft-casa.webp" alt="Exemplo de NFT dinâmico: metadados de uma casa em 2022 e em 2037, com histórico de manutenção e vendas" loading="lazy" style="max-height:84vh;width:auto;max-width:100%;margin:0 auto">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/dnft-casa.webp" alt="Exemplo de NFT dinâmico: metadados de uma casa em 2022 e em 2037, com histórico de manutenção e vendas" loading="lazy" style="max-height:76vh;width:auto;max-width:100%;margin:0 auto">
   </div>
 </section>
 
@@ -1548,40 +1612,355 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- 36b · AVALANCHE BUILD -->
-<section class="slide black" data-sec="05 · Comece" data-title="build.avax.network">
-  <img class="shot" src="/assets/img/aulas/comece-web3/avax-build.webp" alt="Página inicial do Avalanche Builder Hub: Build a Network" loading="lazy">
-  <a class="linkpill w" href="https://build.avax.network/" target="_blank" rel="noopener">build.avax.network</a>
+
+<!-- ============ 06 · AVALANCHE ============ -->
+
+<!-- AV1 · CAPA -->
+<section class="slide black" data-sec="06 · Avalanche" data-title="Avalanche">
+  <img class="av-dots" src="/assets/img/aulas/avax/avalanche-dots.webp" alt="" aria-hidden="true">
+  <span class="shape tri p far" aria-hidden="true" style="width:24vw;height:21vw;left:-7vw;bottom:-8vw;--r:12deg"></span>
+  <div class="inner">
+    <img class="av-logo rv" src="/assets/img/aulas/avax/avalanche-logo-red.webp" alt="Avalanche">
+    <h2 class="display h1 rv d1" style="font-size:clamp(2.8rem,7vw,6.4rem)">Uma rede<br>de redes</h2>
+    <p class="lede wht rv d2" style="margin-top:1rem">Avalanche, Team1 e Builder Hub: como começar a construir em Avax.</p>
+  </div>
 </section>
 
-<!-- 38 -->
-<section class="slide black" data-sec="05 · Comece" data-title="mallow.art">
-  <img class="shot" src="/assets/img/aulas/comece-web3/mallow.webp" alt="Página inicial do mallow.art" loading="lazy">
-  <a class="linkpill" href="https://mallow.art" target="_blank" rel="noopener">mallow.art</a>
+<!-- AV2 · O QUE É -->
+<section class="slide" data-sec="06 · Avalanche" data-title="O que é Avalanche?">
+  <span class="shape bolt p mid" aria-hidden="true" style="width:9vw;height:13vw;right:-2vw;top:-2vw;--r:12deg"></span>
+  <div class="inner split" style="grid-template-columns:1.25fr .75fr">
+    <div>
+      <h2 class="display h2 rv">O que é Avalanche?</h2>
+      <p class="lede rv d1" style="margin-bottom:1rem">Uma plataforma <strong>open source</strong> para criar aplicações descentralizadas (dApps) num ecossistema <strong>interoperável</strong> e <strong>altamente escalável</strong>.</p>
+      <p class="lede rv d1" style="font-weight:300">Com sua arquitetura <strong>Layer 0</strong>, a Avalanche dá liberdade para criar <strong>Layer 1 personalizadas</strong> para cada necessidade. A rede primária tem sua própria L1, e qualquer pessoa pode criar uma L1 que é ao mesmo tempo independente e interoperável.</p>
+    </div>
+    <div class="av-fast rv d2">
+      <img src="/assets/img/aulas/avax/avax-round.webp" alt="" aria-hidden="true">
+      <p>A plataforma de smart contracts <strong>mais rápida do setor</strong> em tempo de finalização: transação confirmada em <strong>menos de 1 segundo</strong>.</p>
+    </div>
+  </div>
 </section>
 
-<!-- 39 -->
-<section class="slide black" data-sec="05 · Comece" data-title="objkt.com">
-  <img class="shot" src="/assets/img/aulas/comece-web3/objkt.webp" alt="Página inicial do objkt.com" loading="lazy">
-  <a class="linkpill w" href="https://objkt.com" target="_blank" rel="noopener">objkt.com</a>
+<!-- AV3 · GERAÇÕES -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Gerações de blockchain">
+  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;right:-5vw;bottom:-6vw;--r:200deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Gerações de blockchain</h2>
+    <div class="gen3">
+      <div class="g3 rv d1"><span class="g3n">Gen 1</span><h3>Uma cadeia,<br>um ativo</h3><p>Bitcoin, Zcash…</p></div>
+      <div class="g3 rv d2"><span class="g3n">Gen 2</span><h3>Uma cadeia,<br>vários ativos</h3><p>Ethereum: vários ativos numa mesma cadeia, por meio de smart contracts.</p></div>
+      <div class="g3 hot rv d3"><span class="g3n">Gen 3</span><h3>Várias cadeias,<br>vários ativos</h3><p>Avalanche, Cosmos, Polkadot: redes de blockchains interoperáveis e especializadas.</p></div>
+    </div>
+    <p class="ktitle rv d3" style="margin-top:1.4rem">Por que blockchains especializadas?</p>
+    <div class="av-why rv d4">
+      <span><b>Econômico</b> algumas soluções ficam caras demais em redes públicas (gas alto)</span>
+      <span><b>Compliance</b> restrições regulatórias (KYC, KYB…)</span>
+      <span><b>Empresas</b> blockchains privadas</span>
+    </div>
+  </div>
 </section>
 
-<!-- 40 -->
-<section class="slide black" data-sec="05 · Comece" data-title="Superteam Brasil LMS">
-  <img class="shot" src="/assets/img/aulas/comece-web3/superteam-lms.webp" alt="Página do LMS da Superteam Brasil" loading="lazy">
-  <a class="linkpill" href="https://lp.superteam.com.br" target="_blank" rel="noopener">lp.superteam.com.br</a>
+<!-- AV4 · ARQUITETURA -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Arquitetura da rede">
+  <div class="inner">
+    <h2 class="display h2 rv">Arquitetura da rede</h2>
+    <div class="primary rv d1"><b>Rede Primária</b> valida as blockchains nativas da Avalanche · quem valida faz stake de <b>$AVAX</b></div>
+    <div class="chains">
+      <div class="chain3 rv d1"><span class="cl">X</span><h3>X-Chain <small>Exchange</small></h3><p>Criação de ativos e transferências rápidas.</p></div>
+      <div class="chain3 rv d2"><span class="cl">P</span><h3>P-Chain <small>Platform</small></h3><p>Coordena os validadores, a criação de L1s e a interoperabilidade entre elas.</p></div>
+      <div class="chain3 rv d3"><span class="cl">C</span><h3>C-Chain <small>Contract</small></h3><p>Onde vive a maioria dos dApps. Compatível com EVM: quem programa em Solidity faz deploy direto.</p></div>
+    </div>
+    <div class="alert rv d4" style="margin-top:1.1rem">L1 personalizadas: sua própria blockchain, suas regras, seus validadores.</div>
+  </div>
 </section>
 
-<!-- 41 -->
-<section class="slide black" data-sec="05 · Comece" data-title="Superteam Earn">
-  <img class="shot" src="/assets/img/aulas/comece-web3/superteam-earn.webp" alt="Página do Superteam Earn com bounties" loading="lazy">
-  <a class="linkpill" href="https://superteam.fun/earn" target="_blank" rel="noopener">superteam.fun/earn</a>
+<!-- AV5 · SNOWMAN -->
+<section class="slide" data-sec="06 · Avalanche" data-title="Consenso Snowman">
+  <span class="shape tri p far" aria-hidden="true" style="width:16vw;height:14vw;left:40%;top:-7vw;--r:180deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Consenso Snowman</h2>
+    <div class="split" style="grid-template-columns:1.1fr .9fr;align-items:start">
+      <div class="rv d1">
+        <img class="av-demo" src="/assets/img/aulas/avax/snowman-demo.webp" alt="Animação: nós da rede consultam amostras aleatórias de outros nós até convergir para uma única decisão" loading="lazy">
+        <p class="small" style="margin-top:.8rem">Cada validador consulta repetidamente uma <b>amostra aleatória</b> de outros validadores até a rede convergir para uma única decisão. <a href="https://tedyin.com/archive/snow-bft-demo/#/snow" target="_blank" rel="noopener"><b>Teste a demo ↗</b></a></p>
+      </div>
+      <ol class="tips av-tips rv d2" style="grid-template-columns:1fr">
+        <li><span><b>Finalidade instantânea</b> em menos de 1 segundo</span></li>
+        <li><span><b>Alta descentralização</b>: cerca de 1.500 validadores</span></li>
+        <li><span><b>Limite de segurança</b> de 80%</span></li>
+        <li><span><b>Ecológico</b>, com Proof of Stake</span></li>
+      </ol>
+    </div>
+  </div>
 </section>
 
-<!-- 42 -->
-<section class="slide black" data-sec="05 · Comece" data-title="web3.career">
-  <img class="shot" src="/assets/img/aulas/comece-web3/web3career.webp" alt="Página do web3.career" loading="lazy">
-  <a class="linkpill w" href="https://web3.career" target="_blank" rel="noopener">web3.career</a>
+<!-- AV6 · POR QUE UMA L1 -->
+<section class="slide black" data-sec="06 · Avalanche" data-title="Por que criar uma L1 Avalanche?">
+  <img class="av-dots" src="/assets/img/aulas/avax/avalanche-dots.webp" alt="" aria-hidden="true" style="opacity:.35">
+  <div class="inner">
+    <h2 class="display h2 rv">O que é uma L1 Avalanche<br>e por que criar uma?</h2>
+    <div class="tags c2">
+      <div class="tag rv d1">Escalabilidade</div>
+      <div class="tag rv d1">Independência</div>
+      <div class="tag rv d2">Personalização</div>
+      <div class="tag rv d2">Compliance</div>
+    </div>
+    <p class="lede wht rv d3" style="margin-top:1.4rem;max-width:56ch">Uma L1 é uma blockchain dedicada à sua aplicação, com validadores próprios, e que continua conectada ao resto do ecossistema.</p>
+  </div>
+</section>
+
+<!-- AV7 · DESEMPENHO -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Escalabilidade: métricas de desempenho">
+  <div class="inner">
+    <span class="role rv">Escalabilidade</span>
+    <h2 class="display h2 rv">Métricas de desempenho</h2>
+    <div class="split" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="rv d1">
+        <div class="w3cards">
+          <div class="w3card"><h3>Throughput</h3><p>Quantas transações a rede processa por unidade de tempo (na Avalanche, medido em mGas/s). É a <b>largura da estrada</b>.</p></div>
+          <div class="w3card"><h3>Tempo de finalidade</h3><p>Quanto tempo até a transação ficar <b>irreversível</b>. É o tempo para o carro chegar ao destino com certeza.</p></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <table class="mtable">
+          <thead><tr><th></th><th>Throughput<br><small>mGas/s</small></th><th>Finalidade<br><small>segundos</small></th></tr></thead>
+          <tbody>
+            <tr class="hot"><th>Avalanche L1</th><td>7,5</td><td>0,75</td></tr>
+            <tr><th>Ethereum</th><td>1,25</td><td>780 <small>(13 min)</small></td></tr>
+            <tr><th>Bitcoin</th><td>n/a</td><td>3.600 <small>(60 min)</small></td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top:.8rem">Bitcoin e Ethereum têm finalidade <b>probabilística</b>; a Avalanche, <b>determinística</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AV8 · TAXAS -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Independência: isolamento de taxas">
+  <div class="inner">
+    <span class="role rv">Independência</span>
+    <h2 class="display h2 rv">Isolamento de taxas</h2>
+    <div class="split" style="grid-template-columns:1.1fr .9fr">
+      <figure class="rv d1"><img class="media round" src="/assets/img/aulas/avax/eth-gas.webp" alt="Gráfico do preço médio do gas na Ethereum com vários picos" loading="lazy" style="border:1px solid #ddd"><figcaption class="small" style="margin-top:.5rem">Picos de gas na Ethereum: bull market, FOMO, drops de NFT, airdrops…</figcaption></figure>
+      <ul class="bullets rv d2">
+        <li>Taxas funcionam como <b>pedágio</b>: oferta e demanda. Rede congestionada, pedágio sobe; rede vazia, pedágio desce.</li>
+        <li>Layer 2 ainda pagam a camada base (ex.: Arbitrum na Ethereum): se a Ethereum congestiona, as taxas sobem junto.</li>
+        <li>Na Avalanche, <b>cada L1 gerencia suas próprias taxas</b>. Se uma chain congestiona, as outras não são afetadas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AV9 · PERSONALIZAÇÃO -->
+<section class="slide" data-sec="06 · Avalanche" data-title="Personalização">
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;right:7%;top:12%;--r:-10deg;--t:12s"></span>
+  <div class="inner">
+    <span class="role rv">Personalização</span>
+    <h2 class="display h2 rv">Sua blockchain, do seu jeito</h2>
+    <div class="vmstack rv d1">
+      <span class="lbl">Smart contracts</span><b>Solidity</b><b>Move</b><b>Rust</b><b class="more">…</b>
+      <span class="lbl">Execução</span><b>EVM</b><b>MoveVM</b><b>WASM VM</b><b class="more">…</b>
+      <span class="lbl">Consenso</span><b class="wide">Avalanche Consensus</b>
+    </div>
+    <p class="lede rv d2" style="margin-top:1.4rem;max-width:62ch">Cada L1 pode ter regras, governança e até <b>máquina virtual</b> próprias. Em uma Layer 2, as mudanças só são possíveis no nível da aplicação, não do protocolo.</p>
+  </div>
+</section>
+
+<!-- AV10 · PERMISSÕES -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Compliance: permissões opcionais">
+  <div class="inner">
+    <span class="role rv">Compliance</span>
+    <h2 class="display h2 rv">Permissões (opcionais)</h2>
+    <div class="scams" style="grid-template-columns:repeat(3,1fr);margin-top:.6rem">
+      <div class="scam rv d1"><div class="n">01</div><h3>Validadores</h3><p>Defina quem valida: entidades conhecidas, com KYC ou licenciadas em certas jurisdições. Dá para exigir hardware ou localização específicos, ajudando com leis de privacidade de dados.</p></div>
+      <div class="scam rv d2"><div class="n">02</div><h3>Quem publica contratos</h3><p>Restrinja quem pode fazer deploy de smart contracts e evite código malicioso ou não auditado.</p></div>
+      <div class="scam rv d3"><div class="n">03</div><h3>Usuários</h3><p>Controle quem interage com a blockchain: KYC/AML, listas de sanções e outras exigências regulatórias.</p></div>
+    </div>
+    <div class="alert rv d4" style="margin-top:1rem">Tudo é opcional: a L1 pode ser totalmente permissionless ou combinar essas camadas de permissão.</div>
+  </div>
+</section>
+
+<!-- AV11 · AVALANCHE9000 -->
+<section class="slide black" data-sec="06 · Avalanche" data-title="Avalanche9000 (upgrade Etna)">
+  <div class="inner split" style="grid-template-columns:1fr 1fr">
+    <img class="media round rv" src="/assets/img/aulas/avax/avalanche9000.webp" alt="Pôster Building on Avalanche 9000" loading="lazy">
+    <div class="rv d1">
+      <h2 class="display h3">Avalanche9000</h2>
+      <p class="lede wht" style="margin-bottom:1.2rem">Desde o upgrade <b>Etna</b> (dezembro de 2024), quem valida uma L1 <b>não precisa mais fazer stake de 2.000 AVAX</b> na Rede Primária. Criar uma L1 ficou viável para muito mais projetos.</p>
+      <div class="cost">
+        <div><span>Antes · Subnet</span><b>2.000 AVAX</b><small>por validador<br>mínimo de 10.000 AVAX por subnet</small></div>
+        <div class="hot"><span>Agora · L1</span><b>1,33 AVAX</b><small>por validador / mês<br>≈ 79,8 AVAX por ano por L1</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AV12 · INTEROPERABILIDADE -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Interoperabilidade nativa">
+  <div class="inner">
+    <h2 class="display h2 rv">Interoperabilidade nativa</h2>
+    <div class="split" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="rv d1">
+        <img class="media" src="/assets/img/aulas/avax/interop-nativa.webp" alt="Diagrama: várias L1 e a Rede Primária com interoperabilidade nativa e throughput combinado" loading="lazy">
+        <div class="av-why" style="margin-top:.8rem"><span><b>Usos</b> bridge de ativos (tokens, NFTs…), votação de DAO entre chains, pools de liquidez cross-chain</span></div>
+      </div>
+      <div class="w3cards rv d2">
+        <div class="w3card"><h3>ICM · Interchain Messaging</h3><p>Camada de mensagens que permite a qualquer L1 enviar mensagens para qualquer outra. É o "correio" do ecossistema.</p></div>
+        <div class="w3card"><h3>ICTT · Interchain Token Transfer</h3><p>Construído sobre o ICM, padroniza a transferência de tokens entre L1s.</p></div>
+        <div class="w3card"><h3>Sem confiar no intermediário</h3><p>Os validadores da chain de origem assinam a mensagem (assinatura BLS agregada). O relayer só entrega: se alterar algo, a assinatura não confere.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AV13 · VISÃO GERAL DA REDE -->
+<section class="slide black" data-sec="06 · Avalanche" data-title="Visão geral da rede">
+  <div class="inner split" style="grid-template-columns:1fr 1fr">
+    <img class="media rv" src="/assets/img/aulas/avax/network-overview.webp" alt="Mapa da rede Avalanche: Rede Primária no centro conectada a várias L1s e seus validadores" loading="lazy" style="max-height:78vh;width:auto;max-width:100%;margin:0 auto">
+    <div class="rv d1">
+      <h2 class="display h3">Visão geral da rede</h2>
+      <p class="lede wht">A <b>Rede Primária</b> oferece os serviços centrais; as <b>L1s</b> trazem especialização. Validadores podem participar de várias L1s, e cada blockchain aproveita as ferramentas e a liquidez do ecossistema mantendo sua independência.</p>
+      <a class="btnlink" href="https://snowpeer.io/network" target="_blank" rel="noopener">snowpeer.io/network ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- AV14 · SOLUÇÕES -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Soluções Avalanche">
+  <span class="shape tri p far" aria-hidden="true" style="width:18vw;height:16vw;right:-5vw;top:-6vw;--r:190deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.3rem">Soluções</h2>
+    <p class="lede rv d1"><b>Interoperabilidade. Performance. Privacidade. Compliance.</b> Uma EVM de alta performance, configurada para finanças reguladas.</p>
+    <div class="scams">
+      <div class="scam rv d1"><div class="n">01</div><h3>Interoperabilidade</h3><p><b>Todas as chains conversam nativamente.</b> Mensagens nativas entre chains Avalanche, públicas ou privadas, verificadas pelos conjuntos de validadores na P-Chain.</p></div>
+      <div class="scam rv d2"><div class="n">02</div><h3>Performance</h3><p><b>Finalidade em milissegundos.</b> Menos de 1 segundo na C-Chain compartilhada e menos de 100 ms numa L1 só sua.</p></div>
+      <div class="scam rv d3"><div class="n">03</div><h3>Privacidade</h3><p><b>Visível para quem participa, invisível para o resto.</b> Feche a rede, escolha onde ficam os dados e estenda a VM com a criptografia que quiser.</p></div>
+      <div class="scam rv d4"><div class="n">04</div><h3>Compliance</h3><p><b>Regras aplicadas pelo protocolo.</b> Decida quem pode validar, publicar e transacionar na sua L1, com as regras na própria VM.</p></div>
+    </div>
+    <a class="btnlink rv d4" href="https://build.avax.network/solutions" target="_blank" rel="noopener">build.avax.network/solutions ↗</a>
+  </div>
+</section>
+
+<!-- AV15 · BUILDER HUB -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Builder Hub">
+  <div class="inner split" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div>
+      <h2 class="display h2 rv" style="margin-bottom:.4rem">Builder Hub</h2>
+      <p class="lede rv d1" style="margin-bottom:1rem">O portal de desenvolvimento da Avalanche: lance <b>sua própria L1</b> ou publique <b>apps na C-Chain</b>.</p>
+      <div class="hubgrid rv d2">
+        <div><b>Console</b><span>L1 na testnet Fuji em 1 clique, com nó validador gerenciado</span></div>
+        <div><b>C-Chain</b><span>Contratos Solidity com Foundry ou Hardhat; finalidade em ~1 s</span></div>
+        <div><b>Academy</b><span>13 cursos, 377 aulas, 26 horas</span></div>
+        <div><b>Faucet</b><span>Tokens de teste grátis na Fuji</span></div>
+        <div><b>Financiamento</b><span>Grants e o Blizzard Fund</span></div>
+        <div><b>Auditorias</b><span>Empresas avaliadas, subsídio de até 75%</span></div>
+      </div>
+    </div>
+    <div class="rv d3" style="text-align:center">
+      <img class="media round" src="/assets/img/aulas/comece-web3/avax-build.webp" alt="Página inicial do Builder Hub: Build a Network" loading="lazy" style="box-shadow:0 24px 40px -18px rgba(0,0,0,.5)">
+      <a class="btnlink" href="https://build.avax.network/" target="_blank" rel="noopener">build.avax.network ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- AV16 · ACADEMY -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Avalanche Academy">
+  <div class="inner split" style="grid-template-columns:1fr 1fr">
+    <img class="media round rv" src="/assets/img/aulas/avax/academy.webp" alt="Avalanche Academy: Learn to build on Avalanche" loading="lazy" style="box-shadow:0 .4rem 0 var(--purple)">
+    <div class="rv d1">
+      <h2 class="display h2" style="margin-bottom:.4rem">Avalanche Academy</h2>
+      <p class="lede" style="margin-bottom:1rem">Cursos guiados, dos fundamentos de blockchain até lançar sua própria L1.</p>
+      <ul class="bullets">
+        <li><b>Comece aqui:</b> Avalanche Fundamentals</li>
+        <li><b>Desenvolvimento de L1:</b> L1 permissionadas, tokenomics nativa, L1 permissionless</li>
+        <li><b>Interoperabilidade:</b> Interchain Messaging, bridges de ERC20 e de token nativo</li>
+        <li><b>Customização de VM:</b> customizar a EVM, restrição de acesso</li>
+        <li><b>Aplicações:</b> intro a Solidity, pagamentos x402, Encrypted ERC</li>
+      </ul>
+      <div class="ext-names" style="margin-top:1rem"><a href="https://build.avax.network/academy" target="_blank" rel="noopener"><span>build.avax.network/academy</span></a><a href="https://academy.avax.network/" target="_blank" rel="noopener"><span>academy.avax.network</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- AV17 · TEAM1 -->
+<section class="slide black" data-sec="06 · Avalanche" data-title="O que é a Team1?">
+  <span class="shape tri p far" aria-hidden="true" style="width:22vw;height:19vw;right:-6vw;bottom:-7vw;--r:-10deg"></span>
+  <div class="inner split" style="grid-template-columns:.45fr 1.55fr">
+    <img class="rv" src="/assets/img/aulas/avax/team1-logo.webp" alt="Team1" style="width:clamp(110px,14vw,200px);margin:0 auto;display:block">
+    <div class="rv d1">
+      <h2 class="display h2">O que é a Team1?</h2>
+      <p class="lede wht" style="margin-bottom:1rem">Uma <b>rede global</b> de pessoas de todas as origens (builders, devs, criadores, founders, educadores e comunidade) que fazem a Avalanche crescer juntas. São <b>700+ membros em 55 países</b>.</p>
+      <div class="av-why dark">
+        <span>Meetups e workshops</span><span>Avalanche nas universidades</span><span>Conteúdo em vários idiomas</span><span>Conecta comunidades ao ecossistema</span>
+      </div>
+      <p class="small" style="margin-top:1rem;color:#ddd">A Team1 incentiva as pessoas a tomar iniciativa, contribuir com seus pontos fortes e desenvolver novas habilidades enquanto ajudam o ecossistema a crescer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AV18 · MISSÃO E VISÃO -->
+<section class="slide" data-sec="06 · Avalanche" data-title="Team1: missão e visão">
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;left:48%;top:8%;--r:8deg;--t:12s"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Team1</h2>
+    <div class="kgrid">
+      <div class="kcard rv d1"><span class="kicker">Missão</span><p class="lede" style="font-size:clamp(1rem,1.6vw,1.3rem)">Capacitar pessoas em todo o mundo a fazer a Avalanche crescer <b>de baixo para cima</b>, com suporte, recursos e conexões para transformar ideias em ação: organizar eventos, criar conteúdo, construir ferramentas, mentorar, acolher quem está chegando, apoiar builders locais e levar a Avalanche a universidades e comunidades.</p></div>
+      <div class="kcard rv d2"><span class="kicker no">Visão</span><p class="lede" style="font-size:clamp(1rem,1.6vw,1.3rem)">Uma comunidade global onde <b>qualquer pessoa com iniciativa</b> possa gerar impacto real, numa cultura em que todos têm a oportunidade de criar impacto e ajudar outras pessoas a fazer o mesmo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AV19 · NORTH STAR -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Team1: North Star 2026">
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.4rem">North Star 2026</h2>
+    <p class="lede rv d1" style="max-width:none;margin-bottom:1.1rem">Construir uma comunidade global que impulsione o crescimento da Avalanche e cultive uma <b>cultura builder</b> para apoiar founders e startups. Ser o <b>terceiro braço da Avalanche</b>, ao lado da Ava Labs e da Avalanche Foundation.</p>
+    <ol class="tips rv d2">
+      <li><span><b>Crescimento</b> e engajamento da comunidade</span></li>
+      <li><span><b>Escala regional</b> e localização</span></li>
+      <li><span><b>Cultura builder</b> e atração de talentos</span></li>
+      <li><span><b>Storytelling</b></span></li>
+      <li><span><b>Parcerias</b> e adoção no mundo real</span></li>
+      <li><span><b>Eficiência operacional</b> e autonomia dos membros</span></li>
+    </ol>
+    <p class="small rv d3" style="margin-top:.9rem">Os 6 pilares de 2026: cada iniciativa e programa deve alimentar um ou mais deles.</p>
+  </div>
+</section>
+
+<!-- AV20 · COMO COMEÇAR EM AVAX -->
+<section class="slide tight" data-sec="06 · Avalanche" data-title="Como começar em Avax?">
+  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;left:-5vw;bottom:-6vw;--r:20deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Como começar em Avax?</h2>
+    <ol class="tips rv d1">
+      <li><span>Crie sua carteira na <b>Core</b>, a carteira para usar na Avalanche: <a href="https://core.app/" target="_blank" rel="noopener"><b>core.app</b></a></span></li>
+      <li><span>Faça o curso <b>Avalanche Fundamentals</b> na Academy</span></li>
+      <li><span>Pegue <b>tokens de teste grátis</b> no faucet da Fuji (testnet)</span></li>
+      <li><span>Publique contratos na <b>C-Chain</b> ou lance sua <b>L1</b> pelo Console do Builder Hub</span></li>
+      <li><span>Explore o código da <b>Ava Labs</b> no GitHub</span></li>
+      <li><span>Entre na <b>Team1</b> e participe da comunidade</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- AV21 · LINKS ÚTEIS -->
+<section class="slide light tight" data-sec="06 · Avalanche" data-title="Links úteis">
+  <div class="inner split" style="grid-template-columns:1.5fr .5fr">
+    <div>
+      <h2 class="display h2 rv">Links úteis</h2>
+      <div class="links6 rv d1">
+        <a href="https://build.avax.network/" target="_blank" rel="noopener"><b>Builder Hub</b><span>build.avax.network</span></a>
+        <a href="https://build.avax.network/academy" target="_blank" rel="noopener"><b>Academy</b><span>build.avax.network/academy</span></a>
+        <a href="https://academy.avax.network/" target="_blank" rel="noopener"><b>Avalanche Academy</b><span>academy.avax.network</span></a>
+        <a href="https://core.app/" target="_blank" rel="noopener"><b>Core</b><span>core.app · carteira para Avax</span></a>
+        <a href="https://github.com/ava-labs" target="_blank" rel="noopener"><b>Ava Labs</b><span>github.com/ava-labs</span></a>
+        <a href="https://github.com/avalancheteam1/" target="_blank" rel="noopener"><b>Team1</b><span>github.com/avalancheteam1</span></a>
+      </div>
+    </div>
+    <img class="rv d2" src="/assets/img/aulas/avax/qr-builder-hub.webp" alt="QR Code para build.avax.network" loading="lazy" style="width:100%;max-width:240px;margin:0 auto;display:block">
+  </div>
 </section>
 
 <!-- ============ FECHAMENTO ============ -->
@@ -1668,7 +2047,7 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   });
 
   // section menu
-  var NAMES = { '01': 'Internet', '02': 'Blockchain', '03': 'História da Blockchain', '04': 'Aplicações', '05': 'Comece na Web3' };
+  var NAMES = { '01': 'Internet', '02': 'Blockchain', '03': 'História da Blockchain', '04': 'Aplicações', '05': 'Comece na Web3', '06': 'Avalanche' };
   var panel = document.getElementById('menu-panel');
   var mbtn = document.getElementById('menu-btn');
   var groups = [], seenNum = false;
