@@ -75,6 +75,7 @@
   .zz-a { animation: zzA 14s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
   .zz-b { animation: zzB 18s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
   .zz-glow { filter: url(#zzblur); opacity: .4; animation: zzA 14s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .still { animation: none !important; }
   @keyframes zzA { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 10px); } }
   @keyframes zzB { 0%,100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(10px, -8px) scale(1.02); } }
 
@@ -395,8 +396,8 @@
     <svg viewBox="0 0 600 560" preserveAspectRatio="xMaxYMid slice">
       <defs><filter id="zzblur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter></defs>
       <polygon style="fill:var(--violet)" points="540,-40 900,-40 900,620 140,620 520,215 400,215"/>
-      <polygon class="zz-glow" style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
-      <polygon class="zz-a" style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
+      <polygon class="zz-glow still" style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
+      <polygon style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
     </svg>
   </div>
   <div class="inner">
