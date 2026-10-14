@@ -16,11 +16,11 @@
     --green: #D3E3DA;     /* verde-menta claro acinzentado */
     --green-dk: #3E5546;
     --yellow: #FFE500;   /* amarelo-bandeira neon */
-    --violet: #93403F;    /* versão Avax/Team1: vermelho escuro dessaturado (texto branco / sobre branco) */
-    --violet-lt: #F2D4D2; /* rosado claro p/ texto sobre verde */
-    --violet-tint: #F6E4E2;
-    --purple: #4A1F22;
-    --plum: #4A1F22;
+    --violet: #8C2F45;    /* versão Avax/Team1: vinho/marsala (texto branco / sobre branco) */
+    --violet-lt: #F3D3DC; /* rosado claro p/ texto sobre verde */
+    --violet-tint: #F7E3E8;
+    --purple: #4A1626;
+    --plum: #4A1626;
     --ink: #1F1C1F;
     --black: #0b0b0b;
     --white: #ffffff;
@@ -334,7 +334,7 @@
     background: rgba(31,28,31,.55); padding: .35rem .7rem; border-radius: 999px; backdrop-filter: blur(8px); }
   .sec:empty { display: none; }
   body.on-light .brand path { fill: var(--violet); }
-  .lock-ic { filter: hue-rotate(25deg) saturate(.5) brightness(.75); }
+  .lock-ic { filter: hue-rotate(10deg) saturate(.6) brightness(.72); }
   body.on-light .brand { filter: none; }
   body.on-light .hud { color: var(--plum); text-shadow: none; }
   @media (max-width: 600px) { .sec { display: none; } }
@@ -345,7 +345,7 @@
   .menu-btn .caret { font-size: .6rem; transition: transform .2s; }
   .menu-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
   .menu-panel { position: absolute; top: calc(100% + .5rem); right: 0; width: min(380px, calc(100vw - 2.5rem)); max-height: 78vh; overflow-y: auto;
-    background: rgba(31,28,31,.97); border: 1px solid rgba(147,64,63,.7); border-radius: 12px; display: none; padding: .5rem 0; box-shadow: 0 24px 60px -20px rgba(0,0,0,.9); }
+    background: rgba(31,28,31,.97); border: 1px solid rgba(140,47,69,.7); border-radius: 12px; display: none; padding: .5rem 0; box-shadow: 0 24px 60px -20px rgba(0,0,0,.9); }
   .menu-panel.open { display: block; }
   .menu-group { padding: .35rem 0; border-bottom: 1px solid rgba(255,255,255,.07); }
   .menu-group:last-child { border-bottom: 0; }
