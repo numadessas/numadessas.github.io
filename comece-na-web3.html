@@ -306,6 +306,15 @@
   .w3card h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1; margin-bottom: .45rem; }
   .w3card p { font-size: clamp(.95rem, 1.4vw, 1.15rem); }
 
+  .qframe { width: clamp(150px, 18vw, 240px); aspect-ratio: 1; overflow: hidden; margin: 1.6rem auto 0; position: relative; z-index: 2; box-shadow: 0 20px 40px -14px rgba(0,0,0,.8); }
+  .qframe img { width: 104%; height: 104%; margin: -2%; display: block; object-fit: cover; }
+  .icons img.sq { border-radius: 22%; }
+  .seedgrid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(1rem, 2.6vw, 2.2rem); align-items: center; margin-top: 1rem; }
+  .seedgrid .seedsvg { max-height: none; margin: 0; }
+  .seedalerts { display: grid; gap: .9rem; }
+  @media (max-width: 860px) { .seedgrid { grid-template-columns: 1fr; } }
+  .tips li span { display: block; }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -1065,10 +1074,11 @@
 <!-- 23 · 2014 -->
 <section class="slide tlslide tl-top black" data-sec="03 · História" data-title="2014 · Quantum, a primeira NFT">
   <img class="bgimg" src="/assets/img/aulas/comece-web3/quantum.webp" alt="" loading="lazy" style="object-fit:contain">
+  <div class="shade" style="background:rgba(0,0,0,.72)"></div>
   <div class="inner"><div class="tl rv" style="margin:0 auto">
     <div class="ev"><div class="yr">2014</div><div class="tx"><b>A primeira NFT: Quantum</b> de Jennifer e Kevin McCoy, na blockchain Namecoin. Uma combinação de 179 frames diferentes.</div></div>
   </div>
-  <img class="rv d2" src="/assets/img/aulas/comece-web3/quantum-anim.webp" alt="Quantum, de Kevin e Jennifer McCoy (animação)" loading="lazy" style="width:clamp(140px,18vw,240px);display:block;margin:1.6rem auto 0;border-radius:50%"></div>
+  <div class="qframe rv d2"><img src="/assets/img/aulas/comece-web3/quantum-anim.webp" alt="Quantum, de Kevin e Jennifer McCoy (animação)" loading="lazy"></div></div>
 </section>
 
 <!-- 24 · 2021 -->
@@ -1174,12 +1184,24 @@
       <div class="tags c2 rv d2"><div class="tag sm">Hot-wallet</div><div class="tag sm">Cold-wallet</div><div class="tag sm">Digitais</div><div class="tag sm">Físicas</div></div>
     </div>
     <div class="icons rv d2">
-      <img src="/assets/img/aulas/comece-web3/core.webp" alt="Core wallet" loading="lazy">
-      <img src="/assets/img/aulas/comece-web3/phantom.webp" alt="Phantom" loading="lazy">
-      <img src="/assets/img/aulas/comece-web3/rainbow.webp" alt="Rainbow" loading="lazy">
+      <img class="sq" src="/assets/img/aulas/comece-web3/core.webp" alt="Core wallet" loading="lazy">
+      <img class="sq" src="/assets/img/aulas/comece-web3/phantom.webp" alt="Phantom" loading="lazy">
+      <img class="sq" src="/assets/img/aulas/comece-web3/rainbow.webp" alt="Rainbow" loading="lazy">
       <img src="/assets/img/aulas/comece-web3/temple.webp" alt="Temple wallet" loading="lazy">
       <img src="/assets/img/aulas/comece-web3/ledger.webp" alt="Ledger" loading="lazy" style="grid-column:span 2;max-width:240px">
     </div>
+  </div>
+</section>
+
+<!-- 31 -->
+<section class="slide black" data-sec="04 · Aplicações" data-title="Carteira digital (app)" style="padding:0">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/wallet-app.webp" alt="Telas de app de carteira: saldo, coleção de NFTs e troca de tokens" loading="lazy" style="object-fit:contain;background:#3a2f3a">
+</section>
+
+<!-- 32 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="Carteiras físicas">
+  <div class="inner">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/hardwallets.webp" alt="Diversos modelos de carteiras físicas (hardware wallets)" loading="lazy" style="max-width:900px;margin:0 auto;mix-blend-mode:multiply">
   </div>
 </section>
 
@@ -1221,7 +1243,8 @@
   <div class="inner">
     <h2 class="display h2 rv" style="margin-bottom:.6rem">Frase-semente</h2>
     <p class="lede rv d1" style="max-width:62ch">Sequência de palavras gerada quando você cria a carteira. Com ela, você <strong>recupera a mesma conta em outros dispositivos</strong>: troca o software ou o hardware e mantém os mesmos ativos.</p>
-    <div class="rv d2"><svg class="seedsvg" viewBox="0 0 1358 526" role="img" aria-label="Frase-semente de 12 palavras restaura a mesma carteira em diferentes dispositivos e redes">
+    <div class="seedgrid">
+      <div class="rv d2"><svg class="seedsvg" viewBox="0 0 1358 526" role="img" aria-label="Frase-semente de 12 palavras restaura a mesma carteira em diferentes dispositivos e redes">
 <g>
 <g>
 <g>
@@ -1389,9 +1412,10 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
 </g>
 </g>
 </svg></div>
-    <div class="cols c2 rv d3" style="align-items:stretch">
+      <div class="seedalerts rv d3">
       <div class="alert">Perdeu a frase-semente? É impossível resgatar a carteira. Não há sistema de recuperação: só dá para gerar uma nova enquanto você ainda acessa a carteira.</div>
       <div class="alert">Nunca guarde suas chaves em arquivos digitais, e-mails ou aplicativos. Anote e guarde em local físico seguro.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1418,16 +1442,16 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   <div class="inner">
     <h2 class="display h2 rv">Medidas de segurança</h2>
     <ol class="tips rv d1">
-      <li>Não clique em links desconhecidos.</li>
-      <li>Não abra anexos de perfis desconhecidos.</li>
-      <li>Não conecte sua carteira em qualquer site.</li>
-      <li>Duvide de propostas muito exorbitantes.</li>
-      <li>Crie formas diretas e organizadas para negociar seus trabalhos.</li>
-      <li>Use extensão anti phishing/spam.</li>
-      <li>Vasculhe o perfil do usuário em busca de informações confiáveis.</li>
-      <li>Se você exigir medidas de segurança e o suposto cliente insistir que não pode cumprir, <b>desista</b>.</li>
-      <li><b>Não compartilhe suas chaves</b> com ninguém e guarde em local físico seguro.</li>
-      <li>Troque senhas regularmente: dá para "rechavear" a carteira e gerar uma nova frase-semente.</li>
+      <li><span>Não clique em links desconhecidos.</span></li>
+      <li><span>Não abra anexos de perfis desconhecidos.</span></li>
+      <li><span>Não conecte sua carteira em qualquer site.</span></li>
+      <li><span>Duvide de propostas muito exorbitantes.</span></li>
+      <li><span>Crie formas diretas e organizadas para negociar seus trabalhos.</span></li>
+      <li><span>Use extensão anti phishing/spam.</span></li>
+      <li><span>Vasculhe o perfil do usuário em busca de informações confiáveis.</span></li>
+      <li><span>Se você exigir medidas de segurança e o suposto cliente insistir que não pode cumprir, <b>desista</b>.</span></li>
+      <li><span><b>Não compartilhe suas chaves</b> com ninguém e guarde em local físico seguro.</span></li>
+      <li><span>Troque senhas regularmente: dá para "rechavear" a carteira e gerar uma nova frase-semente.</span></li>
     </ol>
   </div>
 </section>
@@ -1444,17 +1468,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- 31 -->
-<section class="slide black" data-sec="04 · Aplicações" data-title="Carteira digital (app)" style="padding:0">
-  <img class="bgimg" src="/assets/img/aulas/comece-web3/wallet-app.webp" alt="Telas de app de carteira: saldo, coleção de NFTs e troca de tokens" loading="lazy" style="object-fit:contain;background:#3a2f3a">
-</section>
-
-<!-- 32 -->
-<section class="slide" data-sec="04 · Aplicações" data-title="Carteiras físicas">
-  <div class="inner">
-    <img class="media rv" src="/assets/img/aulas/comece-web3/hardwallets.webp" alt="Diversos modelos de carteiras físicas (hardware wallets)" loading="lazy" style="max-width:900px;margin:0 auto;mix-blend-mode:multiply">
-  </div>
-</section>
 
 <!-- 33 -->
 <section class="slide" data-sec="04 · Aplicações" data-title="NFT é um certificado digital">
