@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aulão: Comece na Web3 — Numa</title>
+<meta name="description" content="Slides do Aulão Comece na Web3 do Instituto Web3EduBrasil: internet, blockchain, história, tokens, NFTs, carteiras e como começar na Web3.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #D3E3DA;     /* verde-menta claro acinzentado */
+    --green-dk: #3E5546;
+    --yellow: #FFE500;   /* amarelo-bandeira neon */
+    --violet: #93403F;    /* versão Avax/Team1: vermelho escuro dessaturado (texto branco / sobre branco) */
+    --violet-lt: #F2D4D2; /* rosado claro p/ texto sobre verde */
+    --violet-tint: #F6E4E2;
+    --purple: #4A1F22;
+    --plum: #4A1F22;
+    --ink: #1F1C1F;
+    --black: #0b0b0b;
+    --white: #ffffff;
+    --paper: #f7f5f2;
+    --text: #3a3a3a;
+    --pad: clamp(1.25rem, 5vw, 5rem);
+    --font: 'Barlow', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background: var(--green); color: var(--white); font-family: var(--font); font-weight: 400; line-height: 1.4;
+    overflow: hidden; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--violet); color: var(--white); }
+  a { color: inherit; }
+
+  /* DECK */
+  .deck { height: 100vh; height: 100dvh; overflow-y: auto; overflow-x: hidden; scroll-snap-type: y mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .deck::-webkit-scrollbar { display: none; }
+  .slide { position: relative; min-height: 100vh; min-height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; justify-content: center; padding: 4.5rem var(--pad) 4rem; overflow: hidden; background: var(--green); }
+  .slide.light { background: var(--white); color: var(--text); }
+  .slide.dark { background: var(--ink); }
+  .slide.black { background: var(--black); }
+  .inner { position: relative; z-index: 2; width: 100%; max-width: 1240px; margin: 0 auto; }
+
+  /* BACKGROUND MEDIA */
+  .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .shade { position: absolute; inset: 0; z-index: 1; background: rgba(0,0,0,.55); }
+  .shade.soft { background: linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.05) 60%); }
+  /* DECOR: triangles + bolts, floating with depth (far = blurred & slow, near = sharp & shadowed) */
+  .shape { position: absolute; z-index: 1; pointer-events: none; --r: 0deg; --dx: 1.4vw; --dy: -1.8vw; --t: 16s;
+    animation: drift var(--t) ease-in-out infinite; will-change: transform; }
+  .shape::before { content: ''; position: absolute; inset: 0; background: var(--c, var(--violet)); }
+  .shape.y { --c: var(--yellow); } .shape.p { --c: var(--violet); }
+  .shape.tri::before { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .shape.bolt::before { clip-path: polygon(34% 0, 92% 0, 66% 37%, 98% 37%, 18% 100%, 40% 52%, 4% 52%); }
+  .shape.far { filter: blur(14px); opacity: .7; --t: 26s; --dx: -2vw; --dy: 1.4vw; }
+  .shape.mid { filter: blur(4px); opacity: .9; --t: 20s; }
+  .shape.near { filter: drop-shadow(0 18px 22px rgba(31,28,31,.22)); }
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) rotate(var(--r)) scale(1); }
+    50%  { transform: translate3d(var(--dx), var(--dy), 0) rotate(calc(var(--r) + 7deg)) scale(1.04); }
+    100% { transform: translate3d(0, 0, 0) rotate(var(--r)) scale(1); }
+  }
+  /* background media: slow push-in for depth */
+  .bgimg, .shot { animation: kenburns 30s ease-in-out infinite alternate; transform-origin: 50% 40%; }
+  .shot { animation-duration: 40s; }
+  @keyframes kenburns-s { from { transform: scale(1); } to { transform: scale(1.05); } }
+  .shot { animation-name: kenburns-s; }
+  @keyframes kenburns { from { transform: scale(1.02) translate3d(0, 0, 0); } to { transform: scale(1.1) translate3d(-1.2%, -1%, 0); } }
+  /* cover + slide 4 bolts: gentle parallax */
+  .zz-a { animation: zzA 14s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .zz-b { animation: zzB 18s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .zz-glow { filter: url(#zzblur); opacity: .4; animation: zzA 14s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes zzA { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 10px); } }
+  @keyframes zzB { 0%,100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(10px, -8px) scale(1.02); } }
+
+  /* MINT SLIDES: dark text, purple titles (yellow has no contrast on mint) */
+  .slide:not(.dark):not(.black) { color: var(--ink); }
+  .slide:not(.dark):not(.black) .display, .slide:not(.dark):not(.black) .name,
+  .slide:not(.dark):not(.black) .yel, .box .yel, .box.y-text { color: var(--violet); }
+  .slide:not(.dark):not(.black) .display.wht, .slide:not(.dark):not(.black) .wht { color: var(--plum); }
+  .slide:not(.dark):not(.black) .pink { color: var(--plum); }
+
+  /* TYPE */
+  .display { font-weight: 900; line-height: .95; color: var(--yellow); letter-spacing: -.005em; }
+  .h1 { font-size: clamp(3rem, 9vw, 8rem); }
+  .h2 { font-size: clamp(2.2rem, 5.2vw, 4.6rem); margin-bottom: 1.2rem; }
+  .h3 { font-size: clamp(1.6rem, 3.2vw, 2.8rem); margin-bottom: .8rem; }
+  .pink { color: var(--violet-lt); } .yel { color: var(--yellow); } .wht { color: var(--white); }
+  .lede { font-size: clamp(1.1rem, 2.1vw, 1.65rem); font-weight: 400; max-width: 48ch; }
+  .lede strong { font-weight: 700; }
+  .center { text-align: center; } .center .lede { margin-left: auto; margin-right: auto; }
+  .rule { width: 46px; height: 4px; background: var(--violet); margin: 1.6rem auto 0; }
+  .rule.l { margin-left: 0; }
+  .small { font-size: clamp(.95rem, 1.4vw, 1.15rem); }
+
+  /* LISTS */
+  .bullets { list-style: none; display: grid; gap: .45rem; font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 300; }
+  .bullets li { position: relative; padding-left: 1.3rem; }
+  .bullets li::before { content: ''; position: absolute; left: 0; top: .55em; width: .45rem; height: .45rem; border-radius: 50%; background: var(--violet); }
+  .bullets strong { font-weight: 700; }
+  .ktitle { font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); margin: 1.2rem 0 .4rem; }
+
+  /* TAGS (white card, pink bold text) */
+  .tags { display: grid; gap: clamp(.6rem, 1.4vw, 1rem); }
+  .tags.c2 { grid-template-columns: repeat(2, 1fr); }
+  .tag { background: var(--white); color: var(--violet); font-weight: 900; text-align: center; line-height: 1.05;
+    font-size: clamp(1.15rem, 2.4vw, 2rem); padding: clamp(.7rem, 1.6vw, 1.1rem) 1rem; border-radius: 4px;
+    box-shadow: 0 .35rem 0 var(--purple); display: flex; align-items: center; justify-content: center; min-height: 3.2em; }
+  .tag.sm { font-size: clamp(1rem, 1.8vw, 1.5rem); min-height: 2.6em; }
+
+  /* GRIDS */
+  .cols { display: grid; gap: clamp(1rem, 3vw, 2.5rem); align-items: center; }
+  .c2 { grid-template-columns: repeat(2, 1fr); }
+  .c3 { grid-template-columns: repeat(3, 1fr); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+  .split.r { grid-template-columns: .9fr 1.1fr; }
+  @media (max-width: 860px) { .split, .split.r, .c2, .c3 { grid-template-columns: 1fr; } }
+  .media { width: 100%; height: auto; display: block; }
+  .media.round { border-radius: 10px; }
+
+  /* COVER */
+  .cover-zz { position: absolute; z-index: 1; top: 0; bottom: 0; right: 0; width: 62%; }
+  .cover-zz svg { width: 100%; height: 100%; display: block; }
+  .w3e-logo { width: clamp(150px, 18vw, 230px); aspect-ratio: 1774 / 402; display: block; margin-top: 1.6rem; background: var(--plum);
+    -webkit-mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; }
+
+  /* ABOUT */
+  .avatar { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%; background: var(--violet); }
+  .avatar img { position: absolute; inset: -4% 0 0; width: 100%; height: 104%; object-fit: contain; }
+  .bust { position: absolute; z-index: 2; left: 4vw; bottom: 0; height: min(94vh, 990px); aspect-ratio: 1100 / 1284; }
+  .bust img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+  @media (max-width: 860px) { .about[style] { max-width: none !important; } .bust { order: 2; position: relative; left: auto; right: auto; height: auto; aspect-ratio: auto; width: 100%; max-width: 420px; margin: 1.5rem auto -4rem; flex: none; }
+    .bust img { position: relative; height: auto; display: block; } }
+  .name { font-weight: 900; color: var(--yellow); font-size: clamp(2.4rem, 4.8vw, 4rem); line-height: 1; }
+  .name::after { content: ''; display: block; width: 3.2rem; height: 4px; background: var(--violet); margin: .5rem 0 1.3rem; }
+  .about p { font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 300; }
+  .about .b { font-weight: 700; font-size: clamp(1.05rem, 1.75vw, 1.4rem); }
+  .about .gap { height: 1rem; }
+
+  /* WEB GENERATIONS */
+  .gens { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.7rem, 1.6vw, 1.2rem); }
+  .gen { background: var(--white); color: var(--plum); border-radius: 12px; padding: clamp(1rem, 2vw, 1.6rem); }
+  .gen h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1; margin-bottom: .8rem; }
+  .gen img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: .9rem; }
+  .gen .y { font-weight: 900; font-size: clamp(1.4rem, 2.6vw, 2.2rem); line-height: 1; }
+  .gen .t { font-weight: 700; font-size: clamp(.95rem, 1.5vw, 1.2rem); }
+  @media (max-width: 700px) { .gens { grid-template-columns: 1fr; } .gen { display: grid; grid-template-columns: 110px 1fr; gap: 0 1rem; align-items: center; } .gen h3 { grid-column: 1/-1; } .gen img { grid-row: 2 / 4; margin: 0; } }
+  .gtable { display: grid; gap: 4px; }
+  .gtable div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 4px; }
+  .gtable b { background: var(--violet); color: var(--white); font-weight: 900; font-size: clamp(1.1rem, 1.8vw, 1.5rem); line-height: 1.1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem .5rem; }
+  .gtable span { background: var(--green); color: var(--ink); display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; font-size: clamp(.95rem, 1.5vw, 1.25rem); }
+
+  /* BOXES */
+  .box { background: var(--green); color: var(--ink); border-radius: 12px; padding: clamp(1.2rem, 3vw, 2.2rem); position: relative; z-index: 2; }
+  .box.y-text { color: var(--violet); font-weight: 700; font-size: clamp(1.2rem, 2.2vw, 1.8rem); text-align: center; line-height: 1.25; }
+  .note { font-size: clamp(.95rem, 1.4vw, 1.15rem); }
+  .note b { font-weight: 700; }
+
+  /* BLOCK / MERKLE DIAGRAM */
+  .crypto-band { background: var(--green); color: var(--ink); margin: -4.5rem calc(-1 * var(--pad)) 2rem; padding: 5rem var(--pad) 1.6rem; }
+  .crypto-band .inner { display: flex; gap: 1.4rem; align-items: center; }
+  .crypto-band img { width: clamp(60px, 7vw, 100px); flex: none; }
+  .crypto-band p { font-size: clamp(1rem, 1.7vw, 1.35rem); max-width: 60ch; }
+  .crypto-band b { color: var(--violet); }
+  .diag { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: end; }
+  @media (max-width: 860px) { .diag { grid-template-columns: 1fr; } }
+  .chain img { width: 100%; display: block; margin-bottom: .6rem; }
+  .blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.6rem, 2vw, 1.6rem); }
+  .blk { display: grid; gap: 4px; font-size: clamp(.62rem, 1vw, .82rem); font-weight: 700; text-align: center; }
+  .blk b { background: var(--plum); color: var(--white); padding: .35rem .2rem; font-size: 1.15em; }
+  .blk span { border: 1.5px solid var(--violet); color: var(--violet); padding: .25rem .2rem; }
+  .merkle { display: grid; gap: .55rem; font-weight: 700; text-align: center; font-size: clamp(.68rem, 1.05vw, .9rem); }
+  .merkle .row { display: grid; gap: .45rem; }
+  .merkle .r1 { grid-template-columns: 1fr; } .merkle .r2 { grid-template-columns: 1fr 1fr; } .merkle .r4 { grid-template-columns: repeat(4, 1fr); }
+  .merkle .root { background: var(--violet); color: var(--white); padding: .45rem; }
+  .merkle .br { background: var(--plum); color: var(--white); padding: .45rem; }
+  .merkle .lf { border: 1.5px solid var(--violet); color: var(--violet); padding: .35rem .2rem; }
+  .merkle .dn { background: var(--plum); color: var(--white); padding: .6rem .2rem; border-radius: 0 0 50% 50% / 0 0 18% 18%; }
+  .legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .5rem; font-size: clamp(.62rem, .95vw, .78rem); color: var(--violet); }
+  .legend i { font-style: normal; color: #666; }
+
+  .hbw { width: 100%; max-height: 76vh; display: block; margin: 0 auto; }
+  .hbw0 { fill: var(--plum); } .hbw1 { fill: var(--violet-tint); } .hbw2 { fill: #fff; } .hbw3 { fill: none; } .hbw4 { fill: var(--violet); }
+  /* TIMELINE */
+  .tl { position: relative; z-index: 2; display: grid; gap: .7rem; max-width: 760px; }
+  .tl.right { margin-left: auto; }
+  .ev { display: grid; grid-template-columns: clamp(5rem, 9vw, 7.2rem) 1fr; box-shadow: 0 18px 40px -20px rgba(0,0,0,.7); }
+  .ev .yr { background: var(--yellow); color: var(--ink); font-weight: 900; font-size: clamp(1.4rem, 2.6vw, 2.2rem); display: flex; align-items: center; justify-content: center; }
+  .ev .tx { background: #f3f3f3; color: #111; padding: clamp(.8rem, 1.6vw, 1.1rem) clamp(.9rem, 1.8vw, 1.4rem); font-size: clamp(.95rem, 1.55vw, 1.25rem); line-height: 1.32; }
+  .ev .tx b { font-weight: 700; }
+  .ev .tx p + p { margin-top: .7rem; }
+  .slide.tlslide { justify-content: flex-end; }
+  .tl-top { justify-content: center !important; }
+
+  /* TOKENS / SMART CONTRACTS */
+  .tok-head { display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.4rem; }
+  .tok-head img { width: clamp(90px, 11vw, 150px); flex: none; }
+  .tok-head p { font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); }
+  .on-green { background: var(--green); color: var(--ink); border-radius: 18px; padding: clamp(1.2rem, 3vw, 2.2rem); }
+
+  /* WALLETS */
+  .icons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: center; justify-items: center; }
+  .icons img { width: 100%; max-width: 150px; height: auto; }
+
+  /* NFT */
+  .bigq { font-weight: 900; color: var(--yellow); font-size: clamp(5rem, 14vw, 11rem); line-height: .9; }
+  .nft-art { position: absolute; z-index: 1; right: -2%; bottom: 0; height: 100%; width: auto; max-width: 62%; object-fit: contain; object-position: bottom right; }
+  @media (max-width: 860px) { .nft-art { opacity: .35; } }
+  .cap { text-align: center; font-size: clamp(1rem, 1.6vw, 1.3rem); margin-top: .7rem; }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2rem); }
+  .thumbs img { width: 100%; aspect-ratio: 2/3; max-height: 56vh; object-fit: cover; display: block; background: #fff; }
+  @media (max-width: 600px) { .thumbs { grid-template-columns: 1fr; } .thumbs img { aspect-ratio: 16/10; } }
+
+  /* SOCIAL */
+  .social { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.8rem, 2vw, 1.4rem); }
+  .soc { background: var(--white); color: #666; border-radius: 14px; padding: clamp(1.1rem, 2.2vw, 1.8rem); font-size: clamp(.95rem, 1.4vw, 1.15rem); font-weight: 300; }
+  .soc .em { display: flex; gap: .3rem; margin: -3.4rem 0 .6rem; }
+  .soc .em img { width: clamp(52px, 6vw, 84px); height: auto; }
+  .soc h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.6rem, 2.8vw, 2.4rem); margin-bottom: .8rem; line-height: 1; }
+  .soc p + p { margin-top: .8rem; }
+  @media (max-width: 860px) { .social { grid-template-columns: 1fr; gap: 2.8rem; margin-top: 2rem; } }
+
+  /* START */
+  .start { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.8rem, 2vw, 1.4rem); margin-top: 2rem; }
+  .start .btn3 { background: var(--violet); color: var(--white); font-weight: 700; font-size: clamp(1.4rem, 2.8vw, 2.4rem); padding: .6rem 1rem; border-radius: 6px; text-align: center; box-shadow: 0 .35rem 0 var(--purple); }
+  .start p { margin: .9rem 0 0 1.6rem; position: relative; font-size: clamp(1rem, 1.7vw, 1.4rem); font-weight: 300; line-height: 1.15; }
+  .start p::before { content: ''; position: absolute; left: -1.3rem; top: -.5rem; width: 1rem; height: 1.15rem; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; border-bottom-left-radius: 6px; }
+  .start-art { display: flex; align-items: center; justify-content: center; }
+  .start-art img { width: 25%; height: auto; margin: 0 -2%; }
+  @media (max-width: 860px) { .start { grid-template-columns: 1fr; } }
+
+  /* LINK SLIDES (screenshots) */
+  .shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: 0; }
+  .linkpill { position: relative; z-index: 2; align-self: center; margin-top: auto; background: #000; color: #fff; text-decoration: none; font-weight: 700;
+    font-size: clamp(1.4rem, 3.4vw, 2.8rem); padding: .3rem 1.4rem .4rem; border-radius: 999px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.8); transition: background .2s; }
+  .linkpill:hover { background: var(--violet); }
+  .linkpill.w { background: #fff; color: #000; }
+  .linkpill.w:hover { background: var(--yellow); }
+
+  /* WIKI / THANKS */
+  .qrbox { position: relative; z-index: 2; display: flex; gap: 1.2rem; align-items: center; background: var(--white); color: var(--plum); padding: 1.1rem 1.4rem; max-width: 520px; margin-left: auto; text-decoration: none; }
+  .qrbox img { width: clamp(90px, 11vw, 140px); height: auto; flex: none; }
+  .qrbox span { font-weight: 900; font-size: clamp(1.1rem, 1.9vw, 1.6rem); line-height: 1.15; }
+  .thanks { display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; justify-content: center; max-width: 900px; margin: 0 auto; }
+  .thanks img { width: clamp(180px, 26vw, 340px); height: auto; }
+  .thanks .h2 { margin-bottom: 1.3rem; }
+  .thanks p { font-weight: 700; font-size: clamp(1.15rem, 2vw, 1.6rem); line-height: 1.3; }
+  .thanks p.s { font-size: clamp(1rem, 1.6vw, 1.3rem); margin-top: 1rem; }
+  .thanks p.s span { font-weight: 400; }
+  .thanks a { text-decoration: none; } .thanks a:hover { color: var(--yellow); }
+  @media (max-width: 700px) { .thanks { grid-template-columns: 1fr; text-align: center; } .thanks img { margin: 0 auto; } }
+
+  /* KEYS & SECURITY */
+  .kgrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.4vw, 2rem); }
+  @media (max-width: 860px) { .kgrid { grid-template-columns: 1fr; } }
+  .kcard { background: var(--white); border-radius: 16px; padding: clamp(1.2rem, 2.6vw, 2rem); position: relative; box-shadow: 0 .4rem 0 var(--purple); }
+  .kcard .kicker { display: inline-block; font-weight: 700; font-size: clamp(.75rem, 1.1vw, .9rem); letter-spacing: .12em; text-transform: uppercase;
+    padding: .25rem .7rem; border-radius: 999px; margin-bottom: .8rem; background: var(--green); color: var(--plum); }
+  .kcard .kicker.no { background: var(--violet); color: var(--white); }
+  .kcard h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1; margin-bottom: .4rem; }
+  .kcard .sub { font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); margin-bottom: .9rem; color: var(--plum); }
+  .alert { background: var(--violet); color: var(--white); border-radius: 12px; padding: clamp(.9rem, 1.8vw, 1.2rem) clamp(1rem, 2vw, 1.5rem);
+    font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 1.3; display: flex; gap: .9rem; align-items: center; }
+  .alert::before { content: '!'; flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; font-weight: 900; }
+  .seedsvg { width: 100%; height: auto; display: block; max-height: 30vh; margin: 1rem 0; }
+  .slide.tight { padding-top: 3.6rem; padding-bottom: 3.6rem; }
+  .slide.tight .h2 { font-size: clamp(2rem, 4.2vw, 3.6rem); margin-bottom: .8rem; }
+  .slide.tight .lede { font-size: clamp(1rem, 1.7vw, 1.35rem); }
+  .slide.tight .alert { font-size: clamp(.9rem, 1.35vw, 1.1rem); padding: .75rem 1rem; }
+  .sp0 { fill: #fff; stroke: var(--violet); stroke-width: 8; stroke-miterlimit: 10; }
+  .sp1 { fill: #fff; stroke: var(--plum); stroke-width: 8; stroke-miterlimit: 10; }
+  .sp2 { fill: var(--violet); } .sp3 { font-family: var(--font); font-weight: 900; } .sp4 { font-size: 25px; }
+  .sp5 { fill: var(--plum); } .sp6 { font-family: var(--font); font-weight: 400; } .sp7 { fill: none; stroke: var(--plum); stroke-width: 8; stroke-miterlimit: 10; } .sp8 { fill: #fff; }
+  .scams { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(.8rem, 1.6vw, 1.2rem); margin-top: 1.6rem; }
+  @media (max-width: 1000px) { .scams { grid-template-columns: 1fr 1fr; } } @media (max-width: 600px) { .scams { grid-template-columns: 1fr; } }
+  .scam { background: var(--white); border-radius: 14px; padding: clamp(1rem, 1.8vw, 1.4rem); border-top: 6px solid var(--violet); }
+  .scam .n { font-weight: 900; color: var(--violet); font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1; }
+  .scam h3 { font-weight: 900; color: var(--plum); font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.15; margin: .4rem 0 .6rem; }
+  .scam p { font-size: clamp(.9rem, 1.25vw, 1.05rem); font-weight: 400; }
+  .tips { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.5rem, 1.1vw, .8rem) clamp(1rem, 2.4vw, 2rem); counter-reset: tip; }
+  @media (max-width: 860px) { .tips { grid-template-columns: 1fr; } }
+  .tips li { counter-increment: tip; display: flex; gap: .8rem; align-items: center; background: var(--white); border-radius: 10px; padding: .45rem .8rem;
+    font-size: clamp(.9rem, 1.3vw, 1.1rem); line-height: 1.22; }
+  .tips li::before { content: counter(tip); flex: none; width: 1.8rem; height: 1.8rem; border-radius: 8px; background: var(--violet); color: var(--white); font-weight: 900; display: grid; place-items: center; }
+  .tips b { font-weight: 700; }
+  .ext img { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 24px 30px rgba(31,28,31,.28)); }
+  .ext-names { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.4rem; }
+  .ext-names span { background: var(--violet); color: var(--white); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); padding: .4rem 1.1rem; border-radius: 8px; box-shadow: 0 .3rem 0 var(--purple); }
+
+  /* WEB3EDUBRASIL */
+  .w3e-big { width: clamp(240px, 34vw, 440px); aspect-ratio: 1774 / 402; display: block; margin-bottom: 1.4rem; background: var(--plum);
+    -webkit-mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; mask: url(/assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat; }
+  .role { display: inline-block; background: var(--violet); color: var(--white); font-weight: 700; font-size: clamp(.8rem, 1.2vw, .95rem); letter-spacing: .12em;
+    text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.1rem; }
+  .btnlink { display: inline-block; margin-top: 1.5rem; background: var(--violet); color: var(--white); text-decoration: none; font-weight: 900; font-size: clamp(1rem, 1.6vw, 1.3rem);
+    padding: .6rem 1.4rem; border-radius: 8px; box-shadow: 0 .3rem 0 var(--purple); transition: transform .2s; }
+  .btnlink:hover { transform: translateY(-2px); }
+  .w3cards { display: grid; gap: .8rem; }
+  .w3card { background: var(--white); border-radius: 14px; padding: clamp(1rem, 2vw, 1.4rem) clamp(1.1rem, 2.2vw, 1.6rem); border-left: 6px solid var(--violet); }
+  .w3card:nth-child(2) { border-left-color: var(--yellow); } .w3card:nth-child(3) { border-left-color: var(--plum); }
+  .w3card h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1; margin-bottom: .45rem; }
+  .w3card p { font-size: clamp(.95rem, 1.4vw, 1.15rem); }
+
+  .qwrap { width: clamp(170px, 20vw, 270px); margin: 0 auto 1.4rem; position: relative; z-index: 2; filter: drop-shadow(0 18px 26px rgba(0,0,0,.7)); }
+  .qhex { clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); }
+  .qframe { width: 100%; aspect-ratio: 1 / .866; overflow: hidden; clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); background: #000; }
+  .qframe img { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.08); }
+  .icons img.sq { border-radius: 22%; }
+  .seedgrid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(1rem, 2.6vw, 2.2rem); align-items: center; margin-top: 1rem; }
+  .seedgrid .seedsvg { max-height: none; margin: 0; }
+  .seedalerts { display: grid; gap: .9rem; }
+  @media (max-width: 860px) { .seedgrid { grid-template-columns: 1fr; } }
+  .tips li span { display: block; }
+
+  /* REVEAL */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .slide.in .rv { opacity: 1; transform: none; }
+  .slide.in .rv.d1 { transition-delay: .15s; } .slide.in .rv.d2 { transition-delay: .3s; } .slide.in .rv.d3 { transition-delay: .45s; } .slide.in .rv.d4 { transition-delay: .6s; }
+
+  /* HUD (same structure as cripto-e-sociedade) */
+  .progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--violet), var(--yellow)); width: 0; z-index: 50; transition: width .3s; }
+  .hud { position: fixed; right: 1.25rem; bottom: 1rem; z-index: 50; display: flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .8rem; letter-spacing: .08em; color: var(--white); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .hud button { background: rgba(31,28,31,.65); color: var(--white); border: 1px solid rgba(255,255,255,.25); width: 2.3rem; height: 2.3rem; border-radius: 50%;
+    cursor: pointer; font-family: var(--font); font-weight: 700; font-size: .95rem; backdrop-filter: blur(8px); }
+  .hud button:hover { background: var(--violet); border-color: var(--violet); }
+  .brand { position: fixed; left: 1.25rem; top: 1rem; z-index: 50; display: block; line-height: 0; filter: drop-shadow(0 1px 3px rgba(0,0,0,.4)); }
+  .brand svg { height: 26px; width: auto; }
+  .sec { position: fixed; left: 1.25rem; bottom: 1.15rem; z-index: 50; font-weight: 700; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--white);
+    background: rgba(31,28,31,.55); padding: .35rem .7rem; border-radius: 999px; backdrop-filter: blur(8px); }
+  .sec:empty { display: none; }
+  body.on-light .brand path { fill: var(--violet); }
+  .lock-ic { filter: hue-rotate(25deg) saturate(.5) brightness(.75); }
+  body.on-light .brand { filter: none; }
+  body.on-light .hud { color: var(--plum); text-shadow: none; }
+  @media (max-width: 600px) { .sec { display: none; } }
+  .menu { position: fixed; top: .85rem; right: 1.25rem; z-index: 60; }
+  .menu-btn { display: flex; align-items: center; gap: .5rem; font-family: var(--font); font-weight: 700; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--white); background: rgba(31,28,31,.65); border: 1px solid rgba(255,255,255,.25); padding: .5rem 1rem; border-radius: 999px; cursor: pointer; backdrop-filter: blur(8px); }
+  .menu-btn:hover, .menu-btn[aria-expanded="true"] { background: var(--violet); border-color: var(--violet); }
+  .menu-btn .caret { font-size: .6rem; transition: transform .2s; }
+  .menu-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .menu-panel { position: absolute; top: calc(100% + .5rem); right: 0; width: min(380px, calc(100vw - 2.5rem)); max-height: 78vh; overflow-y: auto;
+    background: rgba(31,28,31,.97); border: 1px solid rgba(147,64,63,.7); border-radius: 12px; display: none; padding: .5rem 0; box-shadow: 0 24px 60px -20px rgba(0,0,0,.9); }
+  .menu-panel.open { display: block; }
+  .menu-group { padding: .35rem 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .menu-group:last-child { border-bottom: 0; }
+  .menu-group h4 { font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--yellow); padding: .45rem 1rem .3rem; }
+  .menu-group h4 b { color: var(--violet); font-weight: 900; margin-right: .4rem; }
+  .menu-item { display: flex; gap: .7rem; width: 100%; text-align: left; background: none; border: 0; cursor: pointer; padding: .4rem 1rem; color: #ddd; font-family: var(--font); font-size: .92rem; line-height: 1.3; }
+  .menu-item span { font-size: .75rem; color: #888; min-width: 1.6rem; padding-top: .1rem; font-weight: 700; }
+  .menu-item:hover { background: rgba(255,255,255,.06); color: var(--white); }
+  .menu-item.current, .menu-item.current span { color: var(--violet); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .rv { opacity: 1; transform: none; } }
+  @media print {
+    body { overflow: visible; } .deck { height: auto; overflow: visible; } .hud, .progress, .brand, .sec, .menu { display: none; }
+    .slide { page-break-after: always; min-height: 100vh; } .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<a class="brand" href="/" title="numadessas.com.br"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1938.9 637.2" height="26" aria-label="Numa" style="display:block;">
+      <path fill="#ffffff" d="M628.7,158.9c1.2-11.1-2.8-21.9-13.6-28.2-11.9-7-31.9-4.2-39,8.9-10.4,12.2-19.4,24.1-26.5,38.8-12.5,25.7-23.6,52-35.1,78.1-17.3,39-34.5,78-51.8,117.1-26.7-74.7-62.8-147.1-104.5-212.5-30.7-48.2-80.8-96.2-142.9-75.9-53,17.3-84.6,69.7-101.8,119.6-19.8,57.8-22.3,124.2-4.9,182.9,23.6,79.6,83,137.1,160.5,164.7,15.4,5.5,33.1-6.2,37.2-21.2,4.7-17-5.8-31.5-21.1-37.2-27.8-10.4-51-25.2-70.7-46.3-9.9-10.6-13.1-14.9-21.1-28.5-3.4-5.7-6.4-11.6-9.2-17.5-.6-1.1-1.1-2.3-1.6-3.5-1.5-3.7-2.8-7.4-4.1-11.1-4.4-12.9-7.3-26-9.6-39.3-.1-.6-.2-1-.2-1.4,0-.4,0-.8-.1-1.4-.3-3-.6-5.9-.8-8.9-.6-6.9-.9-13.8-1-20.8,0-6.4.1-12.8.5-19.2.2-3.4.5-6.8.8-10.2.1-1,.6-5,.8-6.9.3-1.7.7-4.6.8-5.3.6-3.3,1.2-6.6,1.8-9.8,1.3-6.4,2.9-12.8,4.6-19.2,1.5-5.3,3.1-10.6,4.9-15.8,1-3,2.2-5.9,3.2-8.9.2-.7.4-1.1.5-1.6.1-.2.2-.5.4-.8,4.8-10.3,9.9-20.3,16-29.8,1.8-2.8,8.8-11.9,6.3-9.1,2.7-3.2,5.4-6.4,8.4-9.4,1.3-1.3,5.1-4.6,7-6.4,2.1-1.3,7.2-4.7,8.8-5.6.8-.5,1.3-.8,1.7-1.1.4-.1.9-.2,1.5-.4,1.7-.5,3.5-.9,5.2-1.4,2.2.4,6.3.3,9,.1,1.8.6,3.9,1.3,5.8,1.8,1.9,1.3,4.1,2.2,6.1,3.4,1.4.9,2.7,1.8,4.1,2.7,1.1.9,2.2,1.9,3.3,2.9,4.1,4,8.1,8.1,11.9,12.5.7.8,1.5,1.8,2.1,2.6,1.9,2.7,3.8,5.4,5.7,8.1,60.7,91.4,107.5,199.6,130.4,307,6.5,30.7,56.8,39.4,70.4,9.2,44.3-98.5,90-197.1,129.8-297.5,5.6-14.1,11.6-32.3,10.3-48.5h0ZM248.4,154.5s0,0,.1,0c-3-.3-4.6-1.7-.1,0ZM282.9,181.5c.4.5.5.6,0,0h0Z"/>
+      <path fill="#ffffff" d="M957.5,360.2c-12.7-39.2-24.8-78.5-36.6-118-11.7-39-19.8-82.7-39.3-118.7-15.7-28.8-56-13.4-58,15.7-2.8,39.6,12.1,83.1,22.4,121,10.6,38.7,22.3,77,34.5,115.2-31-14.1-64.7-22.6-98.9-24.8-36.4-2.3-71.6,3.7-103.8,16.5,25.1-62.1,49.7-124.5,73.1-187.3,11.8-31.7-40.5-54.1-55-23.2-49.6,105.5-95.5,212.6-141.8,319.6-7.9,18.3-5.4,39.7,13.3,50.6,17.4,10.2,40.5,4,50.7-13.3,19.2-32.5,42.5-54.9,75.8-71,25.6-12.4,54.9-17.1,87.9-14.8,26.5,1.9,58.8,12,84.3,27.2,27.4,16.3,48.3,37.5,64.2,66,21.2,37.9,86.9,12.4,71.7-30.2-15.5-43.3-30-87-44.2-130.7h0Z"/>
+      <path fill="#ffffff" d="M1818.2,252.9c-23.6-79.6-83-137.1-160.5-164.7-15.4-5.5-33.1,6.2-37.2,21.2-4.7,17,5.8,31.5,21.2,37.3,27.8,10.4,51,25.2,70.7,46.3,9.9,10.6,13.1,14.9,21.1,28.5,3.4,5.7,6.4,11.6,9.2,17.6.6,1.1,1.1,2.3,1.6,3.5,1.5,3.7,2.8,7.4,4.1,11.1,4.3,12.8,7.3,26,9.6,39.3.1.6.2,1,.2,1.4,0,.4,0,.8.1,1.4.3,3,.6,5.9.8,8.9.6,6.9.9,13.8,1,20.8,0,6.4-.1,12.8-.5,19.2-.2,3.4-.5,6.8-.8,10.2,0,1-.6,5-.8,6.9-.3,1.7-.7,4.6-.8,5.3-.6,3.3-1.2,6.6-1.8,9.8-1.3,6.4-2.9,12.8-4.6,19.2-1.5,5.3-3.1,10.6-4.9,15.8-1,3-2.2,5.9-3.2,8.9-.2.7-.4,1.1-.5,1.6-.1.2-.2.5-.4.8-4.8,10.3-9.9,20.3-16,29.8-1.8,2.8-8.8,11.9-6.3,9-2.7,3.2-5.4,6.4-8.4,9.4-1.3,1.3-5.1,4.6-7,6.4-2.1,1.3-7.2,4.7-8.8,5.6-.8.5-1.3.8-1.7,1.1-.4.1-.9.2-1.5.4-1.7.5-3.5.9-5.2,1.4-2.2-.4-6.3-.3-9-.1-1.8-.6-3.9-1.3-5.8-1.8-1.9-1.3-4.1-2.2-6.1-3.4-1.4-.9-2.7-1.8-4.1-2.7-1.1-.9-2.2-1.9-3.3-2.9-4.2-4-8.1-8.1-11.9-12.5-.7-.8-1.5-1.8-2.1-2.6-1.9-2.7-3.8-5.4-5.7-8.1-60.7-91.4-107.5-199.6-130.4-307-6.5-30.7-56.8-39.4-70.4-9.2-44.3,98.5-90,197.1-129.8,297.5-5.6,14.1-11.6,32.3-10.3,48.5-1.2,11,2.8,21.9,13.6,28.2,11.9,7,31.9,4.2,39-8.9,10.4-12.2,19.4-24.1,26.5-38.8,12.5-25.7,23.6-52,35.1-78.1,17.3-39,34.5-78.1,51.8-117.1,26.7,74.7,62.8,147.1,104.4,212.5,30.7,48.2,80.8,96.2,142.9,75.9,53-17.3,84.6-69.7,101.8-119.6,19.8-57.8,22.3-124.2,4.9-182.9h0ZM1643.9,459.1c-.4-.5-.5-.6,0,0h0ZM1678.4,486.2s0,0-.1,0c3,.3,4.7,1.7.1,0Z"/>
+      <path fill="#ffffff" d="M1359.5,113.7c-17.4-10.2-40.5-4-50.7,13.3-19.2,32.5-42.5,54.9-75.8,71-25.6,12.4-54.9,17.1-87.9,14.8-26.4-1.9-58.8-12.1-84.3-27.2-27.4-16.3-48.3-37.6-64.2-66-21.2-37.9-86.9-12.4-71.7,30.2,15.5,43.3,30,87,44.2,130.7,12.7,39.2,24.8,78.5,36.6,118,11.7,39,19.8,82.7,39.3,118.7,15.7,28.8,56,13.4,58-15.7,2.8-39.6-12.1-83.1-22.4-121-10.6-38.7-22.3-77-34.5-115.2,31,14.1,64.7,22.6,98.9,24.8,36.4,2.3,71.6-3.7,103.8-16.5-25.1,62.1-49.7,124.5-73.1,187.3-11.8,31.7,40.5,54.1,55,23.2,49.6-105.5,95.6-212.6,141.8-319.6,7.9-18.3,5.4-39.7-13.3-50.7h0Z"/>
+    </svg></a>
+<div class="sec" id="sec"></div>
+<div class="menu" id="menu">
+  <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">Seções <span class="caret">&#9662;</span></button>
+  <nav class="menu-panel" id="menu-panel" aria-label="Seções do aulão"></nav>
+</div>
+<div class="hud">
+  <button id="prev" aria-label="Slide anterior">←</button>
+  <span id="count">1 / 1</span>
+  <button id="next" aria-label="Próximo slide">→</button>
+  <button id="fs" aria-label="Tela cheia" title="Tela cheia (F)">⤢</button>
+</div>
+
+<main class="deck" id="deck">
+
+<!-- ============ ABERTURA ============ -->
+
+<!-- 01 · CAPA -->
+<section class="slide" data-sec="" data-title="Capa">
+  <span class="shape tri p far" aria-hidden="true" style="width:22vw;height:20vw;left:-6vw;bottom:-8vw;--r:-18deg"></span>
+  <span class="shape bolt y mid" aria-hidden="true" style="width:4vw;height:6vw;left:34%;top:12%;--r:12deg;--t:13s"></span>
+  <div class="cover-zz" aria-hidden="true">
+    <svg viewBox="0 0 600 560" preserveAspectRatio="xMaxYMid slice">
+      <defs><filter id="zzblur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter></defs>
+      <polygon style="fill:var(--violet)" points="540,-40 900,-40 900,620 140,620 520,215 400,215"/>
+      <polygon class="zz-glow" style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
+      <polygon class="zz-a" style="fill:var(--yellow)" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
+    </svg>
+  </div>
+  <div class="inner">
+    <h1 class="display h1 wht rv" style="line-height:.9">Aulão<br>Comece<br>na<br>Web3</h1>
+    <span class="w3e-logo rv d1" role="img" aria-label="Instituto Web3EduBrasil"></span>
+  </div>
+</section>
+
+<!-- 02 · NUMA -->
+<section class="slide" data-sec="" data-title="Quem sou">
+  <span class="shape tri y far" aria-hidden="true" style="width:34vw;height:30vw;right:-6vw;top:-12vw;--r:172deg"></span>
+  <span class="shape bolt p mid" aria-hidden="true" style="width:16vw;height:24vw;right:-3vw;bottom:-5vw;--r:-14deg"></span>
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;left:47%;top:6%;--r:10deg;--t:12s"></span>
+  <span class="shape tri p far" aria-hidden="true" style="width:14vw;height:12vw;left:33%;top:-5vw;--r:24deg"></span>
+  <div class="bust rv d2"><img src="/assets/img/aulas/comece-web3/numa-busto.webp" alt="Busto 3D da Numa"></div>
+  <div class="inner">
+    <div class="about rv" style="max-width:46%;margin-left:auto">
+      <div class="name">NUMA</div>
+      <p class="b">Artista, designer &amp; educadora<br>Mentora e Head of Community<br>no Instituto Web3EduBrasil</p>
+      <div class="gap"></div>
+      <p>No hip hop desde 2009<br>No Design desde 2013<br>Na Web3 desde 2021</p>
+      <div class="gap"></div>
+      <p>Graduada em Design Gráfico (UTFPR)<br>Mestre em Design (UFPE)<br>Prêmio de influência Tezos Commons 2026<br>Prêmio Most Influential Redot 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02b · WEB3EDUBRASIL -->
+<section class="slide" data-sec="" data-title="Web3EduBrasil">
+  <span class="shape tri y far" aria-hidden="true" style="width:20vw;height:18vw;left:-6vw;bottom:-7vw;--r:14deg"></span>
+  <span class="shape bolt p near" aria-hidden="true" style="width:3.4vw;height:5vw;left:47%;top:10%;--r:-8deg;--t:12s"></span>
+  <div class="inner split">
+    <div>
+      <span class="w3e-big rv" role="img" aria-label="Instituto Web3EduBrasil"></span>
+      <div class="role rv d1">Head of Community &amp; Mentor</div>
+      <p class="lede rv d2">Comunidade de <strong>aprendizado livre</strong> dedicada à educação e adoção da Web3 no Brasil.</p>
+      <a class="btnlink rv d2" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
+    </div>
+    <div class="w3cards rv d3">
+      <div class="w3card"><h3>Mentorias</h3><p>Com valor simbólico de inscrição, duração de 3 meses. Diversas áreas: Introdução à web3, programação, cibersegurança, direito, carreira, etc…</p></div>
+      <div class="w3card"><h3>Eventos</h3><p>Aulões mensais, Semana Verde, WEB3 PE, Web3Experts e participações em eventos externos.</p></div>
+      <div class="w3card"><h3>Comunidade</h3><p>Networking e grupos de estudos em diversas plataformas, como Discord, WhatsApp, LinkedIn, YouTube, etc.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 · INTERNET ============ -->
+
+<!-- 03 -->
+<section class="slide" data-sec="01 · Internet" data-title="Antes de falar de Blockchain">
+  <div class="inner center">
+    <img class="rv" src="/assets/img/aulas/comece-web3/dialing.webp" alt="Janela 'Dialing Progress' de internet discada" style="width:clamp(200px,28vw,360px);margin:0 auto 2rem;display:block">
+    <h2 class="display h3 rv d1" style="font-size:clamp(1.8rem,4vw,3.6rem)">Antes de falar de Blockchain<br>é necessário sobre Internet.</h2>
+    <p class="lede rv d2" style="font-weight:300">As gerações da internet categorizam<br>como a interação nesse ciberespaço acontece.</p>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="slide" data-sec="01 · Internet" data-title="Web 1.0, 2.0 e 3.0">
+  <div class="cover-zz" aria-hidden="true" style="width:70%">
+    <svg viewBox="0 0 600 560" preserveAspectRatio="none">
+      <polygon class="zz-b" style="fill:var(--violet)" points="300,0 600,0 600,560 120,560 200,430 120,400 220,260 150,230 260,110 200,80"/>
+      <polygon class="zz-a" style="fill:var(--yellow)" points="420,0 600,0 600,560 260,560 330,430 260,400 360,260 290,230 400,110 340,80"/>
+    </svg>
+  </div>
+  <div class="inner">
+    <div class="gens">
+      <div class="gen rv"><h3>web 1.0</h3><img src="/assets/img/aulas/comece-web3/web1-glitch.webp" alt="" loading="lazy"><div class="y">1991</div><div class="t">Ready-only</div></div>
+      <div class="gen rv d1"><h3>web 2.0</h3><img src="/assets/img/aulas/comece-web3/web2-phone.webp" alt="" loading="lazy"><div class="y">2004</div><div class="t">Read-write</div></div>
+      <div class="gen rv d2"><h3>web 3.0</h3><img src="/assets/img/aulas/comece-web3/web3-vr.webp" alt="" loading="lazy"><div class="y">2008</div><div class="t">Read-write-own</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="slide light" data-sec="01 · Internet" data-title="Evolução da web">
+  <div class="inner split">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/geracoes-web.webp" alt="Gráfico: evolução da web em semântica e socialização, de PC Era a Web 4.0" loading="lazy" style="max-height:78vh;width:auto;max-width:100%;margin:0 auto">
+    <div class="gtable rv d1">
+      <div><b>1980 -<br>90s</b><span>Tecnologia da Web</span></div>
+      <div><b>90s -<br>2000</b><span>Redes e Multimídia</span></div>
+      <div><b>10s -<br>2020</b><span>Banda Larga, Tecnologias Semânticas, Computação Móvel e Armazenamento em Nuvem</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · BLOCKCHAIN ============ -->
+
+<!-- 06 -->
+<section class="slide black" data-sec="02 · Blockchain" data-title="O que é Blockchain?">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/blockchain-bg.webp" alt="" loading="lazy">
+  <div class="shade"></div>
+  <div class="inner center">
+    <h2 class="display h2 rv">O que é Blockchain?</h2>
+    <p class="lede rv d1">As Blockchains são redes online onde dados são salvos e registrados em cadeia por vários computadores, não apenas em um só servidor.</p>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="slide light" data-sec="02 · Blockchain" data-title="Livro caixa" style="padding:0">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:100dvh">
+    <img src="/assets/img/aulas/comece-web3/escritorio.webp" alt="Escritório de contabilidade" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    <img src="/assets/img/aulas/comece-web3/livro-caixa.webp" alt="Pilha de livros: Livro Caixa, Livro Registro de Inventário, Entradas, Serviços Prestados e Tomados" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="slide dark" data-sec="02 · Blockchain" data-title="Semelhante a uma planilha">
+  <div class="inner split">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/network.webp" alt="Animação de uma rede de nós" loading="lazy">
+    <div class="rv d1">
+      <div class="box y-text">Semelhante a uma planilha atualizada em tempo real compartilhada por vários computadores.</div>
+      <p class="note" style="margin:1.6rem 0 0 3rem;max-width:26ch">→ <b>Nó</b> ou <b>node</b>: um computador que faz parte da Blockchain.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 -->
+<section class="slide black" data-sec="02 · Blockchain" data-title="Princípios das Blockchains">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/matrix.webp" alt="" loading="lazy" style="opacity:.8">
+  <div class="inner" style="max-width:820px">
+    <span class="shape tri p far" aria-hidden="true" style="width:10rem;height:9rem;left:10%;top:-4rem;z-index:0;--r:-16deg"></span>
+    <span class="shape bolt y near" aria-hidden="true" style="width:2.6rem;height:3.8rem;left:26%;top:-3.6rem;z-index:0;--r:8deg;--t:12s"></span>
+    <span class="shape bolt p near" aria-hidden="true" style="width:7rem;height:10.5rem;right:-2rem;top:32%;z-index:3;--r:-10deg"></span>
+    <span class="shape tri y mid" aria-hidden="true" style="width:6rem;height:5.4rem;right:3rem;bottom:-3rem;z-index:3;--r:190deg"></span>
+    <div class="box rv" style="max-width:520px;margin:0 auto">
+      <img src="/assets/img/aulas/comece-web3/globe.webp" alt="" style="position:absolute;left:-5rem;top:3.5rem;width:6.5rem">
+      <h2 class="yel" style="font-weight:900;font-size:clamp(1.3rem,2.2vw,1.8rem);margin-bottom:.8rem">Princípios das Blockchains</h2>
+      <ul class="bullets">
+        <li>Os usuários possuem seus próprios dados, não as empresas.</li>
+        <li>Trocas online de informações e valores descentralizadas.</li>
+        <li>Transações digitais globais seguras.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide black" data-sec="02 · Blockchain" data-title="Propriedades da Blockchain">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/propriedades-bg.webp" alt="" loading="lazy">
+  <div class="shade" style="background:rgba(0,0,0,.45)"></div>
+  <div class="inner">
+    <div class="tags c2">
+      <h2 class="display h3 rv" style="margin:0;align-self:center">Propriedades<br>da Blockchain</h2>
+      <div class="tag rv d1">Descentralização</div>
+      <div class="tag rv d1">Imutabilidade</div>
+      <div class="tag rv d2">Transparência</div>
+      <div class="tag rv d2">Anonimato</div>
+      <div class="tag rv d3">Auditabilidade</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide light" data-sec="02 · Blockchain" data-title="Como funciona uma transação">
+  <div class="inner">
+    <svg class="hbw rv" role="img" aria-label="Fluxo em 4 passos: uma pessoa envia bitcoin, a transação vai para a rede de nós, é agrupada em um bloco e adicionada à cadeia, e chega a quem recebe" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1492 980">
+  
+  
+  <path class="hbw3" d="M1312.9,655.2c.3.3.7.7,1,1-.3-.3-.7-.7-1-1Z"/>
+  <path class="hbw3" d="M1310.4,652.8c.5.4.9.8,1.4,1.3-.5-.4-.9-.8-1.4-1.3Z"/>
+  <path class="hbw3" d="M1308,650.7c.3.3.7.6,1,.8-.3-.3-.7-.6-1-.8Z"/>
+  <path class="hbw3" d="M1315.6,657.9c.3.4.7.7,1,1.1-.3-.4-.7-.7-1-1.1Z"/>
+  <path class="hbw3" d="M1296.2,642.9c.3.2.6.3.9.5-.3-.2-.6-.3-.9-.5Z"/>
+  <path class="hbw3" d="M1330.4,681.8c.2.5.4,1,.5,1.5-.2-.5-.3-1-.5-1.5Z"/>
+  <path class="hbw3" d="M1302.3,646.6c.4.3.8.5,1.1.8-.4-.3-.7-.5-1.1-.8Z"/>
+  <path class="hbw3" d="M1305,648.5c.3.2.7.5,1,.7-.3-.2-.7-.5-1-.7Z"/>
+  <path class="hbw3" d="M1327.2,674.6c.3.6.6,1.1.8,1.7-.3-.6-.5-1.1-.8-1.7Z"/>
+  <path class="hbw3" d="M1328.6,677.5c.4.9.8,1.8,1.2,2.7-.4-.9-.8-1.8-1.2-2.7Z"/>
+  <path class="hbw3" d="M1325.7,671.7c.3.6.6,1.1.9,1.7-.3-.6-.6-1.1-.9-1.7Z"/>
+  <path class="hbw3" d="M1319.9,663c.3.4.6.8.9,1.2-.3-.4-.6-.8-.9-1.2Z"/>
+  <path class="hbw3" d="M1317.6,660.2c.5.6.9,1.1,1.4,1.7-.5-.6-.9-1.1-1.4-1.7Z"/>
+  <path class="hbw3" d="M1324.1,669c.3.6.7,1.1,1,1.7-.3-.6-.7-1.1-1-1.7Z"/>
+  <path class="hbw3" d="M1320.9,664.3c.9,1.3,1.8,2.6,2.7,3.9-.9-1.3-1.7-2.6-2.7-3.9Z"/>
+  <path class="hbw3" d="M1299.4,644.8c.3.2.6.4.9.6-.3-.2-.6-.4-.9-.6Z"/>
+  <path class="hbw3" d="M1254.9,634.8c1-.1,2.1-.2,3.2-.2-1.1,0-2.1.1-3.2.2Z"/>
+  <path class="hbw3" d="M1269.2,634.8c.2,0,.4,0,.6,0-.2,0-.4,0-.6,0Z"/>
+  <path class="hbw3" d="M1293.3,641.5c.2.1.5.2.7.4-.2-.1-.5-.2-.7-.4Z"/>
+  <path class="hbw3" d="M1258.6,634.5c1.1,0,2.2,0,3.3,0-1.1,0-2.2,0-3.3,0Z"/>
+  <path class="hbw3" d="M1251,635.2c1-.2,2.1-.3,3.1-.4-1.1.1-2.1.2-3.1.4Z"/>
+  <path class="hbw3" d="M1244.2,636.6c1-.2,1.9-.5,2.9-.7-1,.2-2,.4-2.9.7Z"/>
+  <path class="hbw3" d="M1247.7,635.8c.9-.2,1.9-.4,2.9-.5-1,.2-1.9.3-2.9.5Z"/>
+  <path class="hbw3" d="M1265.4,634.5c.2,0,.4,0,.6,0-.2,0-.4,0-.6,0Z"/>
+  <path class="hbw3" d="M1286.6,638.7c.2,0,.5.2.7.3-.2,0-.5-.2-.7-.3Z"/>
+  <path class="hbw3" d="M1240.6,637.6c.9-.3,1.9-.5,2.8-.8-.9.2-1.9.5-2.8.8Z"/>
+  <path class="hbw3" d="M1290.1,640c.3.1.5.2.8.3-.3-.1-.5-.2-.8-.3Z"/>
+  <path class="hbw3" d="M1276.3,635.8c.2,0,.4,0,.6.1-.2,0-.4,0-.6-.1Z"/>
+  <path class="hbw3" d="M1273.1,635.2s0,0,0,0c0,0,0,0,0,0Z"/>
+  <path class="hbw3" d="M1279.9,636.6c.2,0,.4.1.7.2-.2,0-.4-.1-.7-.2Z"/>
+  <path class="hbw3" d="M1283.6,637.7c.1,0,.2,0,.3,0-.1,0-.2,0-.3,0Z"/>
+  <path class="hbw3" d="M1190.6,722.4c.2.8.4,1.6.6,2.4-.2-.8-.4-1.6-.6-2.4Z"/>
+  <path class="hbw3" d="M1189.9,719.1c.1.7.2,1.4.4,2-.1-.7-.3-1.3-.4-2Z"/>
+  <path class="hbw3" d="M1192.7,730.3c.2.5.3.9.5,1.4-.2-.4-.3-.9-.5-1.4Z"/>
+  <path class="hbw3" d="M1191.7,726.9c.2.6.3,1.2.5,1.7-.2-.6-.3-1.2-.5-1.7Z"/>
+  <path class="hbw3" d="M1189.5,715.6c0,.7.2,1.4.3,2.1,0-.7-.2-1.4-.3-2.1Z"/>
+  <path class="hbw3" d="M1189.1,703.9c0,1.1,0,2.3,0,3.5,0-1.2,0-2.3,0-3.5Z"/>
+  <path class="hbw3" d="M1189.2,712c0,.8.1,1.5.2,2.3,0-.8-.1-1.5-.2-2.3Z"/>
+  <path class="hbw3" d="M1193.8,733.5c.1.4.3.8.5,1.1-.2-.4-.3-.8-.5-1.1Z"/>
+  <path class="hbw3" d="M1202.3,749.3c0,.1.2.3.3.4,0-.1-.2-.3-.3-.4Z"/>
+  <path class="hbw3" d="M1189.1,710.9c0-1.1,0-2.3,0-3.5h0c0,1.2,0,2.3,0,3.5Z"/>
+  <polygon class="hbw3" points="1204.1 751.8 1204.1 751.8 1204.1 751.8 1204.1 751.8"/>
+  <path class="hbw3" d="M1195.1,736.5c.1.3.3.6.4.8-.1-.3-.3-.6-.4-.8Z"/>
+  <path class="hbw3" d="M1200.6,746.8c0,.1.2.3.3.4,0-.1-.2-.3-.3-.4Z"/>
+  <path class="hbw3" d="M1189.3,700.5c0,.8-.1,1.5-.2,2.3,0-.8.1-1.5.2-2.3Z"/>
+  <path class="hbw3" d="M1334.5,699.3c0,.4,0,.8.1,1.2,0-.4,0-.8-.1-1.2Z"/>
+  <path class="hbw3" d="M1334.8,702.9c0,.4,0,.7,0,1.1,0-.4,0-.7,0-1.1Z"/>
+  <path class="hbw3" d="M1202.5,665.2c0,.1-.2.2-.2.3,0-.1.2-.2.2-.3Z"/>
+  <path class="hbw3" d="M1331.5,685c.2.5.3,1,.5,1.5-.1-.5-.3-1-.5-1.5Z"/>
+  <path class="hbw3" d="M1200.8,667.6c0,.1-.2.3-.2.4,0-.1.2-.3.2-.4Z"/>
+  <path class="hbw3" d="M1332.4,688.2c.1.4.2.9.4,1.3-.1-.4-.2-.9-.4-1.3Z"/>
+  <path class="hbw3" d="M1334.1,695.9c0,.4.1.8.2,1.2,0-.4-.1-.8-.2-1.2Z"/>
+  <path class="hbw3" d="M1333.4,692.4c0,.3.1.5.2.8,0-.3-.1-.5-.2-.8Z"/>
+  <path class="hbw3" d="M1189.7,697.1c0,.7-.2,1.4-.3,2.1,0-.7.2-1.4.3-2.1Z"/>
+  <path class="hbw3" d="M1191.1,690c-.2.8-.4,1.6-.5,2.4.2-.8.4-1.6.5-2.4Z"/>
+  <path class="hbw3" d="M1195.4,677.5c-.1.3-.2.5-.4.8.1-.3.2-.5.4-.8Z"/>
+  <path class="hbw3" d="M1192.2,686.2c-.2.6-.3,1.1-.5,1.7.2-.6.3-1.1.5-1.7Z"/>
+  <path class="hbw3" d="M1190.3,693.7c-.1.7-.3,1.3-.4,2,.1-.7.2-1.3.4-2Z"/>
+  <path class="hbw3" d="M1194.3,680.2c-.1.4-.3.7-.4,1.1.1-.4.3-.7.4-1.1Z"/>
+  <path class="hbw3" d="M1193.2,683.1c-.2.4-.3.9-.4,1.3.1-.4.3-.9.4-1.3Z"/>
+  <path class="hbw3" d="M1207,755.3c-.1-.2-.3-.3-.4-.5.1.2.3.3.4.5Z"/>
+  <path class="hbw3" d="M1309,763.2c-.4.3-.7.6-1.1.9.4-.3.7-.6,1.1-.9Z"/>
+  <path class="hbw3" d="M1303.5,767.4c-.4.3-.8.6-1.3.9.4-.3.8-.6,1.3-.9Z"/>
+  <path class="hbw3" d="M1306,765.6c-.3.3-.7.5-1,.8.3-.3.7-.5,1-.8Z"/>
+  <path class="hbw3" d="M1311.8,760.7c-.5.5-1,.9-1.5,1.4.5-.4,1-.9,1.5-1.4Z"/>
+  <path class="hbw3" d="M1319,752.9c-.5.6-1,1.2-1.5,1.8.5-.6,1-1.2,1.5-1.8Z"/>
+  <path class="hbw3" d="M1314,758.6c-.3.3-.7.7-1,1,.4-.3.7-.7,1-1Z"/>
+  <path class="hbw3" d="M1316.6,755.8c-.3.4-.7.8-1,1.1.3-.4.7-.8,1-1.1Z"/>
+  <path class="hbw3" d="M1325.1,744.1c-.3.6-.7,1.2-1,1.7.4-.6.7-1.2,1-1.7Z"/>
+  <path class="hbw3" d="M1300.4,769.5c-.3.2-.7.4-1,.6.3-.2.7-.4,1-.6Z"/>
+  <path class="hbw3" d="M1284,777c-.2,0-.3,0-.5.1.2,0,.3,0,.5-.1Z"/>
+  <path class="hbw3" d="M1280.7,778c-.2,0-.5.1-.7.2.2,0,.5-.1.7-.2Z"/>
+  <path class="hbw3" d="M1287.4,775.8c-.3,0-.5.2-.8.3.3,0,.5-.2.8-.3Z"/>
+  <path class="hbw3" d="M1297.1,771.4c-.3.2-.6.3-.9.5.3-.2.6-.3.9-.5Z"/>
+  <path class="hbw3" d="M1290.9,774.4c-.3.1-.6.2-.9.4.3-.1.6-.2.9-.4Z"/>
+  <path class="hbw3" d="M1294.1,772.9c-.3.1-.6.3-.9.4.3-.1.6-.3.9-.4Z"/>
+  <path class="hbw3" d="M1330.9,731.5c-.2.5-.4,1-.5,1.5.2-.5.4-1,.5-1.5Z"/>
+  <path class="hbw3" d="M1334.9,710.8c0,.4,0,.7,0,1.1,0-.4,0-.7,0-1.1Z"/>
+  <path class="hbw3" d="M1326.6,741.4c-.3.6-.6,1.1-.9,1.7.3-.6.6-1.1.9-1.7Z"/>
+  <polygon class="hbw3" points="1335 707.4 1335 707.4 1335 707.4 1335 707.4"/>
+  <path class="hbw3" d="M1334.3,717.7c0,.4-.1.8-.2,1.2,0-.4.1-.8.2-1.2Z"/>
+  <path class="hbw3" d="M126.4,675.5l-18.7-5.3s0,0,0,.1l18.7,5.3h0Z"/>
+  <path class="hbw3" d="M702.4,739.5h0c0,0,18.3-5.2,18.3-5.2,0,0,0,0,0,0l-18.3,5.3Z"/>
+  <path class="hbw3" d="M1334.7,714.2c0,.4,0,.8-.1,1.2,0-.4,0-.8.1-1.2Z"/>
+  <path class="hbw3" d="M1329.8,734.5c-.4,1-.8,1.9-1.2,2.9.4-1,.8-1.9,1.2-2.9Z"/>
+  <path class="hbw3" d="M1328,738.6c-.3.6-.6,1.1-.8,1.7.3-.6.6-1.1.8-1.7Z"/>
+  <path class="hbw3" d="M1277,778.9c-.2,0-.5,0-.7.1.2,0,.5,0,.7-.1Z"/>
+  <path class="hbw3" d="M1332.8,725.3c-.1.4-.2.9-.4,1.3.1-.4.2-.9.4-1.3Z"/>
+  <path class="hbw3" d="M1333.6,721.6c0,.3-.1.6-.2.9,0-.3.1-.6.2-.9Z"/>
+  <path class="hbw3" d="M1331.9,728.4c-.1.5-.3,1-.5,1.5.2-.5.3-1,.5-1.5Z"/>
+  <path class="hbw3" d="M1217.5,765.2c-.3-.2-.6-.5-.9-.7.3.2.6.5.9.7Z"/>
+  <path class="hbw3" d="M1237.4,638.7c.8-.3,1.6-.5,2.4-.8-.8.3-1.6.5-2.4.8Z"/>
+  <path class="hbw3" d="M1206.5,660c.1-.1.3-.3.4-.4-.1.1-.3.3-.4.4Z"/>
+  <path class="hbw3" d="M1213.7,652.7c.2-.2.4-.4.7-.6-.2.2-.4.4-.7.6Z"/>
+  <path class="hbw3" d="M1216.6,650.3c.3-.2.6-.4.8-.7-.3.2-.6.4-.8.7Z"/>
+  <path class="hbw3" d="M1214.5,762.7c-.2-.2-.5-.4-.7-.6.2.2.5.4.7.6Z"/>
+  <path class="hbw3" d="M1319.9,751.8c1.3-1.7,2.6-3.5,3.7-5.3-.9,1.4-1.8,2.8-2.8,4.1-.3.4-.6.8-.9,1.2Z"/>
+  <path class="hbw3" d="M1209.6,758.2c-.2-.2-.3-.3-.5-.5.2.2.3.3.5.5Z"/>
+  <path class="hbw3" d="M1209.2,657.1c.1-.1.3-.3.4-.4-.1.1-.3.3-.4.4Z"/>
+  <path class="hbw3" d="M1227.9,642.9c.6-.3,1.2-.6,1.8-.9-.6.3-1.2.6-1.8.9Z"/>
+  <path class="hbw3" d="M1230.8,641.4c.8-.4,1.6-.7,2.4-1.1-.8.3-1.6.7-2.4,1.1Z"/>
+  <path class="hbw3" d="M1234.2,639.9c.8-.3,1.5-.6,2.3-.9-.8.3-1.6.6-2.3.9Z"/>
+  <path class="hbw3" d="M1219.4,648.2c.4-.3.8-.6,1.2-.8-.4.3-.8.6-1.2.8Z"/>
+  <path class="hbw3" d="M1225,644.5c.5-.3,1-.6,1.4-.8-.5.3-1,.5-1.4.8Z"/>
+  <path class="hbw3" d="M1221.9,646.5c.5-.4,1.1-.7,1.6-1-.5.3-1.1.7-1.6,1Z"/>
+  <path class="hbw3" d="M1229.8,772.9c-.7-.3-1.3-.7-1.9-1,.6.3,1.3.7,1.9,1Z"/>
+  <path class="hbw3" d="M1220.6,767.5c-.4-.3-.9-.6-1.3-.9.4.3.9.6,1.3.9Z"/>
+  <path class="hbw3" d="M1250.6,779.5c-1-.2-2-.3-3-.5,1,.2,2,.4,3,.5Z"/>
+  <path class="hbw3" d="M1247.2,778.9c-1-.2-2-.4-3-.7,1,.2,2,.5,3,.7Z"/>
+  <path class="hbw3" d="M1243.4,778c-1-.3-1.9-.5-2.8-.8.9.3,1.9.6,2.8.8Z"/>
+  <path class="hbw3" d="M1269.9,780c-.2,0-.4,0-.7,0,.2,0,.4,0,.7,0Z"/>
+  <path class="hbw3" d="M1258,780.3c-1.1,0-2.2-.1-3.2-.2,1.1.1,2.1.2,3.2.2Z"/>
+  <path class="hbw3" d="M1266,780.3c-.2,0-.4,0-.7,0,.2,0,.4,0,.7,0Z"/>
+  <path class="hbw3" d="M1254.2,780c-1.1-.1-2.1-.2-3.2-.4,1.1.2,2.1.3,3.2.4Z"/>
+  <path class="hbw3" d="M1226.5,771.1c-.5-.3-1-.6-1.5-.9.5.3,1,.6,1.5.9Z"/>
+  <path class="hbw3" d="M1273.2,779.5c0,0-.1,0-.2,0,0,0,.1,0,.2,0Z"/>
+  <path class="hbw3" d="M1223.7,769.5c-.6-.4-1.2-.8-1.8-1.2.6.4,1.2.8,1.8,1.2Z"/>
+  <path class="hbw3" d="M1233.2,774.5c-.8-.3-1.6-.7-2.4-1.1.8.4,1.6.7,2.4,1.1Z"/>
+  <path class="hbw3" d="M1236.6,775.8c-.8-.3-1.6-.6-2.4-1,.8.3,1.6.7,2.4,1Z"/>
+  <path class="hbw3" d="M1239.8,776.9c-.8-.3-1.7-.5-2.5-.8.8.3,1.6.6,2.5.8Z"/>
+  <path class="hbw3" d="M1258.6,780.3c1.1,0,2.3,0,3.4,0s0,0,0,0c0,0,0,0,0,0-1.1,0-2.3,0-3.4,0Z"/>
+  <path class="hbw3" d="M1262,645.4c-34.2,0-62,27.8-62,62s7.1,32.9,18.5,44.1c0-.3,0-.5,0-.8,2.3-10.2,7.9-18.8,16.1-25.2,2.1-1.6,5.3-1.8,7.6-.2,11.6,8.3,27.3,8.6,39,.4,2.7-1.9,5.9-2.1,8.5,0,7.7,6.1,13.1,14.3,15.6,24.2,0,.3.1.5.1.8,0,.2,0,.5,0,.7h0c11.4-11.2,18.5-26.9,18.5-44.1,0-34.2-27.8-62-62-62ZM1266.4,722.4c-13.4,2.4-26.4-6.5-29-19.8-2.6-13.5,6-27,20.2-29.5,14.1-2.5,26.7,6.9,29.1,20.3,2.4,13.6-6.7,26.6-20.3,29.1Z"/>
+  <path class="hbw1" d="M178.6,448.5h471.6c28.8,0,52.2-23.4,52.2-52.2v-118.2c-.3.1-.7.2-1,.2h-3c-1.7,0-3-1.3-3-3,0-1.7,1.3-3,3-3h3c.4,0,.7,0,1,.2v-99c0-28.8-23.4-52.2-52.2-52.2h-199c-3.3,25-24.7,44.4-50.6,44.4s-47.4-19.4-50.6-44.4h-171.4c-28.8,0-52.2,23.4-52.2,52.2v222.9c0,28.8,23.4,52.2,52.2,52.2ZM680.4,272.2h3c1.7,0,3,1.4,3,3,0,1.7-1.3,3-3,3h-3c-1.7,0-3-1.3-3-3,0-1.7,1.3-3,3-3ZM662.4,272.2h3c1.7,0,3,1.4,3,3,0,1.7-1.3,3-3,3h-3c-1.7,0-3-1.3-3-3,0-1.7,1.3-3,3-3ZM526.6,189.9c0-5.7,4.6-10.3,10.3-10.3h82.5c5.7,0,10.3,4.6,10.3,10.3v185.7c0,5.7-4.6,10.3-10.3,10.3h-82.5c-5.7,0-10.3-4.6-10.3-10.3v-185.7ZM240.9,209.9c24.1,0,45.5,11.7,58.8,29.8v-18.9c0-5.7,4.6-10.3,10.3-10.3h51.9c10.7-13.7,27.4-22.5,46.1-22.5s35.3,8.8,46.1,22.5h51.9c5.7,0,10.3,4.6,10.1,10.3v123.8c0,5.7-4.6,10.3-10.3,10.3h-67v10.3h15.5c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3h-92.8c-5.7,0-10.3-4.6-10.3-10.3s4.6-10.3,10.3-10.3h15.5v-10.3h-67c-5.7,0-10.3-4.6-10.3-10.3v-18.5c-13.3,18.1-34.7,29.8-58.8,29.8-40.3,0-73-32.7-73-73s32.7-73,73-73Z"/>
+  <path class="hbw1" d="M408,305c-32.3,0-58.5-26.2-58.5-58.5s.7-10.5,2.1-15.4h-31.3v103.2h175.4v-103.2h-31.3c1.3,4.9,2.1,10.1,2.1,15.4,0,32.3-26.2,58.5-58.5,58.5Z"/>
+  <path class="hbw1" d="M609.1,262.1h0v-61.9h-61.9v61.9c8.6-6.4,19.3-10.3,30.9-10.3s22.3,3.8,30.9,10.3ZM552.4,220.8c0-5.7,4.6-10.3,10.3-10.3h30.9c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3h-30.9c-5.7,0-10.3-4.6-10.3-10.3Z"/>
+  <rect class="hbw1" x="397.7" y="354.9" width="20.6" height="10.3"/>
+  <path class="hbw1" d="M609,303.3c0-17-13.8-30.9-30.9-30.9s-30.9,13.8-30.9,30.9v61.9h61.8v-61.9ZM567.9,293c0-13.8,20.6-13.7,20.6,0s-20.6,13.8-20.6,0Z"/>
+  <path class="hbw1" d="M1094,271.8v62.2c0,0-23.7-6.8-23.7-6.8l-29.5-8.4h0c0,0,29.5,8.5,29.5,8.5l23.9,6.9v-62.4c0,0-.2,0-.2,0Z"/>
+  <polygon class="hbw1" points="1241.8 414.3 1241.8 414.3 1241.8 410.4 1249.7 410.4 1249.7 410.3 1241.8 410.3 1241.8 414.3"/>
+  <rect class="hbw1" x="1212" y="362.8" width="0" height="39.6"/>
+  <polygon class="hbw1" points="1241.8 223.6 1241.8 223.6 1241.8 219.7 1249.7 219.7 1249.7 219.6 1241.8 219.6 1241.8 223.6"/>
+  <polygon class="hbw1" points="909.4 219.7 917.2 219.7 917.2 223.6 917.3 223.6 917.3 219.6 909.4 219.6 909.4 219.7"/>
+  <path class="hbw1" d="M1108.7,333.7v-62.3c0,0-.2,0-.2,0v62.4c0,0,24.4-7,24.4-7l28.9-8.2h0c0-.1-28.8,8.1-28.8,8.1l-24.3,7Z"/>
+  <polygon class="hbw1" points="1212.1 172.2 1212 172.2 1212 211.8 1279.4 211.8 1279.4 211.7 1212.1 211.7 1212.1 172.2"/>
+  <path class="hbw1" d="M978.7,378.6c-6.6,0-11.9,5.3-11.9,11.9h0c0-6.5,5.3-11.8,11.9-11.8s11.9,5.3,11.9,11.9v23.7h0v-23.8c0-6.6-5.3-11.9-11.9-11.9Z"/>
+  <polygon class="hbw1" points="966.8 350.9 966.8 350.9 966.8 374.7 966.8 374.7 966.8 350.9"/>
+  <path class="hbw1" d="M972.7,362.9h11.9c2.2,0,4-1.8,4-4s0,0,0,0c0,2.2-1.8,4-4,4h-11.9c-2.1,0-4-1.8-4-4,0,0,0,0,0,0,0,2.2,1.8,4,4,4Z"/>
+  <path class="hbw1" d="M978.7,187.9c-6.6,0-11.9,5.3-11.9,11.9h0c0-6.5,5.3-11.8,11.9-11.8s11.9,5.3,11.9,11.9v23.7h0v-23.8c0-6.6-5.3-11.9-11.9-11.9Z"/>
+  <polygon class="hbw1" points="966.8 160.2 966.8 160.2 966.8 184 966.8 184 966.8 160.2"/>
+  <path class="hbw1" d="M972.7,172.2h11.9c2.2,0,4-1.8,4-4s0,0,0,0c0,2.2-1.8,4-4,4h-11.9c-2.1,0-4-1.8-4-4,0,0,0,0,0,0,0,2.2,1.8,4,4,4Z"/>
+  <rect class="hbw1" x="879.6" y="211.7" width="67.4" height="0"/>
+  <path class="hbw1" d="M1305.2,362.9h11.9c2.2,0,4-1.8,4-4s0,0,0,0c0,2.2-1.8,4-4,4h-11.9c-2.2,0-4-1.8-4-4,0,0,0,0,0,0,0,2.2,1.8,4,4,4Z"/>
+  <polygon class="hbw1" points="909.4 410.4 917.2 410.4 917.2 414.3 917.3 414.3 917.3 410.3 909.4 410.3 909.4 410.4"/>
+  <path class="hbw1" d="M1378.4,278.3h0c-1.7,0-3-1.3-3-3,0-1.7,1.3-3,3-3h3s0,0,0,0c.8,0,1.5.3,2,.8v-99.6c0-28.8-23.4-52.2-52.2-52.2h-179c-3.3,25-24.7,44.4-50.6,44.4s-47.4-19.4-50.6-44.4h-191.4c-28.8,0-52.2,23.4-52.2,52.2v98.8h1.9s0,0,0,0c1.7,0,3,1.3,3,3,0,1.7-1.3,3-3,3h-1.9v118.1c0,28.8,23.4,52.2,52.2,52.2h471.6c28.8,0,52.2-23.4,52.2-52.2v-118.8c-.5.5-1.2.8-2,.8h-3ZM821.4,275.2c0-1.7,1.3-3,3-3h3s0,0,0,0c1.7,0,3,1.3,3,3,0,1.7-1.3,3-3,3h-2.9s0,0,0,0c-1.7,0-3-1.3-3-3ZM828,299.7l-4.1-4.4,18.5-17.1c-1.6,0-3-1.4-3-3,0-1.7,1.3-3,3-3h0s-18.5-17.1-18.5-17.1l4.1-4.4,26.4,24.5-26.4,24.5ZM1009.1,194.4c1.7-2.5,5.2-3.1,7.7-1.3l32.1,22.5c2.5,1.7,3.1,5.2,1.3,7.7-1.1,1.5-2.8,2.3-4.5,2.3s-2.2-.3-3.2-1l-32.1-22.5c-2.5-1.7-3.1-5.2-1.3-7.7ZM955.1,406.5c0,2.2-1.8,4-4,4h-25.8v4h5.9c2.2,0,4,1.8,4,4s-1.8,4-4,4h-35.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h5.9v-4h-25.8c-2.2,0-4-1.8-4-4v-47.6c0-2.2,1.8-4,4-4h75.3c2.2,0,4,1.7,4.2,4v47.6ZM955.1,215.8c0,2.2-1.8,4-4,4h-25.8v4h5.9c2.2,0,4,1.8,4,4s-1.8,4-4,4h-35.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h5.9v-4h-25.8c-2.2,0-4-1.8-4-4v-47.6c0-2.2,1.8-4,4-4h75.3c2.2,0,4,1.8,4.2,4v47.6ZM998.5,418.3c0,2.2-1.8,4-4,4h-31.7c-2.2,0-4-1.8-4-4v-71.3c0-2.2,1.8-4,4-4h31.7c2.2,0,4,1.8,4,4v71.3ZM998.5,227.6c0,2.2-1.8,4-4,4h-31.7c-2.2,0-4-1.8-4-4v-71.3c0-2.2,1.8-4,4-4h31.7c2.2,0,4,1.8,4,4v71.3ZM1048.9,359l-32.1,22.5c-1,.7-2.1,1-3.2,1-1.7,0-3.4-.8-4.5-2.3-1.7-2.5-1.1-5.9,1.3-7.7l32.1-22.5c2.5-1.7,5.9-1.1,7.7,1.3,1.7,2.5,1.1,5.9-1.3,7.7ZM1101.5,350.9c-17.8-4.3-52.3-14.8-69.8-19.6-7.8-1.5-4.6-13.7-5.3-18.9v-7.8c0-9.3,0-22.1,0-33.7v-23.8c0-3.3,2.4-6.4,5.6-7.1l67.8-16.1c1.1-.2,2.2-.3,3.3,0l67.8,15.6c3.1.7,5.6,3.6,5.6,6.9v75.5c0,.7,0,1.4.2,1.9,0,3.3-2.2,6.1-5.3,7l-29.5,8.5c-1.7.2-39.8,11.9-40.3,11.6ZM1193.6,380.2c-1.1,1.5-2.8,2.4-4.5,2.4s-2.2-.3-3.1-1l-32.2-22.5c-2.5-1.7-3.1-5.2-1.4-7.7,1.7-2.5,5.2-3.1,7.7-1.4l32.2,22.5c2.5,1.7,3.1,5.2,1.4,7.7ZM1192.2,202.1l-32.2,22.5c-1,.7-2.1,1-3.1,1-1.7,0-3.4-.8-4.5-2.4-1.7-2.5-1.1-5.9,1.4-7.7l32.2-22.5c2.5-1.7,5.9-1.1,7.7,1.4,1.7,2.5,1.1,5.9-1.4,7.7ZM1287.6,406.5c0,2.2-1.8,4-4,4h-25.8v4h5.9c2.2,0,4,1.8,4,4s-1.8,4-4,4h-35.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h5.9v-4h-25.8c-2.2,0-4-1.8-4-4v-47.6c0-2.2,1.8-4,4-4h75.3c2.2,0,4,1.7,4.2,4v47.6ZM1287.6,215.8c0,2.2-1.8,4-4,4h-25.8v4h5.9c2.2,0,4,1.8,4,4s-1.8,4-4,4h-35.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h5.9v-4h-25.8c-2.2,0-4-1.8-4-4v-47.6c0-2.2,1.8-4,4-4h75.3c2.2,0,4,1.8,4.2,4v47.6ZM1331,418.3c0,2.2-1.8,4-4,4h-31.7c-2.2,0-4-1.8-4-4v-71.3c0-2.2,1.8-4,4-4h31.7c2.2,0,3.9,1.8,4,4v71.3ZM1331,227.6c0,2.2-1.8,4-4,4h-31.7c-2.2,0-4-1.8-4-4v-71.3c0-2.2,1.8-4,4-4h31.7c2.2,0,3.9,1.8,4,4v71.3ZM1363.4,278.3h-3s0,0,0,0c-1.7,0-3-1.3-3-3,0-1.7,1.3-3,3-3h3s0,0,0,0c1.7,0,3,1.3,3,3,0,1.7-1.3,3-3,3Z"/>
+  <path class="hbw1" d="M1311.1,378.6c-6.6,0-11.9,5.3-11.9,11.9h0c0-6.5,5.3-11.8,11.9-11.8s11.9,5.3,11.9,11.9h0c0-6.7-5.3-12-11.9-12Z"/>
+  <path class="hbw1" d="M1311.1,187.9c-6.6,0-11.9,5.3-11.9,11.9h0c0-6.5,5.3-11.8,11.9-11.8s11.9,5.3,11.9,11.9h0c0-6.7-5.3-12-11.9-12Z"/>
+  <path class="hbw1" d="M625.2,742.8l-29.3-8.4v.5l30.4,8.7,24.6,7v-64.4c0,0-.5-.1-.5-.1v63.9c0,0-25.2-7.2-25.2-7.2Z"/>
+  <path class="hbw1" d="M315.4,701.3v1.8h3.1v-1.8h-3.1Z"/>
+  <path class="hbw1" d="M399.8,654.9c8.2-1.9,11-3,14.1-3-3.2,0-6,1.1-14.2,3l-25.8,6.1,39.8,11.3h0s-39.7-11.3-39.7-11.3l25.8-6.1Z"/>
+  <path class="hbw1" d="M559.4,701.3v1.8h3.1v-1.8h-3.1Z"/>
+  <path class="hbw1" d="M171.9,636.5l70,16.1c3.3.7,5.8,3.7,5.8,7.1v25.4c-2,1.7-3.6,3.9-4.9,6.5h-10.1v-21.8h-.3c0,6.7,0,14.1,0,21.8h10.4c3.7-7.5,10.1-11.3,18.8-11.4h6.7c2.2,0,4.4,0,6.4,0,7.7,0,13.8,3.3,17.6,9.4,4-6.4,9.8-9.4,18.1-9.4h12.9c7.8.1,14.9,4.5,18.6,11.4,2.8,0,6.3,0,9.3,0h0c-3,0-6.4,0-9.1,0-1.4-2.7-3.3-4.9-5.5-6.7-.1-10-.1-19.2,0-24.6,0-3.4,2.5-6.5,5.8-7.3l70-16.6c1.1-.3,2.3-.3,3.4,0l70,16.1c3.3.7,5.8,3.7,5.8,7.1v25.4c-2,1.7-3.6,3.9-4.9,6.5h-10c1.1,0,2.2,0,3.3,0h6.8c3.7-7.5,10.1-11.3,18.8-11.4h6.7c2.2,0,4.4,0,6.4,0,7.7,0,13.8,3.3,17.6,9.4,4-6.4,9.8-9.4,18.1-9.4h12.9c7.8.1,14.9,4.5,18.6,11.4,0,0,0,0,.1,0-1.4-2.7-3.3-4.8-5.4-6.6,0-10,0-19.2,0-24.6,0-3.4,2.5-6.5,5.8-7.3l70-16.6c1.1-.3,2.3-.3,3.4,0l42.5,9.8v-29.2l-11.5,11.5c-1.1,1.1-2.5,1.6-3.9,1.6s-2.8-.5-3.9-1.6c-2.2-2.1-2.2-5.6,0-7.8l19.3-19.4v-11.1c0-28.8-23.4-52.2-52.2-52.2H178.6c-28.8,0-52.2,23.4-52.2,52.2v56.1l42.1-10c1.1-.3,2.3-.3,3.4,0ZM652.7,577.8c0-3,2.5-5.5,5.5-5.5s5.5,2.5,5.5,5.5v37.4c0,3-2.5,5.5-5.5,5.5s-5.5-2.5-5.5-5.5v-37.4ZM599.1,594.4c2.2-2.1,5.6-2.1,7.8,0l26.4,26.5c2.1,2.2,2.1,5.6,0,7.8-1.1,1.1-2.5,1.6-3.9,1.6s-2.8-.5-3.9-1.6l-26.4-26.5c-2.1-2.2-2.1-5.6,0-7.8Z"/>
+  <polygon class="hbw1" points="421.8 750 421.8 750 421.7 685.6 421.8 750"/>
+  <path class="hbw1" d="M510.7,701.3h-.1v1.6h3.2v-1.6h-3.1Z"/>
+  <path class="hbw1" d="M476.8,712.7h10.1s0,0,0,0h-10c0,5.8,0,11.4,0,16.7v-16.6Z"/>
+  <path class="hbw1" d="M155.8,654.9c8.2-1.9,11-3,14.1-3-3.2,0-6,1.1-14.2,3l-25.8,6.1,39.8,11.3h0s-39.7-11.3-39.7-11.3l25.8-6.1Z"/>
+  <polygon class="hbw1" points="690.9 742.8 665.8 750 665.7 685.7 665.6 685.7 665.7 750.1 690.8 742.9 702.4 739.6 702.4 739.5 690.9 742.8"/>
+  <path class="hbw1" d="M266.7,701.3h0v1.6h3.2v-1.6h-3.1Z"/>
+  <path class="hbw1" d="M381.2,742.8l-29.3-8.4v.4l30.4,8.7,24.6,7v-64.4c-.1,0-.5-.1-.5-.1v64c0,0-25.2-7.2-25.2-7.2Z"/>
+  <path class="hbw1" d="M643.8,654.9c8.2-1.9,11-3,14.1-3-3.2,0-6,1.1-14.2,3l-25.8,6.1,39.8,11.3h0s-39.7-11.3-39.7-11.3l25.8-6.1Z"/>
+  <path class="hbw1" d="M234.6,712.6h-2.1c0,7.7,0,15,0,21.6l-29.9,8.6-24.8,7.1h0c0,0,25.1-7.1,25.1-7.1l29.9-8.6v-21.5h10.1s0,0,0,0h-8.2Z"/>
+  <path class="hbw1" d="M658.5,767.9c-18.4-4.4-54-15.3-72.1-20.2-8-1.5-4.8-14.1-5.5-19.5v-8.3c2.2-1.7,4-4.1,5.5-7.1h8.9c0,0,0-.1,0-.2h-9.1c-4.1,8.1-10.1,11.4-20.2,11.4h-12.3c-7.6,0-13.6-3.4-17.2-9.3-3.8,6.1-9.7,9.2-17.6,9.2h-14c-5.1,0-9.6-1.7-13-4.6v20.7c0,3.3-2.2,6.3-5.4,7.2l-30.4,8.7c-1.8.2-41.1,12.3-41.6,11.9-18.4-4.4-54-15.3-72.1-20.2-8-1.5-4.8-14.1-5.5-19.5v-8.3c2.2-1.7,4-4.1,5.5-7.1h8.9s0,0,0,0h-9.1c-4.1,8.1-10.1,11.4-20.2,11.4h-12.3c-7.6,0-13.6-3.4-17.2-9.3-3.8,6.1-9.7,9.2-17.6,9.2h-14c-6.1,0-11.3-2.4-14.9-6.5.6.7,1.2,1.3,1.8,1.9v20.7c0,3.3-2.2,6.3-5.4,7.2l-30.4,8.7c-1.8.2-41.1,12.3-41.6,11.9-11-2.6-28.1-7.6-44-12.2v57.7c0,28.8,23.4,52.2,52.2,52.2h170.9c0-28.2,22.9-51.1,51.1-51.1s51.1,22.9,51.1,51.1h198.5c28.8,0,52.2-23.4,52.2-52.2v-11.2l-19.3-19.4c-2.1-2.2-2.1-5.6,0-7.8s5.6-2.1,7.8,0l11.5,11.5v-31.1l-2.3.7c-1.8.2-41.1,12.3-41.6,11.9ZM633.3,782.7l-26.4,26.5c-1.1,1.1-2.5,1.6-3.9,1.6s-2.8-.5-3.9-1.6c-2.2-2.1-2.2-5.6,0-7.8l26.4-26.5c2.1-2.2,5.6-2.2,7.8,0,2.2,2.1,2.2,5.6,0,7.8ZM663.7,825.8c0,3-2.5,5.5-5.5,5.5s-5.5-2.5-5.5-5.5v-37.4c0-3,2.5-5.5,5.5-5.5s5.5,2.5,5.5,5.5v37.4Z"/>
+  <polygon class="hbw1" points="126.4 675.5 126.4 675.6 162.7 686 162.8 750.3 162.8 750.3 162.7 685.9 126.4 675.5"/>
+  <path class="hbw1" d="M982.4,725.5c-32.3,0-58.5-26.2-58.5-58.5s.7-10.5,2.1-15.4h-31.3v103.1h175.3v-103.1h-31.2c1.3,4.9,2.1,10.1,2.1,15.4,0,32.3-26.2,58.5-58.5,58.5Z"/>
+  <rect class="hbw1" x="972" y="775.4" width="20.6" height="10.3"/>
+  <path class="hbw1" d="M1121.7,682.6c8.6-6.4,19.3-10.3,30.9-10.3s22.3,3.8,30.9,10.3h0v-61.9h-61.9v61.9ZM1137.1,631h30.9c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3h-30.9c-5.7,0-10.4-4.6-10.3-10.3,0-5.7,4.6-10.3,10.3-10.3Z"/>
+  <path class="hbw1" d="M1331.2,538.2h-471.6c-28.8,0-52.2,23.4-52.2,52.2v222.9c0,28.8,23.4,52.2,52.2,52.2h190.9c0-28.2,22.9-51.1,51.1-51.1s51.1,22.9,51.1,51.1h178.5c28.8,0,52.2-23.4,52.2-52.2v-222.9c0-28.8-23.4-52.2-52.2-52.2ZM818.4,706.3h-3c-1.7,0-3-1.3-3-3s1.3-3,3-3h3c1.7,0,3,1.3,3,3s-1.3,3-3,3ZM828,727.8l-4.1-4.4,21.7-20.2-21.7-20.1,4.1-4.4,26.4,24.5-26.4,24.6ZM830.4,703.3c0-1.7,1.3-3,3-3h3c1.7,0,3,1.3,3,3s-1.3,3-3,3h-3c-1.7,0-3-1.3-3-3ZM1090.4,765.1c0,5.7-4.6,10.3-10.3,10.3h-67v10.3h15.5c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3h-92.8c-5.7,0-10.3-4.6-10.3-10.3s4.6-10.3,10.3-10.3h15.5v-10.3h-67c-5.7,0-10.3-4.6-10.3-10.3v-123.8c0-5.7,4.6-10.3,10.3-10.3h52c10.7-13.7,27.4-22.5,46.1-22.5s35.3,8.8,46.1,22.5h51.8c5.7,0,10.3,4.6,10.1,10.3v123.8ZM1335,707.4h0c0,1.2,0,2.3,0,3.4,0,.4,0,.7,0,1.1,0,.8-.1,1.6-.2,2.3,0,.4,0,.8-.1,1.2,0,.7-.2,1.5-.3,2.2,0,.4-.1.8-.2,1.2-.1.9-.3,1.8-.5,2.7,0,.3-.1.6-.2.9-.2.9-.4,1.9-.7,2.8-.1.4-.2.9-.4,1.3-.2.6-.3,1.2-.5,1.8-.1.5-.3,1-.5,1.5-.2.5-.4,1.1-.5,1.6-.2.5-.4,1-.5,1.5-.2.5-.4,1-.6,1.5-.4,1-.8,1.9-1.2,2.9-.2.4-.4.8-.5,1.2-.3.6-.6,1.1-.8,1.7-.2.4-.4.7-.6,1.1-.3.6-.6,1.1-.9,1.7-.2.3-.4.7-.6,1-.3.6-.7,1.2-1,1.7-.1.2-.3.5-.4.7-1.2,1.8-2.4,3.6-3.7,5.3-.3.4-.6.7-.9,1.1-.5.6-1,1.2-1.5,1.8-.3.4-.6.8-1,1.1-.3.4-.7.8-1,1.1-.5.6-1,1.1-1.6,1.7-.3.3-.7.7-1,1-.4.4-.7.7-1.1,1.1-.5.5-1,.9-1.5,1.4-.4.4-.9.8-1.3,1.1-.4.3-.7.6-1.1.9-.6.5-1.3,1-1.9,1.5-.3.3-.7.5-1,.8-.5.4-1,.7-1.5,1.1-.4.3-.8.6-1.3.9-.6.4-1.2.8-1.8,1.2-.3.2-.7.4-1,.6-.8.5-1.5.9-2.3,1.3-.3.2-.6.3-.9.5-.7.4-1.4.7-2.1,1.1-.3.1-.6.3-.9.4-.8.4-1.6.7-2.4,1.1-.3.1-.6.2-.9.4-.9.4-1.8.7-2.6,1-.3,0-.5.2-.8.3-.9.3-1.7.6-2.6.9-.2,0-.3,0-.5.1-.9.3-1.9.6-2.9.8-.2,0-.5.1-.7.2-1,.2-2,.5-3,.7-.2,0-.5,0-.7.1-1,.2-2,.4-3,.5,0,0-.1,0-.2,0-1.1.2-2.1.3-3.2.4-.2,0-.4,0-.7,0-1.1.1-2.1.2-3.2.2-.2,0-.4,0-.7,0-1.1,0-2.2,0-3.3,0,0,0,0,0,0,0-1.1,0-2.3,0-3.4,0-.2,0-.4,0-.5,0-1.1,0-2.2-.1-3.2-.2-.2,0-.4,0-.6,0-1.1-.1-2.1-.2-3.2-.4-.1,0-.3,0-.4,0-1-.2-2-.3-3-.5-.2,0-.3,0-.5,0-1-.2-2-.4-3-.7-.3,0-.5-.1-.8-.2-1-.3-1.9-.5-2.8-.8-.2,0-.5-.2-.7-.2-.8-.3-1.7-.5-2.5-.8-.2,0-.5-.2-.7-.3-.8-.3-1.6-.6-2.4-1-.3-.1-.6-.3-.9-.4-.8-.3-1.6-.7-2.4-1.1-.3-.2-.7-.3-1-.5-.7-.3-1.3-.7-1.9-1-.5-.2-.9-.5-1.4-.7-.5-.3-1-.6-1.5-.9-.4-.3-.9-.5-1.3-.8-.6-.4-1.2-.8-1.8-1.2-.4-.3-.8-.6-1.3-.9-.4-.3-.9-.6-1.3-.9-.6-.4-1.2-.9-1.8-1.3-.3-.2-.6-.5-.9-.7-.7-.6-1.4-1.2-2.1-1.7-.2-.2-.5-.4-.7-.6-1.4-1.3-2.8-2.6-4.1-3.9-.2-.2-.3-.3-.5-.5-.7-.8-1.5-1.6-2.2-2.4-.1-.2-.3-.3-.4-.5-.8-1-1.6-2-2.4-3,0,0,0,0,0,0v44.2c0,5.7-4.6,10.3-10.3,10.3h-82.5c-5.7,0-10.3-4.6-10.3-10.3v-185.7c0-5.7,4.6-10.3,10.3-10.3h82.5c5.7,0,10.3,4.6,10.3,10.3v52.7c.8-1,1.6-2,2.4-3,.1-.1.3-.3.4-.4.7-.8,1.5-1.7,2.2-2.5.1-.1.3-.3.4-.4,1.3-1.4,2.7-2.7,4.1-4,.2-.2.4-.4.7-.6.7-.6,1.5-1.2,2.2-1.8.3-.2.6-.4.8-.7.6-.5,1.3-1,1.9-1.5.4-.3.8-.6,1.2-.8.4-.3.9-.6,1.3-.9.5-.4,1.1-.7,1.6-1,.5-.3,1-.6,1.5-.9.5-.3,1-.6,1.4-.8.5-.3,1-.6,1.5-.8.6-.3,1.2-.6,1.8-.9.4-.2.7-.4,1.1-.5.8-.4,1.6-.7,2.4-1.1.3-.1.7-.3,1-.4.8-.3,1.5-.6,2.3-.9.3-.1.6-.2.9-.3.8-.3,1.6-.5,2.4-.8.3,0,.5-.2.8-.3.9-.3,1.9-.5,2.8-.8.3,0,.5-.1.8-.2,1-.2,1.9-.5,2.9-.7.2,0,.4,0,.6-.1.9-.2,1.9-.4,2.9-.5.2,0,.3,0,.5,0,1-.2,2.1-.3,3.1-.4.2,0,.5,0,.7,0,1-.1,2.1-.2,3.2-.2.2,0,.4,0,.6,0,1.1,0,2.2,0,3.3,0,0,0,0,0,0,0,1.1,0,2.3,0,3.4,0,.2,0,.4,0,.6,0,1.1,0,2.2.1,3.2.2.2,0,.4,0,.6,0,1.1.1,2.2.3,3.3.4,0,0,0,0,0,0,1.1.2,2.1.4,3.2.6.2,0,.4,0,.6.1,1,.2,2,.4,3,.7.2,0,.4.1.7.2,1,.3,2,.5,3,.8.1,0,.2,0,.3,0,.9.3,1.8.6,2.7.9.2,0,.5.2.7.3.9.3,1.8.7,2.7,1.1.3.1.5.2.8.3.8.4,1.7.7,2.5,1.1.2.1.5.2.7.4.7.4,1.5.7,2.2,1.1.3.2.6.3.9.5.8.4,1.6.9,2.3,1.3.3.2.6.4.9.6.6.4,1.3.8,1.9,1.2.4.3.8.5,1.1.8.5.4,1.1.8,1.6,1.2.3.2.7.5,1,.7.7.5,1.3,1,2,1.5.3.3.7.6,1,.8.5.4.9.8,1.4,1.2.5.4.9.8,1.4,1.3.4.4.8.7,1.2,1.1.3.3.7.7,1,1,.5.6,1.1,1.1,1.6,1.7.3.4.7.7,1,1.1.4.4.7.8,1,1.2.5.6.9,1.1,1.4,1.7.3.4.6.8.9,1.1.3.4.6.8.9,1.2,0,0,0,0,0,0,0,0,0,0,0,.1.9,1.3,1.8,2.6,2.7,3.9.2.3.3.5.5.8.3.6.7,1.1,1,1.7.2.3.4.7.6,1,.3.6.6,1.1.9,1.7.2.4.4.8.6,1.1.3.6.6,1.1.8,1.7.2.4.4.9.6,1.3.4.9.8,1.8,1.2,2.7.2.5.4,1,.6,1.6.2.5.4,1,.5,1.5.2.5.4,1.1.6,1.6.2.5.3,1,.5,1.5.2.6.4,1.2.5,1.8.1.4.2.9.4,1.3.2,1,.5,1.9.7,2.9,0,.3.1.5.2.8.2.9.3,1.8.5,2.7,0,.4.1.8.2,1.2.1.7.2,1.5.3,2.2,0,.4,0,.8.1,1.2,0,.8.1,1.6.2,2.3,0,.4,0,.7,0,1.1,0,1.1,0,2.3,0,3.4h0Z"/>
+  <path class="hbw1" d="M1152.5,692.9c-17,0-30.9,13.8-30.9,30.9v61.9h61.8v-61.9c0-17-13.9-30.9-30.9-30.9ZM1142.2,713.5c0-13.8,20.6-13.8,20.6,0s-20.6,13.8-20.6,0Z"/>
+  <path class="hbw4" d="M782.4,700.3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3c1.7,0,3-1.3,3-3s-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M800.4,700.3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3c1.7,0,3-1.3,3-3s-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M764.4,700.3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3c1.7,0,3-1.3,3-3s-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M818.4,700.3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3c1.7,0,3-1.3,3-3s-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M836.4,706.3c1.7,0,3-1.3,3-3s-1.3-3-3-3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3Z"/>
+  <polygon class="hbw4" points="823.9 683.1 845.6 703.2 823.9 723.4 828 727.8 854.4 703.2 828 678.7 823.9 683.1"/>
+  <path class="hbw4" d="M533.7,496.6h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M944.7,502h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M767.7,496.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M443.7,496.7h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M515.7,496.6h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M479.7,496.7h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M497.7,496.7h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M749.7,496.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M890.7,502.1h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M461.7,496.7h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M872.7,502.1h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M908.7,502.1h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M926.7,502h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M551.7,496.6h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M623.7,496.5h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M641.7,496.5h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M659.7,496.4h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M605.7,496.5h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M677.7,496.4h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M587.7,496.5h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M998.7,501.9h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M980.7,502h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M569.7,496.6h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M1016.7,501.9h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M695.7,496.4h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M1034.7,501.9h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M962.7,502h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <rect class="hbw4" x="1426.5" y="401" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.5" y="365" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.5" y="419" width="6" height="9" rx="3" ry="3"/>
+  <path class="hbw4" d="M1429.4,473h0c1.7,0,3,1.3,3,3v3c0,1.7-1.3,3-3,3h0c-1.7,0-3-1.3-3-3v-3c0-1.7,1.3-3,3-3Z"/>
+  <path class="hbw4" d="M854.7,502.1h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1429.4,437h0c1.7,0,3,1.3,3,3v3c0,1.7-1.3,3-3,3h0c-1.7,0-3-1.3-3-3v-3c0-1.7,1.3-3,3-3Z"/>
+  <rect class="hbw4" x="1426.5" y="383" width="6" height="9" rx="3" ry="3"/>
+  <path class="hbw4" d="M1429.6,275h0c1.7,0,3,1.3,3,3v3c0,1.7-1.3,3-3,3h0c-1.7,0-3-1.3-3-3v-3c0-1.7,1.3-3,3-3Z"/>
+  <rect class="hbw4" x="1426.6" y="293" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.5" y="347" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.5" y="329" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.6" y="311" width="6" height="9" rx="3" ry="3"/>
+  <rect class="hbw4" x="1426.4" y="455" width="6" height="9" rx="3" ry="3"/>
+  <path class="hbw4" d="M803.7,496.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M818.7,502.2h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M710.7,502.4h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M836.7,502.2h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M785.7,496.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M728.7,502.3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M1415.7,495.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M1381.4,272.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c.8,0,1.5-.3,2-.8.6-.6,1-1.3,1-2.2,0-.9-.4-1.7-1-2.2-.5-.5-1.2-.8-2-.8Z"/>
+  <rect class="hbw4" x="1426.4" y="491" width="6" height="9" rx="3" ry="3"/>
+  <path class="hbw4" d="M1417.4,272.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M1397.7,495.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M1399.4,272.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M245.7,497h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M1088.7,501.8h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1106.7,501.8h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1070.7,501.8h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1052.7,501.9h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1160.7,501.7h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1142.7,501.7h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1124.7,501.7h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M62.4,548.2c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M83.7,497.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,530.2c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,566.3c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,512.1c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M425.7,496.8h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M1304.7,501.5h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1340.7,501.4h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1322.7,501.5h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1358.7,501.4h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1178.7,501.7h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M62.4,584.3c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M1286.7,501.5h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1376.7,501.4h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1268.7,501.5h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1196.7,501.6h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1214.7,501.6h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1232.7,501.6h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M1250.7,501.6h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h0Z"/>
+  <path class="hbw4" d="M65.7,497.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M227.7,497.1h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M263.7,497h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M281.7,497h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M191.7,497.1h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M209.7,497.1h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M299.7,497h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M335.7,496.9h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M371.7,496.8h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M389.7,496.8h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M407.7,496.8h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M317.7,496.9h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M353.7,496.9h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M173.7,497.1h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M155.7,497.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M62.4,656.5c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M137.7,497.2h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h0Z"/>
+  <path class="hbw4" d="M116.7,503.2h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M62.4,674.6c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M98.7,503.2h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M62.4,620.4c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,602.4c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,638.5c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M62.4,692.7c-1.7,0-3,1.3-3,3v3c0,1.7,1.3,3,3,3s3-1.3,3-3v-3c0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M1363.4,272.3h-3c-1.7,0-3,1.4-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M773.4,272.3h-3c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.3,3-3s-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M755.4,272.3h-3c-1.7,0-3,1.3-3,3s1.3,3,3,3h3s0,0,0,0c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M791.4,272.3h-3c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3h3c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M716.4,278.3h2.9s0,0,0,0c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3h-3s0,0,0,0c-1.7,0-3,1.3-3,3,0,1.7,1.4,3,3,3Z"/>
+  <path class="hbw4" d="M737.4,272.3h-3s0,0,0,0c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3h3s0,0,0,0c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3Z"/>
+  <path class="hbw4" d="M698.4,272.2h0c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3h3s0,0,0,0c.4,0,.7,0,1-.2,1.2-.4,2-1.5,2-2.8,0-1.3-.8-2.4-2-2.8-.3-.1-.7-.2-1-.2h-3Z"/>
+  <path class="hbw4" d="M662.4,278.2h3s0,0,0,0c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3h-3s0,0,0,0c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M680.4,278.2h3s0,0,0,0c1.7,0,3-1.3,3-3,0-1.7-1.3-3-3-3h-3s0,0,0,0c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3Z"/>
+  <path class="hbw4" d="M824.4,278.2h2.9c1.7,0,3-1.4,3-3,0-1.7-1.3-3-3-3h-3c-1.7,0-3,1.3-3,3,0,1.7,1.4,3,3,3h0Z"/>
+  <path class="hbw4" d="M842.4,272.2h0c-1.7,0-3,1.3-3,3,0,1.6,1.4,3,3,3l3.2-3-3.2-3Z"/>
+  <path class="hbw4" d="M812.3,275.2c0-1.7-1.3-3-3-3h-1.9s-1.1,0-1.1,0c-1.7,0-3,1.3-3,3,0,1.7,1.3,3,3,3h1.1s1.9,0,1.9,0c1.7,0,3-1.3,3-3Z"/>
+  <polygon class="hbw4" points="823.9 255.1 842.4 272.2 845.6 275.2 842.4 278.2 823.9 295.3 828 299.7 854.4 275.2 828 250.7 823.9 255.1"/>
+  <path class="hbw0" d="M1080.3,631h-51.8c4.7,6,8.3,13,10.4,20.6h31.2v103.1h-175.3v-103.1h31.3c2.1-7.6,5.6-14.6,10.4-20.6h-52c-5.7,0-10.3,4.6-10.3,10.3v123.8c0,5.7,4.6,10.3,10.3,10.3h67v10.3h-15.5c-5.7,0-10.3,4.6-10.3,10.3s4.6,10.3,10.3,10.3h92.8c5.7,0,10.3-4.6,10.3-10.3s-4.6-10.3-10.3-10.3h-15.5v-10.3h67c5.7,0,10.3-4.6,10.3-10.3v-123.8c.2-5.7-4.4-10.3-10.1-10.3ZM992.6,785.7h-20.6v-10.3h20.6v10.3Z"/>
+  <path class="hbw0" d="M1202.5,749.7c0-.1-.2-.3-.3-.4-.5-.7-1-1.4-1.4-2.1,0-.1-.2-.3-.3-.4-1.9-3-3.6-6.1-5.1-9.4-.1-.3-.3-.6-.4-.8-.3-.6-.5-1.3-.8-1.9-.2-.4-.3-.8-.5-1.1-.2-.6-.5-1.2-.7-1.8-.2-.4-.3-.9-.5-1.4-.2-.6-.4-1.1-.6-1.7-.2-.6-.3-1.2-.5-1.7-.2-.7-.4-1.4-.5-2-.2-.8-.4-1.6-.6-2.4,0-.4-.2-.9-.3-1.3-.1-.7-.3-1.3-.4-2,0-.5-.1-.9-.2-1.4,0-.7-.2-1.4-.3-2.1,0-.4,0-.9-.1-1.3,0-.8-.1-1.5-.2-2.3,0-.4,0-.8,0-1.1,0-1.1,0-2.3,0-3.5h0c0-1.2,0-2.3,0-3.5,0-.4,0-.8,0-1.1,0-.8.1-1.5.2-2.3,0-.4,0-.9.1-1.3,0-.7.2-1.4.3-2.1,0-.5.1-.9.2-1.4.1-.7.2-1.3.4-2,0-.4.2-.9.3-1.3.2-.8.4-1.6.5-2.4.2-.7.4-1.4.6-2.1.2-.6.3-1.1.5-1.7.2-.6.4-1.2.6-1.7.1-.4.3-.9.4-1.3.2-.6.4-1.2.7-1.8.1-.4.3-.7.4-1.1.3-.6.5-1.3.8-1.9.1-.3.2-.5.4-.8,1.5-3.3,3.2-6.5,5.1-9.5,0-.1.2-.3.2-.4.5-.7,1-1.4,1.4-2.1,0-.1.2-.2.2-.3.5-.7,1-1.4,1.6-2.2v-52.7c0-5.7-4.6-10.3-10.3-10.3h-82.5c-5.7,0-10.3,4.6-10.3,10.3v185.7c0,5.7,4.6,10.3,10.3,10.3h82.5c5.7,0,10.3-4.6,10.3-10.3v-44.2s0,0,0,0c-.5-.7-1.1-1.4-1.6-2.1ZM1183.4,785.7h-61.8v-61.9c0-17.1,13.9-30.9,30.9-30.9s30.9,13.9,30.9,30.9v61.9ZM1183.6,682.6h0c-8.6-6.5-19.3-10.3-30.9-10.3s-22.3,3.9-30.9,10.3v-61.9h61.9v61.9Z"/>
+  <path class="hbw0" d="M1137.1,651.6h30.9c5.7,0,10.3-4.6,10.3-10.3s-4.6-10.3-10.3-10.3h-30.9c-5.7,0-10.3,4.6-10.3,10.3,0,5.7,4.6,10.3,10.3,10.3Z"/>
+  <path class="hbw0" d="M1142.2,713.5c0,13.8,20.6,13.8,20.6,0s-20.6-13.8-20.6,0Z"/>
+  <path class="hbw2" d="M979.5,663.9c2.6-.4,5.1-.5,7.3-1.4,1.2-.4,2.4-2.3,2.7-3.8.4-1.9-.8-3.6-2.8-4-2.3-.5-4.7-.8-7.3-1.1-.7,0-1.3.4-1.3,1.1v8.1h0c0,.7.6,1.2,1.3,1.1Z"/>
+  <path class="hbw2" d="M979.4,680c3.2-.4,6.3-.8,9.3-1.4s3.1-2,3.2-4.1c0-2.3-1.1-4-3.1-4.4-3-.7-6.1-1-9.4-1.4-.7,0-1.3.4-1.3,1.1v9.1c0,.7.6,1.2,1.3,1.1Z"/>
+  <path class="hbw2" d="M982.4,703.5c20.1,0,36.5-16.4,36.5-36.5s-16.4-36.5-36.5-36.5-36.5,16.4-36.5,36.5,16.4,36.5,36.5,36.5ZM964.3,653.3c-.8,0-1.5-.7-1.5-1.5v-2.2c0-.8.7-1.5,1.5-1.5h7.3c.8-.1,1.3-.6,1.3-1.2v-6.1c0-.6.5-1.1,1.1-1.1h2.9c.6,0,1.1.5,1.1,1.1v5.6c0,.6.5,1.1,1.1,1.1h1.6c.6,0,1.1-.5,1.1-1.1v-5.5c0-.6.5-1.1,1.1-1.1h2.9c.6,0,1.1.5,1.1,1.1v6c0,.5.4,1,.9,1.1,4.8.9,9.7,1.7,11.1,7.5.8,3.3,0,6.2-2.4,8.4-.5.5-.4,1.4.2,1.8,4.7,2.8,6,5.7,5.1,10.7-1,5.8-4.1,8-14.1,9.7-.5,0-.9.6-.9,1.1v5.9c0,.6-.5,1.1-1.1,1.1h-2.9c-.6,0-1.1-.5-1.1-1.1v-5.8c0-.6-.5-1.1-1.1-1.1h-1.6c-.6,0-1.1.5-1.1,1.1v5.8c0,.6-.5,1.1-1.1,1.1h-3.1c-.6,0-1.1-.5-1.1-1.1v-6c0-.6-.5-1.1-1.1-1.1h-7.7c-.7,0-1.2-.6-1.1-1.3.2-1.5.4-2.8.6-4.1,0-.3.2-.6.5-.7,0,0,0,0,.2,0q5.1-.4,5.1-5.5c0-5.4,0-10.7,0-16.1s-.3-4.8-4.9-4.9Z"/>
+  <path class="hbw4" d="M923.9,667c0,32.3,26.2,58.5,58.5,58.5s58.5-26.2,58.5-58.5-.7-10.5-2.1-15.4c-2.1-7.6-5.6-14.6-10.4-20.6-10.7-13.7-27.4-22.5-46.1-22.5s-35.3,8.8-46.1,22.5c-4.7,6-8.3,13-10.4,20.6-1.3,4.9-2.1,10.1-2.1,15.4ZM982.4,630.5c20.1,0,36.5,16.4,36.5,36.5s-16.4,36.5-36.5,36.5-36.5-16.4-36.5-36.5,16.4-36.5,36.5-36.5Z"/>
+  <path class="hbw4" d="M964,679.8c-.1,0-.1,0-.2,0-.3.1-.5.4-.5.7-.2,1.3-.4,2.6-.6,4.1-.1.7.4,1.3,1.1,1.3h7.7c.6,0,1.1.5,1.1,1.1v6c0,.6.5,1.1,1.1,1.1h3.1c.6,0,1.1-.5,1.1-1.1v-5.8c0-.6.5-1.1,1.1-1.1h1.6c.6,0,1.1.5,1.1,1.1v5.8c0,.6.5,1.1,1.1,1.1h2.9c.6,0,1.1-.5,1.1-1.1v-5.9c0-.5.4-1,.9-1.1,10-1.7,13.1-3.9,14.1-9.7.9-5-.4-7.9-5.1-10.7-.6-.4-.7-1.3-.2-1.8,2.4-2.2,3.2-5.1,2.4-8.4-1.4-5.8-6.3-6.6-11.1-7.5-.5,0-.9-.6-.9-1.1v-6c0-.6-.5-1.1-1.1-1.1h-2.9c-.6,0-1.1.5-1.1,1.1v5.5c0,.6-.5,1.1-1.1,1.1h-1.6c-.6,0-1.1-.5-1.1-1.1v-5.6c0-.6-.5-1.1-1.1-1.1h-2.9c-.6,0-1.1.5-1.1,1.1v6.1c0,.6-.5,1.1-1.3,1.2h-7.3c-.8,0-1.5.7-1.5,1.5v2.2c0,.8.7,1.5,1.5,1.5,4.6.1,4.9.4,4.9,4.9s0,10.7,0,16.1,0,5.1-5.1,5.5ZM978.1,654.7c0-.7.6-1.2,1.3-1.1,2.6.3,5,.6,7.3,1.1,2,.4,3.2,2.1,2.8,4-.3,1.5-1.5,3.4-2.7,3.8-2.2.9-4.7,1-7.3,1.4-.7.1-1.3-.4-1.3-1.1h0v-8.1ZM978.1,669.8c0-.7.6-1.2,1.3-1.1,3.3.4,6.4.7,9.4,1.4,2,.4,3.2,2.1,3.1,4.4-.1,2.1-1.2,3.7-3.2,4.1-3,.6-6.1,1-9.3,1.4-.7.1-1.3-.4-1.3-1.1v-9.1Z"/>
+  <path class="hbw0" d="M299.7,326.1v18.5c0,5.7,4.6,10.3,10.3,10.3h67v10.3h-15.5c-5.7,0-10.3,4.6-10.3,10.3s4.6,10.3,10.3,10.3h92.8c5.7,0,10.3-4.6,10.3-10.3s-4.6-10.3-10.3-10.3h-15.5v-10.3h67c5.7,0,10.3-4.6,10.3-10.3v-123.8c.2-5.7-4.4-10.3-10.1-10.3h-51.9c4.7,6,8.3,13,10.4,20.6h31.3v103.2h-175.4v-103.2h31.3c2.1-7.6,5.6-14.6,10.4-20.6h-51.9c-5.7,0-10.3,4.6-10.3,10.3v18.9c8.9,12.1,14.2,27,14.2,43.2s-5.3,31.1-14.2,43.2ZM397.7,354.9h20.6v10.3h-20.6v-10.3Z"/>
+  <path class="hbw0" d="M536.9,385.9h82.5c5.7,0,10.3-4.6,10.3-10.3v-185.7c0-5.7-4.6-10.3-10.3-10.3h-82.5c-5.7,0-10.3,4.6-10.3,10.3v185.7c0,5.7,4.6,10.3,10.3,10.3ZM547.3,200.2h61.9v61.9h0c-8.6-6.5-19.3-10.3-30.9-10.3s-22.3,3.9-30.9,10.3v-61.9ZM547.2,303.3c0-17.1,13.9-30.9,30.9-30.9s30.9,13.9,30.9,30.9v61.9h-61.8v-61.9Z"/>
+  <path class="hbw0" d="M603.9,220.8c0-5.7-4.6-10.3-10.3-10.3h-30.9c-5.7,0-10.3,4.6-10.3,10.3s4.6,10.3,10.3,10.3h30.9c5.7,0,10.3-4.6,10.3-10.3Z"/>
+  <path class="hbw0" d="M567.9,293c0,13.8,20.6,13.8,20.6,0s-20.6-13.8-20.6,0Z"/>
+  <path class="hbw2" d="M405.1,248.3c-.7,0-1.3.4-1.3,1.1v9.1c0,.7.6,1.2,1.3,1.1,3.2-.4,6.3-.8,9.3-1.4,2-.4,3.1-2,3.2-4.1.1-2.3-1.1-4-3.1-4.4-3-.7-6.1-1-9.4-1.4Z"/>
+  <path class="hbw2" d="M405.1,243.4c2.6-.4,5.1-.5,7.3-1.4,1.2-.4,2.4-2.3,2.7-3.8.4-1.9-.8-3.6-2.8-4-2.3-.5-4.7-.8-7.3-1.1-.7,0-1.3.4-1.3,1.1v8.1h0c0,.7.6,1.2,1.3,1.1Z"/>
+  <path class="hbw2" d="M408,283c20.1,0,36.5-16.4,36.5-36.5s-16.4-36.5-36.5-36.5-36.5,16.4-36.5,36.5,16.4,36.5,36.5,36.5ZM389.9,232.9c-.8,0-1.5-.7-1.5-1.5v-2.2c0-.8.7-1.5,1.5-1.5h7.3c.8-.1,1.3-.6,1.3-1.2v-6.1c0-.6.5-1.1,1.1-1.1h2.9c.6,0,1.1.5,1.1,1.1v5.6c0,.6.5,1.1,1.1,1.1h1.6c.6,0,1.1-.5,1.1-1.1v-5.5c0-.6.5-1.1,1.1-1.1h2.9c.6,0,1.1.5,1.1,1.1v6c0,.5.4,1,.9,1.1,4.8.9,9.7,1.7,11.1,7.5.8,3.3,0,6.2-2.4,8.4-.5.5-.4,1.4.2,1.8,4.7,2.8,6,5.7,5.1,10.7-1,5.8-4.1,8-14.1,9.7-.5,0-.9.6-.9,1.1v5.9c0,.6-.5,1.1-1.1,1.1h-2.9c-.6,0-1.1-.5-1.1-1.1v-5.8c0-.6-.5-1.1-1.1-1.1h-1.6c-.6,0-1.1.5-1.1,1.1v5.8c0,.6-.5,1.1-1.1,1.1h-3.1c-.6,0-1.1-.5-1.1-1.1v-6c0-.6-.5-1.1-1.1-1.1h-7.7c-.7,0-1.2-.6-1.1-1.3.2-1.5.4-2.8.6-4.1,0-.3.2-.6.5-.7,0,0,0-.1.2-.1q5.1-.4,5.1-5.5c0-5.4.1-10.7.1-16.1s-.3-4.8-4.9-4.9Z"/>
+  <path class="hbw4" d="M349.5,246.5c0,32.3,26.2,58.5,58.5,58.5s58.5-26.2,58.5-58.5-.7-10.5-2.1-15.4c-2.1-7.6-5.6-14.6-10.4-20.6-10.7-13.7-27.4-22.5-46.1-22.5s-35.3,8.8-46.1,22.5c-4.7,6-8.3,13-10.4,20.6-1.3,4.9-2.1,10.1-2.1,15.4ZM408,210c20.1,0,36.5,16.4,36.5,36.5s-16.4,36.5-36.5,36.5-36.5-16.4-36.5-36.5,16.4-36.5,36.5-36.5Z"/>
+  <path class="hbw4" d="M389.6,259.4c-.1,0-.1.1-.2.1-.3,0-.5.4-.5.7-.2,1.3-.4,2.6-.6,4.1,0,.7.4,1.3,1.1,1.3h7.7c.6,0,1.1.5,1.1,1.1v6c0,.6.5,1.1,1.1,1.1h3.1c.6,0,1.1-.5,1.1-1.1v-5.8c0-.6.5-1.1,1.1-1.1h1.6c.6,0,1.1.5,1.1,1.1v5.8c0,.6.5,1.1,1.1,1.1h2.9c.6,0,1.1-.5,1.1-1.1v-5.9c0-.5.4-1,.9-1.1,10-1.7,13.1-3.9,14.1-9.7.9-5-.4-7.9-5.1-10.7-.6-.4-.7-1.3-.2-1.8,2.4-2.2,3.2-5.1,2.4-8.4-1.4-5.8-6.3-6.6-11.1-7.5-.5,0-.9-.6-.9-1.1v-6c0-.6-.5-1.1-1.1-1.1h-2.9c-.6,0-1.1.5-1.1,1.1v5.5c0,.6-.5,1.1-1.1,1.1h-1.6c-.6,0-1.1-.5-1.1-1.1v-5.6c0-.6-.5-1.1-1.1-1.1h-2.9c-.6,0-1.1.5-1.1,1.1v6.1c0,.6-.5,1.1-1.3,1.2h-7.3c-.8,0-1.5.7-1.5,1.5v2.2c0,.8.7,1.5,1.5,1.5,4.6.1,4.9.4,4.9,4.9s-.1,10.7-.1,16.1,0,5.1-5.1,5.5ZM417.6,254.1c0,2.1-1.2,3.7-3.2,4.1-3,.6-6.1,1-9.3,1.4-.7.1-1.3-.4-1.3-1.1v-9.1c0-.7.6-1.2,1.3-1.1,3.3.4,6.4.7,9.4,1.4,2,.4,3.2,2.1,3.1,4.4ZM403.7,234.2c0-.7.6-1.2,1.3-1.1,2.6.3,5,.6,7.3,1.1,2,.4,3.2,2.1,2.8,4-.3,1.5-1.5,3.4-2.7,3.8-2.2.9-4.7,1-7.3,1.4-.7,0-1.3-.4-1.3-1.1h0v-8.1Z"/>
+  <path class="hbw2" d="M197.5,326.2c2.3-10.2,7.9-18.8,16.1-25.2,2.1-1.6,5.3-1.8,7.6-.2,11.6,8.3,27.3,8.6,39,.4,2.7-1.9,5.9-2.1,8.5,0,7.7,6.1,13.1,14.3,15.6,24.2,0,.3.1.5.1.8,0,.2,0,.5,0,.7h0c11.4-11.2,18.5-26.9,18.5-44.1,0-34.2-27.8-62-62-62s-62,27.8-62,62,7.1,32.9,18.5,44.1c0-.3,0-.5,0-.8ZM236.5,248.5c14.1-2.5,26.7,6.9,29.1,20.3,2.4,13.6-6.7,26.6-20.3,29.1-13.4,2.4-26.4-6.5-29-19.8-2.6-13.5,6-27,20.2-29.5Z"/>
+  <path class="hbw2" d="M427.1,654.5c-7.3-1.8-10.4-2.6-13.2-2.6-3.2,0-6,1.1-14.1,3l-25.8,6.1,39.7,11.3,40.4-11.6-27-6.2Z"/>
+  <path class="hbw2" d="M183.1,654.5c-7.3-1.8-10.4-2.6-13.2-2.6-3.2,0-6,1.1-14.1,3l-25.8,6.1,39.7,11.3,40.4-11.6-27-6.2Z"/>
+  <path class="hbw2" d="M126.4,675.6l-18.7-5.3c0,19.2,0,45.2,0,64.3l30.4,8.7,24.6,7v-64.3c0,0-36.4-10.4-36.4-10.4Z"/>
+  <path class="hbw2" d="M671.1,654.5c-7.3-1.8-10.4-2.6-13.2-2.6-3.2,0-6,1.1-14.1,3l-25.8,6.1,39.7,11.3,40.4-11.6-27-6.2Z"/>
+  <path class="hbw2" d="M690.9,742.8l11.5-3.3,18.3-5.3c0-19.1,0-45.3,0-64.3l-54.9,15.8v64.3c0,0,25.2-7.2,25.2-7.2Z"/>
+  <path class="hbw2" d="M607.8,702.2c0,5.7-4.6,10.4-10.4,10.4h-2.1c0,0,0,.1,0,.2h.6v21.6l29.3,8.4,25.1,7.2v-63.9c0,0-54.5-15.6-54.5-15.6v21.3c.6,0,1.2,0,1.7,0,5.7,0,10.3,4.7,10.3,10.4Z"/>
+  <path class="hbw2" d="M476.7,669.8l-55,15.8v64.4c.1,0,25.2-7.2,25.2-7.2l29.9-8.6v-4.9c0-5.2,0-10.9,0-16.7h-1.1c-5.8,0-10.5-4.7-10.5-10.5s4.8-10.5,10.6-10.5h1s0,0,0,0v-21.8Z"/>
+  <path class="hbw2" d="M232.5,734.2c0-6.6,0-13.9,0-21.6h-.8c-5.8,0-10.5-4.7-10.5-10.5s4.8-10.5,10.6-10.5h.7c0-7.7,0-15.1,0-21.7l-54.7,15.7v64.3c0,0,24.9-7.1,24.9-7.1l29.9-8.6Z"/>
+  <path class="hbw2" d="M351.3,691.8h0s0,0,.1,0c0,0,0,0-.1,0Z"/>
+  <path class="hbw2" d="M351.9,734.4l29.3,8.4,25.1,7.2v-64c0,0-54.5-15.6-54.5-15.6v21.4c.6,0,1.2,0,1.7,0,5.7,0,10.3,4.7,10.3,10.4s-4.6,10.4-10.4,10.4h-2.1s0,0,0,0h.6v21.7Z"/>
+  <path class="hbw0" d="M212,755.9l30.4-8.7c3.2-.9,5.4-3.9,5.4-7.2v-20.7c-.6-.6-1.2-1.2-1.8-1.9-.2-.3-.5-.6-.7-.9,0-.1-.2-.2-.3-.3-.8-1.1-1.6-2.3-2.2-3.6h-10.1v21.5l-29.9,8.6-25.1,7.2h0c0,0,0-64.4,0-64.4l54.7-15.7h.3v21.7h10.1c1.3-2.6,2.9-4.8,4.9-6.5v-25.4c0-3.4-2.5-6.4-5.8-7.1l-70-16.1c-1.1-.3-2.3-.3-3.4,0l-42.1,10-27.9,6.6c-3.3.8-5.8,3.9-5.8,7.3-.2,14,.2,53.2,0,67.7.7,5.4-2.5,18,5.5,19.5,7.3,2,17.4,4.9,28.1,8,15.9,4.6,33,9.6,44,12.2.5.4,39.8-11.7,41.6-11.9ZM162.8,750.3l-24.6-7-30.4-8.7c0-19.1,0-45.1,0-64.3,0,0,0,0,0-.1l18.7,5.3,36.3,10.4v64.4c0,0,0,0,0,0ZM169.7,672.3l-39.8-11.3,25.8-6.1c8.2-1.9,11-3,14.2-3,2.8,0,5.9.8,13.2,2.6l27,6.2-40.4,11.6h0Z"/>
+  <path class="hbw0" d="M490.3,717.8c-1.4-1.5-2.6-3.2-3.5-5.1h-10.1v21.5l-29.9,8.6-25.1,7.2h0v-64.4c0,0,54.9-15.8,54.9-15.8v21.8h10.1c1.3-2.6,2.9-4.8,4.9-6.5v-25.4c0-3.4-2.5-6.4-5.8-7.1l-70-16.1c-1.1-.3-2.3-.3-3.4,0l-70,16.6c-3.3.8-5.8,3.9-5.8,7.3-.1,5.4-.1,14.6,0,24.6,2.2,1.8,4.1,4,5.5,6.7,2.8,0,6.1,0,9.1,0,0,0,0,0,.1,0,.1,0,.2,0,.4,0v-21.4l54.6,15.6h.4c0,.1.1,64.5.1,64.5l-24.6-7-30.4-8.7v-22.1h-9.5c-1.5,3-3.3,5.4-5.5,7.1v8.3c.7,5.4-2.5,18,5.5,19.5,18.1,4.9,53.7,15.8,72.1,20.2.5.4,39.8-11.7,41.6-11.9l30.4-8.7c3.2-.9,5.4-3.9,5.4-7.2v-20.7c-.5-.4-1-.9-1.4-1.4,0,0,0,0-.1-.1ZM413.7,672.3h0s-39.8-11.3-39.8-11.3l25.8-6.1c8.2-1.9,11-3,14.2-3,2.8,0,5.9.8,13.2,2.6l27,6.2-40.4,11.6Z"/>
+  <path class="hbw0" d="M729.9,652.7l-27.5-6.3-42.5-9.8c-1.1-.3-2.3-.3-3.4,0l-70,16.6c-3.3.8-5.8,3.9-5.8,7.3,0,5.4,0,14.6,0,24.6,2.2,1.8,4,3.9,5.4,6.6,2.9,0,6.6,0,9.7,0v-21.3l54.6,15.6h.4c0,.1,0,64.5,0,64.5l-24.6-7-30.4-8.7v-22.1h-9.5c-1.5,3-3.3,5.4-5.5,7.1v8.3c.7,5.4-2.5,18,5.5,19.5,18.1,4.9,53.7,15.8,72.1,20.2.5.4,39.8-11.7,41.6-11.9l2.3-.7,28.1-8c3.2-.9,5.4-3.9,5.4-7.2-.2-21.4-.2-59.2-.2-80.3s-2.5-6.4-5.8-7.1ZM657.7,672.3h0s-39.8-11.3-39.8-11.3l25.8-6.1c8.2-1.9,11-3,14.2-3,2.8,0,5.9.8,13.2,2.6l27,6.2-40.4,11.6ZM702.4,739.6l-11.6,3.3-25.1,7.2v-64.4c0,0,0,0,0,0l54.9-15.8c0,19.1,0,45.2,0,64.3,0,0,0,0,0,0l-18.3,5.3Z"/>
+  <path class="hbw4" d="M357.8,702.1c0-2.4-2-4.4-4.4-4.4-3.7,0-9.1,0-12.7,0h-.9c-1.1,0-1.7,0-2.2-1.3-2.3-6-7.8-10.1-14.2-10.1h-12.8c-7.6,0-11.8,2.9-14.7,10-.2.6-1.1,1.2-1.8,1.3-.5.1-1.1.2-1.6.2s-1-.1-1.5-.2c-.7-.2-1.6-.8-1.9-1.5-2.5-6.4-7.3-9.8-14.2-9.8h-6.5c-2.2,0-4.4,0-6.9,0-7.2.1-11.6,3.2-14.3,9.9-.3.6-1.3,1.4-2,1.4-1.4,0-5.5,0-9.4,0h-4.3c-2.5,0-4.5,2-4.5,4.5s2,4.5,4.5,4.5h13.5c1.2,0,1.8.4,2.3,1.7,2.2,6.2,6.9,9.5,13.5,9.6h13.9c7.2,0,11.6-3.2,14.2-9.8.3-.6,1.3-1.2,2-1.4.3,0,.7,0,1,0,.5,0,1,0,1.5,0h.7c1,0,1.5.5,1.9,1.6,2.3,6.4,6.9,9.6,13.7,9.7h12.3c9.1,0,12.9-2.7,16.2-11.4h15.2c2.4,0,4.4-2,4.4-4.4ZM279,706.8h.1c0,.2.2.5.3.7-1.2.5-2.4,1.3-3.6,1.3-2.5,0-4.9,0-7.4,0s-5.2,0-7.7,0c-1.2,0-2.4-.8-3.6-1.2,0-.3.2-.5.3-.8,1.8-.1,3.2-1.6,3.2-3.4v-2.4c0-1.8-1.4-3.3-3.2-3.4h-.2c1-1.5,6-2.3,11.1-2.3s9.8.7,11.1,2.2h-.4c-1.8.1-3.2,1.6-3.2,3.4v2.5c0,1.8,1.4,3.3,3.2,3.4ZM327.9,697.6c-1.9,0-3.4,1.7-3.4,3.6v2.1c0,1.9,1.5,3.5,3.4,3.6-1,1.4-6,2.2-11,2.2s-9.9-.8-10.9-2.2h.1c1.8,0,3.3-1.7,3.3-3.6v-2.1c0-1.9-1.5-3.5-3.4-3.6h0c1-1.5,6-2.3,11-2.3s9.9.8,11.1,2.3h0Z"/>
+  <path class="hbw2" d="M363.8,702.2c0-5.7-4.6-10.4-10.3-10.4s-1.1,0-1.7,0c-.1,0-.2,0-.4,0,0,0,0,0-.1,0-3,0-6.5,0-9.3,0-3.7-6.9-10.8-11.3-18.6-11.4h-12.9c-8.3,0-14.1,3-18.1,9.4-3.8-6.1-9.9-9.4-17.6-9.4-2,0-4.2,0-6.4,0h-6.7c-8.7,0-15.1,3.9-18.8,11.4h-11.1c-5.8,0-10.6,4.7-10.6,10.5s4.7,10.5,10.5,10.5h11.1s0,0,0,0c.6,1.3,1.4,2.5,2.2,3.6,0,.1.2.2.3.3.2.3.5.6.7.9,3.6,4.1,8.8,6.4,14.9,6.5h14c7.9,0,13.8-3.1,17.6-9.2,3.6,5.9,9.6,9.2,17.2,9.3h12.3c10.1,0,16.1-3.3,20.2-11.4h11.2c5.8,0,10.4-4.7,10.4-10.4ZM338.2,706.5c-3.3,8.7-7.1,11.4-16.2,11.4h-12.3c-6.8,0-11.4-3.3-13.7-9.7-.4-1.1-.9-1.6-1.9-1.6h-.7c-.5,0-1,0-1.5,0s-.7,0-1,0c-.7.2-1.7.8-2,1.4-2.6,6.6-7,9.7-14.2,9.8h-13.9c-6.6,0-11.3-3.4-13.5-9.6-.5-1.3-1.1-1.7-2.3-1.7h-13.5c-2.5,0-4.5-2-4.5-4.5s2-4.5,4.5-4.5h4.3c3.9,0,8,0,9.4,0,.7,0,1.7-.8,2-1.4,2.7-6.7,7.1-9.8,14.3-9.9,2.5,0,4.7,0,6.9,0h6.5c6.9,0,11.7,3.4,14.2,9.8.3.7,1.2,1.3,1.9,1.5.5,0,1,.2,1.5.2s1.1,0,1.6-.2c.7,0,1.6-.7,1.8-1.3,2.9-7.1,7.1-10,14.7-10h12.8c6.4,0,11.9,4.1,14.2,10.1.5,1.2,1.1,1.3,2.2,1.3h.9c3.6,0,9,0,12.7,0s4.4,2,4.4,4.4-2,4.4-4.4,4.4h-15.2Z"/>
+  <path class="hbw2" d="M316.9,695.3c-5,0-10,.8-11,2.3h0c1.9,0,3.4,1.7,3.4,3.6v2.1c0,1.9-1.5,3.5-3.3,3.6h-.1c1,1.4,5.9,2.2,10.9,2.2s10-.8,11-2.2c-1.9,0-3.4-1.7-3.4-3.6v-2.1c0-1.9,1.5-3.5,3.4-3.6h0c-1.2-1.5-6.1-2.3-11.1-2.3ZM318.5,703.1h-3.1v-1.8h3.1v1.8Z"/>
+  <path class="hbw2" d="M279,697.5h.4c-1.3-1.5-6.2-2.2-11.1-2.2s-10.1.8-11.1,2.3h.2c1.8,0,3.2,1.6,3.2,3.4v2.4c0,1.8-1.4,3.3-3.2,3.4-.1.3-.2.5-.3.8,1.2.4,2.4,1.2,3.6,1.2,2.5,0,5.1,0,7.7,0s4.9,0,7.4,0c1.2,0,2.4-.8,3.6-1.3-.1-.2-.2-.5-.3-.7h-.1c-1.8,0-3.2-1.6-3.2-3.4v-2.5c0-1.8,1.4-3.3,3.2-3.4ZM269.8,702.9h-3.2v-1.6h3.2v1.6Z"/>
+  <path class="hbw4" d="M583.8,697.6c-1.1,0-1.7,0-2.2-1.3-2.3-6-7.8-10.1-14.2-10.1h-12.8c-7.6,0-11.8,2.9-14.7,10-.2.6-1.1,1.2-1.8,1.3-.5.1-1.1.2-1.6.2s-1-.1-1.5-.2c-.7-.2-1.6-.8-1.9-1.5-2.5-6.4-7.3-9.8-14.2-9.8h-6.5c-2.2,0-4.4,0-6.9,0-7.2.1-11.6,3.2-14.3,9.9-.3.6-1.3,1.4-2,1.4-1.4,0-5.5,0-9.4,0h-4.3c-2.5,0-4.5,2-4.5,4.5s2,4.5,4.5,4.5h13.5c1.2,0,1.8.4,2.3,1.7,2.2,6.2,6.9,9.5,13.5,9.6h13.9c7.2,0,11.6-3.2,14.2-9.8.3-.6,1.3-1.2,2-1.4.3,0,.7,0,1,0,.5,0,1,0,1.5,0h.7c1,0,1.5.5,1.9,1.6,2.3,6.4,6.9,9.6,13.7,9.7h12.3c9.1,0,12.9-2.7,16.2-11.4h15.2c2.4,0,4.4-2,4.4-4.4s-2-4.4-4.4-4.4c-3.7,0-9.1,0-12.7,0h-.9ZM523,706.8h0c0,.2.2.5.3.7-1.2.5-2.4,1.3-3.6,1.3-2.5,0-4.9,0-7.4,0s-5.2,0-7.7,0c-1.2,0-2.4-.8-3.6-1.2,0-.3.2-.5.3-.8,1.8-.1,3.2-1.6,3.2-3.4v-2.4c0-1.8-1.4-3.3-3.2-3.4h-.2c1-1.5,6-2.3,11.1-2.3s9.8.7,11.1,2.2h-.4c-1.8.1-3.2,1.6-3.2,3.4v2.5c0,1.8,1.4,3.3,3.2,3.4ZM571.9,697.6c-1.9,0-3.4,1.7-3.4,3.6v2.1c0,1.9,1.5,3.5,3.4,3.6-1,1.4-6,2.2-11,2.2s-9.9-.8-10.9-2.2h0c1.8,0,3.3-1.7,3.3-3.6v-2.1c0-1.9-1.5-3.5-3.4-3.6h0c1-1.5,6-2.3,11-2.3s9.9.8,11.1,2.3h0Z"/>
+  <path class="hbw2" d="M567.4,680.3h-12.9c-8.3,0-14.1,3-18.1,9.4-3.8-6.1-9.9-9.4-17.6-9.4-2,0-4.2,0-6.4,0h-6.7c-8.7,0-15.1,3.9-18.8,11.4h-11.1c-5.8,0-10.6,4.7-10.6,10.5s4.7,10.5,10.5,10.5h11.1s0,0,0,0c.9,1.9,2.1,3.6,3.5,5.1,0,0,0,0,.1.1.5.5.9.9,1.4,1.4,3.4,2.9,7.9,4.5,13,4.6h14c7.9,0,13.8-3.1,17.6-9.2,3.6,5.9,9.6,9.2,17.2,9.3h12.3c10.1,0,16.1-3.3,20.2-11.4h11.2c5.8,0,10.4-4.7,10.4-10.4s-4.6-10.4-10.3-10.4-1.1,0-1.7,0c-3.1,0-6.7,0-9.7,0,0,0,0,0-.1,0-3.7-6.9-10.8-11.3-18.6-11.4ZM597.4,697.7c2.4,0,4.4,2,4.4,4.4s-2,4.4-4.4,4.4h-15.2c-3.3,8.7-7.1,11.4-16.2,11.4h-12.3c-6.8,0-11.4-3.3-13.7-9.7-.4-1.1-.9-1.6-1.9-1.6h-.7c-.5,0-1,0-1.5,0s-.7,0-1,0c-.7.2-1.7.8-2,1.4-2.6,6.6-7,9.7-14.2,9.8h-13.9c-6.6,0-11.3-3.4-13.5-9.6-.5-1.3-1.1-1.7-2.3-1.7h-13.5c-2.5,0-4.5-2-4.5-4.5s2-4.5,4.5-4.5h4.3c3.9,0,8,0,9.4,0,.7,0,1.7-.8,2-1.4,2.7-6.7,7.1-9.8,14.3-9.9,2.5,0,4.7,0,6.9,0h6.5c6.9,0,11.7,3.4,14.2,9.8.3.7,1.2,1.3,1.9,1.5.5,0,1,.2,1.5.2s1.1,0,1.6-.2c.7,0,1.6-.7,1.8-1.3,2.9-7.1,7.1-10,14.7-10h12.8c6.4,0,11.9,4.1,14.2,10.1.5,1.2,1.1,1.3,2.2,1.3h.9c3.6,0,9,0,12.7,0Z"/>
+  <path class="hbw2" d="M523,697.5h.4c-1.3-1.5-6.2-2.2-11.1-2.2s-10.1.8-11.1,2.3h.2c1.8,0,3.2,1.6,3.2,3.4v2.4c0,1.8-1.4,3.3-3.2,3.4-.1.3-.2.5-.3.8,1.2.4,2.4,1.2,3.6,1.2,2.5,0,5.1,0,7.7,0s4.9,0,7.4,0c1.2,0,2.4-.8,3.6-1.3,0-.2-.2-.5-.3-.7h0c-1.8,0-3.2-1.6-3.2-3.4v-2.5c0-1.8,1.4-3.3,3.2-3.4ZM513.8,702.9h-3.2v-1.6h3.2v1.6Z"/>
+  <path class="hbw2" d="M560.9,695.3c-5,0-10,.8-11,2.3h0c1.9,0,3.4,1.7,3.4,3.6v2.1c0,1.9-1.5,3.5-3.3,3.6h0c1,1.4,5.9,2.2,10.9,2.2s10-.8,11-2.2c-1.9,0-3.4-1.7-3.4-3.6v-2.1c0-1.9,1.5-3.5,3.4-3.6h0c-1.2-1.5-6.1-2.3-11.1-2.3ZM562.5,703.1h-3.1v-1.8h3.1v1.8Z"/>
+  <path class="hbw4" d="M625.5,628.7c1.1,1.1,2.5,1.6,3.9,1.6s2.8-.5,3.9-1.6c2.2-2.1,2.2-5.6,0-7.8l-26.4-26.5c-2.1-2.2-5.6-2.2-7.8,0-2.2,2.1-2.2,5.6,0,7.8l26.4,26.5Z"/>
+  <path class="hbw4" d="M683.1,628.7c1.1,1.1,2.5,1.6,3.9,1.6s2.8-.5,3.9-1.6l11.5-11.5,14.9-15c2.1-2.2,2.1-5.6,0-7.8s-5.6-2.1-7.8,0l-7.1,7.1-19.3,19.4c-2.1,2.2-2.1,5.6,0,7.8Z"/>
+  <path class="hbw4" d="M658.2,620.7c3,0,5.5-2.5,5.5-5.5v-37.4c0-3-2.5-5.5-5.5-5.5s-5.5,2.5-5.5,5.5v37.4c0,3,2.5,5.5,5.5,5.5Z"/>
+  <path class="hbw4" d="M683.1,774.9c-2.2,2.1-2.2,5.6,0,7.8l19.3,19.4,7.1,7.1c1.1,1.1,2.5,1.6,3.9,1.6s2.8-.5,3.9-1.6c2.2-2.1,2.2-5.6,0-7.8l-14.9-15-11.5-11.5c-2.1-2.2-5.6-2.2-7.8,0Z"/>
+  <path class="hbw4" d="M625.5,774.9l-26.4,26.5c-2.1,2.2-2.1,5.6,0,7.8,1.1,1.1,2.5,1.6,3.9,1.6s2.8-.5,3.9-1.6l26.4-26.5c2.1-2.2,2.1-5.6,0-7.8-2.2-2.1-5.6-2.1-7.8,0Z"/>
+  <path class="hbw4" d="M658.2,782.9c-3,0-5.5,2.5-5.5,5.5v37.4c0,3,2.5,5.5,5.5,5.5s5.5-2.5,5.5-5.5v-37.4c0-3-2.5-5.5-5.5-5.5Z"/>
+  <path class="hbw2" d="M1094.1,334v-62.2c0,0-53.3-15.2-53.3-15.2v7.3h0v43.4h0v1.6h0v4.2h0v1.3h0v4.4l29.5,8.4,23.8,6.8Z"/>
+  <path class="hbw2" d="M1113.9,241.2c-.5-.1-.9-.2-1.4-.3-3.1-.8-5.3-1.3-7.1-1.7-.5-.1-1-.2-1.4-.3-.4,0-.9-.1-1.3-.2-1.4-.1-2.6-.1-3.9.1-.4,0-.8.1-1.2.2-2.3.5-5.2,1.3-10.4,2.5l-25,5.9,38.5,11,39.3-11.3-26.2-6Z"/>
+  <path class="hbw2" d="M1108.7,333.7l24.3-7,28.8-8.2v-62.4l-53.2,15.3v62.3Z"/>
+  <path class="hbw0" d="M1176.6,323.8c-.1-.5-.2-1.2-.2-1.9v-75.5c0-3.3-2.5-6.2-5.6-6.9l-67.8-15.6c-1.1-.3-2.2-.2-3.3,0l-67.8,16.1c-3.2.7-5.6,3.8-5.6,7.1v23.8c0,11.6,0,24.4,0,33.7v7.8c.7,5.2-2.5,17.4,5.3,18.9,17.5,4.8,52,15.3,69.8,19.6.5.3,38.6-11.4,40.3-11.6l29.5-8.5c3.1-.9,5.3-3.7,5.3-7ZM1070.3,327.3l-29.5-8.4h0v-4.4h0v-1.3h0v-4.2h0v-1.6h0v-43.4h0v-7.4l53.2,15.2h0s0,62.4,0,62.4l-23.9-6.9ZM1100.8,258.5l-38.5-11,25-5.9c5.2-1.2,8.1-2.1,10.4-2.5.4,0,.8-.2,1.2-.2,1.3-.2,2.5-.2,3.9-.1s.8,0,1.3.2c.4,0,.9.2,1.4.3,1.8.4,4,.9,7.1,1.7.4.1.9.2,1.4.3l26.2,6-39.3,11.3ZM1161.8,258.9v59.6h0c0,.1-28.9,8.3-28.9,8.3l-24.3,7v-62.4c0,0,0,0,0,0l53.2-15.3v2.8Z"/>
+  <rect class="hbw4" x="1212.1" y="172.2" width="67.3" height="39.5"/>
+  <path class="hbw4" d="M978.7,180h0c.6,0,1.1,0,1.7,0,1.1,0,2.2.3,3.2.5,2.6.7,5,1.8,7,3.4v-23.8h-23.8v23.8c3.3-2.5,7.4-4,11.9-4ZM968.7,168.1c0-2.2,1.8-4,4-4h11.9c2.2,0,4,1.8,4,4s0,0,0,0c0,0,0,0,0,0,0,2.2-1.8,4-4,4h-11.9c-2.2,0-4-1.8-4-4s0,0,0,0c0,0,0,0,0,0Z"/>
+  <rect class="hbw4" x="909.4" y="410.4" width="7.8" height="3.9"/>
+  <path class="hbw4" d="M978.7,188c-6.6,0-11.9,5.3-11.9,11.9v23.7h23.8v-23.7c0-6.6-5.4-11.9-11.9-11.9ZM981.4,198.9c-.4.3-.8.6-1.3.7-.5.2-1,.2-1.5.2-.7,0-1.5-.2-2.1-.6-1.1-.6-1.8-1.8-1.8-3.4s.8-2.8,1.8-3.4c.6-.4,1.4-.6,2.1-.6s1,0,1.5.2.9.4,1.3.7c.7.7,1.2,1.7,1.2,3s-.5,2.3-1.2,3Z"/>
+  <rect class="hbw4" x="1241.8" y="410.4" width="7.9" height="3.9"/>
+  <path class="hbw4" d="M1311.1,378.7c-6.6,0-11.9,5.3-11.9,11.9v23.7h23.8v-23.7c0-6.6-5.3-11.9-11.9-11.9ZM1307.2,386.6c0-5.3,7.9-5.3,7.9,0s-7.9,5.3-7.9,0Z"/>
+  <rect class="hbw4" x="879.6" y="172.2" width="67.4" height="39.5"/>
+  <rect class="hbw4" x="1212.1" y="362.8" width="67.3" height="39.6"/>
+  <rect class="hbw4" x="1241.8" y="219.7" width="7.9" height="3.9"/>
+  <path class="hbw4" d="M978.7,370.7h0c.6,0,1.1,0,1.7,0,1.1,0,2.2.3,3.2.5,2.6.7,5,1.8,7,3.4v-23.8h-23.8v23.8c3.3-2.5,7.4-4,11.9-4ZM968.7,358.8c0-2.2,1.8-4,4-4h11.9c2.2,0,4,1.8,4,4s0,0,0,0c0,0,0,0,0,0,0,2.2-1.8,4-4,4h-11.9c-2.2,0-4-1.8-4-4s0,0,0,0c0,0,0,0,0,0Z"/>
+  <path class="hbw4" d="M1311.1,188c-6.6,0-11.9,5.3-11.9,11.9v23.7h23.8v-23.7c0-6.6-5.3-11.9-11.9-11.9ZM1307.2,195.9c0-5.3,7.9-5.3,7.9,0s-7.9,5.3-7.9,0Z"/>
+  <path class="hbw4" d="M1299.2,184c3.3-2.5,7.4-4,11.9-4s8.6,1.5,11.9,4v-23.8h-23.8v23.8ZM1305.2,164.1h11.9c2.2,0,4,1.8,4,4s-.5,2.1-1.2,2.8c-.5.5-1.2.9-2,1.1-.3,0-.5,0-.8,0h-11.9c-2.2,0-4-1.8-4-4s1.8-4,4-4Z"/>
+  <rect class="hbw4" x="909.4" y="219.7" width="7.8" height="3.9"/>
+  <path class="hbw4" d="M978.7,378.7c-6.6,0-11.9,5.3-11.9,11.9v23.7h23.8v-23.7c0-6.6-5.4-11.9-11.9-11.9ZM981.4,389.6c-.4.3-.8.6-1.3.7-.5.2-1,.2-1.5.2-.7,0-1.5-.2-2.1-.6-1.1-.6-1.8-1.8-1.8-3.4s.8-2.8,1.8-3.4c.6-.4,1.4-.6,2.1-.6s1,0,1.5.2.9.4,1.3.7c.7.7,1.2,1.7,1.2,3s-.5,2.3-1.2,3Z"/>
+  <path class="hbw4" d="M1299.2,374.7c3.3-2.5,7.4-4,11.9-4s8.6,1.5,11.9,4v-23.8h-23.8v23.8ZM1301.2,358.8c0-2.2,1.8-4,4-4h11.9c2.2,0,4,1.8,4,4s0,0,0,0c0,0,0,0,0,0,0,2.2-1.8,4-4,4h-11.9c-2.2,0-4-1.8-4-4s0,0,0,0c0,0,0,0,0,0Z"/>
+  <rect class="hbw4" x="879.6" y="362.8" width="67.4" height="39.6"/>
+  <path class="hbw0" d="M950.9,164.2h-75.3c-2.2,0-4,1.8-4,4v47.6c0,2.2,1.8,4,4,4h25.8v4h-5.9c-2.2,0-4,1.8-4,4s1.8,4,4,4h35.7c2.2,0,4-1.8,4-4s-1.8-4-4-4h-5.9v-4h25.8c2.2,0,4-1.8,4-4v-47.6c-.2-2.2-2-4-4.2-4ZM917.3,223.6h-7.9v-3.9h0c0-.1,7.9-.1,7.9-.1v4ZM947,211.7h0c0,0-67.4,0-67.4,0h0v-39.6h67.4v39.5Z"/>
+  <path class="hbw0" d="M994.5,152.3h-31.7c-2.2,0-4,1.8-4,4v71.3c0,2.2,1.8,4,4,4h31.7c2.2,0,4-1.8,4-4v-71.3c0-2.2-1.8-4-4-4ZM966.8,160.2h23.8v23.8c-2.1-1.6-4.4-2.7-7-3.4-1-.3-2.1-.4-3.2-.5-.5,0-1.1,0-1.7,0h0c-4.5,0-8.6,1.5-11.9,4,0,0,0,0,0,0v-23.8ZM990.6,223.6h-23.8v-23.7h0c0-6.7,5.3-12,11.9-12s11.9,5.3,11.9,11.9v23.8Z"/>
+  <path class="hbw0" d="M972.7,172.1h11.9c2.2,0,4-1.8,4-4,0,0,0,0,0,0,0-2.2-1.8-4-4-4h-11.9c-2.2,0-4,1.8-4,4s0,0,0,0c0,2.2,1.9,4,4,4Z"/>
+  <path class="hbw0" d="M980.1,192.2c-.5-.2-1-.2-1.5-.2-.7,0-1.5.2-2.1.6-1.1.6-1.8,1.8-1.8,3.4s.8,2.8,1.8,3.4c.6.4,1.4.6,2.1.6s1,0,1.5-.2c.5-.2.9-.4,1.3-.7.7-.7,1.2-1.7,1.2-3s-.5-2.3-1.2-3c-.4-.3-.8-.6-1.3-.7Z"/>
+  <path class="hbw0" d="M1283.4,164.2h-75.3c-2.2,0-4,1.8-4,4v47.6c0,2.2,1.8,4,4,4h25.8v4h-5.9c-2.2,0-4,1.8-4,4s1.8,4,4,4h35.7c2.2,0,4-1.8,4-4s-1.8-4-4-4h-5.9v-4h25.8c2.2,0,4-1.8,4-4v-47.6c-.2-2.2-2-4-4.2-4ZM1249.7,219.7v3.9h-7.9v-4h7.9ZM1279.4,211.7h0c0,0-67.4,0-67.4,0v-39.6h67.4v39.5Z"/>
+  <path class="hbw0" d="M1327,152.3h-31.7c-2.2,0-4,1.8-4,4v71.3c0,2.2,1.8,4,4,4h31.7c2.2,0,4-1.8,4-4v-71.3c0-2.2-1.8-4-4-4ZM1323,199.9v23.7h-23.8v-23.7h0c0-6.7,5.3-12,11.9-12s11.9,5.3,11.9,11.9h0ZM1323,184c-3.3-2.5-7.4-4-11.9-4s-8.6,1.5-11.9,4v-23.8h23.8v23.8Z"/>
+  <path class="hbw0" d="M1305.2,172.1h11.9c.3,0,.5,0,.8,0,.8-.2,1.5-.5,2-1.1.7-.7,1.2-1.7,1.2-2.8,0-2.2-1.8-4-4-4h-11.9c-2.2,0-4,1.8-4,4s1.8,4,4,4Z"/>
+  <path class="hbw0" d="M1307.2,195.9c0,5.3,7.9,5.3,7.9,0s-7.9-5.3-7.9,0Z"/>
+  <path class="hbw0" d="M950.9,354.9h-75.3c-2.2,0-4,1.8-4,4v47.6c0,2.2,1.8,4,4,4h25.8v4h-5.9c-2.2,0-4,1.8-4,4s1.8,4,4,4h35.7c2.2,0,4-1.8,4-4s-1.8-4-4-4h-5.9v-4h25.8c2.2,0,4-1.8,4-4v-47.6c-.2-2.3-2-4-4.2-4ZM917.3,414.3h-7.9v-3.9h0c0,0,7.9,0,7.9,0v4ZM947,402.4h-67.4v-39.6h67.4v39.6Z"/>
+  <path class="hbw0" d="M994.5,343h-31.7c-2.2,0-4,1.8-4,4v71.3c0,2.2,1.8,4,4,4h31.7c2.2,0,4-1.8,4-4v-71.3c0-2.2-1.8-4-4-4ZM966.8,350.9h23.8v23.8c-2.1-1.6-4.4-2.7-7-3.4-1-.3-2.1-.4-3.2-.5-.5,0-1.1,0-1.7,0h0c-4.5,0-8.6,1.5-11.9,4,0,0,0,0,0,0v-23.8ZM990.6,414.3h-23.8v-23.7h0c0-6.7,5.3-12,11.9-12s11.9,5.3,11.9,11.9v23.8Z"/>
+  <path class="hbw0" d="M972.7,362.8h11.9c2.2,0,4-1.8,4-4,0,0,0,0,0,0,0-2.2-1.8-4-4-4h-11.9c-2.2,0-4,1.8-4,4s0,0,0,0c0,2.2,1.9,4,4,4Z"/>
+  <path class="hbw0" d="M980.1,382.9c-.5-.2-1-.2-1.5-.2-.7,0-1.5.2-2.1.6-1.1.6-1.8,1.8-1.8,3.4s.8,2.8,1.8,3.4c.6.4,1.4.6,2.1.6s1,0,1.5-.2c.5-.2.9-.4,1.3-.7.7-.7,1.2-1.7,1.2-3s-.5-2.3-1.2-3c-.4-.3-.8-.6-1.3-.7Z"/>
+  <path class="hbw0" d="M1283.4,354.9h-75.3c-2.2,0-4,1.8-4,4v47.6c0,2.2,1.8,4,4,4h25.8v4h-5.9c-2.2,0-4,1.8-4,4s1.8,4,4,4h35.7c2.2,0,4-1.8,4-4s-1.8-4-4-4h-5.9v-4h25.8c2.2,0,4-1.8,4-4v-47.6c-.2-2.3-2-4-4.2-4ZM1249.7,410.4v3.9h-7.9v-4h7.9ZM1279.4,402.4h-67.4v-39.6h67.4v39.6Z"/>
+  <path class="hbw0" d="M1327,343h-31.7c-2.2,0-4,1.8-4,4v71.3c0,2.2,1.8,4,4,4h31.7c2.2,0,4-1.8,4-4v-71.3c0-2.2-1.8-4-4-4ZM1323,390.6v23.7h-23.8v-23.7h0c0-6.7,5.3-12,11.9-12s11.9,5.3,11.9,11.9h0ZM1323,374.7c-3.3-2.5-7.4-4-11.9-4s-8.6,1.5-11.9,4v-23.8h23.8v23.8Z"/>
+  <path class="hbw0" d="M1305.2,362.8h11.9c2.2,0,4-1.8,4-4,0,0,0,0,0,0,0-2.2-1.8-4-4-4h-11.9c-2.2,0-4,1.8-4,4s0,0,0,0c0,2.2,1.8,4,4,4Z"/>
+  <path class="hbw0" d="M1307.2,386.6c0,5.3,7.9,5.3,7.9,0s-7.9-5.3-7.9,0Z"/>
+  <path class="hbw4" d="M1010.4,202.1l32.1,22.5c1,.7,2.1,1,3.2,1,1.7,0,3.4-.8,4.5-2.3,1.7-2.5,1.1-5.9-1.3-7.7l-32.1-22.5c-2.5-1.7-5.9-1.1-7.7,1.3-1.7,2.5-1.1,5.9,1.3,7.7Z"/>
+  <path class="hbw4" d="M1042.5,350l-32.1,22.5c-2.5,1.7-3.1,5.2-1.3,7.7,1.1,1.5,2.8,2.3,4.5,2.3s2.2-.3,3.2-1l32.1-22.5c2.5-1.7,3.1-5.2,1.3-7.7-1.7-2.5-5.2-3.1-7.7-1.3Z"/>
+  <path class="hbw4" d="M1192.2,372.5l-32.2-22.5c-2.5-1.7-5.9-1.1-7.7,1.4-1.7,2.5-1.1,5.9,1.4,7.7l32.2,22.5c1,.7,2.1,1,3.1,1,1.7,0,3.4-.8,4.5-2.4,1.7-2.5,1.1-5.9-1.4-7.7Z"/>
+  <path class="hbw4" d="M1185.9,193.1l-32.2,22.5c-2.5,1.7-3.1,5.2-1.4,7.7,1.1,1.5,2.8,2.4,4.5,2.4s2.2-.3,3.1-1l32.2-22.5c2.5-1.7,3.1-5.2,1.4-7.7-1.7-2.5-5.2-3.1-7.7-1.4Z"/>
+  <path class="hbw2" d="M400.6,154.6c22.1,0,40.1-18,40.1-40.1s-18-40.1-40.1-40.1-40.1,18-40.1,40.1,18,40.1,40.1,40.1ZM387.4,92.1c0-.7.3-1.1.9-1.3l6.8-2.8c.4-.2.8-.3,1.4-.3h11.7c.3,0,.6,0,.8.3.2.2.3.5.3.8v48.2c0,.3,0,.6-.3.8s-.5.3-.8.3h-11.4c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-36.6c0,0,0-.2-.1-.3,0,0-.2-.1-.3,0l-6.8,1.4h-.3c-.6,0-.9-.3-.9-1v-8.3Z"/>
+  <path class="hbw1" d="M400.6,165.6c25.9,0,47.4-19.4,50.6-44.4.3-2.2.5-4.4.5-6.7,0-28.2-22.9-51.1-51.1-51.1s-51.1,22.9-51.1,51.1.2,4.5.5,6.7c3.3,25,24.7,44.4,50.6,44.4ZM400.6,74.4c22.1,0,40.1,18,40.1,40.1s-18,40.1-40.1,40.1-40.1-18-40.1-40.1,18-40.1,40.1-40.1Z"/>
+  <path class="hbw4" d="M388.3,101.4h.3l6.8-1.4c0,0,.2,0,.3,0,0,0,.1.2.1.3v36.6c0,.3,0,.6.3.8.2.2.5.3.8.3h11.4c.3,0,.6,0,.8-.3s.3-.5.3-.8v-48.2c0-.3,0-.6-.3-.8-.2-.2-.5-.3-.8-.3h-11.7c-.5,0-1,0-1.4.3l-6.8,2.8c-.6.2-.9.6-.9,1.3v8.3c0,.7.3,1,.9,1Z"/>
+  <path class="hbw2" d="M1101.6,154.6c22.1,0,40.1-18,40.1-40.1s-18-40.1-40.1-40.1-40.1,18-40.1,40.1,18,40.1,40.1,40.1ZM1085.1,100.7c.2-2.7,1.1-5.1,2.8-7.2,1.7-2,3.8-3.6,6.6-4.7,2.7-1.1,5.7-1.7,9-1.7s6.9.7,9.7,2.1c2.8,1.4,4.9,3.2,6.4,5.5,1.5,2.3,2.2,4.9,2.2,7.7s-.5,3.9-1.4,5.8c-.9,1.9-2.3,3.9-4.1,6-1.9,2.2-5,5.1-9.2,8.9l-3.1,2.9c-.1,0-.2.2-.1.3,0,0,.1.1.3.1h17.1c.3,0,.6,0,.8.3.2.2.3.5.3.8v9.4c0,.3,0,.6-.3.8s-.5.3-.8.3h-34.6c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-8.9c0-.5.2-1,.6-1.3,2.2-1.9,4.3-3.9,6.5-6.1,2.2-2.2,3.6-3.6,4.1-4.2l4.8-4.8c4.3-4.2,6.5-7.2,6.5-9.1s-.4-2.1-1.3-2.8-2-1.1-3.3-1.1-2.5.4-3.4,1.1c-.9.7-1.3,1.7-1.3,3v1.4c0,.3,0,.6-.3.8-.2.2-.5.3-.8.3h-11.5c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-3.6Z"/>
+  <path class="hbw1" d="M1101.6,165.6c25.9,0,47.4-19.4,50.6-44.4.3-2.2.5-4.4.5-6.7,0-28.2-22.9-51.1-51.1-51.1s-51.1,22.9-51.1,51.1.2,4.5.5,6.7c3.3,25,24.7,44.4,50.6,44.4ZM1101.6,74.4c22.1,0,40.1,18,40.1,40.1s-18,40.1-40.1,40.1-40.1-18-40.1-40.1,18-40.1,40.1-40.1Z"/>
+  <path class="hbw4" d="M1086.1,105.4h11.5c.3,0,.6,0,.8-.3.2-.2.3-.5.3-.8v-1.4c0-1.2.4-2.2,1.3-3,.9-.7,2-1.1,3.4-1.1s2.4.4,3.3,1.1,1.3,1.7,1.3,2.8c0,1.8-2.2,4.8-6.5,9.1l-4.8,4.8c-.6.6-2,2-4.1,4.2-2.2,2.2-4.4,4.2-6.5,6.1-.4.3-.6.8-.6,1.3v8.9c0,.3,0,.6.3.8.2.2.5.3.8.3h34.6c.3,0,.6,0,.8-.3s.3-.5.3-.8v-9.4c0-.3,0-.6-.3-.8-.2-.2-.5-.3-.8-.3h-17.1c-.1,0-.2,0-.3-.1,0,0,0-.2.1-.3l3.1-2.9c4.2-3.8,7.3-6.8,9.2-8.9,1.8-2.1,3.2-4.1,4.1-6,.9-1.9,1.4-3.9,1.4-5.8s-.7-5.3-2.2-7.7c-1.5-2.3-3.6-4.2-6.4-5.5-2.8-1.4-6-2.1-9.7-2.1s-6.3.6-9,1.7c-2.7,1.1-4.9,2.7-6.6,4.7-1.7,2-2.6,4.4-2.8,7.2v3.6c0,.3,0,.6.3.8.2.2.5.3.8.3Z"/>
+  <path class="hbw2" d="M400.6,825.4c-22.1,0-40.1,18-40.1,40.1s18,40.1,40.1,40.1,40.1-18,40.1-40.1-18-40.1-40.1-40.1ZM417.2,883.4c-1.3,3.2-3.4,5.7-6.4,7.5-3,1.8-6.4,2.8-10.4,2.8s-7.3-.9-10.3-2.8c-3-1.9-5.2-4.4-6.6-7.6-.8-1.8-1.3-3.9-1.4-6.3,0-.7.4-1.1,1.1-1.1h11.5c.7,0,1.1.3,1.2,1,.2,1.4.5,2.5.9,3.2.8,1.3,1.9,2,3.5,2s2.8-.7,3.6-2c.7-1.2,1.1-2.7,1.1-4.5s-.3-3.3-1-4.5c-.9-1.4-2.1-2.2-3.7-2.2s-1.2.2-1.8.6c-.6.4-1.5,1-2.7,1.9-.2.2-.4.3-.7.3s-.6-.2-.8-.5l-5.7-8.1c-.1-.2-.2-.5-.2-.7s.2-.6.5-.8l10.5-6.8c.1,0,.2-.1.1-.3,0-.1-.1-.2-.3-.2h-14.5c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-9.4c0-.3,0-.6.3-.8.2-.2.5-.3.8-.3h32.1c.3,0,.6,0,.8.3.2.2.3.5.3.8v10.6c0,.6-.2,1.1-.6,1.4l-7.8,5.4c-.2.2-.2.4.1.5,3.6,1.1,6.1,3.5,7.7,7.2,1,2.2,1.4,4.6,1.4,7.2s-.5,4.9-1.5,7.3Z"/>
+  <path class="hbw1" d="M400.6,814.4c-28.2,0-51.1,22.9-51.1,51.1s22.9,51.1,51.1,51.1,51.1-22.9,51.1-51.1-22.9-51.1-51.1-51.1ZM400.6,905.6c-22.1,0-40.1-18-40.1-40.1s18-40.1,40.1-40.1,40.1,18,40.1,40.1-18,40.1-40.1,40.1Z"/>
+  <path class="hbw4" d="M409.6,861.7c-.3-.1-.4-.3-.1-.5l7.8-5.4c.4-.3.6-.7.6-1.4v-10.6c0-.3,0-.6-.3-.8-.2-.2-.5-.3-.8-.3h-32.1c-.3,0-.6,0-.8.3-.2.2-.3.5-.3.8v9.4c0,.3,0,.6.3.8.2.2.5.3.8.3h14.5c.1,0,.2,0,.3.2,0,.1,0,.2-.1.3l-10.5,6.8c-.3.2-.5.5-.5.8s0,.5.2.7l5.7,8.1c.2.3.5.5.8.5s.5,0,.7-.3c1.2-.9,2.1-1.5,2.7-1.9.6-.4,1.3-.6,1.8-.6,1.6,0,2.9.7,3.7,2.2.7,1.2,1,2.8,1,4.5s-.4,3.2-1.1,4.5c-.8,1.3-2,2-3.6,2s-2.8-.7-3.5-2c-.4-.8-.7-1.8-.9-3.2,0-.7-.5-1-1.2-1h-11.5c-.7,0-1.1.4-1.1,1.1.1,2.4.6,4.6,1.4,6.3,1.4,3.2,3.6,5.8,6.6,7.6,3,1.9,6.4,2.8,10.3,2.8s7.4-.9,10.4-2.8c3-1.8,5.1-4.4,6.4-7.5,1-2.4,1.5-4.9,1.5-7.3s-.5-5-1.4-7.2c-1.6-3.7-4.2-6.1-7.7-7.2Z"/>
+  <path class="hbw2" d="M1101.6,825.4c-22.1,0-40.1,18-40.1,40.1s18,40.1,40.1,40.1,40.1-18,40.1-40.1-18-40.1-40.1-40.1ZM1121,877.7c0,.3,0,.6-.3.8s-.5.3-.8.3h-3c-.2,0-.4.1-.4.4v10.9c0,.3,0,.6-.3.8s-.5.3-.8.3h-11.4c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-10.9c0-.2-.1-.4-.4-.4h-22.5c-.3,0-.6,0-.8-.3-.2-.2-.3-.5-.3-.8v-7.6c0-.5,0-.9.3-1.4l11.7-27.2c.2-.5.6-.8,1.2-.8h12.2c.4,0,.6.1.8.4.1.2.1.6,0,.9l-10.4,24.4c0,0,0,.2,0,.3,0,0,.1.1.2.1h7.6c.2,0,.4-.1.4-.4v-7.1c0-.3,0-.6.3-.8s.5-.3.8-.3h11.4c.3,0,.6,0,.8.3.2.2.3.5.3.8v7.1c0,.2.1.4.4.4h3c.3,0,.6,0,.8.3.2.2.3.5.3.8v9.8Z"/>
+  <path class="hbw1" d="M1101.6,814.4c-28.2,0-51.1,22.9-51.1,51.1s22.9,51.1,51.1,51.1,51.1-22.9,51.1-51.1-22.9-51.1-51.1-51.1ZM1101.6,905.6c-22.1,0-40.1-18-40.1-40.1s18-40.1,40.1-40.1,40.1,18,40.1,40.1-18,40.1-40.1,40.1Z"/>
+  <path class="hbw4" d="M1119.9,866.9h-3c-.2,0-.4-.1-.4-.4v-7.1c0-.3,0-.6-.3-.8-.2-.2-.5-.3-.8-.3h-11.4c-.3,0-.6,0-.8.3s-.3.5-.3.8v7.1c0,.2-.1.4-.4.4h-7.6c0,0-.2,0-.2-.1,0,0,0-.2,0-.3l10.4-24.4c.1-.4.1-.7,0-.9-.1-.2-.4-.4-.8-.4h-12.2c-.6,0-1,.3-1.2.8l-11.7,27.2c-.2.4-.3.9-.3,1.4v7.6c0,.3,0,.6.3.8.2.2.5.3.8.3h22.5c.2,0,.4.1.4.4v10.9c0,.3,0,.6.3.8.2.2.5.3.8.3h11.4c.3,0,.6,0,.8-.3s.3-.5.3-.8v-10.9c0-.2.1-.4.4-.4h3c.3,0,.6,0,.8-.3s.3-.5.3-.8v-9.8c0-.3,0-.6-.3-.8-.2-.2-.5-.3-.8-.3Z"/>
+  <path class="hbw4" d="M240.9,355.9c24.1,0,45.5-11.7,58.8-29.8,8.9-12.1,14.2-27,14.2-43.2s-5.3-31.1-14.2-43.2c-13.3-18.1-34.7-29.8-58.8-29.8-40.3,0-73,32.7-73,73s32.7,73,73,73ZM240.9,220.9c34.2,0,62,27.8,62,62s-7.1,32.9-18.5,44.1h0c0-.2,0-.5,0-.7,0-.3,0-.5-.1-.8-2.5-9.9-7.9-18.1-15.6-24.2-2.6-2.1-5.8-1.9-8.5,0-11.7,8.2-27.4,7.9-39-.4-2.2-1.6-5.4-1.4-7.6.2-8.1,6.3-13.8,15-16.1,25.2,0,.2,0,.5,0,.8-11.4-11.2-18.5-26.9-18.5-44.1,0-34.2,27.8-62,62-62Z"/>
+  <path class="hbw4" d="M245.3,297.9c13.6-2.4,22.7-15.4,20.3-29.1-2.4-13.3-15-22.8-29.1-20.3-14.2,2.5-22.8,16-20.2,29.5,2.6,13.4,15.6,22.2,29,19.8Z"/>
+  <path class="hbw4" d="M1334.9,704c0-.4,0-.7,0-1.1,0-.8-.1-1.6-.2-2.3,0-.4,0-.8-.1-1.2,0-.7-.2-1.5-.3-2.2,0-.4-.1-.8-.2-1.2-.1-.9-.3-1.8-.5-2.7,0-.3-.1-.5-.2-.8-.2-1-.4-1.9-.7-2.9-.1-.4-.2-.9-.4-1.3-.2-.6-.3-1.2-.5-1.8-.1-.5-.3-1-.5-1.5-.2-.5-.4-1.1-.6-1.6-.2-.5-.3-1-.5-1.5-.2-.5-.4-1-.6-1.6-.4-.9-.8-1.8-1.2-2.7-.2-.4-.4-.9-.6-1.3-.3-.6-.5-1.1-.8-1.7-.2-.4-.4-.8-.6-1.1-.3-.6-.6-1.1-.9-1.7-.2-.3-.4-.7-.6-1-.3-.6-.7-1.1-1-1.7-.2-.3-.3-.5-.5-.8-.9-1.3-1.7-2.6-2.7-3.9,0,0,0,0,0-.1,0,0,0,0,0,0-.3-.4-.6-.8-.9-1.2-.3-.4-.6-.8-.9-1.1-.5-.6-.9-1.1-1.4-1.7-.3-.4-.7-.8-1-1.2-.3-.4-.7-.7-1-1.1-.5-.6-1.1-1.1-1.6-1.7-.3-.3-.7-.7-1-1-.4-.4-.8-.8-1.2-1.1-.5-.4-.9-.8-1.4-1.3-.5-.4-.9-.8-1.4-1.2-.3-.3-.7-.6-1-.8-.6-.5-1.3-1-2-1.5-.3-.2-.7-.5-1-.7-.5-.4-1.1-.8-1.6-1.2-.4-.3-.7-.5-1.1-.8-.6-.4-1.3-.8-1.9-1.2-.3-.2-.6-.4-.9-.6-.8-.5-1.5-.9-2.3-1.3-.3-.2-.6-.3-.9-.5-.7-.4-1.4-.8-2.2-1.1-.2-.1-.5-.2-.7-.4-.8-.4-1.6-.8-2.5-1.1-.3-.1-.5-.2-.8-.3-.9-.4-1.8-.7-2.7-1.1-.2,0-.5-.2-.7-.3-.9-.3-1.8-.6-2.7-.9-.1,0-.2,0-.3,0-1-.3-2-.6-3-.8-.2,0-.4-.1-.7-.2-1-.3-2-.5-3-.7-.2,0-.4,0-.6-.1-1-.2-2.1-.4-3.2-.6,0,0,0,0,0,0-1.1-.2-2.2-.3-3.3-.4-.2,0-.4,0-.6,0-1.1-.1-2.1-.2-3.2-.2-.2,0-.4,0-.6,0-1.1,0-2.3,0-3.4,0s0,0,0,0c-1.1,0-2.2,0-3.3,0-.2,0-.4,0-.6,0-1.1,0-2.1.1-3.2.2-.2,0-.5,0-.7,0-1.1.1-2.1.2-3.1.4-.2,0-.3,0-.5,0-1,.2-1.9.3-2.9.5-.2,0-.4,0-.6.1-1,.2-2,.4-2.9.7-.3,0-.5.1-.8.2-.9.2-1.9.5-2.8.8-.3,0-.5.2-.8.3-.8.3-1.6.5-2.4.8-.3.1-.6.2-.9.3-.8.3-1.6.6-2.3.9-.3.1-.7.3-1,.4-.8.3-1.6.7-2.4,1.1-.4.2-.7.4-1.1.5-.6.3-1.2.6-1.8.9-.5.3-1,.5-1.5.8-.5.3-1,.5-1.4.8-.5.3-1,.6-1.5.9-.5.3-1.1.7-1.6,1-.4.3-.9.6-1.3.9-.4.3-.8.6-1.2.8-.7.5-1.3,1-1.9,1.5-.3.2-.6.4-.8.7-.8.6-1.5,1.2-2.2,1.8-.2.2-.4.4-.7.6-1.4,1.3-2.8,2.6-4.1,4-.1.1-.3.3-.4.4-.8.8-1.5,1.6-2.2,2.5-.1.1-.3.3-.4.4-.8,1-1.7,2-2.4,3-.5.7-1.1,1.4-1.6,2.2,0,.1-.2.2-.2.3-.5.7-1,1.4-1.4,2.1,0,.1-.2.3-.2.4-1.9,3-3.7,6.2-5.1,9.5-.1.3-.2.5-.4.8-.3.6-.5,1.3-.8,1.9-.1.4-.3.7-.4,1.1-.2.6-.5,1.2-.7,1.8-.2.4-.3.9-.4,1.3-.2.6-.4,1.1-.6,1.7-.2.6-.3,1.1-.5,1.7-.2.7-.4,1.4-.6,2.1-.2.8-.4,1.6-.5,2.4,0,.4-.2.9-.3,1.3-.1.7-.3,1.3-.4,2,0,.5-.1.9-.2,1.4,0,.7-.2,1.4-.3,2.1,0,.4,0,.9-.1,1.3,0,.8-.1,1.5-.2,2.3,0,.4,0,.8,0,1.1,0,1.1,0,2.3,0,3.5h0c0,1.2,0,2.3,0,3.5,0,.4,0,.8,0,1.1,0,.8.1,1.5.2,2.3,0,.4,0,.9.1,1.3,0,.7.2,1.4.3,2.1,0,.5.1.9.2,1.4.1.7.2,1.4.4,2,0,.4.2.9.3,1.3.2.8.4,1.6.6,2.4.2.7.4,1.4.5,2,.2.6.3,1.2.5,1.7.2.6.4,1.1.6,1.7.1.5.3.9.5,1.4.2.6.4,1.2.7,1.8.1.4.3.8.5,1.1.3.6.5,1.3.8,1.9.1.3.3.6.4.8,1.5,3.3,3.2,6.4,5.1,9.4,0,.1.2.3.3.4.5.7.9,1.4,1.4,2.1,0,.1.2.3.3.4.5.7,1,1.4,1.6,2.1,0,0,0,0,0,0,.8,1,1.6,2,2.4,3,.1.2.3.3.4.5.7.8,1.4,1.6,2.2,2.4.2.2.3.3.5.5,1.3,1.4,2.7,2.7,4.1,3.9.2.2.5.4.7.6.7.6,1.4,1.2,2.1,1.7.3.2.6.5.9.7.6.5,1.2.9,1.8,1.3.4.3.9.6,1.3.9.4.3.8.6,1.3.9.6.4,1.2.8,1.8,1.2.4.3.9.5,1.3.8.5.3,1,.6,1.5.9.5.3.9.5,1.4.7.6.3,1.3.7,1.9,1,.3.2.7.3,1,.5.8.4,1.6.7,2.4,1.1.3.1.6.3.9.4.8.3,1.6.7,2.4,1,.2,0,.5.2.7.3.8.3,1.6.6,2.5.8.2,0,.5.2.7.2.9.3,1.9.6,2.8.8.2,0,.5.1.8.2,1,.2,2,.5,3,.7.2,0,.3,0,.5,0,1,.2,2,.4,3,.5.1,0,.3,0,.4,0,1.1.2,2.1.3,3.2.4.2,0,.4,0,.6,0,1.1.1,2.1.2,3.2.2.2,0,.4,0,.5,0,1.1,0,2.3,0,3.4,0s0,0,0,0c1.1,0,2.2,0,3.3,0,.2,0,.4,0,.7,0,1.1,0,2.1-.1,3.2-.2.2,0,.4,0,.7,0,1.1-.1,2.1-.2,3.2-.4,0,0,.1,0,.2,0,1-.2,2-.3,3-.5.2,0,.5,0,.7-.1,1-.2,2-.4,3-.7.2,0,.5-.1.7-.2,1-.3,1.9-.5,2.9-.8.2,0,.3,0,.5-.1.9-.3,1.7-.6,2.6-.9.3,0,.5-.2.8-.3.9-.3,1.8-.7,2.6-1,.3-.1.6-.2.9-.4.8-.3,1.6-.7,2.4-1.1.3-.1.6-.3.9-.4.7-.3,1.4-.7,2.1-1.1.3-.2.6-.3.9-.5.8-.4,1.5-.9,2.3-1.3.3-.2.7-.4,1-.6.6-.4,1.2-.8,1.8-1.2.4-.3.8-.6,1.3-.9.5-.4,1-.7,1.5-1.1.3-.3.7-.5,1-.8.6-.5,1.3-1,1.9-1.5.4-.3.7-.6,1.1-.9.4-.4.9-.8,1.3-1.1.5-.4,1-.9,1.5-1.4.4-.4.7-.7,1.1-1.1.4-.3.7-.7,1-1,.5-.5,1.1-1.1,1.6-1.7.3-.4.7-.8,1-1.1.3-.4.7-.7,1-1.1.5-.6,1-1.2,1.5-1.8.3-.4.6-.7.9-1.1.3-.4.6-.8.9-1.2,1-1.3,1.9-2.7,2.8-4.1.1-.2.3-.5.4-.7.4-.6.7-1.2,1-1.7.2-.3.4-.7.6-1,.3-.6.6-1.1.9-1.7.2-.4.4-.7.6-1.1.3-.6.6-1.1.8-1.7.2-.4.4-.8.5-1.2.4-1,.8-1.9,1.2-2.9.2-.5.4-1,.6-1.5.2-.5.4-1,.5-1.5.2-.5.4-1.1.5-1.6.2-.5.3-1,.5-1.5.2-.6.3-1.2.5-1.8.1-.4.2-.9.4-1.3.2-.9.5-1.9.7-2.8,0-.3.1-.6.2-.9.2-.9.3-1.8.5-2.7,0-.4.1-.8.2-1.2.1-.7.2-1.5.3-2.2,0-.4,0-.8.1-1.2,0-.8.1-1.5.2-2.3,0-.4,0-.7,0-1.1,0-1.1,0-2.3,0-3.4h0c0-1.2,0-2.3,0-3.4ZM1305.5,751.5h0c0-.2,0-.5,0-.7,0-.3,0-.5-.1-.8-2.5-9.9-7.9-18.1-15.6-24.2-2.6-2.1-5.8-1.9-8.5,0-11.7,8.2-27.4,7.9-39-.4-2.2-1.6-5.4-1.4-7.6.2-8.1,6.3-13.8,15-16.1,25.2,0,.2,0,.5,0,.8-11.4-11.2-18.5-26.9-18.5-44.1,0-34.2,27.8-62,62-62s62,27.8,62,62-7.1,32.9-18.5,44.1Z"/>
+  <path class="hbw4" d="M1257.6,673c-14.2,2.5-22.8,16-20.2,29.5,2.6,13.4,15.6,22.2,29,19.8,13.6-2.4,22.7-15.4,20.3-29.1-2.4-13.3-15-22.8-29.1-20.3Z"/>
+</svg>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide light" data-sec="02 · Blockchain" data-title="Criptografia, blocos e Merkle" style="justify-content:flex-start">
+  <div class="crypto-band">
+    <div class="inner">
+      <img class="lock-ic" src="/assets/img/aulas/comece-web3/lock.webp" alt="">
+      <p><b>Criptografia</b> é a transformação de dados legíveis em dados codificados, que só podem ser decodificados com processamento de softwares.</p>
+    </div>
+  </div>
+  <div class="inner diag" style="margin-top:auto;margin-bottom:auto">
+    <div class="chain rv">
+      <img class="lock-ic" src="/assets/img/aulas/comece-web3/cube-chain.webp" alt="Três blocos ligados por correntes" loading="lazy">
+      <div class="blocks">
+        <div class="blk"><b>Bloco Genesis</b><span>Cabeçalho</span><span>&nbsp;</span><span>Data/Hora</span><span>Nonce</span><span>Raiz Merkle</span></div>
+        <div class="blk"><b>Bloco 1</b><span>Cabeçalho</span><span>Endereço Bloco Genesis</span><span>Data/Hora</span><span>Nonce</span><span>Raiz Merkle</span></div>
+        <div class="blk"><b>Bloco 2</b><span>Cabeçalho</span><span>Endereço Bloco 1</span><span>Data/Hora</span><span>Nonce</span><span>Raiz Merkle</span></div>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="merkle">
+        <div class="row r1"><div class="root">Hash1234</div></div>
+        <div class="row r2"><div class="br">Hash12</div><div class="br">Hash34</div></div>
+        <div class="row r4"><div class="lf">Hash1</div><div class="lf">Hash2</div><div class="lf">Hash3</div><div class="lf">Hash4</div></div>
+        <div class="row r4"><div class="dn">Data 1</div><div class="dn">Data 2</div><div class="dn">Data 3</div><div class="dn">Data 4</div></div>
+      </div>
+      <div class="legend"><span>Raiz Merkle <i>Merkle Root</i></span><span>Galhos Merkle <i>Merkle Branches</i></span><span>Folhas Merkle <i>Merkle Leaves</i></span><span>Nós de Dados <i>Data Nodes</i></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · HISTÓRIA ============ -->
+
+<!-- 13 -->
+<section class="slide" data-sec="03 · História" data-title="História da Blockchain">
+  <div class="inner" style="display:flex;align-items:center;gap:clamp(1rem,3vw,2.5rem);flex-wrap:wrap;justify-content:center">
+    <img class="rv" src="/assets/img/aulas/comece-web3/pepe.webp" alt="Pepe rosa" style="width:clamp(160px,24vw,300px)">
+    <div class="rv d1">
+      <h2 class="display" style="font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:.95">HISTÓRIA DA<br>BLOCKCHAIN</h2>
+      <p class="wht" style="font-size:clamp(1.6rem,3.6vw,3rem);font-weight:300;line-height:1.1">uma linha do tempo</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · 1979 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="1979 · Ralph Merkle">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/merkle.webp" alt="Ralph Merkle segurando um modelo molecular ao lado de um computador" loading="lazy" style="object-position:50% 25%">
+  <div class="inner"><div class="tl right rv">
+    <div class="ev"><div class="yr">1979</div><div class="tx"><b>Ralph Merkle</b> cria e patenteia o conceito de <b>Árvore de Merkle</b>.</div></div>
+  </div></div>
+</section>
+
+<!-- 15 · 1982 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="1982 · David Chaum">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/chaum.webp" alt="David Chaum" loading="lazy" style="object-position:30% 20%">
+  <div class="inner"><div class="tl right rv">
+    <div class="ev"><div class="yr">1982</div><div class="tx"><b>David Chaum</b> em Berkeley <b>descreveu os fundamentos da tecnologia blockchain</b>, com exceção da prova de trabalho.</div></div>
+  </div></div>
+</section>
+
+<!-- 16 · 1991 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="1991 · Haber e Stornetta">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/haber-stornetta.webp" alt="Stuart Haber e Scott Stornetta em frente a computadores" loading="lazy" style="filter:grayscale(1)">
+  <div class="inner"><div class="tl rv">
+    <div class="ev"><div class="yr">1991</div><div class="tx"><b>Stuart Haber</b> e <b>Scott Stornetta</b> publicam o artigo sobre <b>timestamping</b> com o primeiro conceito de Blockchain, usando um sistema com Merklee Tree.</div></div>
+  </div></div>
+</section>
+
+<!-- 17 · 1992 -->
+<section class="slide tlslide tl-top black" data-sec="03 · História" data-title="1992 · Cypherpunks">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/cypherpunks-mail.webp" alt="E-mail da lista cypherpunks" loading="lazy" style="object-fit:cover;object-position:top left">
+  <div class="shade" style="background:rgba(0,0,0,.5)"></div>
+  <div class="inner"><div class="tl rv" style="margin:0 auto">
+    <div class="ev"><div class="yr">1992</div><div class="tx"><p><b>A estrutura Merklee Tree foi introduzida na criptografia e ciência da computação.</b></p><p><b>Criação do movimento cypherpunk</b>, grupo que defende a privacidade e a liberdade individual na era digital utilizando a criptografia como ferramenta para promover mudanças sociais.</p></div></div>
+  </div></div>
+</section>
+
+<!-- 18 · 1993 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="1993 · Dwork e Naor" style="padding-top:0;padding-left:0;padding-right:0">
+  <div style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr">
+    <img src="/assets/img/aulas/comece-web3/dwork.webp" alt="Cynthia Dwork" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    <img src="/assets/img/aulas/comece-web3/naor.webp" alt="Moni Naor" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="inner" style="padding:0 var(--pad)"><div class="tl right rv">
+    <div class="ev"><div class="yr">1993</div><div class="tx"><b>Os primórdios do conceito de prova de trabalho (PoW)</b> foram publicados em um artigo de <b>Cynthia Dwork</b> e <b>Moni Naor</b>.</div></div>
+  </div></div>
+</section>
+
+<!-- 19 · 2002 / 2005 -->
+<section class="slide tlslide tl-top black" data-sec="03 · História" data-title="2002 · SUNDR / 2005 · Bitgold">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/terminal.webp" alt="" loading="lazy" style="object-fit:contain;opacity:.55;image-rendering:pixelated">
+  <div class="inner"><div class="tl rv" style="margin:0 auto">
+    <div class="ev"><div class="yr">2002</div><div class="tx">David Mazières e Dennis Shasha propõem como <b>armazenar dados usando blocos</b> com a estrutura SUNDR.</div></div>
+    <div class="ev"><div class="yr">2005</div><div class="tx">Nick Szabo propõe uma criptomoeda chamada <b>"Bitgold"</b>.</div></div>
+  </div></div>
+</section>
+
+<!-- 20 · 2008 / 2009 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="2008 · Bitcoin / 2009">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/bitcoin-paper.webp" alt="Whitepaper do Bitcoin sobre fundo rosa" loading="lazy">
+  <div class="inner"><div class="tl rv" style="margin:0 auto">
+    <div class="ev"><div class="yr">2008</div><div class="tx">Satoshi Nakamoto publica o artigo <b>“Bitcoin: A Peer-to-Peer Electronic Cash System”</b> explicando o projeto do Bitcoin.</div></div>
+    <div class="ev"><div class="yr">2009</div><div class="tx">O primeiro Bitcoin é minerado e usuários conseguem utilizá-lo.</div></div>
+  </div></div>
+</section>
+
+<!-- 21 · CBECI -->
+<section class="slide light" data-sec="03 · História" data-title="Consumo de energia do Bitcoin">
+  <div class="inner">
+    <p class="small rv" style="margin-bottom:1rem">Cambridge Bitcoin Electricity Consumption Index (CBECI) <a href="https://ccaf.io/cbnsi/cbeci" target="_blank" rel="noopener"><b>ccaf.io/cbnsi/cbeci</b></a></p>
+    <img class="media rv d1" src="/assets/img/aulas/comece-web3/cbeci.webp" alt="Country Ranking Chart: consumo de eletricidade do Bitcoin comparado ao consumo de países" loading="lazy" style="max-height:76vh;width:auto;max-width:100%;margin:0 auto">
+  </div>
+</section>
+
+<!-- 22 · 2010 / 2015 -->
+<section class="slide tlslide black" data-sec="03 · História" data-title="2010 · Bitcoin Pizza Day / 2015">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/pizza.webp" alt="Laszlo Hanyecz com os filhos e as pizzas" loading="lazy">
+  <div class="inner"><div class="tl rv">
+    <div class="ev"><div class="yr">2010</div><div class="tx"><p><b>22 de maio de 2010 nos EUA o programador Laszlo Hanyecz propõe trocar 10.000 BTC por 2 pizzas.</b></p><p>O primeiro registro de compra de algo físico paga com cripto, comemorado anualmente como Bitcoin Pizza Day.</p></div></div>
+    <div class="ev"><div class="yr">2015</div><div class="tx"><p>A rede Ethereum tem seu primeiro bloco minerado.</p><p>Linux Foundation lança a Hyperledger.</p></div></div>
+  </div></div>
+</section>
+
+<!-- 23 · 2014 -->
+<section class="slide tlslide tl-top black" data-sec="03 · História" data-title="2014 · Quantum, a primeira NFT">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/quantum.webp" alt="" loading="lazy" style="object-fit:contain">
+  <div class="shade" style="background:rgba(0,0,0,.72)"></div>
+  <div class="inner">
+  <div class="qwrap rv"><div class="qhex"><div class="qframe"><img src="/assets/img/aulas/comece-web3/quantum-anim.webp" alt="Quantum, de Kevin e Jennifer McCoy (animação)" loading="lazy"></div></div></div>
+  <div class="tl rv d1" style="margin:0 auto">
+    <div class="ev"><div class="yr">2014</div><div class="tx"><b>A primeira NFT: Quantum</b> de Jennifer e Kevin McCoy, na blockchain Namecoin. Uma combinação de 179 frames diferentes.</div></div>
+  </div>
+  </div>
+</section>
+
+<!-- 24 · 2021 -->
+<section class="slide tlslide tl-top black" data-sec="03 · História" data-title="2021 · Mercado">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/terra.webp" alt="" loading="lazy">
+  <div class="inner"><div class="tl rv" style="margin:0 auto;max-width:820px">
+    <div class="ev"><div class="yr">2021</div><div class="tx"><p><b>O mercado do Bitcoin ultrapassou US$ 3 trilhões.</b></p><p>O mercado <b>DeFi cresceu 600%</b> em relação ao ano anterior, atingindo um valor de <b>US$ 200 bilhões</b>.</p><p>Obras de arte <b>NFT foram vendidas por mais de US$ 69 milhões</b> em Ethereum na casa de leilões Christie's.</p></div></div>
+  </div></div>
+</section>
+
+<!-- ============ 04 · APLICAÇÕES ============ -->
+
+<!-- 25 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="Aplicações da Blockchain">
+  <div class="inner split r">
+    <img class="rv" src="/assets/img/aulas/comece-web3/bitcoin-hand.webp" alt="Ilustração de moeda bitcoin" loading="lazy" style="width:min(100%,420px);aspect-ratio:1;object-fit:cover;border-radius:50%;margin:0 auto;display:block">
+    <div>
+      <h2 class="display h3 rv">Aplicações da Blockchain</h2>
+      <div class="tags c2">
+        <div class="tag sm rv d1">DeFi</div>
+        <div class="tag sm rv d1">Ativos digitais<br>e phygitals</div>
+        <div class="tag sm rv d2">Cadeia de<br>suprimentos</div>
+        <div class="tag sm rv d2">Educação</div>
+        <div class="tag sm rv d3">Governança</div>
+        <div class="tag sm rv d3">Identidade<br>digital</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="slide light" data-sec="04 · Aplicações" data-title="Tokens">
+    <div class="inner split">
+    <div>
+      <div class="tok-head rv">
+        <img src="/assets/img/aulas/comece-web3/token-shiba.webp" alt="" loading="lazy">
+        <div><h2 class="display h2" style="margin-bottom:.4rem">Tokens</h2><p>São representações digital de um ativo, direito ou utilidade.</p></div>
+      </div>
+      <ul class="bullets rv d1">
+        <li>Utilitidade (Utility Tokens)</li>
+        <li>Pagamento (Payment Tokens)</li>
+        <li>Lastreados em ativos (Asset-backed)</li>
+        <li>Não fungíveis (NFTs)</li>
+      </ul>
+    </div>
+    <div class="on-green rv d2">
+      <ul class="bullets"><li><b>Ethereum → ERC-20</b></li><li><b>Solana → SPL</b></li><li><b>Tezos → FA1.2 / FA2</b></li><li><b>Avax → ARC-20 / ERC-20</b></li><li><b>Stellar → assets</b></li></ul>
+      <p class="ktitle">Características</p>
+      <ul class="bullets"><li>Supply (fixo ou variável?)</li><li>Distribuição</li><li>Utilidade</li><li>Governança</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 27 -->
+<section class="slide black" data-sec="04 · Aplicações" data-title="NFT?">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/nft-bg.webp" alt="" loading="lazy">
+  <div class="shade" style="background:rgba(40,0,60,.55)"></div>
+  <img class="nft-art" src="/assets/img/aulas/comece-web3/nft-alien.webp" alt="Personagem 3D de pele verde-água e cabelo roxo" loading="lazy">
+  <div class="inner">
+    <div class="bigq rv">NFT?</div>
+    <p class="rv d1" style="font-size:clamp(1.4rem,3.2vw,2.8rem);font-weight:300;line-height:1.2;max-width:22ch">São as iniciais de <b style="font-weight:700">non-fungible token</b>, ou <b style="font-weight:700">ficha não fungível</b>.</p>
+  </div>
+</section>
+
+<!-- 28 -->
+<section class="slide light" data-sec="04 · Aplicações" data-title="Fungível?">
+  <div class="inner split">
+    <div class="rv">
+      <h2 class="display h2">Fungível?</h2>
+      <p class="small" style="font-weight:300;margin-bottom:1rem">É um termo jurídico para definir <b>coisas substituíveis</b>, como por exemplo automóveis, móveis e dinheiro.</p>
+      <p class="small" style="font-weight:300"><b>Infungível é o que não se pode substituir</b>: obras de arte, bens imóveis (casas, apartamentos e terrenos), ou objetos raros dos quais restam um único exemplar são exemplos.</p>
+    </div>
+    <img class="media rv d1" src="/assets/img/aulas/comece-web3/fungivel.webp" alt="Quadrante fungível/infungível × tangível/intangível: bitcoin, ouro, dinheiro, Nyan Cat, Mona Lisa, casa" loading="lazy" style="max-width:480px;margin:0 auto">
+  </div>
+</section>
+
+<!-- 29 -->
+<section class="slide light" data-sec="04 · Aplicações" data-title="Smart Contracts">
+  <span class="shape tri y far" aria-hidden="true" style="width:16vw;height:14vw;left:42%;top:-6vw;z-index:0;--r:180deg"></span>
+  <span class="shape tri p mid" aria-hidden="true" style="width:30vw;height:26vw;left:46%;bottom:-16vw;z-index:0;--r:6deg"></span>
+  <span class="shape bolt p near" aria-hidden="true" style="width:4.6vw;height:7vw;left:44%;top:18%;z-index:3;--r:-8deg;--t:12s"></span>
+  <div class="inner split">
+    <div class="rv">
+      <h2 class="display h2">Smart<br>Contracts</h2>
+      <p class="ktitle">Características</p>
+      <ul class="bullets"><li>Registrado em blockchain</li><li>Execução automática</li><li>Transparente e verificável</li><li>Não depende de intermediários</li><li>Difícil de alterar depois de publicado</li></ul>
+    </div>
+    <div class="on-green rv d1">
+      <p style="font-weight:700;font-size:clamp(1.05rem,1.8vw,1.45rem);max-width:30ch">São códigos que executam ações automaticamente com base em regras pré-definidas.</p>
+      <p class="ktitle" style="margin-top:2rem">Aplicações</p>
+      <ul class="bullets"><li>Compra e venda de NFTs</li><li>Sistemas de empréstimo</li><li>Jogos baseados em blockchain</li><li>Organizações descentralizadas (DAOs)</li><li>Sistemas de identidade</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 30 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="Carteiras Cripto">
+  <div class="inner split r" style="grid-template-columns:1.25fr .75fr">
+    <div>
+      <h2 class="display h2 rv">Carteiras Cripto</h2>
+      <p class="lede rv d1" style="margin-bottom:.8rem">São como <b>conta bancárias para moedas digitais</b>.</p>
+      <p class="lede rv d1" style="font-weight:300;margin-bottom:1.8rem">Armazenam criptoativos obtidos através de compra, transferência ou mineração. São o meio para interação em sites e aplicativos da Web3.</p>
+      <div class="tags c2 rv d2"><div class="tag sm">Hot-wallet</div><div class="tag sm">Cold-wallet</div><div class="tag sm">Digitais</div><div class="tag sm">Físicas</div></div>
+    </div>
+    <div class="icons rv d2">
+      <img class="sq" src="/assets/img/aulas/comece-web3/core.webp" alt="Core wallet" loading="lazy">
+      <img class="sq" src="/assets/img/aulas/comece-web3/phantom.webp" alt="Phantom" loading="lazy">
+      <img class="sq" src="/assets/img/aulas/comece-web3/rainbow.webp" alt="Rainbow" loading="lazy">
+      <img src="/assets/img/aulas/comece-web3/temple.webp" alt="Temple wallet" loading="lazy">
+      <img src="/assets/img/aulas/comece-web3/ledger.webp" alt="Ledger" loading="lazy" style="grid-column:span 2;max-width:240px">
+    </div>
+  </div>
+</section>
+
+<!-- 31 -->
+<section class="slide black" data-sec="04 · Aplicações" data-title="Carteira digital (app)" style="padding:0">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/wallet-app.webp" alt="Telas de app de carteira: saldo, coleção de NFTs e troca de tokens" loading="lazy" style="object-fit:contain;background:#3a2f3a">
+</section>
+
+<!-- 32 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="Carteiras físicas">
+  <div class="inner">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/hardwallets.webp" alt="Diversos modelos de carteiras físicas (hardware wallets)" loading="lazy" style="max-width:900px;margin:0 auto;mix-blend-mode:multiply">
+  </div>
+</section>
+
+<!-- 30a · CHAVES -->
+<section class="slide" data-sec="04 · Segurança" data-title="Chaves pública e privada">
+  <span class="shape tri p far" aria-hidden="true" style="width:20vw;height:18vw;right:-5vw;top:-6vw;--r:190deg"></span>
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;right:6%;bottom:12%;--r:-10deg;--t:12s"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Chaves de segurança</h2>
+    <div class="kgrid">
+      <div class="kcard rv d1">
+        <span class="kicker">Pode compartilhar</span>
+        <h3>Chave pública</h3>
+        <p class="sub">É como o número da conta bancária.</p>
+        <ul class="bullets">
+          <li>Sequência de números e letras gerada aleatoriamente ao criar a carteira.</li>
+          <li>É o que você passa para <strong>enviar ou receber</strong> ativos digitais.</li>
+          <li>Aparece no rastreador de blocos.</li>
+          <li>Ninguém consegue alterar ou gastar seus ativos só com ela.</li>
+        </ul>
+      </div>
+      <div class="kcard rv d2">
+        <span class="kicker no">Nunca compartilhe</span>
+        <h3>Chave privada</h3>
+        <p class="sub">São as senhas e frases-semente que dão acesso à carteira.</p>
+        <ul class="bullets">
+          <li><strong>Senha:</strong> login da carteira. Em hardware wallets, é um <strong>PIN</strong> (só números, definido por você).</li>
+          <li><strong>Frase-semente (seed phrase):</strong> a parte mais importante da segurança.</li>
+          <li>Mantenha em <strong>sigilo</strong> e em <strong>local físico seguro</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30b · FRASE-SEMENTE -->
+<section class="slide light tight" data-sec="04 · Segurança" data-title="Frase-semente (seed phrase)">
+  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;left:-5vw;bottom:-6vw;--r:20deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.6rem">Frase-semente</h2>
+    <p class="lede rv d1" style="max-width:62ch">Sequência de palavras gerada quando você cria a carteira. Com ela, você <strong>recupera a mesma conta em outros dispositivos</strong>: troca o software ou o hardware e mantém os mesmos ativos.</p>
+    <div class="seedgrid">
+      <div class="rv d2"><svg class="seedsvg" viewBox="0 0 1358 526" role="img" aria-label="Frase-semente de 12 palavras restaura a mesma carteira em diferentes dispositivos e redes">
+<g>
+<g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="214.4" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="214.4" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="224.8" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="224.8" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,341.9h-111.4c-11,0-19.9-8.9-19.9-19.9v-80.5c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9V322C1337,333,1328.1,341.9,1317.1,341.9z"/>
+</g>
+<path class="sp1" d="M1335,304.1h-32.2c-11,0-19.9-8.9-19.9-19.9v-4.8c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+v23.7C1345.5,299.4,1340.8,304.1,1335,304.1z"/>
+</g>
+<g>
+<path class="sp2" d="M1223.6,262.3c0-1.9,0-3.5,0-5c0-1.5,0-3,0-4.6c2,0,3.8,0,5.9,0c0,3,0,6,0,9.2c1.6,0,2.9,0,4.5,0
+c0-3,0-5.9,0-9.1c2.1,0,4,0,6,0c0,3.2,0,6.3,0,9.2c2.8,0.7,5.4,1.2,7.8,2.1c3.7,1.3,6,4,6.4,8c0.5,4-0.6,7.3-4.2,9.6
+c-0.1,0.1-0.1,0.2-0.2,0.3c0.1,0.1,0.1,0.3,0.2,0.3c5,1.7,7.3,4.4,7.5,8.7c0.4,5.7-0.9,10.7-6.6,13.1c-3.3,1.4-7.1,1.9-11,2.9
+c0,2.6,0,5.8,0,9c-2,0-3.8,0-5.9,0c0-3,0-6.1,0-9.4c-1.6,0-3,0-4.7,0c0,3,0,6.1,0,9.4c-2.1,0-4,0-6.1,0c0-3.2,0-6.3,0-9.6
+c-3.9,0-7.7,0-11.8,0c0.4-2.5,0.7-4.7,1.1-7.2c1.4,0,2.7,0,4,0c1.6,0,2.5-0.7,2.5-2.3c0.1-8.5,0.1-17,0.1-25.5
+c0-1.7-1-2.8-2.8-3c-1.5-0.1-3.1-0.2-4.8-0.2c0-2,0-3.9,0-6C1215.6,262.3,1219.4,262.3,1223.6,262.3z M1229.7,299.2
+c3.6,0.6,9.2,0.1,12-0.9c2.8-1,4.3-2.8,4.3-5.3c0-2.4-1.4-4.3-4.2-5.3c-3.9-1.4-7.9-1.2-12.1-1
+C1229.7,291,1229.7,295,1229.7,299.2z M1229.7,281.1c3.5-0.5,6.8-0.9,10-1.6c2.2-0.5,3.4-2.2,3.6-4.5c0.1-2.3-1.2-4.1-3.6-5
+c-3.2-1.2-6.5-1.1-10-0.9C1229.7,272.9,1229.7,276.6,1229.7,281.1z"/>
+</g>
+</g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="388.9" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="388.9" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="399.2" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="399.2" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,516.3h-111.4c-11,0-19.9-8.9-19.9-19.9V416c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9v80.5C1337,507.4,1328.1,516.3,1317.1,516.3z"/>
+</g>
+<path class="sp1" d="M1335,478.5h-32.2c-11,0-19.9-8.9-19.9-19.9v-4.8c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+V468C1345.5,473.8,1340.8,478.5,1335,478.5z"/>
+</g>
+<g>
+<path class="sp2" d="M1231,480.5c-7.4,0-14.9,0-22.3,0c-0.2,0-0.3,0-0.5,0c-0.5,0-0.9-0.2-1.1-0.7c-0.2-0.5-0.2-0.9,0.1-1.3
+c0.1-0.1,0.1-0.2,0.2-0.3c2.2-2.8,4.3-5.7,6.4-8.5c0.4-0.5,0.8-0.7,1.5-0.7c15.1,0,30.2,0,45.3,0c0.1,0,0.3,0,0.4,0
+c0.9,0.1,1.4,1,1,1.8c-0.1,0.2-0.2,0.3-0.3,0.4c-2.2,2.8-4.3,5.7-6.4,8.5c-0.4,0.5-0.9,0.8-1.5,0.8
+C1246.2,480.5,1238.6,480.5,1231,480.5z"/>
+<path class="sp2" d="M1231.2,445.4c-7.5,0-15,0-22.5,0c-0.2,0-0.4,0-0.6,0c-0.9-0.1-1.3-1.1-0.9-1.9c0.1-0.1,0.2-0.3,0.3-0.4
+c2.1-2.8,4.3-5.6,6.4-8.5c0.4-0.5,0.9-0.7,1.5-0.7c15.1,0,30.1,0,45.2,0c0.2,0,0.3,0,0.5,0c0.9,0.1,1.4,1,1,1.8
+c-0.1,0.2-0.2,0.3-0.3,0.4c-2.1,2.8-4.3,5.6-6.4,8.5c-0.4,0.6-0.9,0.8-1.6,0.8C1246.2,445.4,1238.7,445.4,1231.2,445.4z"/>
+<path class="sp2" d="M1231.1,451.4c7.4,0,14.7,0,22.1,0c0.2,0,0.4,0,0.6,0c0.6,0,1.1,0.2,1.4,0.7c0.9,1.2,1.7,2.3,2.6,3.5
+c1.3,1.7,2.5,3.3,3.8,5c0,0.1,0.1,0.1,0.1,0.2c0.4,0.4,0.5,0.9,0.3,1.5c-0.3,0.6-0.8,0.7-1.3,0.7c-6.8,0-13.6,0-20.4,0
+c-8.2,0-16.5,0-24.7,0c-0.8,0-1.3-0.3-1.8-0.9c-2.1-2.8-4.2-5.6-6.3-8.4c-0.2-0.2-0.3-0.5-0.4-0.8c-0.2-0.7,0.3-1.4,1-1.5
+c0.2,0,0.5,0,0.8,0C1216.2,451.4,1223.6,451.4,1231.1,451.4z"/>
+</g>
+</g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="40" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="40" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="50.4" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="50.4" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,167.5h-111.4c-11,0-19.9-8.9-19.9-19.9V67.1c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9v80.5C1337,158.6,1328.1,167.5,1317.1,167.5z"/>
+</g>
+<path class="sp1" d="M1335,129.7h-32.2c-11,0-19.9-8.9-19.9-19.9V105c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+v23.7C1345.5,125,1340.8,129.7,1335,129.7z"/>
+</g>
+<g>
+<path class="sp2" d="M1234.6,136c0.4,0.2,0.6,0.4,0.8,0.5c4.1,2.6,12.4,3.1,15.5-3.7c0.9-2,1.4-4.2,1.6-6.3
+c0.4-3.3,0-6.6-1.2-9.8c-2.1-5.7-8.1-8-13.5-5.1c-1.3,0.7-2.6,1.3-3.9,2c-0.6-1.4,0-2.4,0.7-3.4c4.7-6.2,9.3-12.5,14-18.7
+c0.2-0.2,0.3-0.5,0.6-0.9c-0.3,0-0.6-0.1-0.9-0.1c-6.4,0-12.8,0-19.1,0c-1,0-1.4,0.3-1.4,1.3c0,7,0,14,0,21.1
+c0,0.6,0,1.2,0.2,1.8c0.9,3.8,4.3,5.2,7.5,3c1.3-0.9,2.3-2.2,3.5-3.2c0.5-0.4,1.3-0.9,1.7-0.7c0.5,0.2,1,1,1.2,1.6
+c0.1,0.6-0.1,1.4-0.3,2c-1.8,3.5-4.5,5.8-8.6,5.8c-2.1,0-4.2-0.1-6.3-0.6c-4.1-0.9-6.9-4.6-6.9-8.8c0-7.2,0-14.4,0-21.6
+c0-1.3-0.4-1.6-1.6-1.6c-2.8,0.1-5.7,0-8.5,0c-0.9,0-1.2-0.3-1.2-1.2c-0.1-3.2-0.2-3.2,3-3.2c2.3,0,4.6,0,6.8,0
+c1.1,0,1.6-0.3,1.6-1.5c-0.1-1.8-0.1-3.5,0-5.3c0.1-1.7-0.3-3.1-1.7-4.1c-0.8-0.6-1.1-1.5-0.9-2.4c0.1-0.3,0.5-0.8,0.8-0.8
+c2.2-0.1,4.3-0.2,6.5,0c1,0.1,2.1,0.8,3,1.4c0.3,0.2,0.4,0.9,0.4,1.4c0,3.2,0,6.5,0,9.7c0,0.5,0,0.9,0.1,1.5c2,0,3.9,0,5.8,0
+c7.3,0,14.6,0,21.8-0.1c1.1,0,3.9,2,4.1,3c0.1,0.3-0.3,0.8-0.6,1.1c-5.2,5.2-10.3,10.4-15.5,15.6c-0.2,0.2-0.5,0.4-0.9,0.8
+c5.6-1,10,1.1,13.6,4.8c2.6,2.7,3.8,6.2,4.3,9.9c0.7,4.8-0.1,9.3-2.4,13.6c-1.4,2.6-3.5,4.7-6.3,6c-5.6,2.7-11.3,3.1-17.1,1
+c-4.2-1.6-7.2-6-7.2-10.4c0-2.6,1.4-4.3,3.9-4.9c2.2-0.5,4.6,0.6,5.6,2.5c1.1,2.3,0.6,5-1.3,6.5
+C1235.5,135.4,1235.2,135.6,1234.6,136z"/>
+</g>
+</g>
+</g>
+<g>
+<path class="sp1" d="M576.1,473H45.9c-18.5,0-33.4-15-33.4-33.4V140.4c0-18.5,15-33.4,33.4-33.4h530.2c18.5,0,33.4,15,33.4,33.4
+v299.2C609.5,458,594.5,473,576.1,473z"/>
+<text transform="matrix(1 0 0 1 82.4087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">1</tspan><tspan x="-7.1" y="72" class="sp2 sp3 sp4">4</tspan><tspan x="-3.9" y="144" class="sp2 sp3 sp4">7</tspan><tspan x="-14.3" y="216" class="sp2 sp3 sp4">10</tspan></text>
+<text transform="matrix(1 0 0 1 236.9087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">2</tspan><tspan x="0.5" y="72" class="sp2 sp3 sp4">5</tspan><tspan x="0.5" y="144" class="sp2 sp3 sp4">8</tspan><tspan x="-3.4" y="216" class="sp2 sp3 sp4">11</tspan></text>
+<text transform="matrix(1 0 0 1 415.4087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">3</tspan><tspan x="0.1" y="72" class="sp2 sp3 sp4">6</tspan><tspan x="0.5" y="144" class="sp2 sp3 sp4">9</tspan><tspan x="-9.4" y="216" class="sp2 sp3 sp4">12</tspan></text>
+<text transform="matrix(1 0 0 1 105.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">classroom</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">tablet</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">curriculum</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">coding</tspan></text>
+<text transform="matrix(1 0 0 1 265.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">textbook</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">smartboard</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">syllabus</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">laptop</tspan></text>
+<text transform="matrix(1 0 0 1 443.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">pedagogy</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">simulation</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">lesson</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">virtual</tspan></text>
+<g>
+<g>
+<line class="sp7" x1="609.5" y1="290" x2="667.3" y2="290"/>
+<g>
+<polygon class="sp5" points="663.8,302 684.5,290 663.8,278 					"/>
+</g>
+</g>
+</g>
+</g>
+<g>
+<path class="sp1" d="M1064.8,473H742.7c-18.5,0-33.4-15-33.4-33.4V140.4c0-18.5,15-33.4,33.4-33.4h322.2c18.5,0,33.4,15,33.4,33.4
+v299.2C1098.2,458,1083.3,473,1064.8,473z"/>
+<g>
+<g>
+<path class="sp8" d="M903.8,393c-27.7,0-53.7-10.8-73-30.3c-19.4-19.5-30-45.6-30-73.5c0.1-56.4,46.4-102.2,103.2-102.2
+c27.5,0,53.3,10.7,72.8,30.2c19.4,19.5,30.1,45.3,30.1,72.8C1006.7,346.8,960.5,393,903.8,393L903.8,393z M850.4,279.5
+c-0.4,0-0.9,0-1.3,0.1c-6.3,0.5-11.1,3.9-13.5,9.7c-2.5,6-1.4,11.9,3.1,17l11.7,13.4c8.5,9.7,17,19.5,25.5,29.2
+c1.2,1.3,2.3,2.3,3.4,3.1c2.8,1.9,5.9,2.9,9.1,2.9c4.7,0,9.1-2.2,12.4-6.1c12.2-14.5,24.3-28.9,36.5-43.4l14.8-17.6
+c2.2-2.6,4.4-5.3,6.7-7.9c4-4.8,8-9.5,12-14.3c5.7-6.8,5.5-15.7-0.4-21.7c-3.1-3.1-7.1-4.9-11.3-4.9c-4.7,0-9.2,2.2-12.4,6
+c-10.1,12-20.2,24-30.2,36l-12.2,14.6l-16.1,19.2l-4.5-5.1c-7.1-8.1-14.1-16.1-21.2-24.2C859.2,281.4,855.1,279.5,850.4,279.5z"
+/>
+<path class="sp2" d="M904,191c26.4,0,51.2,10.3,69.9,29c18.7,18.7,29,43.5,28.9,69.9c0,26.5-10.3,51.4-29,70.1
+c-18.7,18.7-43.5,29-69.9,29l-0.1,0c-26.6,0-51.6-10.4-70.2-29.1c-18.6-18.8-28.9-43.9-28.8-70.7C804.8,235.1,849.3,191,904,191
+L904,191 M888.1,308.5l-1.6-1.8c-6.9-7.9-14-16-21-24c-4.1-4.7-9.4-7.2-15.2-7.2c-0.5,0-1.1,0-1.6,0.1
+c-7.8,0.6-13.9,5-16.9,12.1c-3.1,7.4-1.7,14.9,3.8,21.2l11.6,13.3c8.5,9.8,17.1,19.6,25.7,29.4c1.4,1.6,2.7,2.8,4.1,3.8
+c3.4,2.4,7.3,3.6,11.3,3.6c5.9,0,11.4-2.7,15.5-7.5c12.1-14.3,24.3-28.9,36.2-43.1c5-6,10-12,15.1-17.9c2.2-2.6,4.4-5.2,6.6-7.8
+c4.1-4.8,8.1-9.6,12.2-14.5c6.9-8.3,6.7-19.7-0.6-27.1c-3.8-3.9-8.8-6.1-14.1-6.1c-5.9,0-11.5,2.7-15.5,7.4
+c-10.1,11.9-20.3,24.1-30.1,35.9c-4.1,4.9-8.2,9.8-12.4,14.7C896.9,298.1,892.6,303.3,888.1,308.5 M903.9,183
+c-59,0-107.1,47.6-107.2,106.2C796.6,349,844.2,397,903.8,397c0,0,0.1,0,0.1,0c59,0,106.9-47.9,106.9-107.1
+C1010.8,231,962.9,183,903.9,183C903.9,183,903.9,183,903.9,183L903.9,183z M888.3,320.7c6.5-7.7,12.8-15.2,19.1-22.7
+c14.2-16.9,28.3-33.7,42.5-50.6c2.6-3,6-4.6,9.4-4.6c3,0,6,1.2,8.4,3.7c4.4,4.5,4.5,11.2,0.2,16.4c-6.2,7.4-12.5,14.8-18.7,22.3
+c-17.1,20.3-34.1,40.7-51.3,61c-2.6,3.1-6,4.7-9.4,4.7c-2.3,0-4.6-0.7-6.8-2.2c-1-0.7-1.9-1.6-2.7-2.5
+c-12.4-14.2-24.8-28.4-37.2-42.6c-3.3-3.8-4.4-8.1-2.4-12.9c1.8-4.4,5.3-6.9,10.1-7.2c0.3,0,0.7,0,1,0c3.7,0,6.7,1.6,9.2,4.5
+c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="289.6" x2="1156.3" y2="289.6"/>
+<g>
+<polygon class="sp5" points="1152.8,301.5 1173.5,289.6 1152.8,277.6 					"/>
+</g>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="172.6" x2="1160.1" y2="123.3"/>
+<g>
+<polygon class="sp5" points="1164.8,134.9 1173.5,112.6 1149.8,116.2 					"/>
+</g>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="406.6" x2="1160.1" y2="455.8"/>
+<g>
+<polygon class="sp5" points="1149.8,463 1173.5,466.6 1164.8,444.3 					"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg></div>
+      <div class="seedalerts rv d3">
+      <div class="alert">Perdeu a frase-semente? É impossível resgatar a carteira. Não há sistema de recuperação: só dá para gerar uma nova enquanto você ainda acessa a carteira.</div>
+      <div class="alert">Nunca guarde suas chaves em arquivos digitais, e-mails ou aplicativos. Anote e guarde em local físico seguro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30c · GOLPES -->
+<section class="slide tight" data-sec="04 · Segurança" data-title="Golpes">
+  <span class="shape bolt p mid" aria-hidden="true" style="width:10vw;height:15vw;right:-2vw;top:-3vw;--r:14deg"></span>
+  <span class="shape tri y near" aria-hidden="true" style="width:4vw;height:3.6vw;left:46%;top:9%;--r:-12deg;--t:12s"></span>
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.5rem">Golpes</h2>
+    <p class="lede rv d1" style="max-width:none">Onde tem dinheiro, tem gente tentando tirar vantagem. <strong>Se algo parece bom demais para ser verdade, é golpe.</strong></p>
+    <div class="scams">
+      <div class="scam rv d1"><div class="n">01</div><h3>Falsos colecionadores no Instagram</h3><p>Oferecem um preço altíssimo pela sua obra (geralmente em ETH) e pedem que você pague uma <b>taxa</b> antes da venda. Não existe venda.</p></div>
+      <div class="scam rv d2"><div class="n">02</div><h3>Propostas de trabalho</h3><p>Jogos DeFi ou encomendas de arte que mandam um arquivo de "teste" ou "referências". O download pode ser um <b>malware</b> que invade suas carteiras.</p></div>
+      <div class="scam rv d3"><div class="n">03</div><h3>Sites falsos de projetos em alta</h3><p>Links espalhados no Discord e no X. Ao tentar comprar, o site <b>drena tudo</b> o que está na carteira.</p></div>
+      <div class="scam rv d4"><div class="n">04</div><h3>Perfis se passando por artistas</h3><p>Denuncie na plataforma ou no Discord oficial. A <b>validação da comunidade</b> ajuda a identificar informações inconsistentes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 30d · MEDIDAS -->
+<section class="slide tight" data-sec="04 · Segurança" data-title="Medidas de segurança">
+  <span class="shape tri p far" aria-hidden="true" style="width:22vw;height:20vw;right:-6vw;bottom:-8vw;--r:-8deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Medidas de segurança</h2>
+    <ol class="tips rv d1">
+      <li><span>Não clique em links desconhecidos.</span></li>
+      <li><span>Não abra anexos de perfis desconhecidos.</span></li>
+      <li><span>Não conecte sua carteira em qualquer site.</span></li>
+      <li><span>Duvide de propostas muito exorbitantes.</span></li>
+      <li><span>Crie formas diretas e organizadas para negociar seus trabalhos.</span></li>
+      <li><span>Use extensão anti phishing/spam.</span></li>
+      <li><span>Vasculhe o perfil do usuário em busca de informações confiáveis.</span></li>
+      <li><span>Se você exigir medidas de segurança e o suposto cliente insistir que não pode cumprir, <b>desista</b>.</span></li>
+      <li><span><b>Não compartilhe suas chaves</b> com ninguém e guarde em local físico seguro.</span></li>
+      <li><span>Troque senhas regularmente: dá para "rechavear" a carteira e gerar uma nova frase-semente.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 30e · EXTENSÕES -->
+<section class="slide light" data-sec="04 · Segurança" data-title="Extensões anti phishing/spam">
+  <span class="shape bolt y far" aria-hidden="true" style="width:12vw;height:18vw;left:44%;top:-6vw;--r:16deg"></span>
+  <div class="inner split">
+    <div class="rv">
+      <h2 class="display h2">Extensões anti phishing/spam</h2>
+      <div class="ext-names"><span>Pocket Universe</span><span>Wallet Guard</span></div>
+    </div>
+    <div class="ext rv d1"><img src="/assets/img/aulas/comece-web3/extensoes-seguranca.webp" alt="Telas das extensões Wallet Guard (pontuação de segurança) e Pocket Universe (simulação de transação na Opensea)" loading="lazy"></div>
+  </div>
+</section>
+
+
+<!-- 33 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="NFT é um certificado digital">
+  <div class="inner split">
+    <div class="rv" style="position:relative;max-width:440px;margin:0 auto">
+      <img class="media" src="/assets/img/aulas/comece-web3/myth-clok.webp" alt="Obra 'The Myth Clok'" loading="lazy">
+      <img class="media" src="/assets/img/aulas/comece-web3/myth-tweet.webp" alt="Tweet: I will never leave. I will never stop minting. I will never stop listing. NFTs for life" loading="lazy" style="margin-top:-8%;width:112%;margin-left:-6%">
+    </div>
+    <div class="rv d1">
+      <p class="yel" style="font-weight:900;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1;margin-bottom:1.2rem">NFT é um certificado digital de propriedade de um item.</p>
+      <p class="small" style="margin-bottom:1.4rem;max-width:34ch">Criado e registrado em blockchain contendo arquivos, links, texto ou códigos.</p>
+      <p class="pink" style="font-weight:900;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1">Mas na criptoarte vai além,<br>é um movimento cultural.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 34 -->
+<section class="slide" data-sec="04 · Aplicações" data-title="Poderia ser NFT, mas não é">
+  <div class="inner">
+    <h2 class="display center rv" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:1.6rem">Poderia ser NFT, mas não é.</h2>
+    <div class="thumbs">
+      <figure class="rv d1"><img src="/assets/img/aulas/comece-web3/kindle.webp" alt="Biblioteca Kindle" loading="lazy" style="object-position:left top"><figcaption class="cap">Artigos digitais</figcaption></figure>
+      <figure class="rv d2"><img src="/assets/img/aulas/comece-web3/brawl-stars.webp" alt="Personagens de Brawl Stars" loading="lazy"><figcaption class="cap">Itens de jogos</figcaption></figure>
+      <figure class="rv d3"><img src="/assets/img/aulas/comece-web3/govbr.webp" alt="Tela de login gov.br" loading="lazy" style="object-position:62% top"><figcaption class="cap">Sistemas públicos</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 35 -->
+<section class="slide light" data-sec="04 · Aplicações" data-title="dNFT: casa 2022 → 2037">
+  <div class="inner">
+    <img class="media rv" src="/assets/img/aulas/comece-web3/dnft-casa.webp" alt="Exemplo de NFT dinâmico: metadados de uma casa em 2022 e em 2037, com histórico de manutenção e vendas" loading="lazy" style="max-height:84vh;width:auto;max-width:100%;margin:0 auto">
+  </div>
+</section>
+
+<!-- ============ 05 · COMUNIDADE ============ -->
+
+<!-- 36 -->
+<section class="slide" data-sec="05 · Comece" data-title="Twitter / X, Discord e Telegram">
+  <div class="inner social">
+    <div class="soc rv">
+      <div class="em"><img src="/assets/img/aulas/comece-web3/emoji-6.webp" alt="" loading="lazy"><img src="/assets/img/aulas/comece-web3/emoji-7.webp" alt="" loading="lazy"></div>
+      <h3>Twitter / X</h3><p>Principal espaço de discussão pública Web3.</p><p><b>Onde a comunidade existe:</b> founders, artistas, devs, etc.</p>
+    </div>
+    <div class="soc rv d1">
+      <div class="em"><img src="/assets/img/aulas/comece-web3/emoji-2.webp" alt="" loading="lazy"><img src="/assets/img/aulas/comece-web3/emoji-3.webp" alt="" loading="lazy"></div>
+      <h3>Discord</h3><p>Servidores segmentados por canais.</p><p>Base de projetos NFT, <b>DeFi e DAOs para anúncios, suporte e governança.</b></p>
+    </div>
+    <div class="soc rv d2">
+      <div class="em"><img src="/assets/img/aulas/comece-web3/emoji-1.webp" alt="" loading="lazy"><img src="/assets/img/aulas/comece-web3/emoji-5.webp" alt="" loading="lazy"><img src="/assets/img/aulas/comece-web3/emoji-4.webp" alt="" loading="lazy"></div>
+      <h3>Telegram</h3><p>Grupos com muita informação.</p><p><b>Preferido para alpha calls, grupos de comunidades e trading.</b></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 37 -->
+<section class="slide" data-sec="05 · Comece" data-title="Como começar na Web3?">
+  <div class="inner">
+    <div class="split" style="grid-template-columns:.8fr 1.2fr">
+      <h2 class="display h2 rv" style="margin:0">Como<br>começar<br>na Web3?</h2>
+      <div class="start-art rv d1">
+        <img src="/assets/img/aulas/comece-web3/lampada.webp" alt="" loading="lazy">
+        <img src="/assets/img/aulas/comece-web3/quadro.webp" alt="" loading="lazy">
+        <img src="/assets/img/aulas/comece-web3/grafico.webp" alt="" loading="lazy">
+        <img src="/assets/img/aulas/comece-web3/laptop.webp" alt="" loading="lazy">
+      </div>
+    </div>
+    <div class="start">
+      <div class="rv d1"><div class="btn3">Criptoarte</div><p>Fazer arte<br>e vender como NFT</p></div>
+      <div class="rv d2"><div class="btn3">Hackhatons</div><p>Competições<br>de inovação<br>e tecnologia</p></div>
+      <div class="rv d3"><div class="btn3">Comunidades</div><p>Conhecer pessoas, locais de aprendizado<br>e conexão</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 36b · AVALANCHE BUILD -->
+<section class="slide black" data-sec="05 · Comece" data-title="build.avax.network">
+  <img class="shot" src="/assets/img/aulas/comece-web3/avax-build.webp" alt="Página inicial do Avalanche Builder Hub: Build a Network" loading="lazy">
+  <a class="linkpill w" href="https://build.avax.network/" target="_blank" rel="noopener">build.avax.network</a>
+</section>
+
+<!-- 38 -->
+<section class="slide black" data-sec="05 · Comece" data-title="mallow.art">
+  <img class="shot" src="/assets/img/aulas/comece-web3/mallow.webp" alt="Página inicial do mallow.art" loading="lazy">
+  <a class="linkpill" href="https://mallow.art" target="_blank" rel="noopener">mallow.art</a>
+</section>
+
+<!-- 39 -->
+<section class="slide black" data-sec="05 · Comece" data-title="objkt.com">
+  <img class="shot" src="/assets/img/aulas/comece-web3/objkt.webp" alt="Página inicial do objkt.com" loading="lazy">
+  <a class="linkpill w" href="https://objkt.com" target="_blank" rel="noopener">objkt.com</a>
+</section>
+
+<!-- 40 -->
+<section class="slide black" data-sec="05 · Comece" data-title="Superteam Brasil LMS">
+  <img class="shot" src="/assets/img/aulas/comece-web3/superteam-lms.webp" alt="Página do LMS da Superteam Brasil" loading="lazy">
+  <a class="linkpill" href="https://lp.superteam.com.br" target="_blank" rel="noopener">lp.superteam.com.br</a>
+</section>
+
+<!-- 41 -->
+<section class="slide black" data-sec="05 · Comece" data-title="Superteam Earn">
+  <img class="shot" src="/assets/img/aulas/comece-web3/superteam-earn.webp" alt="Página do Superteam Earn com bounties" loading="lazy">
+  <a class="linkpill" href="https://superteam.fun/earn" target="_blank" rel="noopener">superteam.fun/earn</a>
+</section>
+
+<!-- 42 -->
+<section class="slide black" data-sec="05 · Comece" data-title="web3.career">
+  <img class="shot" src="/assets/img/aulas/comece-web3/web3career.webp" alt="Página do web3.career" loading="lazy">
+  <a class="linkpill w" href="https://web3.career" target="_blank" rel="noopener">web3.career</a>
+</section>
+
+<!-- ============ FECHAMENTO ============ -->
+
+<!-- 43 -->
+<section class="slide light" data-sec="" data-title="Wiki Computadores Fazem Arte" style="justify-content:flex-end">
+  <img class="shot" src="/assets/img/aulas/comece-web3/wiki-cfa.webp" alt="Wiki Computers Make Art" loading="lazy">
+  <div class="inner">
+    <a class="qrbox rv" href="https://numadessas.com.br/wiki/" target="_blank" rel="noopener">
+      <img src="/assets/img/aulas/qr-wiki.png" alt="QR Code da wiki">
+      <span>Acesse a wiki<br>Computadores Fazem Arte<br>pelo QR Code ao lado</span>
+    </a>
+  </div>
+</section>
+
+<!-- 44 -->
+<section class="slide black" data-sec="" data-title="Obrigada!" style="background:#061033">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/estrelas.webp" alt="" loading="lazy">
+  <div class="inner thanks">
+    <img class="rv" src="/assets/img/aulas/comece-web3/w3e-logo.webp" alt="Instituto Web3EduBrasil">
+    <div class="rv d1">
+      <h2 class="display h2">OBRIGADA!</h2>
+      <p><a href="https://x.com/web3edubrasil" target="_blank" rel="noopener">@web3edubrasil</a><br><a href="https://web3edubrasil.org" target="_blank" rel="noopener">web3edubrasil.org</a></p>
+      <p class="s"><a href="https://x.com/numadessas" target="_blank" rel="noopener">@numadessas</a><br><a href="https://numadessas.com.br" rel="noopener"><span>numadessas.com.br</span></a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var deck = document.getElementById('deck');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var count = document.getElementById('count');
+  var progress = document.getElementById('progress');
+  var sec = document.getElementById('sec');
+  var current = 0;
+
+  function update(i) {
+    current = i;
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    sec.textContent = slides[i].dataset.sec || '';
+    document.body.classList.toggle('on-light', !slides[i].classList.contains('dark') && !slides[i].classList.contains('black'));
+    if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); update(slides.indexOf(e.target)); }
+    });
+  }, { root: deck, threshold: 0.55 });
+  slides.forEach(function (s) { io.observe(s); });
+
+  // preload images of the next slides so they are ready during the class
+  function warm(i) {
+    for (var k = i; k <= i + 2 && k < slides.length; k++)
+      slides[k].querySelectorAll('img[loading="lazy"]').forEach(function (im) { im.loading = 'eager'; });
+  }
+  var _update = update; update = function (i) { _update(i); warm(i); };
+
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.getElementById('next').onclick = function () { go(current + 1); };
+  document.getElementById('prev').onclick = function () { go(current - 1); };
+  function fullscreen() {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  }
+  document.getElementById('fs').onclick = fullscreen;
+
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'Escape') { window.__setMenu && window.__setMenu(false); return; }
+    if (k === 'm' || k === 'M') { window.__setMenu && window.__setMenu(!window.__menuOpen()); return; }
+    if (window.__menuOpen && window.__menuOpen()) return;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); go(current + 1); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); go(current - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(slides.length - 1); }
+    else if (k === 'f' || k === 'F') { fullscreen(); }
+  });
+
+  // section menu
+  var NAMES = { '01': 'Internet', '02': 'Blockchain', '03': 'História da Blockchain', '04': 'Aplicações', '05': 'Comece na Web3' };
+  var panel = document.getElementById('menu-panel');
+  var mbtn = document.getElementById('menu-btn');
+  var groups = [], seenNum = false;
+  slides.forEach(function (sl, i) {
+    var m = (sl.dataset.sec || '').match(/^(0\d)/);
+    var key = m ? m[1] : (seenNum ? 'end' : 'start');
+    if (m) seenNum = true;
+    var g = groups[groups.length - 1];
+    if (!g || g.key !== key) { g = { key: key, items: [] }; groups.push(g); }
+    var t = (sl.dataset.title || 'Slide ' + (i + 1)).replace(/\s+/g, ' ').trim();
+    if (t.length > 52) t = t.slice(0, 50).trim() + '…';
+    g.items.push({ i: i, t: t });
+  });
+  panel.innerHTML = groups.map(function (g) {
+    var head = g.key === 'start' ? 'Abertura' : g.key === 'end' ? 'Fechamento' : '<b>' + g.key + '</b>' + NAMES[g.key];
+    return '<div class="menu-group"><h4>' + head + '</h4>' + g.items.map(function (it) {
+      return '<button class="menu-item" data-i="' + it.i + '"><span>' + (it.i + 1) + '</span>' + it.t + '</button>';
+    }).join('') + '</div>';
+  }).join('');
+  function setMenu(open) {
+    panel.classList.toggle('open', open);
+    mbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      panel.querySelectorAll('.menu-item').forEach(function (b) { b.classList.toggle('current', +b.dataset.i === current); });
+      var cur = panel.querySelector('.menu-item.current'); if (cur) cur.scrollIntoView({ block: 'nearest' });
+    }
+  }
+  mbtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!panel.classList.contains('open')); });
+  panel.addEventListener('click', function (e) {
+    var b = e.target.closest('.menu-item'); if (!b) return;
+    setMenu(false); deck.style.scrollBehavior = 'auto'; deck.scrollTop = slides[+b.dataset.i].offsetTop; deck.style.scrollBehavior = '';
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('#menu')) setMenu(false); });
+  window.__menuOpen = function () { return panel.classList.contains('open'); };
+  window.__setMenu = setMenu;
+
+  var start = parseInt((location.hash || '').slice(1), 10);
+  if (start > 1) setTimeout(function () { deck.style.scrollBehavior = 'auto'; deck.scrollTop = slides[Math.min(start, slides.length) - 1].offsetTop; deck.style.scrollBehavior = ''; }, 300);
+  update(0);
+})();
+</script>
+</body>
+</html>
