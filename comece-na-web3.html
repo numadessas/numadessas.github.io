@@ -184,7 +184,7 @@
   .legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .5rem; font-size: clamp(.62rem, .95vw, .78rem); color: var(--violet); }
   .legend i { font-style: normal; color: #666; }
 
-  .hbw { width: 100%; max-height: 84vh; display: block; margin: 0 auto; }
+  .hbw { width: 100%; max-height: 76vh; display: block; margin: 0 auto; }
   .hbw0 { fill: var(--plum); } .hbw1 { fill: var(--violet-tint); } .hbw2 { fill: #fff; } .hbw3 { fill: none; } .hbw4 { fill: var(--violet); }
   /* TIMELINE */
   .tl { position: relative; z-index: 2; display: grid; gap: .7rem; max-width: 760px; }
@@ -213,7 +213,7 @@
   @media (max-width: 860px) { .nft-art { opacity: .35; } }
   .cap { text-align: center; font-size: clamp(1rem, 1.6vw, 1.3rem); margin-top: .7rem; }
   .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2rem); }
-  .thumbs img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; background: #fff; }
+  .thumbs img { width: 100%; aspect-ratio: 2/3; max-height: 56vh; object-fit: cover; display: block; background: #fff; }
   @media (max-width: 600px) { .thumbs { grid-template-columns: 1fr; } .thumbs img { aspect-ratio: 16/10; } }
 
   /* SOCIAL */
@@ -254,6 +254,43 @@
   .thanks p.s span { font-weight: 400; }
   .thanks a { text-decoration: none; } .thanks a:hover { color: var(--yellow); }
   @media (max-width: 700px) { .thanks { grid-template-columns: 1fr; text-align: center; } .thanks img { margin: 0 auto; } }
+
+  /* KEYS & SECURITY */
+  .kgrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.4vw, 2rem); }
+  @media (max-width: 860px) { .kgrid { grid-template-columns: 1fr; } }
+  .kcard { background: var(--white); border-radius: 16px; padding: clamp(1.2rem, 2.6vw, 2rem); position: relative; box-shadow: 0 .4rem 0 var(--purple); }
+  .kcard .kicker { display: inline-block; font-weight: 700; font-size: clamp(.75rem, 1.1vw, .9rem); letter-spacing: .12em; text-transform: uppercase;
+    padding: .25rem .7rem; border-radius: 999px; margin-bottom: .8rem; background: var(--green); color: var(--plum); }
+  .kcard .kicker.no { background: var(--violet); color: var(--white); }
+  .kcard h3 { color: var(--violet); font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1; margin-bottom: .4rem; }
+  .kcard .sub { font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); margin-bottom: .9rem; color: var(--plum); }
+  .alert { background: var(--violet); color: var(--white); border-radius: 12px; padding: clamp(.9rem, 1.8vw, 1.2rem) clamp(1rem, 2vw, 1.5rem);
+    font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 1.3; display: flex; gap: .9rem; align-items: center; }
+  .alert::before { content: '!'; flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; font-weight: 900; }
+  .seedsvg { width: 100%; height: auto; display: block; max-height: 30vh; margin: 1rem 0; }
+  .slide.tight { padding-top: 3.6rem; padding-bottom: 3.6rem; }
+  .slide.tight .h2 { font-size: clamp(2rem, 4.2vw, 3.6rem); margin-bottom: .8rem; }
+  .slide.tight .lede { font-size: clamp(1rem, 1.7vw, 1.35rem); }
+  .slide.tight .alert { font-size: clamp(.9rem, 1.35vw, 1.1rem); padding: .75rem 1rem; }
+  .sp0 { fill: #fff; stroke: var(--violet); stroke-width: 8; stroke-miterlimit: 10; }
+  .sp1 { fill: #fff; stroke: var(--plum); stroke-width: 8; stroke-miterlimit: 10; }
+  .sp2 { fill: var(--violet); } .sp3 { font-family: var(--font); font-weight: 900; } .sp4 { font-size: 25px; }
+  .sp5 { fill: var(--plum); } .sp6 { font-family: var(--font); font-weight: 400; } .sp7 { fill: none; stroke: var(--plum); stroke-width: 8; stroke-miterlimit: 10; } .sp8 { fill: #fff; }
+  .scams { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(.8rem, 1.6vw, 1.2rem); margin-top: 1.6rem; }
+  @media (max-width: 1000px) { .scams { grid-template-columns: 1fr 1fr; } } @media (max-width: 600px) { .scams { grid-template-columns: 1fr; } }
+  .scam { background: var(--white); border-radius: 14px; padding: clamp(1rem, 1.8vw, 1.4rem); border-top: 6px solid var(--violet); }
+  .scam .n { font-weight: 900; color: var(--violet); font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1; }
+  .scam h3 { font-weight: 900; color: var(--plum); font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.15; margin: .4rem 0 .6rem; }
+  .scam p { font-size: clamp(.9rem, 1.25vw, 1.05rem); font-weight: 400; }
+  .tips { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.5rem, 1.1vw, .8rem) clamp(1rem, 2.4vw, 2rem); counter-reset: tip; }
+  @media (max-width: 860px) { .tips { grid-template-columns: 1fr; } }
+  .tips li { counter-increment: tip; display: flex; gap: .8rem; align-items: center; background: var(--white); border-radius: 10px; padding: .45rem .8rem;
+    font-size: clamp(.9rem, 1.3vw, 1.1rem); line-height: 1.22; }
+  .tips li::before { content: counter(tip); flex: none; width: 1.8rem; height: 1.8rem; border-radius: 8px; background: var(--violet); color: var(--white); font-weight: 900; display: grid; place-items: center; }
+  .tips b { font-weight: 700; }
+  .ext img { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 24px 30px rgba(31,28,31,.28)); }
+  .ext-names { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.4rem; }
+  .ext-names span { background: var(--violet); color: var(--white); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); padding: .4rem 1.1rem; border-radius: 8px; box-shadow: 0 .3rem 0 var(--purple); }
 
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
@@ -1110,6 +1147,267 @@
       <img src="/assets/img/aulas/comece-web3/temple.webp" alt="Temple wallet" loading="lazy">
       <img src="/assets/img/aulas/comece-web3/ledger.webp" alt="Ledger" loading="lazy" style="grid-column:span 2;max-width:240px">
     </div>
+  </div>
+</section>
+
+<!-- 30a · CHAVES -->
+<section class="slide" data-sec="04 · Segurança" data-title="Chaves pública e privada">
+  <span class="shape tri p far" aria-hidden="true" style="width:20vw;height:18vw;right:-5vw;top:-6vw;--r:190deg"></span>
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;right:6%;bottom:12%;--r:-10deg;--t:12s"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Chaves de segurança</h2>
+    <div class="kgrid">
+      <div class="kcard rv d1">
+        <span class="kicker">Pode compartilhar</span>
+        <h3>Chave pública</h3>
+        <p class="sub">É como o número da conta bancária.</p>
+        <ul class="bullets">
+          <li>Sequência de números e letras gerada aleatoriamente ao criar a carteira.</li>
+          <li>É o que você passa para <strong>enviar ou receber</strong> ativos digitais.</li>
+          <li>Aparece no rastreador de blocos.</li>
+          <li>Ninguém consegue alterar ou gastar seus ativos só com ela.</li>
+        </ul>
+      </div>
+      <div class="kcard rv d2">
+        <span class="kicker no">Nunca compartilhe</span>
+        <h3>Chave privada</h3>
+        <p class="sub">São as senhas e frases-semente que dão acesso à carteira.</p>
+        <ul class="bullets">
+          <li><strong>Senha:</strong> login da carteira. Em hardware wallets, é um <strong>PIN</strong> (só números, definido por você).</li>
+          <li><strong>Frase-semente (seed phrase):</strong> a parte mais importante da segurança.</li>
+          <li>Mantenha em <strong>sigilo</strong> e em <strong>local físico seguro</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30b · FRASE-SEMENTE -->
+<section class="slide light tight" data-sec="04 · Segurança" data-title="Frase-semente (seed phrase)">
+  <span class="shape tri y far" aria-hidden="true" style="width:18vw;height:16vw;left:-5vw;bottom:-6vw;--r:20deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.6rem">Frase-semente</h2>
+    <p class="lede rv d1" style="max-width:62ch">Sequência de palavras gerada quando você cria a carteira. Com ela, você <strong>recupera a mesma conta em outros dispositivos</strong>: troca o software ou o hardware e mantém os mesmos ativos.</p>
+    <div class="rv d2"><svg class="seedsvg" viewBox="0 0 1358 526" role="img" aria-label="Frase-semente de 12 palavras restaura a mesma carteira em diferentes dispositivos e redes">
+<g>
+<g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="214.4" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="214.4" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="224.8" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="224.8" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,341.9h-111.4c-11,0-19.9-8.9-19.9-19.9v-80.5c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9V322C1337,333,1328.1,341.9,1317.1,341.9z"/>
+</g>
+<path class="sp1" d="M1335,304.1h-32.2c-11,0-19.9-8.9-19.9-19.9v-4.8c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+v23.7C1345.5,299.4,1340.8,304.1,1335,304.1z"/>
+</g>
+<g>
+<path class="sp2" d="M1223.6,262.3c0-1.9,0-3.5,0-5c0-1.5,0-3,0-4.6c2,0,3.8,0,5.9,0c0,3,0,6,0,9.2c1.6,0,2.9,0,4.5,0
+c0-3,0-5.9,0-9.1c2.1,0,4,0,6,0c0,3.2,0,6.3,0,9.2c2.8,0.7,5.4,1.2,7.8,2.1c3.7,1.3,6,4,6.4,8c0.5,4-0.6,7.3-4.2,9.6
+c-0.1,0.1-0.1,0.2-0.2,0.3c0.1,0.1,0.1,0.3,0.2,0.3c5,1.7,7.3,4.4,7.5,8.7c0.4,5.7-0.9,10.7-6.6,13.1c-3.3,1.4-7.1,1.9-11,2.9
+c0,2.6,0,5.8,0,9c-2,0-3.8,0-5.9,0c0-3,0-6.1,0-9.4c-1.6,0-3,0-4.7,0c0,3,0,6.1,0,9.4c-2.1,0-4,0-6.1,0c0-3.2,0-6.3,0-9.6
+c-3.9,0-7.7,0-11.8,0c0.4-2.5,0.7-4.7,1.1-7.2c1.4,0,2.7,0,4,0c1.6,0,2.5-0.7,2.5-2.3c0.1-8.5,0.1-17,0.1-25.5
+c0-1.7-1-2.8-2.8-3c-1.5-0.1-3.1-0.2-4.8-0.2c0-2,0-3.9,0-6C1215.6,262.3,1219.4,262.3,1223.6,262.3z M1229.7,299.2
+c3.6,0.6,9.2,0.1,12-0.9c2.8-1,4.3-2.8,4.3-5.3c0-2.4-1.4-4.3-4.2-5.3c-3.9-1.4-7.9-1.2-12.1-1
+C1229.7,291,1229.7,295,1229.7,299.2z M1229.7,281.1c3.5-0.5,6.8-0.9,10-1.6c2.2-0.5,3.4-2.2,3.6-4.5c0.1-2.3-1.2-4.1-3.6-5
+c-3.2-1.2-6.5-1.1-10-0.9C1229.7,272.9,1229.7,276.6,1229.7,281.1z"/>
+</g>
+</g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="388.9" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="388.9" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="399.2" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="399.2" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,516.3h-111.4c-11,0-19.9-8.9-19.9-19.9V416c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9v80.5C1337,507.4,1328.1,516.3,1317.1,516.3z"/>
+</g>
+<path class="sp1" d="M1335,478.5h-32.2c-11,0-19.9-8.9-19.9-19.9v-4.8c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+V468C1345.5,473.8,1340.8,478.5,1335,478.5z"/>
+</g>
+<g>
+<path class="sp2" d="M1231,480.5c-7.4,0-14.9,0-22.3,0c-0.2,0-0.3,0-0.5,0c-0.5,0-0.9-0.2-1.1-0.7c-0.2-0.5-0.2-0.9,0.1-1.3
+c0.1-0.1,0.1-0.2,0.2-0.3c2.2-2.8,4.3-5.7,6.4-8.5c0.4-0.5,0.8-0.7,1.5-0.7c15.1,0,30.2,0,45.3,0c0.1,0,0.3,0,0.4,0
+c0.9,0.1,1.4,1,1,1.8c-0.1,0.2-0.2,0.3-0.3,0.4c-2.2,2.8-4.3,5.7-6.4,8.5c-0.4,0.5-0.9,0.8-1.5,0.8
+C1246.2,480.5,1238.6,480.5,1231,480.5z"/>
+<path class="sp2" d="M1231.2,445.4c-7.5,0-15,0-22.5,0c-0.2,0-0.4,0-0.6,0c-0.9-0.1-1.3-1.1-0.9-1.9c0.1-0.1,0.2-0.3,0.3-0.4
+c2.1-2.8,4.3-5.6,6.4-8.5c0.4-0.5,0.9-0.7,1.5-0.7c15.1,0,30.1,0,45.2,0c0.2,0,0.3,0,0.5,0c0.9,0.1,1.4,1,1,1.8
+c-0.1,0.2-0.2,0.3-0.3,0.4c-2.1,2.8-4.3,5.6-6.4,8.5c-0.4,0.6-0.9,0.8-1.6,0.8C1246.2,445.4,1238.7,445.4,1231.2,445.4z"/>
+<path class="sp2" d="M1231.1,451.4c7.4,0,14.7,0,22.1,0c0.2,0,0.4,0,0.6,0c0.6,0,1.1,0.2,1.4,0.7c0.9,1.2,1.7,2.3,2.6,3.5
+c1.3,1.7,2.5,3.3,3.8,5c0,0.1,0.1,0.1,0.1,0.2c0.4,0.4,0.5,0.9,0.3,1.5c-0.3,0.6-0.8,0.7-1.3,0.7c-6.8,0-13.6,0-20.4,0
+c-8.2,0-16.5,0-24.7,0c-0.8,0-1.3-0.3-1.8-0.9c-2.1-2.8-4.2-5.6-6.3-8.4c-0.2-0.2-0.3-0.5-0.4-0.8c-0.2-0.7,0.3-1.4,1-1.5
+c0.2,0,0.5,0,0.8,0C1216.2,451.4,1223.6,451.4,1231.1,451.4z"/>
+</g>
+</g>
+<g>
+<g>
+<g>
+<circle class="sp0" cx="1241.6" cy="40" r="30.4"/>
+<circle class="sp0" cx="1241.6" cy="40" r="20"/>
+</g>
+<g>
+<circle class="sp0" cx="1276.8" cy="50.4" r="30.4"/>
+<circle class="sp0" cx="1276.8" cy="50.4" r="20"/>
+</g>
+<g>
+<path class="sp1" d="M1317.1,167.5h-111.4c-11,0-19.9-8.9-19.9-19.9V67.1c0-11,8.9-19.9,19.9-19.9h111.4
+c11,0,19.9,8.9,19.9,19.9v80.5C1337,158.6,1328.1,167.5,1317.1,167.5z"/>
+</g>
+<path class="sp1" d="M1335,129.7h-32.2c-11,0-19.9-8.9-19.9-19.9V105c0-11,8.9-19.9,19.9-19.9h32.2c5.8,0,10.5,4.7,10.5,10.5
+v23.7C1345.5,125,1340.8,129.7,1335,129.7z"/>
+</g>
+<g>
+<path class="sp2" d="M1234.6,136c0.4,0.2,0.6,0.4,0.8,0.5c4.1,2.6,12.4,3.1,15.5-3.7c0.9-2,1.4-4.2,1.6-6.3
+c0.4-3.3,0-6.6-1.2-9.8c-2.1-5.7-8.1-8-13.5-5.1c-1.3,0.7-2.6,1.3-3.9,2c-0.6-1.4,0-2.4,0.7-3.4c4.7-6.2,9.3-12.5,14-18.7
+c0.2-0.2,0.3-0.5,0.6-0.9c-0.3,0-0.6-0.1-0.9-0.1c-6.4,0-12.8,0-19.1,0c-1,0-1.4,0.3-1.4,1.3c0,7,0,14,0,21.1
+c0,0.6,0,1.2,0.2,1.8c0.9,3.8,4.3,5.2,7.5,3c1.3-0.9,2.3-2.2,3.5-3.2c0.5-0.4,1.3-0.9,1.7-0.7c0.5,0.2,1,1,1.2,1.6
+c0.1,0.6-0.1,1.4-0.3,2c-1.8,3.5-4.5,5.8-8.6,5.8c-2.1,0-4.2-0.1-6.3-0.6c-4.1-0.9-6.9-4.6-6.9-8.8c0-7.2,0-14.4,0-21.6
+c0-1.3-0.4-1.6-1.6-1.6c-2.8,0.1-5.7,0-8.5,0c-0.9,0-1.2-0.3-1.2-1.2c-0.1-3.2-0.2-3.2,3-3.2c2.3,0,4.6,0,6.8,0
+c1.1,0,1.6-0.3,1.6-1.5c-0.1-1.8-0.1-3.5,0-5.3c0.1-1.7-0.3-3.1-1.7-4.1c-0.8-0.6-1.1-1.5-0.9-2.4c0.1-0.3,0.5-0.8,0.8-0.8
+c2.2-0.1,4.3-0.2,6.5,0c1,0.1,2.1,0.8,3,1.4c0.3,0.2,0.4,0.9,0.4,1.4c0,3.2,0,6.5,0,9.7c0,0.5,0,0.9,0.1,1.5c2,0,3.9,0,5.8,0
+c7.3,0,14.6,0,21.8-0.1c1.1,0,3.9,2,4.1,3c0.1,0.3-0.3,0.8-0.6,1.1c-5.2,5.2-10.3,10.4-15.5,15.6c-0.2,0.2-0.5,0.4-0.9,0.8
+c5.6-1,10,1.1,13.6,4.8c2.6,2.7,3.8,6.2,4.3,9.9c0.7,4.8-0.1,9.3-2.4,13.6c-1.4,2.6-3.5,4.7-6.3,6c-5.6,2.7-11.3,3.1-17.1,1
+c-4.2-1.6-7.2-6-7.2-10.4c0-2.6,1.4-4.3,3.9-4.9c2.2-0.5,4.6,0.6,5.6,2.5c1.1,2.3,0.6,5-1.3,6.5
+C1235.5,135.4,1235.2,135.6,1234.6,136z"/>
+</g>
+</g>
+</g>
+<g>
+<path class="sp1" d="M576.1,473H45.9c-18.5,0-33.4-15-33.4-33.4V140.4c0-18.5,15-33.4,33.4-33.4h530.2c18.5,0,33.4,15,33.4,33.4
+v299.2C609.5,458,594.5,473,576.1,473z"/>
+<text transform="matrix(1 0 0 1 82.4087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">1</tspan><tspan x="-7.1" y="72" class="sp2 sp3 sp4">4</tspan><tspan x="-3.9" y="144" class="sp2 sp3 sp4">7</tspan><tspan x="-14.3" y="216" class="sp2 sp3 sp4">10</tspan></text>
+<text transform="matrix(1 0 0 1 236.9087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">2</tspan><tspan x="0.5" y="72" class="sp2 sp3 sp4">5</tspan><tspan x="0.5" y="144" class="sp2 sp3 sp4">8</tspan><tspan x="-3.4" y="216" class="sp2 sp3 sp4">11</tspan></text>
+<text transform="matrix(1 0 0 1 415.4087 187.7871)"><tspan x="0" y="0" class="sp2 sp3 sp4">3</tspan><tspan x="0.1" y="72" class="sp2 sp3 sp4">6</tspan><tspan x="0.5" y="144" class="sp2 sp3 sp4">9</tspan><tspan x="-9.4" y="216" class="sp2 sp3 sp4">12</tspan></text>
+<text transform="matrix(1 0 0 1 105.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">classroom</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">tablet</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">curriculum</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">coding</tspan></text>
+<text transform="matrix(1 0 0 1 265.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">textbook</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">smartboard</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">syllabus</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">laptop</tspan></text>
+<text transform="matrix(1 0 0 1 443.3086 187.7871)"><tspan x="0" y="0" class="sp5 sp6 sp4">pedagogy</tspan><tspan x="0" y="72" class="sp5 sp6 sp4">simulation</tspan><tspan x="0" y="144" class="sp5 sp6 sp4">lesson</tspan><tspan x="0" y="216" class="sp5 sp6 sp4">virtual</tspan></text>
+<g>
+<g>
+<line class="sp7" x1="609.5" y1="290" x2="667.3" y2="290"/>
+<g>
+<polygon class="sp5" points="663.8,302 684.5,290 663.8,278 					"/>
+</g>
+</g>
+</g>
+</g>
+<g>
+<path class="sp1" d="M1064.8,473H742.7c-18.5,0-33.4-15-33.4-33.4V140.4c0-18.5,15-33.4,33.4-33.4h322.2c18.5,0,33.4,15,33.4,33.4
+v299.2C1098.2,458,1083.3,473,1064.8,473z"/>
+<g>
+<g>
+<path class="sp8" d="M903.8,393c-27.7,0-53.7-10.8-73-30.3c-19.4-19.5-30-45.6-30-73.5c0.1-56.4,46.4-102.2,103.2-102.2
+c27.5,0,53.3,10.7,72.8,30.2c19.4,19.5,30.1,45.3,30.1,72.8C1006.7,346.8,960.5,393,903.8,393L903.8,393z M850.4,279.5
+c-0.4,0-0.9,0-1.3,0.1c-6.3,0.5-11.1,3.9-13.5,9.7c-2.5,6-1.4,11.9,3.1,17l11.7,13.4c8.5,9.7,17,19.5,25.5,29.2
+c1.2,1.3,2.3,2.3,3.4,3.1c2.8,1.9,5.9,2.9,9.1,2.9c4.7,0,9.1-2.2,12.4-6.1c12.2-14.5,24.3-28.9,36.5-43.4l14.8-17.6
+c2.2-2.6,4.4-5.3,6.7-7.9c4-4.8,8-9.5,12-14.3c5.7-6.8,5.5-15.7-0.4-21.7c-3.1-3.1-7.1-4.9-11.3-4.9c-4.7,0-9.2,2.2-12.4,6
+c-10.1,12-20.2,24-30.2,36l-12.2,14.6l-16.1,19.2l-4.5-5.1c-7.1-8.1-14.1-16.1-21.2-24.2C859.2,281.4,855.1,279.5,850.4,279.5z"
+/>
+<path class="sp2" d="M904,191c26.4,0,51.2,10.3,69.9,29c18.7,18.7,29,43.5,28.9,69.9c0,26.5-10.3,51.4-29,70.1
+c-18.7,18.7-43.5,29-69.9,29l-0.1,0c-26.6,0-51.6-10.4-70.2-29.1c-18.6-18.8-28.9-43.9-28.8-70.7C804.8,235.1,849.3,191,904,191
+L904,191 M888.1,308.5l-1.6-1.8c-6.9-7.9-14-16-21-24c-4.1-4.7-9.4-7.2-15.2-7.2c-0.5,0-1.1,0-1.6,0.1
+c-7.8,0.6-13.9,5-16.9,12.1c-3.1,7.4-1.7,14.9,3.8,21.2l11.6,13.3c8.5,9.8,17.1,19.6,25.7,29.4c1.4,1.6,2.7,2.8,4.1,3.8
+c3.4,2.4,7.3,3.6,11.3,3.6c5.9,0,11.4-2.7,15.5-7.5c12.1-14.3,24.3-28.9,36.2-43.1c5-6,10-12,15.1-17.9c2.2-2.6,4.4-5.2,6.6-7.8
+c4.1-4.8,8.1-9.6,12.2-14.5c6.9-8.3,6.7-19.7-0.6-27.1c-3.8-3.9-8.8-6.1-14.1-6.1c-5.9,0-11.5,2.7-15.5,7.4
+c-10.1,11.9-20.3,24.1-30.1,35.9c-4.1,4.9-8.2,9.8-12.4,14.7C896.9,298.1,892.6,303.3,888.1,308.5 M903.9,183
+c-59,0-107.1,47.6-107.2,106.2C796.6,349,844.2,397,903.8,397c0,0,0.1,0,0.1,0c59,0,106.9-47.9,106.9-107.1
+C1010.8,231,962.9,183,903.9,183C903.9,183,903.9,183,903.9,183L903.9,183z M888.3,320.7c6.5-7.7,12.8-15.2,19.1-22.7
+c14.2-16.9,28.3-33.7,42.5-50.6c2.6-3,6-4.6,9.4-4.6c3,0,6,1.2,8.4,3.7c4.4,4.5,4.5,11.2,0.2,16.4c-6.2,7.4-12.5,14.8-18.7,22.3
+c-17.1,20.3-34.1,40.7-51.3,61c-2.6,3.1-6,4.7-9.4,4.7c-2.3,0-4.6-0.7-6.8-2.2c-1-0.7-1.9-1.6-2.7-2.5
+c-12.4-14.2-24.8-28.4-37.2-42.6c-3.3-3.8-4.4-8.1-2.4-12.9c1.8-4.4,5.3-6.9,10.1-7.2c0.3,0,0.7,0,1,0c3.7,0,6.7,1.6,9.2,4.5
+c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="289.6" x2="1156.3" y2="289.6"/>
+<g>
+<polygon class="sp5" points="1152.8,301.5 1173.5,289.6 1152.8,277.6 					"/>
+</g>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="172.6" x2="1160.1" y2="123.3"/>
+<g>
+<polygon class="sp5" points="1164.8,134.9 1173.5,112.6 1149.8,116.2 					"/>
+</g>
+</g>
+</g>
+<g>
+<g>
+<line class="sp7" x1="1098.5" y1="406.6" x2="1160.1" y2="455.8"/>
+<g>
+<polygon class="sp5" points="1149.8,463 1173.5,466.6 1164.8,444.3 					"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg></div>
+    <div class="cols c2 rv d3" style="align-items:stretch">
+      <div class="alert">Perdeu a frase-semente? É impossível resgatar a carteira. Não há sistema de recuperação: só dá para gerar uma nova enquanto você ainda acessa a carteira.</div>
+      <div class="alert">Nunca guarde suas chaves em arquivos digitais, e-mails ou aplicativos. Anote e guarde em local físico seguro.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 30c · GOLPES -->
+<section class="slide tight" data-sec="04 · Segurança" data-title="Golpes">
+  <span class="shape bolt p mid" aria-hidden="true" style="width:10vw;height:15vw;right:-2vw;top:-3vw;--r:14deg"></span>
+  <span class="shape tri y near" aria-hidden="true" style="width:4vw;height:3.6vw;left:46%;top:9%;--r:-12deg;--t:12s"></span>
+  <div class="inner">
+    <h2 class="display h2 rv" style="margin-bottom:.5rem">Golpes</h2>
+    <p class="lede rv d1" style="max-width:none">Onde tem dinheiro, tem gente tentando tirar vantagem. <strong>Se algo parece bom demais para ser verdade, é golpe.</strong></p>
+    <div class="scams">
+      <div class="scam rv d1"><div class="n">01</div><h3>Falsos colecionadores no Instagram</h3><p>Oferecem um preço altíssimo pela sua obra (geralmente em ETH) e pedem que você pague uma <b>taxa</b> antes da venda. Não existe venda.</p></div>
+      <div class="scam rv d2"><div class="n">02</div><h3>Propostas de trabalho</h3><p>Jogos DeFi ou encomendas de arte que mandam um arquivo de "teste" ou "referências". O download pode ser um <b>malware</b> que invade suas carteiras.</p></div>
+      <div class="scam rv d3"><div class="n">03</div><h3>Sites falsos de projetos em alta</h3><p>Links espalhados no Discord e no X. Ao tentar comprar, o site <b>drena tudo</b> o que está na carteira.</p></div>
+      <div class="scam rv d4"><div class="n">04</div><h3>Perfis se passando por artistas</h3><p>Denuncie na plataforma ou no Discord oficial. A <b>validação da comunidade</b> ajuda a identificar informações inconsistentes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 30d · MEDIDAS -->
+<section class="slide tight" data-sec="04 · Segurança" data-title="Medidas de segurança">
+  <span class="shape tri p far" aria-hidden="true" style="width:22vw;height:20vw;right:-6vw;bottom:-8vw;--r:-8deg"></span>
+  <div class="inner">
+    <h2 class="display h2 rv">Medidas de segurança</h2>
+    <ol class="tips rv d1">
+      <li>Não clique em links desconhecidos.</li>
+      <li>Não abra anexos de perfis desconhecidos.</li>
+      <li>Não conecte sua carteira em qualquer site.</li>
+      <li>Duvide de propostas muito exorbitantes.</li>
+      <li>Crie formas diretas e organizadas para negociar seus trabalhos.</li>
+      <li>Use extensão anti phishing/spam.</li>
+      <li>Vasculhe o perfil do usuário em busca de informações confiáveis.</li>
+      <li>Se você exigir medidas de segurança e o suposto cliente insistir que não pode cumprir, <b>desista</b>.</li>
+      <li><b>Não compartilhe suas chaves</b> com ninguém e guarde em local físico seguro.</li>
+      <li>Troque senhas regularmente: dá para "rechavear" a carteira e gerar uma nova frase-semente.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 30e · EXTENSÕES -->
+<section class="slide light" data-sec="04 · Segurança" data-title="Extensões anti phishing/spam">
+  <span class="shape bolt y far" aria-hidden="true" style="width:12vw;height:18vw;left:44%;top:-6vw;--r:16deg"></span>
+  <div class="inner split">
+    <div class="rv">
+      <h2 class="display h2">Extensões anti phishing/spam</h2>
+      <div class="ext-names"><span>Pocket Universe</span><span>Wallet Guard</span></div>
+    </div>
+    <div class="ext rv d1"><img src="/assets/img/aulas/comece-web3/extensoes-seguranca.webp" alt="Telas das extensões Wallet Guard (pontuação de segurança) e Pocket Universe (simulação de transação na Opensea)" loading="lazy"></div>
   </div>
 </section>
 
