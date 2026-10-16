@@ -411,6 +411,13 @@
   .vs i { font-style: normal; font-weight: 900; color: var(--violet); display: grid; place-items: center; font-size: 1.4rem; }
   @media (max-width: 700px) { .vs > div { grid-template-columns: 1fr; } .vs i { transform: rotate(90deg); } .vs .hd { display: none; } }
 
+  /* PERFIS (Gabriel / convidado) */
+  .pfp-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(1.5rem, 5vw, 5rem); align-items: center; }
+  @media (max-width: 860px) { .pfp-grid { grid-template-columns: 1fr; } }
+  .pfp { width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%; overflow: hidden; background: var(--violet);
+    border: clamp(6px, .8vw, 10px) solid var(--violet); box-shadow: 0 1.2rem 2.4rem -1rem rgba(31,28,31,.45); }
+  .pfp img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -518,6 +525,26 @@
   </div>
 </section>
 
+<!-- 02b · GABRIEL -->
+<section class="slide" data-sec="" data-title="Gabriel Magalhães">
+  <span class="shape tri p far" aria-hidden="true" style="width:30vw;height:26vw;left:-8vw;top:-10vw;--r:-18deg"></span>
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;left:44%;bottom:10%;--r:-8deg;--t:12s"></span>
+  <span class="shape tri y mid" aria-hidden="true" style="width:12vw;height:10vw;right:-3vw;bottom:-3vw;--r:160deg"></span>
+  <div class="inner">
+    <div class="pfp-grid">
+      <div class="pfp rv d2"><img src="/assets/img/aulas/comece-web3/gabriel-magalhaes.webp" alt="Foto de Gabriel Magalhães" loading="lazy"></div>
+      <div class="about rv">
+        <div class="name">GABRIEL<br>MAGALHÃES</div>
+        <p class="b">Tech Lead na NCK IA</p>
+        <div class="gap"></div>
+        <p>Estudante de Sistemas de Informação (UFJF)<br>Técnico em Desenvolvimento de Sistemas (IF Juiz de Fora)</p>
+        <div class="gap"></div>
+        <p>Na Web3 desde 2025<br>Gamer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 02b · WEB3EDUBRASIL -->
 <section class="slide" data-sec="" data-title="Web3EduBrasil">
   <span class="shape tri y far" aria-hidden="true" style="width:20vw;height:18vw;left:-6vw;bottom:-7vw;--r:14deg"></span>
@@ -586,23 +613,14 @@
 <!-- ============ 02 · BLOCKCHAIN ============ -->
 
 <!-- 06 -->
-<section class="slide black" data-sec="02 · Blockchain" data-title="O que é Blockchain?">
-  <img class="bgimg" src="/assets/img/aulas/comece-web3/blockchain-bg.webp" alt="" loading="lazy">
-  <div class="shade"></div>
-  <div class="inner center">
-    <h2 class="display h2 rv">O que é Blockchain?</h2>
-    <p class="lede rv d1">As Blockchains são redes online onde dados são salvos e registrados em cadeia por vários computadores, não apenas em um só servidor.</p>
-  </div>
-</section>
-
-
-<!-- 08 -->
-<section class="slide dark" data-sec="02 · Blockchain" data-title="Semelhante a uma planilha">
-  <div class="inner split">
-    <img class="media rv" src="/assets/img/aulas/comece-web3/network.webp" alt="Animação de uma rede de nós" loading="lazy">
-    <div class="rv d1">
-      <div class="box y-text">Semelhante a uma planilha atualizada em tempo real compartilhada por vários computadores.</div>
-      <p class="note" style="margin:1.6rem 0 0 3rem;max-width:26ch">→ <b>Nó</b> ou <b>node</b>: um computador que faz parte da Blockchain.</p>
+<section class="slide dark" data-sec="02 · Blockchain" data-title="O que é Blockchain?">
+  <img class="bgimg" src="/assets/img/aulas/comece-web3/blockchain-network.gif" alt="" loading="lazy" style="left:auto;right:0;width:68%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%);mask-image:linear-gradient(90deg,transparent 0%,#000 30%)">
+  <div class="inner">
+    <div style="max-width:620px">
+      <h2 class="display h2 rv">O que é Blockchain?</h2>
+      <p class="lede rv d1">As Blockchains são redes online onde dados são salvos e registrados em cadeia por vários computadores, não apenas em um só servidor.</p>
+      <div class="box y-text rv d2" style="margin-top:1.6rem;text-align:left">Semelhante a uma planilha atualizada em tempo real compartilhada por vários computadores.</div>
+      <p class="note rv d3" style="margin-top:1.2rem">→ <b>Nó</b> ou <b>node</b>: um computador que faz parte da Blockchain.</p>
     </div>
   </div>
 </section>
@@ -1101,7 +1119,6 @@
         <div class="row r4"><div class="lf">Hash1</div><div class="lf">Hash2</div><div class="lf">Hash3</div><div class="lf">Hash4</div></div>
         <div class="row r4"><div class="dn">Data 1</div><div class="dn">Data 2</div><div class="dn">Data 3</div><div class="dn">Data 4</div></div>
       </div>
-      <div class="legend"><span>Raiz Merkle <i>Merkle Root</i></span><span>Galhos Merkle <i>Merkle Branches</i></span><span>Folhas Merkle <i>Merkle Leaves</i></span><span>Nós de Dados <i>Data Nodes</i></span></div>
     </div>
   </div>
 </section>
@@ -1623,6 +1640,25 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
+
+<!-- 05b · CONVIDADO -->
+<section class="slide" data-sec="05 · Comece" data-title="Convidado: Marcelo Garonce">
+  <span class="shape bolt p mid" aria-hidden="true" style="width:14vw;height:21vw;right:-3vw;top:-4vw;--r:12deg"></span>
+  <span class="shape tri y far" aria-hidden="true" style="width:26vw;height:22vw;left:-7vw;bottom:-9vw;--r:8deg"></span>
+  <span class="shape bolt y near" aria-hidden="true" style="width:3.2vw;height:4.8vw;left:46%;top:8%;--r:14deg;--t:12s"></span>
+  <div class="inner">
+    <div class="pfp-grid">
+      <div class="pfp rv d2"><img src="/assets/img/aulas/comece-web3/marcelo-garonce.webp" alt="Foto de Marcelo Garonce" loading="lazy"></div>
+      <div class="about rv">
+        <span class="role">Convidado</span>
+        <div class="name">MARCELO<br>GARONCE</div>
+        <p class="b">Co-Founder &amp; COO<br>Spaceship, BTC max</p>
+        <div class="gap"></div>
+        <p>Trajetória como dev na Web3</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ 06 · AVALANCHE ============ -->
 
