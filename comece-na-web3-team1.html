@@ -418,6 +418,17 @@
     border: clamp(6px, .8vw, 10px) solid var(--violet); box-shadow: 0 1.2rem 2.4rem -1rem rgba(31,28,31,.45); }
   .pfp img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+  /* QR CODES */
+  .qrchip { display: inline-flex; align-items: center; gap: .7rem; background: var(--white); text-decoration: none; border-radius: 12px; padding: .35rem 1rem .35rem .35rem;
+    box-shadow: 0 .3rem 0 var(--purple); transition: transform .2s; vertical-align: middle; }
+  .qrchip:hover { transform: translateY(-2px); }
+  .qrchip img { width: clamp(84px, 8vw, 118px); height: auto; display: block; }
+  .qrchip b { display: block; font-weight: 900; color: var(--violet); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.1; }
+  .qrchip small { display: block; font-size: clamp(.78rem, 1vw, .9rem); color: #666; margin-top: .15rem; }
+  .qrchips { display: grid; gap: .8rem; justify-items: center; margin-top: 1.4rem; }
+  .qrline { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+  .qrline .btnlink { margin-top: 0; }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -553,7 +564,7 @@
     <div>
       <span class="w3e-big rv" role="img" aria-label="Instituto Web3EduBrasil"></span>
       <p class="lede rv d2">Comunidade de <strong>aprendizado livre</strong> dedicada à educação e adoção da Web3 no Brasil.</p>
-      <a class="btnlink rv d2" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a>
+      <div class="qrline rv d2"><a class="btnlink" href="https://www.web3edubrasil.org/" target="_blank" rel="noopener">web3edubrasil.org ↗</a><a class="qrchip" href="https://x.com/web3edubrasil" target="_blank" rel="noopener"><img src="/assets/img/aulas/comece-web3/qr-x-web3edubrasil.png" alt="QR code: x.com/web3edubrasil" loading="lazy"><span><b>@web3edubrasil</b><small>no X</small></span></a></div>
     </div>
     <div class="w3cards rv d3">
       <div class="w3card"><h3>Mentorias</h3><p>Com valor simbólico de inscrição, duração de 3 meses. Diversas áreas: Introdução à web3, programação, cibersegurança, direito, carreira, etc…</p></div>
@@ -567,7 +578,10 @@
 <section class="slide black" data-sec="" data-title="O que é a Team1?">
   <span class="shape tri p far" aria-hidden="true" style="width:22vw;height:19vw;right:-6vw;bottom:-7vw;--r:-10deg"></span>
   <div class="inner split" style="grid-template-columns:.45fr 1.55fr">
-    <img class="rv" src="/assets/img/aulas/avax/team1-logo.webp" alt="Team1" style="width:clamp(110px,14vw,200px);margin:0 auto;display:block">
+    <div class="rv">
+      <img src="/assets/img/aulas/avax/team1-logo.webp" alt="Team1" style="width:clamp(110px,14vw,200px);margin:0 auto;display:block">
+      <div class="qrchips"><a class="qrchip" href="https://x.com/Team1BR" target="_blank" rel="noopener"><img src="/assets/img/aulas/comece-web3/qr-x-team1br.png" alt="QR code: x.com/Team1BR" loading="lazy"><span><b>@Team1BR</b><small>no X</small></span></a></div>
+    </div>
     <div class="rv d1">
       <h2 class="display h2">O que é a Team1?</h2>
       <p class="lede wht" style="margin-bottom:1rem">Uma <b>rede global</b> de pessoas de todas as origens (builders, devs, criadores, founders, educadores e comunidade) que fazem a Avalanche crescer juntas. São <b>700+ membros em 55 países</b>.</p>
@@ -1742,7 +1756,7 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
     </div>
     <div class="rv d3" style="text-align:center">
       <img class="media round" src="/assets/img/aulas/comece-web3/avax-build.webp" alt="Página inicial do Builder Hub: Build a Network" loading="lazy" style="box-shadow:0 24px 40px -18px rgba(0,0,0,.5)">
-      <a class="btnlink" href="https://build.avax.network/" target="_blank" rel="noopener">build.avax.network ↗</a>
+      <div class="qrline" style="justify-content:center"><a class="qrchip" href="https://build.avax.network/" target="_blank" rel="noopener"><img src="/assets/img/aulas/comece-web3/qr-builder-hub.png" alt="QR code: build.avax.network" loading="lazy"><span><b>Builder Hub</b><small>build.avax.network</small></span></a></div>
     </div>
   </div>
 </section>
