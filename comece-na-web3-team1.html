@@ -389,6 +389,28 @@
   .links6 b { display: block; color: var(--violet); font-weight: 900; font-size: clamp(1.1rem, 1.9vw, 1.6rem); line-height: 1.1; }
   .links6 span { font-size: clamp(.88rem, 1.3vw, 1.05rem); color: var(--ink); }
 
+  /* QUEM CONTROLA / SEUS DADOS */
+  .netsvg { width: 100%; max-width: 260px; height: auto; display: block; margin: .2rem auto 1rem; }
+  .netsvg line { stroke: var(--plum); stroke-width: 3; opacity: .55; }
+  .netsvg .hub { fill: var(--plum); } .netsvg .nd { fill: var(--violet); } .netsvg .us { fill: var(--white); stroke: var(--plum); stroke-width: 3; }
+  .netsvg text { font-family: var(--font); font-weight: 900; font-size: 15px; fill: var(--white); }
+  .kcard.alt { background: var(--violet); color: var(--white); }
+  .kcard.alt h3, .kcard.alt .sub { color: var(--white); }
+  .kcard.alt .kicker { background: var(--yellow); color: var(--ink); }
+  .kcard.alt .bullets li::before { background: var(--yellow); }
+  .kcard.alt .netsvg line { stroke: var(--white); }
+  .kcard.alt .netsvg .nd { fill: var(--yellow); }
+  .kcard.alt .bullets strong { color: var(--yellow); }
+  .vs { display: grid; gap: 6px; }
+  .vs > div { display: grid; grid-template-columns: 1fr 2.6rem 1fr; gap: 6px; align-items: stretch; }
+  .vs .hd span { font-weight: 900; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--plum); padding: 0 .9rem; }
+  .vs .hd span:last-child { color: var(--violet); }
+  .vs .a, .vs .b { border-radius: 10px; padding: .7rem 1rem; font-size: clamp(.95rem, 1.5vw, 1.2rem); line-height: 1.25; display: flex; align-items: center; }
+  .vs .a { background: var(--green); color: var(--ink); }
+  .vs .b { background: var(--violet); color: var(--white); font-weight: 700; box-shadow: 0 .3rem 0 var(--purple); }
+  .vs i { font-style: normal; font-weight: 900; color: var(--violet); display: grid; place-items: center; font-size: 1.4rem; }
+  @media (max-width: 700px) { .vs > div { grid-template-columns: 1fr; } .vs i { transform: rotate(90deg); } .vs .hd { display: none; } }
+
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .slide.in .rv { opacity: 1; transform: none; }
@@ -582,6 +604,58 @@
       <div class="box y-text">Semelhante a uma planilha atualizada em tempo real compartilhada por vários computadores.</div>
       <p class="note" style="margin:1.6rem 0 0 3rem;max-width:26ch">→ <b>Nó</b> ou <b>node</b>: um computador que faz parte da Blockchain.</p>
     </div>
+  </div>
+</section>
+
+
+<!-- 08b -->
+<section class="slide tight" data-sec="02 · Blockchain" data-title="Quem controla o registro?">
+  <div class="inner">
+    <h2 class="display h2 rv">Quem controla o registro?</h2>
+    <div class="kgrid">
+      <div class="kcard rv d1">
+        <span class="kicker no">Sem blockchain</span>
+        <svg class="netsvg" viewBox="0 0 260 150" aria-label="Um intermediário no centro ligado a todas as pessoas" role="img">
+          <line x1="130" y1="75" x2="40" y2="30"/><line x1="130" y1="75" x2="220" y2="30"/><line x1="130" y1="75" x2="40" y2="120"/><line x1="130" y1="75" x2="220" y2="120"/>
+          <circle class="us" cx="40" cy="30" r="13"/><circle class="us" cx="220" cy="30" r="13"/><circle class="us" cx="40" cy="120" r="13"/><circle class="us" cx="220" cy="120" r="13"/>
+          <rect class="hub" x="72" y="56" width="116" height="38" rx="8"/><text x="130" y="80" text-anchor="middle">Intermediário</text>
+        </svg>
+        <ul class="bullets">
+          <li>Um <strong>intermediário</strong> guarda o registro</li>
+          <li>Ele pode <strong>alterar, apagar ou perder</strong></li>
+          <li>Você precisa <strong>confiar</strong> nele</li>
+        </ul>
+      </div>
+      <div class="kcard alt rv d2">
+        <span class="kicker">Com blockchain</span>
+        <svg class="netsvg" viewBox="0 0 260 150" aria-label="Vários nós conectados entre si, cada um com uma cópia" role="img">
+          <line x1="40" y1="30" x2="130" y2="18"/><line x1="130" y1="18" x2="220" y2="30"/><line x1="220" y1="30" x2="220" y2="120"/><line x1="220" y1="120" x2="130" y2="132"/><line x1="130" y1="132" x2="40" y2="120"/><line x1="40" y1="120" x2="40" y2="30"/>
+          <line x1="40" y1="30" x2="220" y2="120"/><line x1="220" y1="30" x2="40" y2="120"/><line x1="130" y1="18" x2="130" y2="132"/>
+          <circle class="nd" cx="40" cy="30" r="13"/><circle class="nd" cx="130" cy="18" r="13"/><circle class="nd" cx="220" cy="30" r="13"/><circle class="nd" cx="220" cy="120" r="13"/><circle class="nd" cx="130" cy="132" r="13"/><circle class="nd" cx="40" cy="120" r="13"/>
+        </svg>
+        <ul class="bullets">
+          <li>Vários <strong>nós</strong> guardam a mesma cópia</li>
+          <li>Mudanças entram só por <strong>consenso</strong></li>
+          <li>Qualquer pessoa pode <strong>verificar</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08c -->
+<section class="slide light tight" data-sec="02 · Blockchain" data-title="Seus dados nas suas mãos">
+  <div class="inner">
+    <h2 class="display h2 rv">Seus dados nas suas mãos</h2>
+    <p class="lede rv d1" style="margin-bottom:1.4rem">Na Web3, quem guarda a <strong>chave da carteira</strong> controla os próprios dados e ativos.</p>
+    <div class="vs rv d2">
+      <div class="hd"><span>Hoje</span><i></i><span>Com blockchain</span></div>
+      <div><span class="a">Login com a conta do Google ou da Meta</span><i>→</i><span class="b">Sua carteira é sua identidade</span></div>
+      <div><span class="a">Seus dados ficam no servidor da empresa</span><i>→</i><span class="b">Você escolhe o que mostrar e para quem</span></div>
+      <div><span class="a">Compras presas a uma plataforma</span><i>→</i><span class="b">Seus ativos funcionam em vários apps</span></div>
+      <div><span class="a">A empresa pode bloquear sua conta</span><i>→</i><span class="b">Só a sua chave move os seus ativos</span></div>
+    </div>
+    <div class="alert rv d3" style="margin-top:1.4rem">Mais autonomia, mais responsabilidade: quem perde a frase-semente perde o acesso à carteira.</div>
   </div>
 </section>
 
@@ -1584,40 +1658,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
 </section>
 
 
-<!-- AV4 · ARQUITETURA -->
-<section class="slide light tight" data-sec="06 · Avalanche" data-title="Arquitetura da rede">
-  <div class="inner">
-    <h2 class="display h2 rv">Arquitetura da rede</h2>
-    <div class="primary rv d1"><b>Rede Primária</b> valida as blockchains nativas da Avalanche · quem valida faz stake de <b>$AVAX</b></div>
-    <div class="chains">
-      <div class="chain3 rv d1"><span class="cl">X</span><h3>X-Chain <small>Exchange</small></h3><p>Criação de ativos e transferências rápidas.</p></div>
-      <div class="chain3 rv d2"><span class="cl">P</span><h3>P-Chain <small>Platform</small></h3><p>Coordena os validadores, a criação de L1s e a interoperabilidade entre elas.</p></div>
-      <div class="chain3 rv d3"><span class="cl">C</span><h3>C-Chain <small>Contract</small></h3><p>Onde vive a maioria dos dApps. Compatível com EVM: quem programa em Solidity faz deploy direto.</p></div>
-    </div>
-    <div class="alert rv d4" style="margin-top:1.1rem">L1 personalizadas: sua própria blockchain, suas regras, seus validadores.</div>
-  </div>
-</section>
-
-<!-- AV5 · SNOWMAN -->
-<section class="slide" data-sec="06 · Avalanche" data-title="Consenso Snowman">
-  <span class="shape tri p far" aria-hidden="true" style="width:16vw;height:14vw;left:40%;top:-7vw;--r:180deg"></span>
-  <div class="inner">
-    <h2 class="display h2 rv">Consenso Snowman</h2>
-    <div class="split" style="grid-template-columns:1.1fr .9fr;align-items:start">
-      <div class="rv d1">
-        <img class="av-demo" src="/assets/img/aulas/avax/snowman-demo.webp" alt="Animação: nós da rede consultam amostras aleatórias de outros nós até convergir para uma única decisão" loading="lazy">
-        <p class="small" style="margin-top:.8rem">Cada validador consulta repetidamente uma <b>amostra aleatória</b> de outros validadores até a rede convergir para uma única decisão. <a href="https://tedyin.com/archive/snow-bft-demo/#/snow" target="_blank" rel="noopener"><b>Teste a demo ↗</b></a></p>
-      </div>
-      <ol class="tips av-tips rv d2" style="grid-template-columns:1fr">
-        <li><span><b>Finalidade instantânea</b> em menos de 1 segundo</span></li>
-        <li><span><b>Alta descentralização</b>: cerca de 1.500 validadores</span></li>
-        <li><span><b>Limite de segurança</b> de 80%</span></li>
-        <li><span><b>Ecológico</b>, com Proof of Stake</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
 <!-- AV6 · POR QUE UMA L1 -->
 <section class="slide black" data-sec="06 · Avalanche" data-title="Por que criar uma L1 Avalanche?">
   <img class="av-dots" src="/assets/img/aulas/avax/avalanche-dots.webp" alt="" aria-hidden="true" style="opacity:.35">
@@ -1633,34 +1673,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
   </div>
 </section>
 
-<!-- AV7 · DESEMPENHO -->
-<section class="slide tight" data-sec="06 · Avalanche" data-title="Escalabilidade: métricas de desempenho">
-  <div class="inner">
-    <span class="role rv">Escalabilidade</span>
-    <h2 class="display h2 rv">Métricas de desempenho</h2>
-    <div class="split" style="grid-template-columns:1fr 1fr;align-items:start">
-      <div class="rv d1">
-        <div class="w3cards">
-          <div class="w3card"><h3>Throughput</h3><p>Quantas transações a rede processa por unidade de tempo (na Avalanche, medido em mGas/s). É a <b>largura da estrada</b>.</p></div>
-          <div class="w3card"><h3>Tempo de finalidade</h3><p>Quanto tempo até a transação ficar <b>irreversível</b>. É o tempo para o carro chegar ao destino com certeza.</p></div>
-        </div>
-      </div>
-      <div class="rv d2">
-        <table class="mtable">
-          <thead><tr><th></th><th>Throughput<br><small>mGas/s</small></th><th>Finalidade<br><small>segundos</small></th></tr></thead>
-          <tbody>
-            <tr class="hot"><th>Avalanche L1</th><td>7,5</td><td>0,75</td></tr>
-            <tr><th>Ethereum</th><td>1,25</td><td>780 <small>(13 min)</small></td></tr>
-            <tr><th>Bitcoin</th><td>n/a</td><td>3.600 <small>(60 min)</small></td></tr>
-          </tbody>
-        </table>
-        <p class="small" style="margin-top:.8rem">Bitcoin e Ethereum têm finalidade <b>probabilística</b>; a Avalanche, <b>determinística</b>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- AV9 · PERSONALIZAÇÃO -->
 <section class="slide" data-sec="06 · Avalanche" data-title="Personalização">
   <span class="shape bolt y near" aria-hidden="true" style="width:3.4vw;height:5vw;right:7%;top:12%;--r:-10deg;--t:12s"></span>
@@ -1673,26 +1685,6 @@ c9,10.3,18,20.7,27.1,31C887.1,319.4,887.6,319.9,888.3,320.7L888.3,320.7z"/>
       <span class="lbl">Consenso</span><b class="wide">Avalanche Consensus</b>
     </div>
     <p class="lede rv d2" style="margin-top:1.4rem;max-width:62ch">Cada L1 pode ter regras, governança e até <b>máquina virtual</b> próprias. Em uma Layer 2, as mudanças só são possíveis no nível da aplicação, não do protocolo.</p>
-  </div>
-</section>
-
-
-
-<!-- AV12 · INTEROPERABILIDADE -->
-<section class="slide light tight" data-sec="06 · Avalanche" data-title="Interoperabilidade nativa">
-  <div class="inner">
-    <h2 class="display h2 rv">Interoperabilidade nativa</h2>
-    <div class="split" style="grid-template-columns:1fr 1fr;align-items:start">
-      <div class="rv d1">
-        <img class="media" src="/assets/img/aulas/avax/interop-nativa.webp" alt="Diagrama: várias L1 e a Rede Primária com interoperabilidade nativa e throughput combinado" loading="lazy">
-        <div class="av-why" style="margin-top:.8rem"><span><b>Usos</b> bridge de ativos (tokens, NFTs…), votação de DAO entre chains, pools de liquidez cross-chain</span></div>
-      </div>
-      <div class="w3cards rv d2">
-        <div class="w3card"><h3>ICM · Interchain Messaging</h3><p>Camada de mensagens que permite a qualquer L1 enviar mensagens para qualquer outra. É o "correio" do ecossistema.</p></div>
-        <div class="w3card"><h3>ICTT · Interchain Token Transfer</h3><p>Construído sobre o ICM, padroniza a transferência de tokens entre L1s.</p></div>
-        <div class="w3card"><h3>Sem confiar no intermediário</h3><p>Os validadores da chain de origem assinam a mensagem (assinatura BLS agregada). O relayer só entrega: se alterar algo, a assinatura não confere.</p></div>
-      </div>
-    </div>
   </div>
 </section>
 
