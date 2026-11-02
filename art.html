@@ -1854,16 +1854,16 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="index.html#hero" onclick="closeMobile()">Home</a>
+  <a href="index.html#hero" onclick="closeMobile()" data-i18n="nav.home">Home</a>
   <a href="index.html#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
-  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)">Areas of Work<span class="mobile-caret">▾</span></a>
+  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)"><span data-i18n="nav.areas_full">Areas of Work</span><span class="mobile-caret">▾</span></a>
   <div class="mobile-sub">
-    <a href="design.html" onclick="closeMobile()">Design</a>
-    <a href="art.html" onclick="closeMobile()">Art</a>
-    <a href="music.html" onclick="closeMobile()">Music</a>
-    <a href="education.html" onclick="closeMobile()">Education</a>
+    <a href="design.html" onclick="closeMobile()" data-i18n="nav.design">Design</a>
+    <a href="art.html" onclick="closeMobile()" data-i18n="nav.art">Art</a>
+    <a href="music.html" onclick="closeMobile()" data-i18n="nav.music">Music</a>
+    <a href="education.html" onclick="closeMobile()" data-i18n="nav.education">Education</a>
   </div>
-  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact" onclick="closeMobile()" data-i18n="footer.contact">Contact</a>
   <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
 </div>
 
@@ -1878,18 +1878,18 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
     <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
     <li class="has-dropdown">
-      <a href="index.html#areas">Areas of Work</a>
+      <a href="index.html#areas" data-i18n="nav.areas_full">Areas of Work</a>
       <ul class="nav-dropdown">
-        <li><a href="design.html">Design</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="design.html" data-i18n="nav.design">Design</a></li>
+        <li><a href="art.html" data-i18n="nav.art">Art</a></li>
+        <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="education.html" data-i18n="nav.education">Education</a></li>
       </ul>
     </li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
@@ -2066,7 +2066,7 @@
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl4_type">Group · Blockchain art</div>
           <div class="hl-title" data-i18n="art.hl4_title">Arte Brasileira Pioneira na Blockchain</div>
-          <div class="hl-meta">2026 · São Paulo, Brazil</div>
+          <div class="hl-meta" data-i18n="cv.v24">2026 · São Paulo, Brazil</div>
           <p class="hl-desc" data-i18n-html="art.hl4_desc">An exhibition celebrating pioneering Brazilian art on the blockchain, held at <strong>Casa Nua</strong>, São Paulo.</p>
         </div>
       </div>
@@ -2075,7 +2075,7 @@
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl1_type">International Exhibition</div>
           <div class="hl-title">Interlace</div>
-          <div class="hl-meta">2026 · Paris, France</div>
+          <div class="hl-meta" data-i18n="cv.v25">2026 · Paris, France</div>
           <p class="hl-desc" data-i18n-html="art.hl1_desc">My piece <strong>“Camapu”</strong> showed in mallow.art's “Held in Motion” at Interlace, ArtVerse Paris — chosen by sponsor Pine Stake to represent them.</p>
         </div>
       </div>
@@ -2102,7 +2102,7 @@
         <div class="hl-body">
           <div class="hl-type" data-i18n="art.hl6_type">Group Show</div>
           <div class="hl-title">NFT Rio</div>
-          <div class="hl-meta">2022 · Parque Lage, Rio de Janeiro</div>
+          <div class="hl-meta" data-i18n="cv.p_lage">2022 · Parque Lage, Rio de Janeiro</div>
           <p class="hl-desc" data-i18n-html="art.hl6_desc">A group showcase of Brazilian NFT artists during <strong>NFT Rio</strong>, held at the <strong>Escola de Artes Visuais do Parque Lage</strong>.</p>
         </div>
       </div>
@@ -2120,40 +2120,40 @@
     <div class="hl-label fade-up" data-i18n="art.cv_label">Full exhibition record</div>
     <div class="cv-list fade-up">
       <!-- 2026 -->
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title" data-i18n="art.hl4_title">Arte Brasileira Pioneira na Blockchain</div><div class="cv-venue">Casa Nua · São Paulo, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Interlace Exhibition <span class="cv-type">International</span></div><div class="cv-venue">Paris, France</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Token Nation <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Solana Summit Germany <span class="cv-type">Group</span></div><div class="cv-venue">Berlin, Germany</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Blockchain Futurist Gallery <span class="cv-type">Group</span></div><div class="cv-venue">Toronto, Canada</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title" data-i18n="art.hl4_title">Arte Brasileira Pioneira na Blockchain</div><div class="cv-venue" data-i18n="cv.v1">Casa Nua · São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title"><span data-i18n="cv.interlace">Interlace Exhibition</span> <span class="cv-type" data-i18n="cv.international">International</span></div><div class="cv-venue" data-i18n="cv.v2">Paris, France</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Token Nation <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v3">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Solana Summit Germany <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v4">Berlin, Germany</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Blockchain Futurist Gallery <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v5">Toronto, Canada</div></div></div>
       <!-- 2025 -->
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Ancient Tokens <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Ancient Tokens <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div></div></div>
       <!-- 2024 -->
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">NFT Brasil <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Potência Criativa <span class="cv-type">Group</span></div><div class="cv-venue">São Paulo, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Ancient Tokens <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">NFT Brasil <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v3">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Potência Criativa <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v6">São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Ancient Tokens <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div></div></div>
       <!-- 2023 -->
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFT Brasil <span class="cv-type">Group</span></div><div class="cv-venue">Bienal de São Paulo · Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFTRio <span class="cv-type">Curation</span></div><div class="cv-venue">Curated “Ensolarada” · Rio de Janeiro, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Ensolarada <span class="cv-type">Producer</span></div><div class="cv-venue">Produced &amp; exhibited 2 works · Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Solana is Alive <span class="cv-type">Organizer</span></div><div class="cv-venue">Metaverse · organized &amp; exhibited</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakpoint VR: 3.land &amp; Collector <span class="cv-type">VR</span></div><div class="cv-venue">Amsterdam, Netherlands</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Galeria Lado B <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakout SP <span class="cv-type">Group</span></div><div class="cv-venue">São Paulo, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Hotties Tech <span class="cv-type">Group</span></div><div class="cv-venue">Rio de Janeiro, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Identidades <span class="cv-type">Group</span></div><div class="cv-venue">Virtual</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">No começo do mundo <span class="cv-type">Publication</span></div><div class="cv-venue">Guató-language children's book · Museu do Índio &amp; FEL</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFT Brasil <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v3">Bienal de São Paulo · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">NFTRio <span class="cv-type" data-i18n="cv.curation">Curation</span></div><div class="cv-venue" data-i18n="cv.p_curated">Curated “Ensolarada” · Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Ensolarada <span class="cv-type" data-i18n="cv.producer">Producer</span></div><div class="cv-venue" data-i18n="cv.p_produced">Produced &amp; exhibited 2 works · Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Solana is Alive <span class="cv-type" data-i18n="cv.organizer">Organizer</span></div><div class="cv-venue" data-i18n="cv.p_meta_org">Metaverse · organized &amp; exhibited</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakpoint VR: 3.land &amp; Collector <span class="cv-type">VR</span></div><div class="cv-venue" data-i18n="cv.v7">Amsterdam, Netherlands</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Galeria Lado B <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v8">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Breakout SP <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v6">São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Hotties Tech <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v8">Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">Identidades <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">No começo do mundo <span class="cv-type" data-i18n="cv.publication">Publication</span></div><div class="cv-venue" data-i18n="cv.p_book">Guató-language children's book · Museu do Índio &amp; FEL</div></div></div>
       <!-- 2022 -->
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFTRio <span class="cv-type">Group</span></div><div class="cv-venue">Escola de Artes Visuais do Parque Lage · Rio de Janeiro, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">BRIFW · Wired Festival <span class="cv-type">Hybrid</span></div><div class="cv-venue">In-person + metaverse · São Paulo, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT São Paulo <span class="cv-type">Group</span></div><div class="cv-venue">Museu do Imigrante · São Paulo, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT Art Con <span class="cv-type">Group</span></div><div class="cv-venue">Chiang Mai, Thailand</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Bienal de Arte Digital · Delírios Digitais <span class="cv-type">Hybrid</span></div><div class="cv-venue">Oi Futuro · Rio de Janeiro, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Recife Mágico <span class="cv-type">Group</span></div><div class="cv-venue">Recife, Brazil</div></div></div>
-      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Expo Miscelânea <span class="cv-type">Group</span></div><div class="cv-venue">Curitiba, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFTRio <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v9">Escola de Artes Visuais do Parque Lage · Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">BRIFW · Wired Festival <span class="cv-type" data-i18n="cv.hybrid">Hybrid</span></div><div class="cv-venue" data-i18n="cv.p_hybrid">In-person + metaverse · São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT São Paulo <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v10">Museu do Imigrante · São Paulo, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">NFT Art Con <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v11">Chiang Mai, Thailand</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Bienal de Arte Digital · Delírios Digitais <span class="cv-type" data-i18n="cv.hybrid">Hybrid</span></div><div class="cv-venue" data-i18n="cv.v12">Oi Futuro · Rio de Janeiro, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Recife Mágico <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v13">Recife, Brazil</div></div></div>
+      <div class="cv-item"><div class="cv-year">2022</div><div><div class="cv-title">Expo Miscelânea <span class="cv-type" data-i18n="cv.group">Group</span></div><div class="cv-venue" data-i18n="cv.v14">Curitiba, Brazil</div></div></div>
       <!-- 2021 -->
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Festival de Cultura Brasileira de Viena <span class="cv-type">Metaverse</span></div><div class="cv-venue">Metaverse edition · Vienna, Austria</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Brazucas nas NFTs <span class="cv-type">Metaverse</span></div><div class="cv-venue">Virtual</div></div></div>
-      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Pupila Dilatada 2 <span class="cv-type">Metaverse</span></div><div class="cv-venue">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Festival de Cultura Brasileira de Viena <span class="cv-type" data-i18n="cv.metaverse">Metaverse</span></div><div class="cv-venue" data-i18n="cv.p_vienna">Metaverse edition · Vienna, Austria</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Brazucas nas NFTs <span class="cv-type" data-i18n="cv.metaverse">Metaverse</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div></div></div>
+      <div class="cv-item"><div class="cv-year">2021</div><div><div class="cv-title">Pupila Dilatada 2 <span class="cv-type" data-i18n="cv.metaverse">Metaverse</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div></div></div>
     </div>
   </div>
 </section>
@@ -2301,6 +2301,20 @@
 
   /* ---- shared gallery renderer ----
      art = { image, link, name } */
+  // gallery status follows the selected language
+  const artStatus = { 'mallow-status': ['art.status_loading_solana'], 'tezos-status': ['art.status_loading_tezos'] };
+  function renderArtStatus(id) {
+    const text = window.i18nT ? window.i18nT(artStatus[id][0]) : artStatus[id][0];
+    if (text === artStatus[id][0]) return;
+    const vars = artStatus[id][1] || {};
+    document.getElementById(id).innerHTML = text.replace('{n}', vars.n).replace('{link}', vars.link);
+  }
+  function setArtStatus(el, key, vars) {
+    artStatus[el.id] = [key, vars];
+    renderArtStatus(el.id);
+  }
+  window.refreshArtStatus = function() { Object.keys(artStatus).forEach(renderArtStatus); };
+
   function renderGallery(gallery, status, items, opts) {
     gallery.innerHTML = '';
     items.forEach(art => {
@@ -2328,7 +2342,7 @@
       gallery.appendChild(a);
     });
     const total = opts.total || items.length;
-    status.textContent = total + (total === 1 ? ' work minted' : ' works minted');
+    setArtStatus(status, total === 1 ? 'art.status_minted_one' : 'art.status_minted', { n: total });
   }
 
   /* ---- Tezos gallery — baked WebP from objkt (scripts/fetch-tezos.mjs) ---- */
@@ -2343,7 +2357,7 @@
         renderGallery(gallery, status, shuffle(raw), { marketLabel: 'open on objkt', total: raw.length });
       })
       .catch(() => {
-        status.innerHTML = 'See the full Tezos collection on <a href="https://objkt.com/profile/' + TZ + '/created" target="_blank" rel="noopener" style="color:var(--orange);">objkt ↗</a>';
+        setArtStatus(status, 'art.status_tezos_fallback', { link: '<a href="https://objkt.com/profile/' + TZ + '/created" target="_blank" rel="noopener" style="color:var(--orange);">objkt ↗</a>' });
       });
   })();
 
@@ -2365,7 +2379,7 @@
         renderGallery(gallery, status, items, { marketLabel: 'open on mallow', total: total });
       })
       .catch(() => {
-        status.innerHTML = 'Solana gallery coming soon — see the full collection on <a href="' + MALLOW_URL + '" target="_blank" rel="noopener" style="color:var(--orange);">mallow ↗</a>';
+        setArtStatus(status, 'art.status_solana_fallback', { link: '<a href="' + MALLOW_URL + '" target="_blank" rel="noopener" style="color:var(--orange);">mallow ↗</a>' });
       });
   })();
 
@@ -2393,6 +2407,7 @@
   function t(key) {
     return key.split('.').reduce(function(obj, k) { return obj && obj[k]; }, translations) || key;
   }
+  window.i18nT = t;
 
   function applyTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
@@ -2407,6 +2422,7 @@
       b.classList.toggle('active', b.dataset.lang === currentLang);
     });
     document.documentElement.lang = HTMLLANG[currentLang] || 'en';
+    if (window.refreshArtStatus) window.refreshArtStatus();
   }
 
   function loadAndApply(lang) {

@@ -1570,16 +1570,16 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="index.html#hero" onclick="closeMobile()">Home</a>
+  <a href="index.html#hero" onclick="closeMobile()" data-i18n="nav.home">Home</a>
   <a href="index.html#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
-  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)">Areas of Work<span class="mobile-caret">▾</span></a>
+  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)"><span data-i18n="nav.areas_full">Areas of Work</span><span class="mobile-caret">▾</span></a>
   <div class="mobile-sub">
-    <a href="design.html" onclick="closeMobile()">Design</a>
-    <a href="art.html" onclick="closeMobile()">Art</a>
-    <a href="music.html" onclick="closeMobile()">Music</a>
-    <a href="education.html" onclick="closeMobile()">Education</a>
+    <a href="design.html" onclick="closeMobile()" data-i18n="nav.design">Design</a>
+    <a href="art.html" onclick="closeMobile()" data-i18n="nav.art">Art</a>
+    <a href="music.html" onclick="closeMobile()" data-i18n="nav.music">Music</a>
+    <a href="education.html" onclick="closeMobile()" data-i18n="nav.education">Education</a>
   </div>
-  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact" onclick="closeMobile()" data-i18n="footer.contact">Contact</a>
   <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
 </div>
 
@@ -1594,18 +1594,18 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
     <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
     <li class="has-dropdown">
-      <a href="index.html#areas">Areas of Work</a>
+      <a href="index.html#areas" data-i18n="nav.areas_full">Areas of Work</a>
       <ul class="nav-dropdown">
-        <li><a href="design.html">Design</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="design.html" data-i18n="nav.design">Design</a></li>
+        <li><a href="art.html" data-i18n="nav.art">Art</a></li>
+        <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="education.html" data-i18n="nav.education">Education</a></li>
       </ul>
     </li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
@@ -1631,15 +1631,15 @@
 <!-- INTRO -->
 <section id="music" style="background:var(--black);">
   <div class="section-inner" style="padding-top:10rem;padding-bottom:2rem;">
-    <div class="section-label">Music</div>
-    <h2 class="section-title fade-up">MUSIC<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="nav.music">Music</div>
+    <h2 class="section-title fade-up" data-i18n-html="music.title">MUSIC<span style="color:var(--orange)">.</span></h2>
     <div class="fade-up" style="max-width:680px;">
-      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;">
+      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;" data-i18n-html="music.p1">
         I make <strong style="color:var(--white)">music production on commission</strong> — original tracks,
         <strong style="color:var(--white)">soundtracks</strong> and scoring, and <strong style="color:var(--white)">sound design</strong>.
         I'm also a <strong style="color:var(--white)">DJ</strong>, playing sets built around bass-heavy, broken rhythms.
       </p>
-      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;">
+      <p style="font-size:1.05rem;color:#bbb;line-height:1.8;" data-i18n-html="music.p2">
         For client work the style adapts to the brief. My own sound is experimental, rooted in the world of
         <strong style="color:var(--white)">jungle, drum &amp; bass, breakbeat, electro, and boom bap</strong> — usually
         sampling <strong style="color:var(--white)">Brazilian and Latin American music</strong> to root the rhythm in something familiar and cultural.
@@ -1660,8 +1660,8 @@
             <circle cx="13" cy="35" r="5"/><circle cx="35" cy="31" r="5"/><path d="M18 35V12l22-4v23"/><path d="M18 18l22-4"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">Music Production</h3>
-        <p class="svc-box-desc">Original tracks produced on commission, adapting genre and mood to your project.</p>
+        <h3 class="svc-box-title" data-i18n="music.svc1_title">Music Production</h3>
+        <p class="svc-box-desc" data-i18n="music.svc1_desc">Original tracks produced on commission, adapting genre and mood to your project.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1674,8 +1674,8 @@
             <rect x="7" y="12" width="34" height="28" rx="2"/><path d="M7 21h34"/><path d="M14 12l-3 9M23 12l-3 9M32 12l-3 9"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">Soundtracks</h3>
-        <p class="svc-box-desc">Scoring for film, games, installations, and audiovisual work — from ambient beds to full themes.</p>
+        <h3 class="svc-box-title" data-i18n="music.svc2_title">Soundtracks</h3>
+        <p class="svc-box-desc" data-i18n="music.svc2_desc">Scoring for film, games, installations, and audiovisual work — from ambient beds to full themes.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1688,8 +1688,8 @@
             <path d="M12 40V27M12 21V8"/><circle cx="12" cy="24" r="3"/><path d="M24 40V31M24 25V8"/><circle cx="24" cy="28" r="3"/><path d="M36 40V21M36 15V8"/><circle cx="36" cy="18" r="3"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">Sound Design</h3>
-        <p class="svc-box-desc">Textures, effects, and sonic identity for products, brands, and interactive experiences.</p>
+        <h3 class="svc-box-title" data-i18n="music.svc3_title">Sound Design</h3>
+        <p class="svc-box-desc" data-i18n="music.svc3_desc">Textures, effects, and sonic identity for products, brands, and interactive experiences.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1702,8 +1702,8 @@
             <circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="5"/><circle cx="24" cy="24" r="1" fill="currentColor" stroke="none"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">DJ Sets</h3>
-        <p class="svc-box-desc">Live sets across jungle, drum &amp; bass, breakbeat, electro, and boom bap for clubs and events.</p>
+        <h3 class="svc-box-title" data-i18n="music.svc4_title">DJ Sets</h3>
+        <p class="svc-box-desc" data-i18n="music.svc4_desc">Live sets across jungle, drum &amp; bass, breakbeat, electro, and boom bap for clubs and events.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1716,8 +1716,8 @@
 <!-- STYLE & REFERENCES -->
 <section style="background:var(--black);">
   <div class="section-inner">
-    <div class="section-label">Style &amp; References</div>
-    <h2 class="section-title fade-up">SOUND STYLE<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="music.style_label">Style &amp; References</div>
+    <h2 class="section-title fade-up" data-i18n-html="music.style_title">SOUND STYLE<span style="color:var(--orange)">.</span></h2>
     <div class="sound-layout fade-up">
       <div class="sound-mosaic">
         <a class="mosaic-tile mosaic-tile--sc" href="https://soundcloud.com/numadessas" target="_blank" aria-label="SoundCloud">
@@ -1730,12 +1730,12 @@
         </a>
       </div>
       <div>
-        <p style="font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;">
+        <p style="font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;" data-i18n="music.style_p1" data-i18n="music.style_p1">
           My references sit at the intersection of UK bass culture and the Global South — the breakbeat lineage of
           jungle and drum &amp; bass, the swing of boom bap, the grit of electro — reassembled with samples pulled
           from Brazilian and Latin American records.
         </p>
-        <p style="font-size:1.05rem;color:#bbb;line-height:1.8;">
+        <p style="font-size:1.05rem;color:#bbb;line-height:1.8;" data-i18n="music.style_p2" data-i18n="music.style_p2">
           The result is rhythmic, sample-driven, and unapologetically experimental: familiar melodies chopped and
           recontextualized inside fast, broken drum patterns, carrying social and cultural weight alongside the groove.
         </p>
@@ -1745,7 +1745,7 @@
           <span class="pill pill-purple">Breakbeat</span>
           <span class="pill pill-orange">Electro</span>
           <span class="pill pill-green">Boom Bap</span>
-          <span class="pill pill-purple">BR / LATAM Samples</span>
+          <span class="pill pill-purple" data-i18n="music.tag_samples">BR / LATAM Samples</span>
         </div>
       </div>
     </div>
@@ -1757,22 +1757,22 @@
 <!-- FEATURED ALBUM -->
 <section style="background:var(--off-black);">
   <div class="section-inner">
-    <div class="section-label">Featured Release</div>
-    <h2 class="section-title fade-up">LISTEN<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="music.release_label">Featured Release</div>
+    <h2 class="section-title fade-up" data-i18n-html="music.listen_title">LISTEN<span style="color:var(--orange)">.</span></h2>
     <div class="album-layout fade-up">
       <div class="album-featured">
-        <div class="album-label">◆ Album Highlight</div>
+        <div class="album-label" data-i18n="music.album_label">◆ Album Highlight</div>
         <h3 class="album-title">Inferno <span>Verde</span></h3>
-        <p class="album-desc">
+        <p class="album-desc" data-i18n-html="music.album_p1">
           A socially conscious record built <strong>entirely from samples of Brazilian music</strong>. The title nods to
           the Amazon and Brazilian biodiversity, while the tracks confront social inequality, environmental destruction,
           and structural racism.
         </p>
-        <p class="album-desc">
+        <p class="album-desc" data-i18n-html="music.album_p2">
           Produced in collaboration with <strong>Endorphins Lab</strong>, the album weaves spoken dialogue and pointed
           social commentary through beatmaking — my clearest statement of merging sound, design, and activist consciousness.
         </p>
-        <a class="album-link" href="https://kalamidade.com.br/entrevista-com-dj-numa/" target="_blank">Read the interview ↗</a>
+        <a class="album-link" href="https://kalamidade.com.br/entrevista-com-dj-numa/" target="_blank" data-i18n="music.album_link">Read the interview ↗</a>
       </div>
       <div class="spotify-embed">
         <iframe src="https://open.spotify.com/embed/album/4sHX7YQ0ALRIdnTSBfWFYV?utm_source=generator&theme=0"

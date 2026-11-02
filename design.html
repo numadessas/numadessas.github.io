@@ -1480,16 +1480,16 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="index.html#hero" onclick="closeMobile()">Home</a>
+  <a href="index.html#hero" onclick="closeMobile()" data-i18n="nav.home">Home</a>
   <a href="index.html#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
-  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)">Areas of Work<span class="mobile-caret">▾</span></a>
+  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)"><span data-i18n="nav.areas_full">Areas of Work</span><span class="mobile-caret">▾</span></a>
   <div class="mobile-sub">
-    <a href="design.html" onclick="closeMobile()">Design</a>
-    <a href="art.html" onclick="closeMobile()">Art</a>
-    <a href="music.html" onclick="closeMobile()">Music</a>
-    <a href="education.html" onclick="closeMobile()">Education</a>
+    <a href="design.html" onclick="closeMobile()" data-i18n="nav.design">Design</a>
+    <a href="art.html" onclick="closeMobile()" data-i18n="nav.art">Art</a>
+    <a href="music.html" onclick="closeMobile()" data-i18n="nav.music">Music</a>
+    <a href="education.html" onclick="closeMobile()" data-i18n="nav.education">Education</a>
   </div>
-  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact" onclick="closeMobile()" data-i18n="footer.contact">Contact</a>
   <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
 </div>
 
@@ -1504,18 +1504,18 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
     <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
     <li class="has-dropdown">
-      <a href="index.html#areas">Areas of Work</a>
+      <a href="index.html#areas" data-i18n="nav.areas_full">Areas of Work</a>
       <ul class="nav-dropdown">
-        <li><a href="design.html">Design</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="design.html" data-i18n="nav.design">Design</a></li>
+        <li><a href="art.html" data-i18n="nav.art">Art</a></li>
+        <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="education.html" data-i18n="nav.education">Education</a></li>
       </ul>
     </li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
@@ -1541,9 +1541,9 @@
 <!-- INTRO -->
 <section id="design" class="design-hero">
   <div class="section-inner" style="padding-top:10rem;padding-bottom:3rem;position:relative;z-index:1;">
-    <div class="section-label">Design</div>
-    <h2 class="section-title fade-up">DESIGN<span style="color:var(--orange)">.</span></h2>
-    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;">
+    <div class="section-label" data-i18n="nav.design">Design</div>
+    <h2 class="section-title fade-up" data-i18n-html="design.title">DESIGN<span style="color:var(--orange)">.</span></h2>
+    <p class="fade-up" style="font-size:1.05rem;color:#bbb;max-width:640px;line-height:1.8;" data-i18n="design.intro" data-i18n="design.intro">
       Brand identities, illustration, interfaces, and 3D — from concept to delivery. I design systems that
       stay coherent across every medium, blending strong visual language with the culture of emerging technologies.
     </p>
@@ -1562,8 +1562,8 @@
             <circle cx="18" cy="18" r="11"/><rect x="19" y="19" width="21" height="21" rx="2"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">Visual Identity</h3>
-        <p class="svc-box-desc">Logos, brand systems, and visual guidelines that give projects a distinct, consistent voice.</p>
+        <h3 class="svc-box-title" data-i18n="design.svc1_title">Visual Identity</h3>
+        <p class="svc-box-desc" data-i18n="design.svc1_desc">Logos, brand systems, and visual guidelines that give projects a distinct, consistent voice.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1577,7 +1577,7 @@
           </svg>
         </div>
         <h3 class="svc-box-title">3D</h3>
-        <p class="svc-box-desc">Modeling, texturing, and rendering — product visuals, assets, and immersive scenes for the metaverse.</p>
+        <p class="svc-box-desc" data-i18n="design.svc2_desc">Modeling, texturing, and rendering — product visuals, assets, and immersive scenes for the metaverse.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1590,8 +1590,8 @@
             <path d="M30 8l10 10L18 40 8 40 8 30 30 8z"/><path d="M26 12l10 10"/>
           </svg>
         </div>
-        <h3 class="svc-box-title">Illustration</h3>
-        <p class="svc-box-desc">Original artwork and digital illustration — editorial pieces, characters, covers, and campaign visuals.</p>
+        <h3 class="svc-box-title" data-i18n="portfolio.meta_illustration">Illustration</h3>
+        <p class="svc-box-desc" data-i18n="design.svc3_desc">Original artwork and digital illustration — editorial pieces, characters, covers, and campaign visuals.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1605,7 +1605,7 @@
           </svg>
         </div>
         <h3 class="svc-box-title">UI/UX</h3>
-        <p class="svc-box-desc">Product and interface design — web and app flows, prototypes, and design systems built for real use.</p>
+        <p class="svc-box-desc" data-i18n="design.svc4_desc">Product and interface design — web and app flows, prototypes, and design systems built for real use.</p>
         <span class="svc-box-arrow">↗</span>
         <span class="svc-box-bar"></span>
       </div>
@@ -1618,8 +1618,8 @@
 <!-- PROJECTS -->
 <section id="portfolio" style="background:var(--black);">
   <div class="section-inner">
-    <div class="section-label">Selected Work</div>
-    <h2 class="section-title fade-up">PROJECTS<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="design.work_label">Selected Work</div>
+    <h2 class="section-title fade-up" data-i18n-html="design.projects_title">PROJECTS<span style="color:var(--orange)">.</span></h2>
     <div class="portfolio-grid fade-up">
 
       <!-- 3land -->
@@ -1630,15 +1630,15 @@
           </div>
           <div class="project-tag-label">2024</div>
           <div class="project-overlay">
-            <a href="3land.html" class="project-overlay-btn">View Case</a>
+            <a href="3land.html" class="project-overlay-btn" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Metaverse · cNFT Marketplace</div>
+          <div class="project-cat" data-i18n="design.threeland_cat">Metaverse · cNFT Marketplace</div>
           <div class="project-title">3land</div>
-          <div class="project-desc">Creative hub for cyberspace — brand identity, 3D, and UI/UX for a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</div>
+          <div class="project-desc" data-i18n="design.threeland_desc">Creative hub for cyberspace — brand identity, 3D, and UI/UX for a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Brand Identity</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_brandidentity">Brand Identity</span>
             <span class="meta-tag">3D</span>
             <span class="meta-tag">UI/UX</span>
           </div>
@@ -1653,17 +1653,17 @@
           </div>
           <div class="project-tag-label">2018 — 2026</div>
           <div class="project-overlay">
-            <a href="visual-id.html" class="project-overlay-btn">View Case</a>
+            <a href="visual-id.html" class="project-overlay-btn" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Logo · Brand Identity</div>
+          <div class="project-cat" data-i18n="portfolio.visualid_cat">Logo · Brand Identity</div>
           <div class="project-title">Visual ID</div>
-          <div class="project-desc">A selection from years of logo and identity work — dozens of marks and brand applications built for startups, artists, and Web3 projects across many sectors.</div>
+          <div class="project-desc" data-i18n="portfolio.visualid_desc">Logos and brand identities for startups, artists, and Web3 projects.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Logo Design</span>
-            <span class="meta-tag">Brand Identity</span>
-            <span class="meta-tag">Applications</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_logodesign">Logo Design</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_brandidentity">Brand Identity</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_applications">Applications</span>
           </div>
         </div>
       </div>
@@ -1676,16 +1676,16 @@
           </div>
           <div class="project-tag-label">2023 — 2025</div>
           <div class="project-overlay">
-            <a href="computadores-fazem-arte.html" class="project-overlay-btn">View Case</a>
+            <a href="computadores-fazem-arte.html" class="project-overlay-btn" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Visual Identity · Editorial</div>
+          <div class="project-cat" data-i18n="design.cfa_cat">Visual Identity · Editorial</div>
           <div class="project-title">Computadores Fazem Arte</div>
-          <div class="project-desc">Visual identity and educational design for my master's research project — a free course introducing blockchain, NFTs, and Web3 to under-represented communities through art.</div>
+          <div class="project-desc" data-i18n="design.cfa_desc">Visual identity and educational design for my master's research project — a free course introducing blockchain, NFTs, and Web3 to under-represented communities through art.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Brand Identity</span>
-            <span class="meta-tag">Illustration</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_brandidentity">Brand Identity</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_illustration">Illustration</span>
             <span class="meta-tag">Editorial</span>
           </div>
         </div>
@@ -1699,15 +1699,15 @@
           </div>
           <div class="project-tag-label">2025</div>
           <div class="project-overlay">
-            <a href="https://numadessas.com.br/wiki/" class="project-overlay-btn" target="_blank">View Case</a>
+            <a href="https://numadessas.com.br/wiki/" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view_case">View Case</a>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat">Editorial · Web Design</div>
+          <div class="project-cat" data-i18n="design.wiki_cat">Editorial · Web Design</div>
           <div class="project-title">NumaWiki</div>
-          <div class="project-desc">Design and identity for a free, open knowledge base on blockchain, Web3, and crypto art — built to make complex topics clear and accessible.</div>
+          <div class="project-desc" data-i18n="design.wiki_desc">Design and identity for a free, open knowledge base on blockchain, Web3, and crypto art — built to make complex topics clear and accessible.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Web Design</span>
+            <span class="meta-tag role" data-i18n="hero.pill_web">Web Design</span>
             <span class="meta-tag">Editorial</span>
             <span class="meta-tag">Branding</span>
           </div>

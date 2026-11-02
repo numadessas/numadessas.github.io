@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Numa — Creative Tech: Art, Design, Education</title>
-<meta name="description" content="I'm Numa is a designer, artist, researcher, and educator based in Brazil. Her work sits at the intersection of emerging technologies and cultural practice, with a particular focus on blockchain ecosystems and multimedia applications.Visual communication, branding, digital products, creative direction, audiovisual production, illustration, 3D, music production and educational content.">
+<meta name="description" content="Numa is a Brazilian brand, web, visual, and graphic designer with 12+ years of experience. Open to remote full-time roles and freelance projects.">
 <meta property="og:title" content="Numa — Creative Tech: Art, Design, Education">
-<meta property="og:description" content="Designer, artist, researcher & educator | Web3 Specialist">
+<meta property="og:description" content="Brand, web, visual &amp; graphic designer | Open to full-time roles and freelance">
 <meta name="author" content="Numa">
 <meta property="article:author" content="Numa">
 <meta property="og:type" content="article">
@@ -21,7 +21,7 @@
 <!-- Thumb Para Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Numa — Creative Tech: Art, Design, Education">
-<meta name="twitter:description" content="Designer, artist, researcher & educator | Web3 Specialist">
+<meta name="twitter:description" content="Brand, web, visual &amp; graphic designer | Open to full-time roles and freelance">
 <meta name="twitter:image" content="https://www.numadessas.com.br/assets/img/numadessas-thumb-small.png">
   
 <!-- Favicon -->
@@ -1527,16 +1527,16 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#hero" onclick="closeMobile()" data-i18n="nav.home">Home</a>
   <a href="#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
-  <a href="#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)">Areas of Work<span class="mobile-caret">▾</span></a>
+  <a href="#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)"><span data-i18n="nav.areas_full">Areas of Work</span><span class="mobile-caret">▾</span></a>
   <div class="mobile-sub">
-    <a href="design.html" onclick="closeMobile()">Design</a>
-    <a href="art.html" onclick="closeMobile()">Art</a>
-    <a href="music.html" onclick="closeMobile()">Music</a>
-    <a href="education.html" onclick="closeMobile()">Education</a>
+    <a href="design.html" onclick="closeMobile()" data-i18n="nav.design">Design</a>
+    <a href="art.html" onclick="closeMobile()" data-i18n="nav.art">Art</a>
+    <a href="music.html" onclick="closeMobile()" data-i18n="nav.music">Music</a>
+    <a href="education.html" onclick="closeMobile()" data-i18n="nav.education">Education</a>
   </div>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" onclick="closeMobile()" data-i18n="footer.contact">Contact</a>
   <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
 </div>
 
@@ -1551,18 +1551,18 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
+    <li><a href="#hero" data-i18n="nav.home">Home</a></li>
     <li><a href="#about" data-i18n="nav.about">About</a></li>
     <li class="has-dropdown">
-      <a href="#areas">Areas of Work</a>
+      <a href="#areas" data-i18n="nav.areas_full">Areas of Work</a>
       <ul class="nav-dropdown">
-        <li><a href="design.html">Design</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="design.html" data-i18n="nav.design">Design</a></li>
+        <li><a href="art.html" data-i18n="nav.art">Art</a></li>
+        <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="education.html" data-i18n="nav.education">Education</a></li>
       </ul>
     </li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" data-i18n="footer.contact">Contact</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
@@ -1609,19 +1609,18 @@
     field-of-view="30deg"
     style="--poster-color: transparent;"
   ></model-viewer>
-  <div class="hero-tag" data-i18n="hero.tag">Designer · Artist · Educator</div>
+  <div class="hero-tag" data-i18n="hero.tag">Brand · Web · Visual · Graphic Designer</div>
   <h1 class="hero-headline">NUMA<span class="accent">.</span></h1>
   <div class="hero-sub">
     <div>
       <div class="hero-pills">
+        <span class="pill pill-orange" data-i18n="hero.pill_brand">Brand Design</span>
+        <span class="pill pill-green" data-i18n="hero.pill_web">Web Design</span>
+        <span class="pill pill-purple" data-i18n="hero.pill_visual">Visual Design</span>
+        <span class="pill pill-orange" data-i18n="hero.pill_graphic">Graphic Design</span>
+        <span class="pill pill-green" data-i18n="portfolio.meta_illustration">Illustration</span>
+        <span class="pill pill-purple">3D</span>
         <span class="pill pill-orange">Web3</span>
-        <span class="pill pill-green">Blockchain</span>
-        <span class="pill pill-purple">Brand Design</span>
-        <span class="pill pill-orange">3D</span>
-        <span class="pill pill-green">Illustration</span>
-        <span class="pill pill-purple">Beatmaker</span>
-        <span class="pill pill-orange">Multimedia</span>
-        <span class="pill pill-green">Education</span>
       </div>
     </div>
   </div>
@@ -1657,21 +1656,9 @@
       <div class="about-text fade-up">
         <div class="section-label" data-i18n="about.label">About</div>
         <h2 class="section-title" data-i18n-html="about.title">DIGITAL MATTER,<br><span style="color:var(--green)">HUMAN TOUCH</span><span style="color:var(--orange)">.</span></h2>
-        <p data-i18n-html="about.p1">
-          I'm <strong>Numa</strong> — a designer, artist, researcher, and educator based in Brazil.
-          My work sits at the intersection of <strong>emerging technologies and cultural practice</strong>,
-          with a particular focus on <strong>blockchain ecosystems and multimedia applications.</strong>
-        </p>
-        <p data-i18n-html="about.p2">
-          On the practice side, I work with <strong>visual communication, branding, digital products,
-          creative direction, webdesign, audiovisual production, illustration, and 3D modeling</strong>.
-          I build visual identities, soundtracks, videos, and diverse digital experiences.
-        </p>
-        <p data-i18n-html="about.p3">
-          I  also develop <strong>educational content, workshops, and courses on blockchain</strong>
-          for different levels of familiarity — from beginners
-          to professionals seeking to deepen their knowledge.
-        </p>
+        <p data-i18n-html="about.p1">I'm <strong>Numa</strong>, a Brazilian designer specializing in <strong>brand, web, visual, and graphic design</strong>, with 12+ years of experience.</p>
+        <p data-i18n-html="about.p2">I create <strong>visual identities, websites, and graphic design</strong> from concept to delivery. My recent work focuses on Web3 and tech brands.</p>
+        <p data-i18n-html="about.p3"><strong>Open to remote full-time roles and freelance projects.</strong></p>
       </div>
     </div>
     <div class="affil-row fade-up">
@@ -1704,7 +1691,7 @@
         </div>
         <div class="affil-badge-text">
           <div class="affil-badge-title">team1</div>
-          <div class="affil-badge-role">Member</div>
+          <div class="affil-badge-role" data-i18n="about.role_member">Member</div>
         </div>
       </a>
       <a href="https://www.web3edubrasil.org/" target="_blank" rel="noopener" class="affil-badge">
@@ -1713,7 +1700,7 @@
         </div>
         <div class="affil-badge-text">
           <div class="affil-badge-title">Web3EduBrasil</div>
-          <div class="affil-badge-role">Head of Community &amp; Mentor</div>
+          <div class="affil-badge-role" data-i18n="about.role_w3e">Head of Community &amp; Mentor</div>
         </div>
       </a>
     </div>
@@ -1731,41 +1718,29 @@
       <a class="area-item" href="design.html">
         <span class="area-arrow">↗</span>
         <div class="area-num">01</div>
-        <div class="area-title"><span class="highlight">DESIGN</span></div>
-        <p class="area-desc" data-i18n="areas.design_desc">
-          Visual communication, branding, digital product, and creative direction.
-          From identity systems to interface design, phygital graphics.
-        </p>
+        <div class="area-title"><span class="highlight" data-i18n="areas.design_title">DESIGN</span></div>
+        <p class="area-desc" data-i18n="areas.design_desc">Brand identity, websites, visual design, and graphic design.</p>
         <div class="area-bar"></div>
       </a>
       <a class="area-item" href="art.html">
         <span class="area-arrow">↗</span>
         <div class="area-num">02</div>
         <div class="area-title"><span class="highlight" data-i18n="areas.art_title">ART</span></div>
-        <p class="area-desc" data-i18n="areas.art_desc">
-          Digital and traditional art, blending fantasy and cultural symbols
-          with a dreamlike nature. On-chain works exhibited in Brasil, France and Thailand.
-        </p>
+        <p class="area-desc" data-i18n="areas.art_desc">Digital and traditional art, exhibited in 7 countries.</p>
         <div class="area-bar"></div>
       </a>
       <a class="area-item" href="music.html">
         <span class="area-arrow">↗</span>
         <div class="area-num">03</div>
         <div class="area-title"><span class="highlight" data-i18n="areas.music_title">MUSIC</span></div>
-        <p class="area-desc" data-i18n="areas.music_desc">
-          Music for various purposes. Soundtracks for films and games, DJing,
-          sound design, remixes, and production of original instrumentals for artists.
-        </p>
+        <p class="area-desc" data-i18n="areas.music_desc">Soundtracks, sound design, DJ sets, and original tracks.</p>
         <div class="area-bar"></div>
       </a>
       <a class="area-item" href="education.html">
         <span class="area-arrow">↗</span>
         <div class="area-num">04</div>
         <div class="area-title"><span class="highlight" data-i18n="areas.edu_title">EDUCATION</span></div>
-        <p class="area-desc" data-i18n="areas.edu_desc">
-          Development of educational materials, workshops, lectures, and courses on
-          blockchain — designed for different levels of prior knowledge.
-        </p>
+        <p class="area-desc" data-i18n="areas.edu_desc">Blockchain courses, workshops, and lectures for all levels.</p>
         <div class="area-bar"></div>
       </a>
     </div>
@@ -1802,11 +1777,11 @@
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat" data-i18n="portfolio.threeland_cat">Metaverse · cNFT Marketplace</div>
+          <div class="project-cat" data-i18n="portfolio.threeland_cat">Web3 Studio</div>
           <div class="project-title">3land</div>
-          <div class="project-desc" data-i18n="portfolio.threeland_desc">Creative hub for cyberspace — a studio that grew from a 3D metaverse into a cNFT marketplace and open-source tooling.</div>
+          <div class="project-desc" data-i18n="portfolio.threeland_desc">Brand identity, 3D, and UI/UX for a Web3 studio.</div>
           <div class="project-meta">
-            <span class="meta-tag role">Brand Identity</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_brandidentity">Brand Identity</span>
             <span class="meta-tag">3D</span>
             <span class="meta-tag">Web3</span>
             <span class="meta-tag">UI/UX</span>
@@ -1822,17 +1797,17 @@
           </div>
           <div class="project-tag-label">2025</div>
           <div class="project-overlay">
-            <a href="education.html" class="project-overlay-btn" data-i18n="portfolio.web3pe_cta">See more similar approaches →</a>
+            <a href="education.html" class="project-overlay-btn" data-i18n="portfolio.web3pe_cta">See more in Education →</a>
           </div>
         </div>
         <div class="project-body">
           <div class="project-cat" data-i18n="portfolio.web3pe_cat">Event</div>
           <div class="project-title">WEB3PE</div>
-          <div class="project-desc" data-i18n="portfolio.web3pe_desc">At WEB3PE 2025 (IFPE, Belo Jardim — Pernambuco), I presented the lecture "Cripto&Sociedade", ran a wallet-creation workshop that also explained how block validation works on Solana, and hosted a conversation circle on crypto art.</div>
+          <div class="project-desc" data-i18n="portfolio.web3pe_desc">Lecture, wallet workshop, and crypto art talk at WEB3PE 2025.</div>
           <div class="project-meta">
             <span class="meta-tag role" data-i18n="portfolio.meta_education">Education</span>
-            <span class="meta-tag">Lecture</span>
-            <span class="meta-tag">Workshop</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_lecture">Lecture</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_workshop">Workshop</span>
             <span class="meta-tag">Web3</span>
           </div>
         </div>
@@ -1850,14 +1825,14 @@
           </div>
         </div>
         <div class="project-body">
-          <div class="project-cat" data-i18n="portfolio.cfa_cat">Education Material · Course · Workshops</div>
+          <div class="project-cat" data-i18n="portfolio.cfa_cat">Visual Identity · Education</div>
           <div class="project-title">Computadores Fazem Arte</div>
-          <div class="project-desc" data-i18n="portfolio.cfa_desc">Visual identity for my master's project. 2 years of research, supervision of 3 undergraduate students, developing in-person and virtual educational content.</div>
+          <div class="project-desc" data-i18n="portfolio.cfa_desc">Visual identity and course materials for my master's research project.</div>
           <div class="project-meta">
             <span class="meta-tag role" data-i18n="portfolio.meta_education">Education</span>
             <span class="meta-tag" data-i18n="portfolio.meta_fieldresearch">Field research</span>
             <span class="meta-tag">Branding</span>
-            <span class="meta-tag">Illustration</span>
+            <span class="meta-tag" data-i18n="portfolio.meta_illustration">Illustration</span>
           </div>
         </div>
       </div>
@@ -1875,9 +1850,9 @@
         <div class="project-body">
           <div class="project-cat" data-i18n="portfolio.camapu_cat">International Exhibition</div>
           <div class="project-title">Camapu</div>
-          <div class="project-desc" data-i18n="portfolio.camapu_desc">My artwork featured in the "Held in Motion" section of the Interlace exhibition at ArtVerse Paris, produced by Mallow and Exchange.art.</div>
+          <div class="project-desc" data-i18n="portfolio.camapu_desc">Artwork shown at the Interlace exhibition at ArtVerse Paris.</div>
           <div class="project-meta">
-            <span class="meta-tag role">CryptoArt</span>
+            <span class="meta-tag role" data-i18n="portfolio.meta_cryptoart">CryptoArt</span>
             <span class="meta-tag">3D</span>
             <span class="meta-tag">Motion</span>
           </div>
@@ -1897,7 +1872,7 @@
         <div class="project-body">
           <div class="project-cat" data-i18n="portfolio.visualid_cat">Logo · Brand Identity</div>
           <div class="project-title">Visual ID</div>
-          <div class="project-desc" data-i18n="portfolio.visualid_desc">A selection from years of logo and identity work — dozens of marks and brand applications built for startups, artists, and Web3 projects across many sectors.</div>
+          <div class="project-desc" data-i18n="portfolio.visualid_desc">Logos and brand identities for startups, artists, and Web3 projects.</div>
           <div class="project-meta">
             <span class="meta-tag role" data-i18n="portfolio.meta_logodesign">Logo Design</span>
             <span class="meta-tag" data-i18n="portfolio.meta_brandidentity">Brand Identity</span>
@@ -1915,39 +1890,39 @@
 <!-- PRESS -->
 <section id="press" style="background:var(--off-black);">
   <div class="section-inner">
-    <div class="section-label">In the Media</div>
-    <h2 class="section-title fade-up">PRESS<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label" data-i18n="press.label">In the Media</div>
+    <h2 class="section-title fade-up" data-i18n-html="press.title">PRESS<span style="color:var(--orange)">.</span></h2>
     <div class="writing-grid fade-up">
 
       <a href="https://www.rightclicksave.com/article/tezos-and-the-new-digital-geography-of-nfts" target="_blank" class="writing-card">
-        <div class="writing-card-date">May 2022</div>
+        <div class="writing-card-date" data-i18n="press.date_rcs">May 2022</div>
         <div class="writing-card-cat">Right Click Save</div>
         <div class="writing-card-title">Tezos and the New Digital Geography of NFTs</div>
-        <div class="writing-card-excerpt">Featured among five leading artists shaping the Tezos ecosystem, highlighting Indigenous Brazilian NFT initiatives.</div>
+        <div class="writing-card-excerpt" data-i18n="press.rcs_desc">Featured among five leading artists in the Tezos ecosystem.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
 
       <a href="https://rollingstone.com.br/noticia/o-beat-delas-parte-4/" target="_blank" class="writing-card">
-        <div class="writing-card-date">Aug 2020</div>
+        <div class="writing-card-date" data-i18n="press.date_rs">Aug 2020</div>
         <div class="writing-card-cat">Rolling Stone Brasil</div>
         <div class="writing-card-title">O Beat Delas (Parte 4)</div>
-        <div class="writing-card-excerpt">Interviewed as a DJ and beatmaker who builds tracks by sampling Brazilian music — samba, forró, and beyond.</div>
+        <div class="writing-card-excerpt" data-i18n="press.rs_desc">Interview as a DJ and beatmaker who samples Brazilian music.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
 
       <a href="https://kalamidade.com.br/entrevista-com-dj-numa/" target="_blank" class="writing-card">
-        <div class="writing-card-date">Interview</div>
+        <div class="writing-card-date" data-i18n="press.interview">Interview</div>
         <div class="writing-card-cat">Kalamidade</div>
         <div class="writing-card-title">O "Inferno Verde" de Numa</div>
-        <div class="writing-card-excerpt">An in-depth conversation on the album, sampling Brazilian music exclusively, activism, and creative process.</div>
+        <div class="writing-card-excerpt" data-i18n="press.kal_desc">Interview about the album, sampling, and activism.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
 
       <a href="https://www.youtube.com/watch?v=c4JAfmUdkoM" target="_blank" class="writing-card">
-        <div class="writing-card-date">Video</div>
+        <div class="writing-card-date" data-i18n="press.video">Video</div>
         <div class="writing-card-cat">Céu da Boca Ao Vivo</div>
         <div class="writing-card-title">Entrevista com Numa</div>
-        <div class="writing-card-excerpt">A live on-camera interview about music, art, and the ideas behind the work.</div>
+        <div class="writing-card-excerpt" data-i18n="press.ceu_desc">Live interview about music and art.</div>
         <span class="writing-card-arrow writing-card-arrow--green">↗</span>
       </a>
 
@@ -1965,10 +1940,7 @@
     <div class="fade-up">
       <div class="section-label" data-i18n="contact.label">Contact</div>
       <h2 class="contact-headline" data-i18n-html="contact.headline">LET'S<br><span style="color:var(--green)">WORK</span><span style="color:var(--orange)">.</span></h2>
-      <p class="contact-text" data-i18n="contact.text">
-        Open to design collaborations, art commissions, research partnerships, educational projects,
-        and speaking invitations.
-      </p>
+      <p class="contact-text" data-i18n="contact.text">Available for full-time roles and freelance projects in brand, web, visual, and graphic design.</p>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           const u = "contato";
@@ -2061,7 +2033,7 @@
   <div class="footer-links">
     <a href="#about" data-i18n="footer.about">About</a>
     <a href="#portfolio" data-i18n="footer.portfolio">Portfolio</a>
-    <a href="#press">Press</a>
+    <a href="#press" data-i18n="footer.press">Press</a>
     <a href="#contact" data-i18n="footer.contact">Contact</a>
   </div>
 </footer>

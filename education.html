@@ -1466,16 +1466,16 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
-  <a href="index.html#hero" onclick="closeMobile()">Home</a>
+  <a href="index.html#hero" onclick="closeMobile()" data-i18n="nav.home">Home</a>
   <a href="index.html#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
-  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)">Areas of Work<span class="mobile-caret">▾</span></a>
+  <a href="index.html#areas" class="mobile-areas-toggle" onclick="toggleMobileSub(event)"><span data-i18n="nav.areas_full">Areas of Work</span><span class="mobile-caret">▾</span></a>
   <div class="mobile-sub">
-    <a href="design.html" onclick="closeMobile()">Design</a>
-    <a href="art.html" onclick="closeMobile()">Art</a>
-    <a href="music.html" onclick="closeMobile()">Music</a>
-    <a href="education.html" onclick="closeMobile()">Education</a>
+    <a href="design.html" onclick="closeMobile()" data-i18n="nav.design">Design</a>
+    <a href="art.html" onclick="closeMobile()" data-i18n="nav.art">Art</a>
+    <a href="music.html" onclick="closeMobile()" data-i18n="nav.music">Music</a>
+    <a href="education.html" onclick="closeMobile()" data-i18n="nav.education">Education</a>
   </div>
-  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact" onclick="closeMobile()" data-i18n="footer.contact">Contact</a>
   <a href="https://numadessas.com.br/wiki/" target="_blank" onclick="closeMobile()" style="color:var(--green);" data-i18n="nav.wiki">Wiki ↗</a>
 </div>
 
@@ -1490,18 +1490,18 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#hero" data-i18n="nav.home">Home</a></li>
     <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
     <li class="has-dropdown">
-      <a href="index.html#areas">Areas of Work</a>
+      <a href="index.html#areas" data-i18n="nav.areas_full">Areas of Work</a>
       <ul class="nav-dropdown">
-        <li><a href="design.html">Design</a></li>
-        <li><a href="art.html">Art</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="design.html" data-i18n="nav.design">Design</a></li>
+        <li><a href="art.html" data-i18n="nav.art">Art</a></li>
+        <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="education.html" data-i18n="nav.education">Education</a></li>
       </ul>
     </li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
     <li><a href="https://numadessas.com.br/wiki/" target="_blank" class="nav-wiki-link" data-i18n="nav.wiki">Wiki ↗</a></li>
   </ul>
   <div class="nav-end">
@@ -1591,22 +1591,22 @@
 
     <div class="cv-list fade-up">
       <!-- 2026 -->
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Hartverse <span class="cv-type">Talk · Virtual</span></div><div class="cv-venue">ULUS · Belgrade, Serbia</div><div class="cv-desc">Virtual talk for an in-person event at ULUS Belgrade, on building a sense of community in Web3.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">the/Garage · Superteam Brazil <span class="cv-type">Mentorship · Talk</span></div><div class="cv-venue">São Paulo, Brazil</div><div class="cv-desc">Brand Design mentorship and talk for an in-person hackathon, at Superteam Brazil's event.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">SheFi <span class="cv-type">Talk · Virtual</span></div><div class="cv-venue">Virtual</div><div class="cv-desc">Virtual talk on crypto art and social movements in Web3.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">Hartverse <span class="cv-type" data-i18n="cv.talk_virtual">Talk · Virtual</span></div><div class="cv-venue" data-i18n="cv.v15">ULUS · Belgrade, Serbia</div><div class="cv-desc" data-i18n="teaching.d1">Virtual talk for an in-person event at ULUS Belgrade, on building a sense of community in Web3.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">the/Garage · Superteam Brazil <span class="cv-type" data-i18n="cv.mentor_talk">Mentorship · Talk</span></div><div class="cv-venue" data-i18n="cv.v6">São Paulo, Brazil</div><div class="cv-desc" data-i18n="teaching.d2">Brand Design mentorship and talk for an in-person hackathon, at Superteam Brazil's event.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2026</div><div><div class="cv-title">SheFi <span class="cv-type" data-i18n="cv.talk_virtual">Talk · Virtual</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div><div class="cv-desc" data-i18n="teaching.d3">Virtual talk on crypto art and social movements in Web3.</div></div></div>
       <!-- 2025 -->
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">UFSJ · Computer Science <span class="cv-type">Intensive Course · Virtual</span></div><div class="cv-venue">Universidade Federal de São João del-Rei, Brazil</div><div class="cv-desc">Intensive virtual blockchain training for Computer Science students.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">UFPR · Design <span class="cv-type">Guest Class</span></div><div class="cv-venue">Universidade Federal do Paraná · Curitiba, Brazil</div><div class="cv-desc">Introductory blockchain class within an in-person Anthropology course.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">WEB3PE <span class="cv-type">Talks · Workshop</span></div><div class="cv-venue">IFPE · Belo Jardim, PE, Brazil</div><div class="cv-desc">"Crypto &amp; Society" talk, a Crypto Art conversation circle, and a Crypto Wallets workshop with Pine Stake.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">Design for Web3 <span class="cv-type">Semester Course</span></div><div class="cv-venue">UFPE · Recife, Brazil</div><div class="cv-desc">Semester-long course for a Design class, at the invitation of Prof. Leonardo Castillo.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title"><span data-i18n="teaching.t_ufsj">UFSJ · Computer Science</span> <span class="cv-type" data-i18n="cv.intensive">Intensive Course · Virtual</span></div><div class="cv-venue" data-i18n="cv.v16">Universidade Federal de São João del-Rei, Brazil</div><div class="cv-desc" data-i18n="teaching.d4">Intensive virtual blockchain training for Computer Science students.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title"><span data-i18n="teaching.t_ufpr">UFPR · Design</span> <span class="cv-type" data-i18n="cv.guest_class">Guest Class</span></div><div class="cv-venue" data-i18n="cv.v17">Universidade Federal do Paraná · Curitiba, Brazil</div><div class="cv-desc" data-i18n="teaching.d5">Introductory blockchain class within an in-person Anthropology course.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title">WEB3PE <span class="cv-type" data-i18n="cv.talks_workshop">Talks · Workshop</span></div><div class="cv-venue" data-i18n="cv.v18">IFPE · Belo Jardim, PE, Brazil</div><div class="cv-desc" data-i18n="teaching.d6">"Crypto &amp; Society" talk, a Crypto Art conversation circle, and a Crypto Wallets workshop with Pine Stake.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2025</div><div><div class="cv-title"><span data-i18n="teaching.t_design_web3">Design for Web3</span> <span class="cv-type" data-i18n="cv.semester">Semester Course</span></div><div class="cv-venue" data-i18n="cv.v19">UFPE · Recife, Brazil</div><div class="cv-desc" data-i18n="teaching.d7">Semester-long course for a Design class, at the invitation of Prof. Leonardo Castillo.</div></div></div>
       <!-- 2024 -->
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Simpósio Brasileiro de Sistemas Multimídia e Web · WebMedia <span class="cv-type">Short Course</span></div><div class="cv-venue">Juiz de Fora, MG, Brazil</div><div class="cv-desc">Introductory in-person blockchain mini-course at the WebMedia event.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">IslandDAO <span class="cv-type">Talk</span></div><div class="cv-venue">Koh Samui, Thailand</div><div class="cv-desc">In-person talk on the history of blockchain.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Mutirão · Rede de Resistência Solidária <span class="cv-type">Workshop</span></div><div class="cv-venue">Recife, PE, Brazil</div><div class="cv-desc">Activity on technology and virtual reality for children and teenagers.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">WEB3PE <span class="cv-type">Talk</span></div><div class="cv-venue">CIn · UFPE · Recife, Brazil</div><div class="cv-desc">Introduction-to-blockchain talk at the Informatics Center (CIn), UFPE.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Simpósio Brasileiro de Sistemas Multimídia e Web · WebMedia <span class="cv-type" data-i18n="cv.short">Short Course</span></div><div class="cv-venue" data-i18n="cv.v20">Juiz de Fora, MG, Brazil</div><div class="cv-desc" data-i18n="teaching.d8">Introductory in-person blockchain mini-course at the WebMedia event.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">IslandDAO <span class="cv-type" data-i18n="cv.talk">Talk</span></div><div class="cv-venue" data-i18n="cv.v21">Koh Samui, Thailand</div><div class="cv-desc" data-i18n="teaching.d9">In-person talk on the history of blockchain.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">Mutirão · Rede de Resistência Solidária <span class="cv-type" data-i18n="portfolio.meta_workshop">Workshop</span></div><div class="cv-venue" data-i18n="cv.v22">Recife, PE, Brazil</div><div class="cv-desc" data-i18n="teaching.d10">Activity on technology and virtual reality for children and teenagers.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2024</div><div><div class="cv-title">WEB3PE <span class="cv-type" data-i18n="cv.talk">Talk</span></div><div class="cv-venue" data-i18n="cv.v23">CIn · UFPE · Recife, Brazil</div><div class="cv-desc" data-i18n="teaching.d11">Introduction-to-blockchain talk at the Informatics Center (CIn), UFPE.</div></div></div>
       <!-- 2023 -->
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">UFPE · Design <span class="cv-type">Guest Lectures</span></div><div class="cv-venue">Recife, Brazil</div><div class="cv-desc">Two blockchain talks for Design students, in different courses taught by Prof. Leonardo Castillo.</div></div></div>
-      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">web3dev <span class="cv-type">Interview · Virtual</span></div><div class="cv-venue">Virtual</div><div class="cv-desc">Interview about 3.land, a metaverse on Solana. <a href="https://www.youtube.com/watch?v=5o_Wt05a4GE" target="_blank" rel="noopener">Watch ↗</a></div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title"><span data-i18n="teaching.t_ufpe">UFPE · Design</span> <span class="cv-type" data-i18n="cv.guest_lectures">Guest Lectures</span></div><div class="cv-venue" data-i18n="cv.v13">Recife, Brazil</div><div class="cv-desc" data-i18n="teaching.d12">Two blockchain talks for Design students, in different courses taught by Prof. Leonardo Castillo.</div></div></div>
+      <div class="cv-item"><div class="cv-year">2023</div><div><div class="cv-title">web3dev <span class="cv-type" data-i18n="cv.interview_virtual">Interview · Virtual</span></div><div class="cv-venue" data-i18n="cv.virtual">Virtual</div><div class="cv-desc"><span data-i18n="teaching.d13">Interview about 3.land, a metaverse on Solana.</span> <a href="https://www.youtube.com/watch?v=5o_Wt05a4GE" target="_blank" rel="noopener" data-i18n="teaching.watch">Watch ↗</a></div></div></div>
     </div>
   </div>
 </section>
