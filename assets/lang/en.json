@@ -78,6 +78,15 @@
     "m_title": "Introduction to blockchain",
     "m_desc": "Individual or group mentoring for professionals and students who wish to enter or improve their knowledge of Web3. Focus on practice, technical literacy, career guidance, and community development."
   },
+  "slides": {
+    "label": "Class Materials",
+    "title": "SLIDES<span style=\"color:var(--orange)\">.</span>",
+    "cat": "Slides (Portuguese Only)",
+    "web3_title": "Aulão Web3EduBrasil: Comece na Web3",
+    "web3_desc": "Internet, blockchain, history, tokens, NFTs, wallets, and how to get started in Web3.",
+    "cs_title": "Cripto & Sociedade: Um panorama sociocultural",
+    "cs_desc": "Critical thinking, cypherpunks, political economy, and virtual communities."
+  },
   "teaching": {
     "label": "Lectures & Workshops",
     "title": "TEACHING<span style=\"color:var(--orange)\">.</span>",
