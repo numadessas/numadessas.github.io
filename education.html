@@ -987,6 +987,66 @@
     margin-top: 1rem;
   }
   .writing-grid--two { grid-template-columns: repeat(2, 1fr); }
+  .writing-card.slide-card { padding: 0; overflow: hidden; }
+  .slide-card-body { position: relative; padding: 2rem; }
+  .slide-card-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+  .slide-card-thumb--web3 { background: #D3E3DA; }
+  .slide-card-thumb--web3 svg { position: absolute; top: 0; right: 0; width: 62%; height: 100%; }
+  .slide-card-logo {
+    position: absolute;
+    left: 7%;
+    bottom: 11%;
+    width: 42%;
+    aspect-ratio: 1774 / 402;
+    background: #3F2E5E;
+    -webkit-mask: url(assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat;
+    mask: url(assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat;
+  }
+  .slide-card-thumb--cs { background: linear-gradient(-45deg, #43005E, #331041, #160A20); }
+  .slide-card-thumb--cs model-viewer {
+    position: absolute;
+    top: -38%;
+    right: -34%;
+    width: 84%;
+    height: 176%;
+    background: transparent;
+    --poster-color: transparent;
+    --progress-bar-color: transparent;
+    pointer-events: none;
+  }
+  .slide-card-pills {
+    position: absolute;
+    left: 7%;
+    bottom: 11%;
+    z-index: 1;
+    width: 62%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .slide-card-pills span {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid;
+    background: rgba(10,10,10,0.6);
+  }
+  .slide-card-pills .p-o { color: var(--orange); }
+  .slide-card-pills .p-g { color: var(--green); }
+  .slide-card-pills .p-p { color: #b87fbf; }
+  .slide-card-credit {
+    position: absolute;
+    left: 7%;
+    top: 8%;
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
   .writing-card {
     background: var(--dark);
     border: 1px solid rgba(255,255,255,0.06);
@@ -1395,6 +1455,7 @@
     }
   }
 </style>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -1478,52 +1539,40 @@
       These are usually open initiatives, but I'm open to proposals for something tailored or more institutional.
     </p>
 
-    <div class="writing-grid fade-up">
-      <a href="https://numadessas.com.br/wiki/" target="_blank" class="writing-card writing-card--wiki">
-        <div class="writing-card-cat" style="color:var(--green);" data-i18n="education.wiki_cat">Free Resource</div>
-        <div class="writing-card-title" style="font-size:1.7rem;" data-i18n="education.wiki_title">NumaWiki 📖</div>
-        <div class="writing-card-excerpt" data-i18n="education.wiki_desc">A free open knowledge base on blockchain, Web3, crypto art, and emerging technologies — written in clear, accessible language. A living resource for curious minds at any level.</div>
-        <span class="writing-card-arrow writing-card-arrow--green" style="opacity:1;font-size:1.5rem;">✱</span>
-      </a>
-      <a class="writing-card">
-        <div class="writing-card-cat" data-i18n="education.lw_cat">Educational Training</div>
-        <div class="writing-card-title" data-i18n="education.lw_title">Lectures & Workshops</div>
-        <div class="writing-card-excerpt" data-i18n="education.lw_desc">Presentations with hands-on activities on specific blockchain
-              topics that can be adapted for diverse audiences and objectives.
-              Cryptoart, design, development, basic practices, etc.</div>
-        <span class="writing-card-arrow">✱</span>
-      </a>
-      <a class="writing-card">
-        <div class="writing-card-cat" data-i18n="education.m_cat">Mentorship</div>
-        <div class="writing-card-title" data-i18n="education.m_title">Introduction to blockchain</div>
-        <div class="writing-card-excerpt" data-i18n="education.m_desc">Individual or group mentoring for professionals and students
-              who wish to enter or improve their knowledge of Web3. Focus on practice,
-              technical literacy, career guidance, and community development.</div>
-        <span class="writing-card-arrow">✱</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CLASS SLIDES -->
-<section id="slides">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="slides.label">Class Materials</div>
-    <h2 class="section-title fade-up" data-i18n-html="slides.title">SLIDES<span style="color:var(--orange)">.</span></h2>
+    <div class="section-label fade-up" data-i18n="slides.label">Class Materials</div>
     <div class="writing-grid writing-grid--two fade-up">
-      <a href="comece-na-web3.html" target="_blank" class="writing-card">
-        <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
-        <div class="writing-card-title" data-i18n="slides.web3_title">Aulão Web3EduBrasil: Comece na Web3</div>
-        <div class="writing-card-excerpt" data-i18n="slides.web3_desc">Internet, blockchain, history, tokens, NFTs, wallets, and how to get started in Web3.</div>
-        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
+      <a href="comece-na-web3.html" target="_blank" class="writing-card slide-card">
+        <div class="slide-card-thumb slide-card-thumb--web3" aria-hidden="true">
+          <svg viewBox="0 0 600 560" preserveAspectRatio="xMaxYMid slice">
+            <polygon fill="#6A4C93" points="540,-40 900,-40 900,620 140,620 520,215 400,215"/>
+            <polygon fill="#FFE500" points="300,-20 560,-20 420,215 545,215 175,580 300,300 165,300"/>
+          </svg>
+          <span class="slide-card-logo"></span>
+        </div>
+        <div class="slide-card-body">
+          <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
+          <div class="writing-card-title" data-i18n="slides.web3_title">Aulão Web3EduBrasil: Comece na Web3</div>
+          <div class="writing-card-excerpt" data-i18n="slides.web3_desc">Internet, blockchain, history, tokens, NFTs, wallets, and how to get started in Web3.</div>
+          <span class="writing-card-arrow writing-card-arrow--green">↗</span>
+        </div>
       </a>
-      <a href="cripto-e-sociedade.html" target="_blank" class="writing-card">
-        <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
-        <div class="writing-card-title" data-i18n="slides.cs_title">Cripto &amp; Sociedade: Um panorama sociocultural</div>
-        <div class="writing-card-excerpt" data-i18n="slides.cs_desc">Critical thinking, cypherpunks, political economy, and virtual communities.</div>
-        <span class="writing-card-arrow writing-card-arrow--green">↗</span>
+      <a href="cripto-e-sociedade.html" target="_blank" class="writing-card slide-card">
+        <div class="slide-card-thumb slide-card-thumb--cs" aria-hidden="true">
+          <model-viewer src="assets/img/aulas/cube-cascade.web.glb" alt="" loading="eager" autoplay environment-image="neutral" exposure="1" shadow-intensity="0" interaction-prompt="none" disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="10deg" camera-orbit="35deg 70deg auto"></model-viewer>
+          <div class="slide-card-pills">
+            <span class="p-o">Pensamento crítico</span>
+            <span class="p-g">Cypherpunks</span>
+            <span class="p-p">Economia política</span>
+            <span class="p-o">Comunidades virtuais</span>
+          </div>
+          <span class="slide-card-credit">3D: Cube Cascade · Tycho Magnetic Anomaly</span>
+        </div>
+        <div class="slide-card-body">
+          <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
+          <div class="writing-card-title" data-i18n="slides.cs_title">Cripto &amp; Sociedade: Um panorama sociocultural</div>
+          <div class="writing-card-excerpt" data-i18n="slides.cs_desc">Critical thinking, cypherpunks, political economy, and virtual communities.</div>
+          <span class="writing-card-arrow writing-card-arrow--green">↗</span>
+        </div>
       </a>
     </div>
   </div>

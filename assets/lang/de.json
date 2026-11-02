@@ -48,8 +48,11 @@
     "cfa_desc": "Visuelle Identität für mein Masterprojekt. 2 Jahre Forschung, Betreuung von 3 Bachelor-Studierenden, Entwicklung von Präsenz- und Online-Bildungsinhalten.",
     "camapu_cat": "Internationale Ausstellung",
     "camapu_desc": "Mein Werk war Teil des Bereichs \"Held in Motion\" der Interlace-Ausstellung im ArtVerse Paris, produziert von Mallow und Exchange.art.",
-    "logofolio_cat": "Visuelle Identität",
-    "logofolio_desc": "Über die Jahre entwickelte Logos für verschiedene Kunden aus unterschiedlichen Branchen.",
+    "visualid_cat": "Logo · Markenidentität",
+    "visualid_desc": "Eine Auswahl aus Jahren der Logo- und Identitätsarbeit – Dutzende Marken und Anwendungen für Startups, Kunstschaffende und Web3-Projekte aus vielen Branchen.",
+    "meta_logodesign": "Logo-Design",
+    "meta_brandidentity": "Markenidentität",
+    "meta_applications": "Anwendungen",
     "gatenu_cat": "NFT-Kollektion",
     "gatenu_desc": "Meine erste Kollektion auf Solana, veröffentlicht 2022, mit mehr als 70 Kollaborationen."
   },
@@ -67,20 +70,10 @@
   "education": {
     "label": "Bildung",
     "title": "GESTALTEN &<br><span style=\"color:var(--green)\">LEHREN</span><span style=\"color:var(--orange)\">.</span>",
-    "intro": "Ich stehe für Vorträge, Workshops, Mentorings und Bildungskooperationen zur Verfügung — besonders mit Universitäten und Forschungsgruppen. Meist sind es offene Initiativen, aber ich bin offen für maßgeschneiderte oder institutionellere Vorschläge.",
-    "wiki_cat": "Kostenlose Ressource",
-    "wiki_title": "NumaWiki 📖",
-    "wiki_desc": "Eine kostenlose, offene Wissensdatenbank zu Blockchain, Web3, Krypto-Kunst und aufkommenden Technologien — in klarer, zugänglicher Sprache. Eine lebendige Ressource für neugierige Menschen jeden Niveaus.",
-    "lw_cat": "Bildungstraining",
-    "lw_title": "Vorträge & Workshops",
-    "lw_desc": "Präsentationen mit praktischen Übungen zu bestimmten Blockchain-Themen, anpassbar an unterschiedliche Zielgruppen und Ziele. Krypto-Kunst, Design, Entwicklung, Grundlagen usw.",
-    "m_cat": "Mentoring",
-    "m_title": "Einführung in Blockchain",
-    "m_desc": "Einzel- oder Gruppenmentoring für Fachleute und Studierende, die in Web3 einsteigen oder ihr Wissen vertiefen möchten. Fokus auf Praxis, technische Kompetenz, Karriereberatung und Community-Entwicklung."
+    "intro": "Ich stehe für Vorträge, Workshops, Mentorings und Bildungskooperationen zur Verfügung — besonders mit Universitäten und Forschungsgruppen. Meist sind es offene Initiativen, aber ich bin offen für maßgeschneiderte oder institutionellere Vorschläge."
   },
   "slides": {
     "label": "Unterrichtsmaterial",
-    "title": "FOLIEN<span style=\"color:var(--orange)\">.</span>",
     "cat": "Folien (nur auf Portugiesisch)",
     "web3_title": "Aulão Web3EduBrasil: Comece na Web3",
     "web3_desc": "Internet, Blockchain, Geschichte, Token, NFTs, Wallets und der Einstieg in Web3.",

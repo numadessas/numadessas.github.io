@@ -48,8 +48,11 @@
     "cfa_desc": "Identidad visual para mi proyecto de maestría. 2 años de investigación, supervisión de 3 estudiantes de grado, desarrollando contenido educativo presencial y virtual.",
     "camapu_cat": "Exposición Internacional",
     "camapu_desc": "Mi obra presentada en la sección \"Held in Motion\" de la exposición Interlace en ArtVerse Paris, producida por Mallow y Exchange.art.",
-    "logofolio_cat": "Identidad Visual",
-    "logofolio_desc": "Logotipos desarrollados para diversos clientes, en distintos campos de actividad, a lo largo de los años.",
+    "visualid_cat": "Logo · Identidad de Marca",
+    "visualid_desc": "Una selección de años de trabajo con logos e identidades: decenas de marcas y aplicaciones creadas para startups, artistas y proyectos Web3 de muchos sectores.",
+    "meta_logodesign": "Diseño de Logos",
+    "meta_brandidentity": "Identidad de Marca",
+    "meta_applications": "Aplicaciones",
     "gatenu_cat": "Colección NFT",
     "gatenu_desc": "Mi primera colección en Solana, lanzada en 2022 y con más de 70 colaboraciones."
   },
@@ -67,20 +70,10 @@
   "education": {
     "label": "Educación",
     "title": "CREAR Y<br><span style=\"color:var(--green)\">ENSEÑAR</span><span style=\"color:var(--orange)\">.</span>",
-    "intro": "Estoy disponible para charlas, talleres, mentorías y colaboraciones educativas — especialmente con universidades y grupos de investigación. Suelen ser iniciativas abiertas, pero estoy abierta a propuestas más a medida o institucionales.",
-    "wiki_cat": "Recurso Gratuito",
-    "wiki_title": "NumaWiki 📖",
-    "wiki_desc": "Una base de conocimiento abierta y gratuita sobre blockchain, Web3, cripto arte y tecnologías emergentes — escrita en un lenguaje claro y accesible. Un recurso vivo para mentes curiosas de cualquier nivel.",
-    "lw_cat": "Formación Educativa",
-    "lw_title": "Charlas y Talleres",
-    "lw_desc": "Presentaciones con actividades prácticas sobre temas específicos de blockchain, adaptables a públicos y objetivos diversos. Cripto arte, diseño, desarrollo, prácticas básicas, etc.",
-    "m_cat": "Mentoría",
-    "m_title": "Introducción a blockchain",
-    "m_desc": "Mentoría individual o grupal para profesionales y estudiantes que desean ingresar o mejorar sus conocimientos de Web3. Enfoque en la práctica, alfabetización técnica, orientación profesional y desarrollo comunitario."
+    "intro": "Estoy disponible para charlas, talleres, mentorías y colaboraciones educativas — especialmente con universidades y grupos de investigación. Suelen ser iniciativas abiertas, pero estoy abierta a propuestas más a medida o institucionales."
   },
   "slides": {
     "label": "Material de Clase",
-    "title": "DIAPOSITIVAS<span style=\"color:var(--orange)\">.</span>",
     "cat": "Diapositivas (Solo en Portugués)",
     "web3_title": "Aulão Web3EduBrasil: Comece na Web3",
     "web3_desc": "Internet, blockchain, historia, tokens, NFTs, carteras y cómo empezar en Web3.",
