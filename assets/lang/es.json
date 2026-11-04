@@ -117,7 +117,11 @@
     "t_ufsj": "UFSJ · Ciencias de la Computación",
     "t_design_web3": "Diseño para Web3",
     "t_ufpr": "UFPR · Diseño",
-    "t_ufpe": "UFPE · Diseño"
+    "t_ufpe": "UFPE · Diseño",
+    "t_usp": "USP · Ciencias de la Computación",
+    "t_ufjf": "Semana de Computación de la UFJF",
+    "d14": "Clase \"Cripto y Sociedad\" para Ciencias de la Computación en la asignatura \"Blockchain, Criptomonedas y Tecnologías Descentralizadas\", del Prof. Marcos Simplicio.",
+    "d15": "Clase abierta de introducción a blockchain y conversatorio sobre la presencia femenina y LGBT en la tecnología."
   },
   "publications": {
     "label": "Producción Académica",
@@ -467,6 +471,9 @@
     "v22": "Recife, PE, Brasil",
     "v23": "CIn · UFPE · Recife, Brasil",
     "v24": "2026 · São Paulo, Brasil",
-    "v25": "2026 · París, Francia"
+    "v25": "2026 · París, Francia",
+    "lecture_circle": "Clase abierta · Conversatorio",
+    "v26": "Universidade de São Paulo · São Paulo, Brasil",
+    "v27": "Universidade Federal de Juiz de Fora · Juiz de Fora, MG, Brasil"
   }
 }

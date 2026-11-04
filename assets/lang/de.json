@@ -117,7 +117,11 @@
     "t_ufsj": "UFSJ · Informatik",
     "t_design_web3": "Design für Web3",
     "t_ufpr": "UFPR · Design",
-    "t_ufpe": "UFPE · Design"
+    "t_ufpe": "UFPE · Design",
+    "t_usp": "USP · Informatik",
+    "t_ufjf": "Informatikwoche der UFJF",
+    "d14": "Vorlesung „Krypto & Gesellschaft\" für Informatikstudierende im Kurs „Blockchain, Kryptowährungen & dezentrale Technologien\" von Prof. Marcos Simplicio.",
+    "d15": "Einführungsvorlesung zu Blockchain und Gesprächsrunde über die Präsenz von Frauen und LGBT in der Technologie."
   },
   "publications": {
     "label": "Wissenschaftliche Arbeit",
@@ -467,6 +471,9 @@
     "v22": "Recife, PE, Brasilien",
     "v23": "CIn · UFPE · Recife, Brasilien",
     "v24": "2026 · São Paulo, Brasilien",
-    "v25": "2026 · Paris, Frankreich"
+    "v25": "2026 · Paris, Frankreich",
+    "lecture_circle": "Vorlesung · Gesprächsrunde",
+    "v26": "Universidade de São Paulo · São Paulo, Brasilien",
+    "v27": "Universidade Federal de Juiz de Fora · Juiz de Fora, MG, Brasilien"
   }
 }

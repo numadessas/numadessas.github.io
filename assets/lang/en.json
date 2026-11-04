@@ -117,7 +117,11 @@
     "t_ufsj": "UFSJ · Computer Science",
     "t_design_web3": "Design for Web3",
     "t_ufpr": "UFPR · Design",
-    "t_ufpe": "UFPE · Design"
+    "t_ufpe": "UFPE · Design",
+    "t_usp": "USP · Computer Science",
+    "t_ufjf": "UFJF Computing Week",
+    "d14": "\"Crypto & Society\" class for the Computer Science course \"Blockchain, Cryptocurrencies & Decentralized Technologies\", taught by Prof. Marcos Simplicio.",
+    "d15": "Introduction-to-blockchain lecture and a conversation circle on women and LGBT presence in technology."
   },
   "publications": {
     "label": "Academic Output",
@@ -467,6 +471,9 @@
     "v22": "Recife, PE, Brazil",
     "v23": "CIn · UFPE · Recife, Brazil",
     "v24": "2026 · São Paulo, Brazil",
-    "v25": "2026 · Paris, France"
+    "v25": "2026 · Paris, France",
+    "lecture_circle": "Lecture · Conversation Circle",
+    "v26": "Universidade de São Paulo · São Paulo, Brazil",
+    "v27": "Universidade Federal de Juiz de Fora · Juiz de Fora, MG, Brazil"
   }
 }
