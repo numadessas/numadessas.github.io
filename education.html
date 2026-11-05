@@ -1002,6 +1002,20 @@
     -webkit-mask: url(assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat;
     mask: url(assets/img/aulas/comece-web3/w3e-horizontal.webp) center / contain no-repeat;
   }
+  .slide-card-thumb--design { background: #D3E3DA; }
+  .slide-card-hex {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    width: 46%; aspect-ratio: 1 / .866;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    background: #6A4C93;
+  }
+  .slide-card-hex img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide-card-dtitle {
+    position: absolute; left: 7%; bottom: 11%;
+    font-weight: 900; text-transform: uppercase; line-height: .92;
+    font-size: clamp(1.3rem, 2.4vw, 2rem); color: #6A4C93;
+  }
+  .slide-card-dtitle::after { content: ''; display: block; width: 2.4rem; height: 4px; background: #FFE500; margin-top: .5rem; }
   .slide-card-thumb--cs { background: linear-gradient(-45deg, #43005E, #331041, #160A20); }
   .slide-card-thumb--cs model-viewer {
     position: absolute;
@@ -1540,7 +1554,7 @@
     </p>
 
     <div class="section-label fade-up" data-i18n="slides.label">Class Materials</div>
-    <div class="writing-grid writing-grid--two fade-up">
+    <div class="writing-grid fade-up">
       <a href="comece-na-web3.html" target="_blank" class="writing-card slide-card">
         <div class="slide-card-thumb slide-card-thumb--web3" aria-hidden="true">
           <svg viewBox="0 0 600 560" preserveAspectRatio="xMaxYMid slice">
@@ -1571,6 +1585,18 @@
           <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
           <div class="writing-card-title" data-i18n="slides.cs_title">Cripto &amp; Sociedade: Um panorama sociocultural</div>
           <div class="writing-card-excerpt" data-i18n="slides.cs_desc">Critical thinking, cypherpunks, political economy, and virtual communities.</div>
+          <span class="writing-card-arrow writing-card-arrow--green">↗</span>
+        </div>
+      </a>
+      <a href="design-na-web3.html" target="_blank" class="writing-card slide-card">
+        <div class="slide-card-thumb slide-card-thumb--design" aria-hidden="true">
+          <div class="slide-card-hex"><img src="assets/img/aulas/design-web3/design-hero.webp" alt="" loading="lazy"></div>
+          <span class="slide-card-dtitle">Design<br>na Web3</span>
+        </div>
+        <div class="slide-card-body">
+          <div class="writing-card-cat" data-i18n="slides.cat">Slides (Portuguese Only)</div>
+          <div class="writing-card-title" data-i18n="slides.design_title">Class: Design in Web3</div>
+          <div class="writing-card-excerpt" data-i18n="slides.design_desc">UI/UX, product design, web design, AI in design, community, and real opportunities in Web3.</div>
           <span class="writing-card-arrow writing-card-arrow--green">↗</span>
         </div>
       </a>

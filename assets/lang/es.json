@@ -94,7 +94,9 @@
     "web3_title": "Aulão Web3EduBrasil: Comece na Web3",
     "web3_desc": "Internet, blockchain, historia, tokens, NFTs, carteras y cómo empezar en Web3.",
     "cs_title": "Cripto & Sociedade: Um panorama sociocultural",
-    "cs_desc": "Pensamiento crítico, cypherpunks, economía política y comunidades virtuales."
+    "cs_desc": "Pensamiento crítico, cypherpunks, economía política y comunidades virtuales.",
+    "design_title": "Clase: Diseño en Web3",
+    "design_desc": "UI/UX, diseño de producto, diseño web, IA en el diseño, comunidad y oportunidades reales en Web3."
   },
   "teaching": {
     "label": "Charlas & Talleres",
