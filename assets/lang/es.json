@@ -508,11 +508,11 @@
     "r3_d": "Plan de contenido, carruseles educativos, stories y posts de campaña.",
     "r4_t": "Curaduría",
     "r4_d": "15 artistas del Nordeste brasileño, 30 obras exclusivas.",
-    "r1_p": "Un sello dibujado a mano — un sol lima saliendo sobre una colina roja, con “arte & NFTs” escrito a mano — marcó el tono: cálido, tropical y artesanal, lejos del frío look cyber habitual en lo cripto. A partir de él creé la paleta, los patrones de sol y todas las aplicaciones: carteles, señalética, placas de obras, loops de pantalla, entradas y el espacio en el metaverso.",
+    "r1_p": "El artista invitado <b>Matheus Ciberdelia</b> creó el arte principal, “La Vision”, para representar el evento. Yo la desplegué en toda la comunicación: diseñé el logo — un sello dibujado a mano con un sol lima saliendo sobre una colina roja —, definí la paleta y recorté el arte en elementos que animé en posts, stories, pantallas, placas, entradas y el metaverso.",
     "tag_logo2023": "Logo usado · edición 2023",
     "sound_off": "🔇 Sin sonido",
     "sound_on": "🔊 Con sonido",
-    "r1_credit": "Cartel oficial <b>“La Vision”</b> del artista invitado Matheus Ciberdelia · fotos de Subverso Lab.",
+    "r1_credit": "Arte principal <b>“La Vision”</b> de Matheus Ciberdelia · fotos de Subverso Lab.",
     "tools_prod": "Planificación · Patrocinio · Logística",
     "r2_p": "Escribí el proyecto y el deck de patrocinio (cuotas de medios, pantallas y pantalla exclusiva), cerré la alianza con Casa Criatura en el centro histórico de Olinda, invité a los artistas, organicé los drops de NFT — piezas 1/1 en Mallow y ediciones de 100 en 3.land — y produje una jornada de apertura completa. Cada coleccionista recibió un NFT conmemorativo.",
     "d1": "Apertura · exposición",
@@ -545,6 +545,9 @@
     "xr_tag": "Cartel XR",
     "xr_h": "“La Vision” en realidad aumentada",
     "xr_p": "El cartel oficial cobraba vida con un filtro XR: apunta el móvil y la obra se mueve. Arte de <b>Matheus Ciberdelia</b>, interacción desarrollada por la artista <b>LUREX</b>.",
-    "metaverse_cap": "La versión de la muestra en el metaverso — construida y exhibida por 3.land."
+    "metaverse_cap": "La versión de la muestra en el metaverso — construida y exhibida por 3.land.",
+    "tag_mainart": "Arte principal · Ciberdelia",
+    "el_cap": "Elementos recortados del arte principal y animados para la comunicación",
+    "tag_walk": "Recorrido"
   }
 }

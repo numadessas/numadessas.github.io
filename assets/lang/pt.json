@@ -508,11 +508,11 @@
     "r3_d": "Planejamento, carrosséis educativos, stories e posts de campanha.",
     "r4_t": "Curadoria",
     "r4_d": "15 artistas do Nordeste, 30 obras exclusivas.",
-    "r1_p": "Um selo desenhado à mão — um sol amarelo-limão nascendo sobre um morro vermelho, com “arte & NFTs” escrito à mão — deu o tom: quente, tropical e artesanal, longe do visual cyber frio comum no cripto. A partir dele criei a paleta, as padronagens de sol e todas as aplicações: cartazes, sinalização de parede, placas das obras, loops de tela, ingressos e o espaço no metaverso.",
+    "r1_p": "O artista convidado <b>Matheus Ciberdelia</b> criou a arte principal, “La Vision”, para representar o evento. Eu desdobrei essa arte em toda a comunicação: desenhei a logo — um selo feito à mão com um sol amarelo-limão nascendo sobre um morro vermelho —, defini a paleta e recortei a arte em elementos que animei em posts, stories, telas, placas, ingressos e no metaverso.",
     "tag_logo2023": "Logo usada · edição 2023",
     "sound_off": "🔇 Som desligado",
     "sound_on": "🔊 Som ligado",
-    "r1_credit": "Cartaz oficial <b>“La Vision”</b> pelo artista convidado Matheus Ciberdelia · fotos por Subverso Lab.",
+    "r1_credit": "Arte principal <b>“La Vision”</b> por Matheus Ciberdelia · fotos por Subverso Lab.",
     "tools_prod": "Planejamento · Patrocínio · Logística",
     "r2_p": "Escrevi o projeto e o deck de patrocínio (cotas de mídia, telas e tela exclusiva), fechei parceria com a Casa Criatura no centro histórico de Olinda, convidei os artistas, organizei os drops de NFT — obras 1/1 na Mallow e edições de 100 na 3.land — e produzi um dia inteiro de abertura. Todo colecionador recebeu uma NFT comemorativa.",
     "d1": "Abertura · exposição",
@@ -545,6 +545,9 @@
     "xr_tag": "Cartaz XR",
     "xr_h": "“La Vision” em realidade aumentada",
     "xr_p": "O cartaz oficial ganhava vida com um filtro XR: aponte o celular e a arte se movimenta. Arte de <b>Matheus Ciberdelia</b>, interação desenvolvida pela artista <b>LUREX</b>.",
-    "metaverse_cap": "A versão da exposição no metaverso — construída e exibida pela 3.land."
+    "metaverse_cap": "A versão da exposição no metaverso — construída e exibida pela 3.land.",
+    "tag_mainart": "Arte principal · Ciberdelia",
+    "el_cap": "Elementos recortados da arte principal e animados para a comunicação",
+    "tag_walk": "Passeio"
   }
 }

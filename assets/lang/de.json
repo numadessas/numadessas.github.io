@@ -508,11 +508,11 @@
     "r3_d": "Content-Plan, Lern-Karussells, Stories und Kampagnen-Posts.",
     "r4_t": "Kuratierung",
     "r4_d": "15 Künstler:innen aus Nordost-Brasilien, 30 exklusive Werke.",
-    "r1_p": "Ein handgezeichnetes Siegel — eine limettengelbe Sonne über einem roten Hügel, mit handgeschriebenem „arte & NFTs“ — gab den Ton an: warm, tropisch und handgemacht, weit weg vom kalten Cyber-Look, der im Krypto-Bereich üblich ist. Daraus entwickelte ich Palette, Sonnenmuster und alle Anwendungen: Plakate, Wandbeschilderung, Werkschilder, Screen-Loops, Tickets und den Metaverse-Raum.",
+    "r1_p": "Gastkünstler <b>Matheus Ciberdelia</b> schuf das Hauptmotiv „La Vision“, das das Event repräsentiert. Ich habe es auf die gesamte Kommunikation übertragen: das Logo gestaltet — ein handgezeichnetes Siegel mit einer limettengelben Sonne über einem roten Hügel —, die Farbpalette festgelegt und das Motiv in Elemente zerlegt, die ich für Posts, Stories, Screens, Schilder, Tickets und das Metaverse animiert habe.",
     "tag_logo2023": "Verwendetes Logo · Ausgabe 2023",
     "sound_off": "🔇 Ton aus",
     "sound_on": "🔊 Ton an",
-    "r1_credit": "Offizielles Plakat <b>„La Vision“</b> vom Gastkünstler Matheus Ciberdelia · Fotos von Subverso Lab.",
+    "r1_credit": "Hauptmotiv <b>„La Vision“</b> von Matheus Ciberdelia · Fotos von Subverso Lab.",
     "tools_prod": "Planung · Sponsoring · Logistik",
     "r2_p": "Ich schrieb das Projekt und das Sponsoring-Deck (Medien-, Screen- und Exklusiv-Screen-Pakete), gewann die Casa Criatura in Olindas Altstadt als Partner, lud die Künstler:innen ein, richtete die NFT-Drops ein — 1/1-Werke auf Mallow und 100er-Editionen auf 3.land — und produzierte einen vollen Eröffnungstag. Alle Sammler:innen erhielten ein Erinnerungs-NFT.",
     "d1": "Einlass · Ausstellung",
@@ -545,6 +545,9 @@
     "xr_tag": "XR-Plakat",
     "xr_h": "„La Vision“ in Augmented Reality",
     "xr_p": "Das offizielle Plakat wurde mit einem XR-Filter lebendig: Handy darauf richten, und das Kunstwerk bewegt sich. Kunst von <b>Matheus Ciberdelia</b>, Interaktion umgesetzt von der Künstlerin <b>LUREX</b>.",
-    "metaverse_cap": "Die Metaverse-Version der Ausstellung — gebaut und gezeigt von 3.land."
+    "metaverse_cap": "Die Metaverse-Version der Ausstellung — gebaut und gezeigt von 3.land.",
+    "tag_mainart": "Hauptmotiv · Ciberdelia",
+    "el_cap": "Elemente aus dem Hauptmotiv, animiert für die Kommunikation",
+    "tag_walk": "Rundgang"
   }
 }

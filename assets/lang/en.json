@@ -508,11 +508,11 @@
     "r3_d": "Content plan, educational carousels, stories and campaign posts.",
     "r4_t": "Curation",
     "r4_d": "15 artists from Northeast Brazil, 30 exclusive works.",
-    "r1_p": "A hand-drawn badge — a lime sun rising over a red hill, with a handwritten “arte & NFTs” — set the tone: warm, tropical and handmade, far from the cold cyber look common in crypto. From there I built the palette, sun patterns and every application: posters, wall signage, artwork plaques, screen loops, tickets and the metaverse space.",
+    "r1_p": "Guest artist <b>Matheus Ciberdelia</b> created the main art, “La Vision”, to represent the event. I unfolded it into the whole communication: I designed the logo — a hand-drawn badge with a lime sun rising over a red hill — set the palette, and cut the art into elements that I animated across posts, stories, screens, plaques, tickets and the metaverse.",
     "tag_logo2023": "Logo used · 2023 edition",
     "sound_off": "🔇 Sound off",
     "sound_on": "🔊 Sound on",
-    "r1_credit": "Official poster <b>“La Vision”</b> by guest artist Matheus Ciberdelia · photos by Subverso Lab.",
+    "r1_credit": "Main art <b>“La Vision”</b> by Matheus Ciberdelia · photos by Subverso Lab.",
     "tools_prod": "Planning · Sponsorship · Logistics",
     "r2_p": "I wrote the project and sponsorship deck (media, screen and exclusive-screen quotas), partnered with Casa Criatura in Olinda's historic center, invited the artists, set up the NFT drops — 1/1 pieces on Mallow and 100-edition works on 3.land — and ran a full opening day. Every collector got a commemorative NFT.",
     "d1": "Doors open · exhibition",
@@ -545,6 +545,9 @@
     "xr_tag": "XR poster",
     "xr_h": "“La Vision” in augmented reality",
     "xr_p": "The official poster came to life through an XR filter: point the phone at it and the artwork moves. Art by <b>Matheus Ciberdelia</b>, interaction built by the artist <b>LUREX</b>.",
-    "metaverse_cap": "The show’s metaverse version — built and exhibited by 3.land."
+    "metaverse_cap": "The show’s metaverse version — built and exhibited by 3.land.",
+    "tag_mainart": "Main art · Ciberdelia",
+    "el_cap": "Elements cut from the main art and animated for the communication",
+    "tag_walk": "Walkthrough"
   }
 }

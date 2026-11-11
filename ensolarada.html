@@ -153,10 +153,23 @@
   .rgal--wide .figure{aspect-ratio:auto;min-height:260px}
 
   /* visual identity board */
-  .idboard{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:24px}
-  .idboard .logo{grid-row:span 2;aspect-ratio:1/1;background:#211247}
-  .idboard .logo video{object-fit:contain}
-  .idboard .sw{aspect-ratio:16/9}
+  .idrow{display:grid;grid-template-columns:.853fr 1fr;gap:14px;margin-top:24px}
+  .idrow .art{aspect-ratio:1400/1641}
+  .idrow .logo{aspect-ratio:1/1;background:#211247}
+  .idrow .logo video{object-fit:contain}
+  .elements{position:relative;margin:14px 0 0;border-radius:14px;border:1px solid var(--line);overflow:hidden;
+    background:radial-gradient(70% 120% at 50% 100%,rgba(240,74,51,.28),transparent 70%),#211247;
+    display:flex;align-items:center;justify-content:space-around;gap:10px;padding:26px 18px 46px;height:clamp(200px,24vw,300px)}
+  .elements img{height:72%;width:auto;max-width:19%;object-fit:contain;animation:bob 5s ease-in-out infinite;
+    filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+  .elements img:nth-child(2){height:88%;animation-delay:-1s;animation-duration:6s}
+  .elements img:nth-child(3){height:80%;animation-name:sway;animation-delay:-2s;animation-duration:5.5s}
+  .elements img:nth-child(4){height:62%;animation-delay:-3s;animation-duration:4.5s}
+  .elements img:nth-child(5){height:86%;animation-name:sway;animation-delay:-1.5s;animation-duration:6.5s}
+  .elements figcaption{position:absolute;left:16px;bottom:12px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+  @keyframes sway{0%,100%{transform:rotate(-6deg) translateY(-4px)}50%{transform:rotate(6deg) translateY(6px)}}
+  .idcover{margin-top:14px;aspect-ratio:987/500}
   .palette{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
   .palette span{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;
     letter-spacing:.06em;color:var(--muted)}
@@ -198,7 +211,8 @@
   .works .figure{aspect-ratio:4/5}
   .works .figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
   .works .figure--left video{object-position:left center}
-  .metaverse{margin-top:28px;aspect-ratio:16/7}
+  .metawalk{display:grid;grid-template-columns:1fr .5625fr;gap:14px;margin-top:28px}
+  .metaverse{aspect-ratio:1/1}
   .metaverse figcaption{font-size:14px}
   .xr{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:clamp(18px,4vw,40px);align-items:center;margin-top:28px;
     padding:18px;border-radius:18px;background:rgba(91,42,134,.22);border:1px solid var(--line)}
@@ -218,6 +232,8 @@
   .rb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:10px}
   .rb__logo{border-radius:18px;background:#F3EBDD;padding:clamp(24px,4vw,48px);display:flex;align-items:center;justify-content:center}
   .rb__logo img{width:100%;max-width:520px;height:auto;display:block}
+  .rb__side{display:flex;flex-direction:column;gap:14px}
+  .rb__side .figure{aspect-ratio:16/9}
   .rb .tagline{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,139,0,.6);color:var(--amber);margin-bottom:18px}
 
@@ -260,8 +276,12 @@
     .stats{grid-template-columns:repeat(2,1fr)}
     .metarow div{min-width:44%}
     .rgal--3{grid-template-columns:1fr 1fr}
-    .idboard{grid-template-columns:1fr}
-    .idboard .logo{grid-row:auto}
+    .idrow{grid-template-columns:1fr}
+    .elements{flex-wrap:wrap;height:auto;padding-bottom:40px}
+    .elements img{height:110px;max-width:28%}
+    .elements img:nth-child(n){height:110px}
+    .metawalk{grid-template-columns:1fr}
+    .metawalk .walk{max-width:320px;width:100%;margin-inline:auto;aspect-ratio:9/16}
     .reel-wrap{max-width:360px;width:100%;margin-inline:auto}
     .vcredit{position:static;margin-top:8px}
     .reel{aspect-ratio:9/16;height:auto}
@@ -364,8 +384,9 @@
           <h3 data-i18n="enso.r1_t">Visual Identity</h3>
           <span class="rdisc__tools">Illustrator · Photoshop · After Effects</span>
         </div>
-        <p data-i18n="enso.r1_p">A hand-drawn badge — a lime sun rising over a red hill, with a handwritten “arte &amp; NFTs” — set the tone: warm, tropical and handmade, far from the cold cyber look common in crypto. From there I built the palette, sun patterns and every application: posters, wall signage, artwork plaques, screen loops, tickets and the metaverse space.</p>
-        <div class="idboard">
+        <p data-i18n-html="enso.r1_p">Guest artist <b>Matheus Ciberdelia</b> created the main art, “La Vision”, to represent the event. I unfolded it into the whole communication: I designed the logo — a hand-drawn badge with a lime sun rising over a red hill — set the palette, and cut the art into elements that I animated across posts, stories, screens, plaques, tickets and the metaverse.</p>
+        <div class="idrow">
+          <figure class="figure art"><span class="tag" data-i18n="enso.tag_mainart">Main art · Ciberdelia</span><img src="assets/img/projects/ensolarada/id/main-art.webp" alt="La Vision, Ensolarada main art by Matheus Ciberdelia" loading="lazy"></figure>
           <figure class="figure figure--video logo">
             <span class="tag" data-i18n="enso.tag_logo2023">Logo used · 2023 edition</span>
             <video src="assets/img/projects/ensolarada/id/logo-2023.mp4" autoplay muted loop playsinline></video>
@@ -374,16 +395,23 @@
               <span class="sound-toggle__on" data-i18n="enso.sound_on">🔊 Sound on</span>
             </button>
           </figure>
-          <figure class="figure sw"><img src="assets/img/projects/ensolarada/id/pattern-1.webp" alt="Ensolarada sun pattern" loading="lazy"></figure>
-          <figure class="figure sw"><img src="assets/img/projects/ensolarada/id/id-cover.webp" alt="Ensolarada visual identity applications" loading="lazy"></figure>
         </div>
+        <figure class="elements" aria-label="Elements from the main art">
+          <img src="assets/img/projects/ensolarada/id/el/tower.webp" alt="Eye tower" loading="lazy">
+          <img src="assets/img/projects/ensolarada/id/el/caranguejo.webp" alt="Crab" loading="lazy">
+          <img src="assets/img/projects/ensolarada/id/el/parabolica.webp" alt="Satellite dish" loading="lazy">
+          <img src="assets/img/projects/ensolarada/id/el/cadeado.webp" alt="Padlock" loading="lazy">
+          <img src="assets/img/projects/ensolarada/id/el/monitor.webp" alt="Computer" loading="lazy">
+          <figcaption data-i18n="enso.el_cap">Elements cut from the main art and animated for the communication</figcaption>
+        </figure>
+        <figure class="figure idcover"><img src="assets/img/projects/ensolarada/id/id-cover.webp" alt="Ensolarada visual identity applications" loading="lazy"></figure>
         <div class="palette" aria-label="Palette">
           <span><i style="background:#E6FF2A"></i>#E6FF2A</span>
           <span><i style="background:#F04A33"></i>#F04A33</span>
           <span><i style="background:#5B2A86"></i>#5B2A86</span>
           <span><i style="background:#211247"></i>#211247</span>
         </div>
-        <p class="credit" data-i18n-html="enso.r1_credit">Official poster <b>“La Vision”</b> by guest artist Matheus Ciberdelia · photos by Subverso Lab.</p>
+        <p class="credit" data-i18n-html="enso.r1_credit">Main art <b>“La Vision”</b> by Matheus Ciberdelia · photos by Subverso Lab.</p>
         <div class="xr">
           <figure class="figure"><video src="assets/img/projects/ensolarada/works/xr-poster.mp4" autoplay muted loop playsinline></video></figure>
           <div>
@@ -415,7 +443,7 @@
           <figure class="figure"><video src="assets/img/projects/ensolarada/photos/roda-video.mp4" autoplay muted loop playsinline></video></figure>
           <figure class="figure"><img src="assets/img/projects/ensolarada/photos/kids.webp" alt="Kids with printed artworks" loading="lazy" style="object-position:center 35%"></figure>
           <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-night.webp" alt="Pocket show at night" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/expo-viewers.webp" alt="Visitors looking at screens on the violet wall" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/expo-viewers.webp" alt="Visitors looking at screens on the violet wall" loading="lazy" style="transform:scale(1.25);transform-origin:right center"></figure>
         </div>
       </div>
 
@@ -486,7 +514,10 @@
           <span class="artist">Barbarize<small>PE</small></span>
           <span class="artist">Matheus Ciberdelia<small>PE</small></span>
         </div>
-        <figure class="figure metaverse"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span><figcaption><b>Praia da Criatura</b><span data-i18n="enso.metaverse_cap">The show’s metaverse version — built and exhibited by 3.land.</span></figcaption></figure>
+        <div class="metawalk">
+          <figure class="figure metaverse"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span><figcaption><b>Praia da Criatura</b><span data-i18n="enso.metaverse_cap">The show’s metaverse version — built and exhibited by 3.land.</span></figcaption></figure>
+          <figure class="figure walk"><video src="assets/img/projects/ensolarada/works/metaverse-walk.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="tag" data-i18n="enso.tag_walk">Walkthrough</span></figure>
+        </div>
       </div>
     </div>
   </section>
@@ -501,7 +532,10 @@
           <h2 data-i18n-html="enso.rb_h2">2024 rebrand<span class="dot">.</span></h2>
           <p class="body" data-i18n="enso.rb_p1">A new identity designed in 2024 for future editions, which did not happen: wavy seal, sun icon and a bolder wordmark, built to scale across screens, merch and partners.</p>
         </div>
-        <div class="rb__logo"><img src="assets/img/projects/ensolarada/id/ensolarada_horizontal.svg" alt="Ensolarada 2024 logo" loading="lazy"></div>
+        <div class="rb__side">
+          <div class="rb__logo"><img src="assets/img/projects/ensolarada/id/ensolarada_horizontal.svg" alt="Ensolarada 2024 logo" loading="lazy"></div>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/id/pattern-1.webp" alt="Ensolarada sun pattern" loading="lazy"></figure>
+        </div>
       </div>
     </div>
   </section>
