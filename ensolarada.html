@@ -212,15 +212,15 @@
   .works .figure{aspect-ratio:4/5}
   .works .figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
   .works .figure--left video{object-position:left center}
-  .collector{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);align-items:center;margin-top:36px}
+  .collector{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(20px,4vw,48px);align-items:center;margin-top:36px}
   .collector h4{font-family:var(--font-display);font-size:clamp(19px,2.2vw,24px);margin:0 0 8px}
   .collector p{margin:0;max-width:52ch}
   .collector .tag{display:inline-block;margin-bottom:12px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;
     text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid rgba(230,255,42,.35);color:var(--sun)}
-  .scrollshot{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;container-type:size}
+  .scrollshot{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;container-type:size}
   .scrollshot::before{content:"";position:absolute;inset:0 0 auto 0;height:26px;z-index:2;background:#e9e6ef;
     background-image:radial-gradient(circle at 14px 13px,#F04A33 4px,transparent 5px),radial-gradient(circle at 30px 13px,#E6FF2A 4px,transparent 5px),radial-gradient(circle at 46px 13px,#5B2A86 4px,transparent 5px)}
-  .scrollshot img{position:absolute;top:26px;left:0;width:100%;height:auto;display:block;animation:pagescroll 38s ease-in-out infinite alternate}
+  .scrollshot img{position:absolute;top:26px;left:0;width:100%;height:auto;display:block;animation:pagescroll 22s ease-in-out infinite alternate}
   .scrollshot:hover img{animation-play-state:paused}
   @keyframes pagescroll{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + 100cqh - 26px))}}
   .metawalk{display:grid;grid-template-columns:1fr .5625fr;gap:14px;margin-top:28px}
