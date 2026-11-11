@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ensolarada — Case Study</title>
-<meta name="description" content="Ensolarada — a crypto-art exhibition and tech event in Olinda (2023) with 15 artists from Brazil's Northeast on Solana. Visual identity, production, social media and curation by Numa.">
+<meta name="description" content="Ensolarada — a crypto-art exhibition and tech event in Olinda (2023) with 15 artists from Northeast Brazil on Solana. Visual identity, production, social media and curation by Numa.">
 <meta name="author" content="Numa">
 <meta property="og:title" content="Ensolarada — Case Study">
 <meta property="og:description" content="Art &amp; NFTs exhibition in Olinda, 2023 — visual identity, production, social media and curation | Numa">
@@ -176,10 +176,13 @@
   .note::before{content:"☀";color:var(--sun)}
 
   /* social */
-  .social{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:24px;align-items:start}
+  .social{display:grid;grid-template-columns:1fr .703fr;gap:14px;margin-top:24px;align-items:stretch}
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   .posts .figure{aspect-ratio:4/5;border-radius:10px}
-  .reel{aspect-ratio:9/16;max-height:720px;margin-inline:auto;width:100%}
+  .reel{height:100%;width:100%}
+  .reel-wrap{position:relative;min-height:0}
+  .vcredit{position:absolute;top:calc(100% + 8px);left:0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin:0}
+  #social .social{margin-bottom:22px}
   .figure--video{position:relative}
   .sound-toggle{position:absolute;right:12px;bottom:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;
     padding:8px 12px;border:1px solid rgba(247,242,232,.3);border-radius:999px;cursor:pointer;
@@ -194,27 +197,27 @@
   .works{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
   .works .figure{aspect-ratio:4/5}
   .works .figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .works .figure--left video{object-position:left center}
+  .metaverse{margin-top:28px;aspect-ratio:16/7}
+  .metaverse figcaption{font-size:14px}
+  .xr{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:clamp(18px,4vw,40px);align-items:center;margin-top:28px;
+    padding:18px;border-radius:18px;background:rgba(91,42,134,.22);border:1px solid var(--line)}
+  .xr .figure{aspect-ratio:474/856}
+  .xr h4{font-family:var(--font-display);font-size:clamp(19px,2.2vw,24px);margin:0 0 8px}
+  .xr p{margin:0;max-width:52ch}
+  .xr .tag{display:inline-block;margin-bottom:12px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid rgba(230,255,42,.35);color:var(--sun)}
   .artists{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
   .artist{font-size:13.5px;padding:8px 14px;border-radius:999px;border:1px solid rgba(230,255,42,.22);
     background:rgba(91,42,134,.22);color:var(--ink)}
   .artist small{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);margin-left:6px;letter-spacing:.04em}
 
-  /* event mosaic */
-  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,18vw,230px);gap:12px;margin-top:34px}
-  .mosaic .figure{border-radius:12px}
-  .mosaic .big{grid-column:span 2;grid-row:span 2}
-  .mosaic .tall{grid-row:span 2}
-  .mosaic .wide{grid-column:span 2}
 
   /* 2024 rebrand */
   .rebrand{background:linear-gradient(180deg,transparent,rgba(55,30,80,.55) 30%,rgba(55,30,80,.55) 70%,transparent)}
   .rb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:10px}
-  .rb__panel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .rb__panel .tile{border-radius:16px;display:flex;align-items:center;justify-content:center;padding:clamp(18px,3vw,34px);aspect-ratio:1/1}
-  .rb__panel .tile img{width:100%;height:100%;object-fit:contain}
-  .rb__panel .t1{background:#F3EBDD;grid-column:span 2;aspect-ratio:2.4/1}
-  .rb__panel .t2{background:var(--amber)}
-  .rb__panel .t3{background:#F3EBDD}
+  .rb__logo{border-radius:18px;background:#F3EBDD;padding:clamp(24px,4vw,48px);display:flex;align-items:center;justify-content:center}
+  .rb__logo img{width:100%;max-width:520px;height:auto;display:block}
   .rb .tagline{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,139,0,.6);color:var(--amber);margin-bottom:18px}
 
@@ -259,9 +262,11 @@
     .rgal--3{grid-template-columns:1fr 1fr}
     .idboard{grid-template-columns:1fr}
     .idboard .logo{grid-row:auto}
-    .mosaic{grid-template-columns:repeat(2,1fr)}
-    .mosaic .big{grid-column:span 2;grid-row:span 1}
-    .reel{max-width:360px}
+    .reel-wrap{max-width:360px;width:100%;margin-inline:auto}
+    .vcredit{position:static;margin-top:8px}
+    .reel{aspect-ratio:9/16;height:auto}
+    .xr{grid-template-columns:1fr}
+    .xr .figure{max-width:280px}
   }
   @media(max-width:560px){
     .lang-btn span:not(.lang-caret){display:none}
@@ -323,7 +328,7 @@
         <p class="body" data-i18n-html="enso.ov_p1">A project about <strong>decentralizing NFT culture</strong> — valuing and paying artists from Brazil, far from the usual art-and-crypto hubs. The goal: build an artistic and technological scene right here, in Pernambuco.</p>
         <p class="body" data-i18n-html="enso.ov_p2">It happened through photographer <strong>JT Liss</strong>'s initiative to promote art events on Solana around the world, with initial support from the <strong>Solana Foundation</strong> — plus digital and local communities, NFT art projects and collectors.</p>
         <div class="stats">
-          <div class="stat"><div class="n">15</div><div class="l" data-i18n="enso.st_artists">Northeast artists</div></div>
+          <div class="stat"><div class="n">15</div><div class="l" data-i18n="enso.st_artists">Artists from Northeast Brazil</div></div>
           <div class="stat"><div class="n">100+</div><div class="l" data-i18n="enso.st_sold">NFTs sold</div></div>
           <div class="stat"><div class="n">30</div><div class="l" data-i18n="enso.st_works">Exclusive works</div></div>
           <div class="stat"><div class="n">8</div><div class="l" data-i18n="enso.st_days">Days of show</div></div>
@@ -348,8 +353,8 @@
       <div class="roles">
         <div class="role"><span class="rn">01</span><span class="rt" data-i18n="enso.r1_t">Visual Identity</span><span class="rd" data-i18n="enso.r1_d">Logo, palette, patterns, signage, plaques and screens.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
         <div class="role"><span class="rn">02</span><span class="rt" data-i18n="enso.r2_t">Production</span><span class="rd" data-i18n="enso.r2_d">Sponsors, venue, budget, NFT drops and the opening-day program.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
-        <div class="role"><span class="rn">03</span><span class="rt" data-i18n="enso.r3_t">Social Media</span><span class="rd" data-i18n="enso.r3_d">Content plan, educational carousels, stories and recap video.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
-        <div class="role"><span class="rn">04</span><span class="rt" data-i18n="enso.r4_t">Curation</span><span class="rd" data-i18n="enso.r4_d">15 artists from the Northeast, 30 exclusive works.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+        <div class="role"><span class="rn">03</span><span class="rt" data-i18n="enso.r3_t">Social Media</span><span class="rd" data-i18n="enso.r3_d">Content plan, educational carousels, stories and campaign posts.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+        <div class="role"><span class="rn">04</span><span class="rt" data-i18n="enso.r4_t">Curation</span><span class="rd" data-i18n="enso.r4_d">15 artists from Northeast Brazil, 30 exclusive works.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
       </div>
 
       <!-- 01 VISUAL ID -->
@@ -370,7 +375,7 @@
             </button>
           </figure>
           <figure class="figure sw"><img src="assets/img/projects/ensolarada/id/pattern-1.webp" alt="Ensolarada sun pattern" loading="lazy"></figure>
-          <figure class="figure sw"><img src="assets/img/projects/ensolarada/photos/expo-screen.webp" alt="Wall signage and artwork plaque on screen" loading="lazy" style="object-position:center 30%"></figure>
+          <figure class="figure sw"><img src="assets/img/projects/ensolarada/id/id-cover.webp" alt="Ensolarada visual identity applications" loading="lazy"></figure>
         </div>
         <div class="palette" aria-label="Palette">
           <span><i style="background:#E6FF2A"></i>#E6FF2A</span>
@@ -379,6 +384,14 @@
           <span><i style="background:#211247"></i>#211247</span>
         </div>
         <p class="credit" data-i18n-html="enso.r1_credit">Official poster <b>“La Vision”</b> by guest artist Matheus Ciberdelia · photos by Subverso Lab.</p>
+        <div class="xr">
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/xr-poster.mp4" autoplay muted loop playsinline></video></figure>
+          <div>
+            <span class="tag" data-i18n="enso.xr_tag">XR poster</span>
+            <h4 data-i18n="enso.xr_h">“La Vision” in augmented reality</h4>
+            <p data-i18n-html="enso.xr_p">The official poster came to life through an XR filter: point the phone at it and the artwork moves. Art by <b>Matheus Ciberdelia</b>, interaction built by the artist <b>LUREX</b>.</p>
+          </div>
+        </div>
       </div>
 
       <!-- 02 PRODUCTION -->
@@ -396,14 +409,13 @@
           <div class="ev"><div class="t" data-i18n="enso.t4">Kids</div><div class="d" data-i18n="enso.d4">Drawing and face painting</div></div>
           <div class="ev"><div class="t">→ 22:00</div><div class="d" data-i18n="enso.d5">Pocket shows by Barbarize &amp; Tagore + DJ set by Numa</div></div>
         </div>
-        <p class="note" data-i18n="enso.inclusion">Inclusion first: trans people, people with disabilities and kids under 10 got in free — a welcoming space for every age, run by a diverse team.</p>
         <div class="rgal rgal--3">
           <figure class="figure"><img src="assets/img/projects/ensolarada/photos/talk-1.webp" alt="Numa giving a talk in front of a screen" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/workshop.webp" alt="Crypto and NFT workshop" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/roda.webp" alt="Talk with the artists" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/talk-room.webp" alt="Audience during the talk" loading="lazy"></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/photos/roda-video.mp4" autoplay muted loop playsinline></video></figure>
           <figure class="figure"><img src="assets/img/projects/ensolarada/photos/kids.webp" alt="Kids with printed artworks" loading="lazy" style="object-position:center 35%"></figure>
-          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-1.webp" alt="Pocket show on the Estelita stage" loading="lazy"></figure>
-          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-2.webp" alt="Pocket show under green lights" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-night.webp" alt="Pocket show at night" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/expo-viewers.webp" alt="Visitors looking at screens on the violet wall" loading="lazy"></figure>
         </div>
       </div>
 
@@ -414,7 +426,7 @@
           <h3 data-i18n="enso.r3_t">Social Media</h3>
           <span class="rdisc__tools" data-i18n="enso.tools_social">Instagram · X · Stories</span>
         </div>
-        <p data-i18n="enso.r3_p">I planned and designed the whole rollout for Instagram and X: educational carousels (“What's an NFT?”, “What's a blockchain?”) for an audience new to crypto, then the artist line-up, venue, sponsors, tickets and program — and edited the highlights video after the event.</p>
+        <p data-i18n="enso.r3_p">I planned and designed the whole rollout for Instagram and X: educational carousels (“What's an NFT?”, “What's a blockchain?”) for an audience new to crypto, then the artist line-up, venue, sponsors, tickets and program.</p>
         <div class="social">
           <div class="posts">
             <figure class="figure"><img src="assets/img/projects/ensolarada/social/01.webp" alt="Post: What is Ensolarada?" loading="lazy"></figure>
@@ -427,14 +439,17 @@
             <figure class="figure"><img src="assets/img/projects/ensolarada/social/criancas.webp" alt="Post: free entry for trans people, PwD and kids" loading="lazy"></figure>
             <figure class="figure"><img src="assets/img/projects/ensolarada/social/oficina.webp" alt="Post: crypto and NFT workshop" loading="lazy"></figure>
           </div>
-          <figure class="figure figure--video reel">
-            <span class="tag tag--coral" data-i18n="enso.tag_recap">Recap · Reels &amp; Shorts</span>
-            <video src="assets/img/projects/ensolarada/highlights.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <button type="button" class="sound-toggle" aria-label="Toggle sound" aria-pressed="false" onclick="toggleSound(this)">
-              <span class="sound-toggle__off" data-i18n="enso.sound_off">🔇 Sound off</span>
-              <span class="sound-toggle__on" data-i18n="enso.sound_on">🔊 Sound on</span>
-            </button>
-          </figure>
+          <div class="reel-wrap">
+            <figure class="figure figure--video reel">
+              <span class="tag tag--coral" data-i18n="enso.tag_recap">Recap · Reels &amp; Shorts</span>
+              <video src="assets/img/projects/ensolarada/highlights.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              <button type="button" class="sound-toggle" aria-label="Toggle sound" aria-pressed="false" onclick="toggleSound(this)">
+                <span class="sound-toggle__off" data-i18n="enso.sound_off">🔇 Sound off</span>
+                <span class="sound-toggle__on" data-i18n="enso.sound_on">🔊 Sound on</span>
+              </button>
+            </figure>
+            <p class="vcredit" data-i18n="enso.recap_credit">Recap video by Subverso Lab</p>
+          </div>
         </div>
       </div>
 
@@ -448,11 +463,11 @@
         <p data-i18n="enso.r4_p">Every artist was born or lives in Brazil's Northeast, and each created two exclusive works for the show — a 1/1 and a 100-edition piece — displayed on screens across the house. I mixed NFT veterans with newcomers, bringing the Estelita label and Casa Criatura into the digital scene for the first time.</p>
         <div class="works">
           <figure class="figure"><video src="assets/img/projects/ensolarada/works/la-vision.mp4" autoplay muted loop playsinline></video><figcaption><b>La Vision</b><span>Ciberdelia · Recife, PE</span></figcaption></figure>
-          <figure class="figure"><video src="assets/img/projects/ensolarada/works/space-bronze.mp4" autoplay muted loop playsinline></video><figcaption><b>Space Bronze</b><span>LUREX · Fortaleza, CE</span></figcaption></figure>
+          <figure class="figure figure--left"><video src="assets/img/projects/ensolarada/works/space-bronze.mp4" autoplay muted loop playsinline></video><figcaption><b>Space Bronze</b><span>LUREX · Fortaleza, CE</span></figcaption></figure>
           <figure class="figure"><video src="assets/img/projects/ensolarada/works/tanara-mirawe.mp4" autoplay muted loop playsinline></video><figcaption><b>Tanara Mirawê</b><span>Pacha Pinta · Aracruz, ES</span></figcaption></figure>
           <figure class="figure"><video src="assets/img/projects/ensolarada/works/luminescencia.mp4" autoplay muted loop playsinline></video><figcaption><b>Luminescência</b><span>photoevaporation · João Pessoa, PB</span></figcaption></figure>
           <figure class="figure"><video src="assets/img/projects/ensolarada/works/divagacao-27.mp4" autoplay muted loop playsinline></video><figcaption><b>Divagação Particular #27</b><span>GUST · Abreu e Lima, PE</span></figcaption></figure>
-          <figure class="figure"><video src="assets/img/projects/ensolarada/works/ensolarada-numa.mp4" autoplay muted loop playsinline></video><figcaption><b>Ensolarada</b><span>Numa · Recife, PE</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/raio-solar.mp4" autoplay muted loop playsinline></video><figcaption><b>Raio Solar</b><span>Barbarize · Recife, PE</span></figcaption></figure>
         </div>
         <div class="artists">
           <span class="artist">LUREX<small>CE</small></span>
@@ -471,25 +486,7 @@
           <span class="artist">Barbarize<small>PE</small></span>
           <span class="artist">Matheus Ciberdelia<small>PE</small></span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE EVENT -->
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="kicker"><span class="num" data-i18n="enso.ev_num">THE EVENT</span><span class="line"></span></div>
-      <h2 data-i18n-html="enso.ev_h2">A week of sun in Olinda<span class="dot">.</span></h2>
-      <p class="body" data-i18n-html="enso.ev_p">We sold <strong>over 100 NFTs</strong> — editions and 1/1s — and funded the whole initiative with them, with works by both experienced and emerging artists. The show lived in three places at once: on the walls of Casa Criatura, on-chain, and in a <span class="hl">metaverse version</span> built with 3.land.</p>
-      <div class="mosaic">
-        <figure class="figure big"><img src="assets/img/projects/ensolarada/photos/expo-viewers.webp" alt="Visitors looking at screens on the violet wall" loading="lazy"></figure>
-        <figure class="figure tall"><img src="assets/img/projects/ensolarada/photos/show-3.webp" alt="Singer performing at the pocket show" loading="lazy"></figure>
-        <figure class="figure tall"><img src="assets/img/projects/ensolarada/photos/artists.webp" alt="Artists posing next to their works" loading="lazy"></figure>
-        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/expo-room.webp" alt="Exhibition room during the talk" loading="lazy"></figure>
-        <figure class="figure"><img src="assets/img/projects/ensolarada/photos/venue.webp" alt="Casa Criatura doors and patio" loading="lazy"></figure>
-        <figure class="figure"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span></figure>
-        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/show-4.webp" alt="Pocket show at night" loading="lazy"></figure>
-        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/talk-room.webp" alt="Audience during the talk" loading="lazy"></figure>
+        <figure class="figure metaverse"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span><figcaption><b>Praia da Criatura</b><span data-i18n="enso.metaverse_cap">The show’s metaverse version — built and exhibited by 3.land.</span></figcaption></figure>
       </div>
     </div>
   </section>
@@ -497,19 +494,14 @@
   <!-- 2024 REBRAND -->
   <section class="rebrand">
     <div class="wrap">
-      <div class="kicker"><span class="num" data-i18n="enso.rb_num">NEXT EDITIONS</span><span class="line"></span></div>
+      <div class="kicker"><span class="num" data-i18n="enso.rb_num">REBRAND · 2024</span><span class="line"></span></div>
       <div class="rb">
         <div>
-          <span class="tagline" data-i18n="enso.rb_tag">Rebrand · 2024 · unreleased</span>
-          <h2 data-i18n-html="enso.rb_h2">A new sun for what's next<span class="dot">.</span></h2>
-          <p class="body" data-i18n="enso.rb_p1">After the first edition I redesigned the identity for future editions: a wavy seal, a bold wordmark and a modular sun icon — a cleaner, scalable system for screens, merch and partners. Those editions haven't happened (yet).</p>
-          <p class="body" data-i18n="enso.rb_p2">The plan: reach more people to learn about NFTs, make it easier for new artists to join and explore everything crypto can do — in line with my master's research in Digital Artifact Design, focused on Web3 education and communities.</p>
+          <span class="tagline" data-i18n="enso.rb_tag">Unreleased</span>
+          <h2 data-i18n-html="enso.rb_h2">2024 rebrand<span class="dot">.</span></h2>
+          <p class="body" data-i18n="enso.rb_p1">A new identity designed in 2024 for future editions, which did not happen: wavy seal, sun icon and a bolder wordmark, built to scale across screens, merch and partners.</p>
         </div>
-        <div class="rb__panel">
-          <div class="tile t1"><img src="assets/img/projects/ensolarada/id/ensolarada_horizontal.svg" alt="Ensolarada 2024 horizontal logo" loading="lazy"></div>
-          <div class="tile t2"><img src="assets/img/projects/ensolarada/id/ensolarada_forma.svg" alt="Ensolarada 2024 seal shape" loading="lazy"></div>
-          <div class="tile t3"><img src="assets/img/projects/ensolarada/id/ensolarada_icone.svg" alt="Ensolarada 2024 icon" loading="lazy"></div>
-        </div>
+        <div class="rb__logo"><img src="assets/img/projects/ensolarada/id/ensolarada_horizontal.svg" alt="Ensolarada 2024 logo" loading="lazy"></div>
       </div>
     </div>
   </section>

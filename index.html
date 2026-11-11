@@ -1773,7 +1773,7 @@
           </div>
           <div class="project-tag-label">2024</div>
           <div class="project-overlay">
-            <a href="3land.html" class="project-overlay-btn" data-i18n="portfolio.view_case">View Case</a>
+            <a href="3land.html" class="project-overlay-btn" data-i18n="portfolio.see_more">See more →</a>
           </div>
         </div>
         <div class="project-body">
@@ -1797,7 +1797,7 @@
           </div>
           <div class="project-tag-label">2025</div>
           <div class="project-overlay">
-            <a href="education.html" class="project-overlay-btn" data-i18n="portfolio.web3pe_cta">See more in Education →</a>
+            <a href="education.html" class="project-overlay-btn" data-i18n="portfolio.see_more">See more →</a>
           </div>
         </div>
         <div class="project-body">
@@ -1821,7 +1821,7 @@
           </div>
           <div class="project-tag-label">2023</div>
           <div class="project-overlay">
-            <a href="computadores-fazem-arte.html" class="project-overlay-btn" data-i18n="portfolio.view_case">View Case</a>
+            <a href="computadores-fazem-arte.html" class="project-overlay-btn" data-i18n="portfolio.see_more">See more →</a>
           </div>
         </div>
         <div class="project-body">
@@ -1844,7 +1844,7 @@
           <img src="assets/img/projects/interlace-cover.png" alt="Interlace Exhibition" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="project-overlay">
-            <a href="https://www.mallow.art/artwork/14eaNwfY8V8Bk5zuMnLcExd3vRE2rnYApNSMAPTSvmZJ" class="project-overlay-btn" target="_blank" data-i18n="portfolio.view">View</a>
+            <a href="https://www.mallow.art/artwork/14eaNwfY8V8Bk5zuMnLcExd3vRE2rnYApNSMAPTSvmZJ" class="project-overlay-btn" target="_blank" data-i18n="portfolio.see_more">See more →</a>
           </div>
         </div>
         <div class="project-body">
@@ -1866,7 +1866,7 @@
           <img src="assets/img/projects/logofolio-cover.png" alt="Visual ID" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="project-overlay">
-            <a href="visual-id.html" class="project-overlay-btn" data-i18n="portfolio.view">View</a>
+            <a href="visual-id.html" class="project-overlay-btn" data-i18n="portfolio.see_more">See more →</a>
           </div>
         </div>
         <div class="project-body">
@@ -2287,6 +2287,20 @@
 
   loadAndApply(currentLang);
 })();
+</script>
+<script>
+  // Whole project card is a link to its page (uses the card's CTA href)
+  (function(){
+    document.querySelectorAll('.project-card').forEach(function(card){
+      var a = card.querySelector('.project-overlay-btn');
+      if (!a) return;
+      card.addEventListener('click', function(e){
+        if (e.target.closest('a')) return;
+        if (a.target === '_blank' || e.ctrlKey || e.metaKey || e.button === 1) window.open(a.href, '_blank', 'noopener');
+        else window.location.href = a.href;
+      });
+    });
+  })();
 </script>
 </body>
 </html>
