@@ -180,6 +180,13 @@
   .swatch b{font-family:var(--font-display);font-size:15px;letter-spacing:.01em}
   .swatch span{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:#5d5170}
   @media(max-width:560px){.palette{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:761px){
+    .idfoot{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;align-items:stretch}
+    .idfoot .palette{margin-top:0;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+    .idfoot .swatch{display:flex;flex-direction:column}
+    .idfoot .swatch .chip{aspect-ratio:auto;flex:1;min-height:56px}
+    .idfoot .xr{margin-top:0;grid-template-columns:minmax(130px,190px) 1fr;gap:clamp(14px,2.4vw,28px)}
+  }
   .credit{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);margin-top:14px}
   .credit b{color:var(--sun);font-weight:400}
 
@@ -419,6 +426,7 @@
           <figcaption data-i18n="enso.el_cap">Elements cut from the main art and animated for the communication</figcaption>
         </figure>
         <figure class="figure idcover"><img src="assets/img/projects/ensolarada/id/id-cover.webp" alt="Ensolarada visual identity applications" loading="lazy"></figure>
+        <div class="idfoot">
         <div class="palette" aria-label="Palette">
           <figure class="swatch"><div class="chip" style="background:#E6FF2A"></div><figcaption><b data-i18n="enso.sw_sun">Sun</b><span>#E6FF2A</span><span>RGB 230 255 42</span></figcaption></figure>
           <figure class="swatch"><div class="chip" style="background:#F04A33"></div><figcaption><b data-i18n="enso.sw_coral">Coral</b><span>#F04A33</span><span>RGB 240 74 51</span></figcaption></figure>
@@ -432,6 +440,7 @@
             <h4 data-i18n="enso.xr_h">“La Vision” in augmented reality</h4>
             <p data-i18n-html="enso.xr_p">The official poster came to life through an XR filter: point the phone at it and the artwork moves. Art by <b>Matheus Ciberdelia</b>, interaction built by the artist <b>LUREX</b>.</p>
           </div>
+        </div>
         </div>
       </div>
 
