@@ -490,7 +490,7 @@
     "k_network": "Network",
     "ov_num": "OVERVIEW",
     "ov_h2": "Art &amp; NFTs under the sun<span class=\"dot\">.</span>",
-    "ov_p1": "A project about <strong>decentralizing NFT culture</strong> — valuing and paying artists from Brazil, far from the usual art-and-crypto hubs. The goal: build an artistic and technological scene right here, in Pernambuco.",
+    "ov_p1": "A project about <strong>decentralizing NFT culture</strong> — valuing and paying artists from Brazil, far from the usual art-and-crypto hubs.",
     "ov_p2": "It happened through photographer <strong>JT Liss</strong>'s initiative to promote art events on Solana around the world, with initial support from the <strong>Solana Foundation</strong> — plus digital and local communities, NFT art projects and collectors.",
     "st_artists": "Artists from Northeast Brazil",
     "st_sold": "NFTs sold",
@@ -499,7 +499,7 @@
     "piece_cap": "<b>“Ensolarada”</b> — interactive 3D piece I made for the top-5 collectors and the artists · drag to spin",
     "role_num": "MY ROLE",
     "role_h2": "One person, four hats<span class=\"dot\">.</span>",
-    "role_body": "Ensolarada was my idea and my production. I took it from the sponsorship deck to the closing party — designing it, running it, telling its story online and choosing who would be on the walls.",
+    "role_body": "Ensolarada was my idea and my production. I took it from the sponsorship deck to the closing party — designing it, running it, telling its story online and carefully building an interesting curation.",
     "r1_t": "Visual Identity",
     "r1_d": "Logo, palette, patterns, signage, plaques and screens.",
     "r2_t": "Production",
@@ -548,6 +548,9 @@
     "metaverse_cap": "The show’s metaverse version — built and exhibited by 3.land.",
     "tag_mainart": "Main art · Ciberdelia",
     "el_cap": "Elements cut from the main art and animated for the communication",
-    "tag_walk": "Walkthrough"
+    "tag_walk": "Walkthrough",
+    "col_tag": "Collector · archive",
+    "col_h": "Sold on Collector",
+    "col_p": "The NFTs were sold on Collector, a Solana platform for curated exhibitions that no longer exists. This is the show's page there, saved before it went offline."
   }
 }

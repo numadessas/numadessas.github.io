@@ -490,7 +490,7 @@
     "k_network": "Rede",
     "ov_num": "VISÃO GERAL",
     "ov_h2": "Arte &amp; NFTs debaixo do sol<span class=\"dot\">.</span>",
-    "ov_p1": "Um projeto sobre <strong>descentralizar a cultura NFT</strong> — valorizando e remunerando artistas do Brasil, longe dos polos de sempre da arte e do cripto. O objetivo: criar um cenário artístico e tecnológico aqui mesmo, em Pernambuco.",
+    "ov_p1": "Um projeto sobre <strong>descentralizar a cultura NFT</strong> — valorizando e remunerando artistas do Brasil, longe dos polos de sempre da arte e do cripto.",
     "ov_p2": "Aconteceu por meio da iniciativa do fotógrafo <strong>JT Liss</strong> de promover eventos de arte na Solana pelo mundo, com apoio inicial da <strong>Solana Foundation</strong> — além de comunidades digitais e presenciais, projetos artísticos e colecionadores de NFT.",
     "st_artists": "Artistas do Nordeste",
     "st_sold": "NFTs vendidas",
@@ -499,7 +499,7 @@
     "piece_cap": "<b>“Ensolarada”</b> — obra 3D interativa que fiz para os 5 maiores colecionadores e os artistas · arraste para girar",
     "role_num": "MEU PAPEL",
     "role_h2": "Uma pessoa, quatro chapéus<span class=\"dot\">.</span>",
-    "role_body": "A Ensolarada foi ideia e produção minha. Levei do deck de patrocínio até a festa de encerramento — desenhando, tocando, contando a história nas redes e escolhendo quem estaria nas paredes.",
+    "role_body": "A Ensolarada foi ideia e produção minha. Levei do deck de patrocínio até a festa de encerramento — desenhando, tocando, contando a história nas redes e construindo com cuidado uma curadoria interessante.",
     "r1_t": "Identidade Visual",
     "r1_d": "Logo, paleta, padronagens, sinalização, placas e telas.",
     "r2_t": "Produção",
@@ -548,6 +548,9 @@
     "metaverse_cap": "A versão da exposição no metaverso — construída e exibida pela 3.land.",
     "tag_mainart": "Arte principal · Ciberdelia",
     "el_cap": "Elementos recortados da arte principal e animados para a comunicação",
-    "tag_walk": "Passeio"
+    "tag_walk": "Passeio",
+    "col_tag": "Collector · arquivo",
+    "col_h": "Vendidas na Collector",
+    "col_p": "As NFTs foram comercializadas na Collector, plataforma de exposições curadas na Solana que não existe mais. Esta é a página da exposição lá, salva antes de sair do ar."
   }
 }
