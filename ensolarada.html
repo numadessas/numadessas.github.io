@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ensolarada — Case Study</title>
+<meta name="description" content="Ensolarada — a crypto-art exhibition and tech event in Olinda (2023) with 15 artists from Brazil's Northeast on Solana. Visual identity, production, social media and curation by Numa.">
+<meta name="author" content="Numa">
+<meta property="og:title" content="Ensolarada — Case Study">
+<meta property="og:description" content="Art &amp; NFTs exhibition in Olinda, 2023 — visual identity, production, social media and curation | Numa">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.numadessas.com.br/assets/img/projects/ensolarada-cover.webp">
+<meta property="og:url" content="https://numadessas.com.br/ensolarada.html">
+<link rel="canonical" href="https://numadessas.com.br/ensolarada.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ensolarada — Case Study">
+<meta name="twitter:description" content="Art &amp; NFTs exhibition in Olinda, 2023 — visual identity, production, social media and curation | Numa">
+<meta name="twitter:image" content="https://www.numadessas.com.br/assets/img/projects/ensolarada-cover.webp">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Sans:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<style>
+  :root{
+    /* Ensolarada palette (2023 edition) */
+    --sun:#E6FF2A;        /* lime-yellow sun */
+    --coral:#F04A33;      /* badge red-orange */
+    --violet:#5B2A86;     /* gallery walls */
+    --plum:#2A1446;       /* deep night violet */
+    --night:#160A26;      /* page background */
+    --night-2:#1E0F33;
+    --amber:#FF8B00;      /* 2024 rebrand orange */
+    --ink:#F7F2E8;
+    --muted:#B7A9CC;
+    --line:rgba(230,255,42,.18);
+    --font-banner:'Climate Crisis',sans-serif;
+    --font-display:'Instrument Sans',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    --maxw:1160px;
+    --pad:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--night);color:var(--ink);
+    font-family:var(--font-body),system-ui,sans-serif;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+  /* warm sun glow instead of the cyber grid */
+  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 85% 8%,rgba(240,74,51,.22),transparent 70%),
+      radial-gradient(50% 40% at 10% 60%,rgba(91,42,134,.45),transparent 70%),
+      radial-gradient(40% 30% at 70% 95%,rgba(230,255,42,.08),transparent 70%)}
+  main{position:relative;z-index:1}
+
+  .backlink{position:fixed;top:22px;left:22px;z-index:20;font-family:var(--font-mono);
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    text-decoration:none;padding:9px 15px;border:1px solid rgba(247,242,232,.22);
+    border-radius:999px;background:rgba(22,10,38,.6);backdrop-filter:blur(8px)}
+  .backlink:hover{border-color:var(--sun);color:var(--sun)}
+
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--sun);margin:0 0 18px}
+
+  /* HERO */
+  .hero{position:relative;min-height:94vh;display:flex;flex-direction:column;justify-content:flex-end;
+    padding-block:clamp(40px,10vh,120px);overflow:hidden}
+  .hero__img{position:absolute;inset:0;z-index:0}
+  .hero__img img{width:100%;height:100%;object-fit:cover;object-position:60% 35%}
+  .hero__img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(22,10,38,.25) 0%,rgba(22,10,38,.15) 35%,rgba(22,10,38,.9) 85%,var(--night) 100%),
+      linear-gradient(90deg,rgba(22,10,38,.8),transparent 60%)}
+  .hero .wrap{position:relative;z-index:1;width:100%}
+  .hero h1{font-family:var(--font-banner);font-weight:400;text-transform:uppercase;
+    font-size:clamp(30px,7.4vw,112px);line-height:.95;margin:0;color:var(--ink);
+    display:flex;align-items:center;gap:.12em;flex-wrap:wrap}
+  .hero h1 .sunmark{width:.9em;height:.9em;flex:none;animation:spin 40s linear infinite}
+  .hero h1 .sunmark{fill:var(--sun)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero .tagline{font-family:var(--font-mono);color:var(--coral);font-size:clamp(14px,1.6vw,17px);
+    letter-spacing:.24em;text-transform:uppercase;margin:12px 0 0}
+  .hero .lede{max-width:46ch;font-size:clamp(16px,2vw,20px);color:#E9E1F3;margin:22px 0 0}
+  .metarow{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:34px;
+    padding-top:24px;border-top:1px solid rgba(247,242,232,.16)}
+  .metarow div{min-width:120px}
+  .metarow .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .metarow .v{font-size:14.5px;margin-top:3px}
+
+  section{padding-block:clamp(64px,11vw,140px)}
+  .kicker{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .kicker .num{font-family:var(--font-mono);font-size:13px;color:var(--coral);letter-spacing:.1em}
+  .kicker .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(240,74,51,.5),transparent)}
+  h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,5.6vw,5rem);
+    line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+  h2 .dot{color:var(--sun)}
+  .body{max-width:60ch;color:#DCD2E8;font-size:clamp(15.5px,1.6vw,18px);margin-top:20px}
+  .body strong{color:var(--ink);font-weight:600}
+  .hl{color:var(--sun)}
+
+  /* overview */
+  .overview{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,80px);align-items:center}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+  .stat{border-radius:14px;padding:16px 14px;background:rgba(91,42,134,.28);border:1px solid rgba(230,255,42,.14)}
+  .stat .n{font-family:var(--font-banner);font-size:clamp(24px,3vw,34px);line-height:1;color:var(--sun)}
+  .stat .l{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px;line-height:1.4}
+  .piece{position:relative;text-align:center}
+  .piece::before{content:"";position:absolute;left:50%;top:46%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);
+    border-radius:50%;background:radial-gradient(circle,rgba(240,74,51,.55),rgba(240,74,51,.05) 62%,transparent 70%)}
+  .piece-model{position:relative;width:100%;height:clamp(380px,48vw,560px);background:transparent;--poster-color:transparent}
+  .piece figcaption{position:relative;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:6px}
+  .piece figcaption b{color:var(--sun);font-weight:400}
+
+  /* role cards */
+  .roles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+  .role{position:relative;border-radius:18px;padding:24px 22px 22px;overflow:hidden;
+    background:var(--coral);color:var(--plum);display:flex;flex-direction:column;gap:10px;
+    transition:transform .3s}
+  .role:nth-child(2){background:var(--sun)}
+  .role:nth-child(3){background:var(--violet);color:var(--ink)}
+  .role:nth-child(4){background:var(--ink)}
+  .role:hover{transform:translateY(-5px) rotate(-.6deg)}
+  .role .rn{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em}
+  .role .rt{font-family:var(--font-banner);font-size:clamp(17px,1.9vw,22px);line-height:1.05;text-transform:uppercase}
+  .role .rd{font-size:14px;line-height:1.5}
+  .role svg{position:absolute;right:-26px;bottom:-26px;width:110px;height:110px;opacity:.18}
+  .role svg{fill:currentColor}
+
+  /* discipline galleries */
+  .rdisc{margin-top:clamp(56px,8vw,96px)}
+  .rdisc__head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .rdisc__n{font-family:var(--font-mono);font-size:12px;color:var(--coral);letter-spacing:.1em}
+  .rdisc h3{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,3vw,32px);margin:0;letter-spacing:.01em}
+  .rdisc__tools{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+  .rdisc p{max-width:64ch;color:#DCD2E8;font-size:15.5px;margin:10px 0 0}
+  .figure{position:relative;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--night-2)}
+  .figure img,.figure video{width:100%;height:100%;display:block;object-fit:cover}
+  .figure .tag{position:absolute;left:12px;top:12px;z-index:2;font-family:var(--font-mono);font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;
+    background:rgba(22,10,38,.78);backdrop-filter:blur(6px);border:1px solid rgba(230,255,42,.35);color:var(--sun)}
+  .figure .tag--coral{border-color:rgba(240,74,51,.6);color:#FFB3A6}
+  .figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 11px;
+    background:linear-gradient(180deg,transparent,rgba(22,10,38,.92));font-size:13px;line-height:1.35}
+  .figure figcaption b{display:block;font-family:var(--font-display);font-size:14.5px;color:var(--ink)}
+  .figure figcaption span{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+  .rgal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+  .rgal .figure{aspect-ratio:1/1}
+  .rgal--3{grid-template-columns:repeat(3,1fr)}
+  .rgal--3 .figure{aspect-ratio:4/3}
+  .rgal--wide{grid-template-columns:1.35fr 1fr}
+  .rgal--wide .figure{aspect-ratio:auto;min-height:260px}
+
+  /* visual identity board */
+  .idboard{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:24px}
+  .idboard .logo{grid-row:span 2;aspect-ratio:1/1;background:#211247}
+  .idboard .logo video{object-fit:contain}
+  .idboard .sw{aspect-ratio:16/9}
+  .palette{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .palette span{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;
+    letter-spacing:.06em;color:var(--muted)}
+  .palette i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(247,242,232,.25)}
+  .credit{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);margin-top:14px}
+  .credit b{color:var(--sun);font-weight:400}
+
+  /* opening day timeline */
+  .day{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(240,74,51,.4)}
+  .day .ev{padding:16px 14px 0 0;position:relative}
+  .day .ev::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--coral)}
+  .day .ev:nth-child(odd)::before{background:var(--sun)}
+  .day .t{font-family:var(--font-mono);font-size:12px;color:var(--sun);letter-spacing:.08em}
+  .day .d{font-size:14px;line-height:1.45;color:#DCD2E8;margin-top:4px}
+  .note{display:inline-flex;gap:10px;align-items:flex-start;margin-top:26px;padding:12px 16px;border-radius:12px;
+    background:rgba(230,255,42,.08);border:1px solid rgba(230,255,42,.25);font-size:14px;color:#EDE7D6;max-width:70ch}
+  .note::before{content:"☀";color:var(--sun)}
+
+  /* social */
+  .social{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:24px;align-items:start}
+  .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .posts .figure{aspect-ratio:4/5;border-radius:10px}
+  .reel{aspect-ratio:9/16;max-height:720px;margin-inline:auto;width:100%}
+  .figure--video{position:relative}
+  .sound-toggle{position:absolute;right:12px;bottom:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;
+    padding:8px 12px;border:1px solid rgba(247,242,232,.3);border-radius:999px;cursor:pointer;
+    background:rgba(22,10,38,.65);backdrop-filter:blur(6px);color:var(--ink);
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .sound-toggle:hover,.sound-toggle.on{border-color:var(--sun);color:var(--sun)}
+  .sound-toggle .sound-toggle__on{display:none}
+  .sound-toggle.on .sound-toggle__on{display:inline}
+  .sound-toggle.on .sound-toggle__off{display:none}
+
+  /* curation */
+  .works{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .works .figure{aspect-ratio:4/5}
+  .works .figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .artists{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .artist{font-size:13.5px;padding:8px 14px;border-radius:999px;border:1px solid rgba(230,255,42,.22);
+    background:rgba(91,42,134,.22);color:var(--ink)}
+  .artist small{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);margin-left:6px;letter-spacing:.04em}
+
+  /* event mosaic */
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,18vw,230px);gap:12px;margin-top:34px}
+  .mosaic .figure{border-radius:12px}
+  .mosaic .big{grid-column:span 2;grid-row:span 2}
+  .mosaic .tall{grid-row:span 2}
+  .mosaic .wide{grid-column:span 2}
+
+  /* 2024 rebrand */
+  .rebrand{background:linear-gradient(180deg,transparent,rgba(55,30,80,.55) 30%,rgba(55,30,80,.55) 70%,transparent)}
+  .rb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:10px}
+  .rb__panel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rb__panel .tile{border-radius:16px;display:flex;align-items:center;justify-content:center;padding:clamp(18px,3vw,34px);aspect-ratio:1/1}
+  .rb__panel .tile img{width:100%;height:100%;object-fit:contain}
+  .rb__panel .t1{background:#F3EBDD;grid-column:span 2;aspect-ratio:2.4/1}
+  .rb__panel .t2{background:var(--amber)}
+  .rb__panel .t3{background:#F3EBDD}
+  .rb .tagline{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,139,0,.6);color:var(--amber);margin-bottom:18px}
+
+  /* sponsors */
+  .ecolane{border-top:1px solid rgba(247,242,232,.1);border-bottom:1px solid rgba(247,242,232,.1);padding-block:clamp(30px,5vw,46px)}
+  .ecolane__label{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 20px}
+  .ecolane img{display:block;margin:0 auto;width:min(620px,100%);mix-blend-mode:screen;opacity:.75}
+
+  footer{padding-block:40px;color:var(--muted)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em}
+  footer .sunny{color:var(--sun)}
+
+  /* language switch */
+  .lang-switch{position:fixed;top:22px;right:22px;z-index:20}
+  .lang-btn{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);cursor:pointer;
+    padding:9px 14px;border:1px solid rgba(247,242,232,.22);border-radius:999px;
+    background:rgba(22,10,38,.6);backdrop-filter:blur(8px)}
+  .lang-btn:hover{border-color:var(--sun);color:var(--sun)}
+  .lang-btn svg{width:14px;height:14px;display:block}
+  .lang-btn .lang-caret{font-size:.6rem;transition:transform .2s}
+  .lang-btn[aria-expanded="true"] .lang-caret{transform:rotate(180deg)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;
+    min-width:150px;background:var(--plum);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
+  .lang-menu.open{display:flex}
+  .lang-menu button{background:none;border:0;text-align:left;padding:11px 16px;cursor:pointer;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:#d8cfe6}
+  .lang-menu button:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+  .lang-menu button.active{color:var(--sun)}
+
+  @media(max-width:960px){
+    .roles{grid-template-columns:repeat(2,1fr)}
+    .works{grid-template-columns:repeat(2,1fr)}
+    .day{grid-template-columns:repeat(2,1fr);row-gap:22px}
+  }
+  @media(max-width:760px){
+    .overview,.rb,.social,.rgal--wide{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .metarow div{min-width:44%}
+    .rgal--3{grid-template-columns:1fr 1fr}
+    .idboard{grid-template-columns:1fr}
+    .idboard .logo{grid-row:auto}
+    .mosaic{grid-template-columns:repeat(2,1fr)}
+    .mosaic .big{grid-column:span 2;grid-row:span 1}
+    .reel{max-width:360px}
+  }
+  @media(max-width:560px){
+    .lang-btn span:not(.lang-caret){display:none}
+    .roles{grid-template-columns:1fr}
+    .works{grid-template-columns:1fr}
+    .works .figure:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/5}
+    .posts{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<a class="backlink" href="design.html" data-i18n="enso.backlink">← Design</a>
+<div class="lang-switch" id="lang-switch">
+  <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+    <span id="lang-current">EN</span>
+    <span class="lang-caret">&#9662;</span>
+  </button>
+  <div class="lang-menu" id="lang-menu">
+    <button data-lang="en">English</button>
+    <button data-lang="pt">Português</button>
+    <button data-lang="es">Español</button>
+    <button data-lang="de">Deutsch</button>
+  </div>
+</div>
+
+<!-- reusable sun shape -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="sunpath" d="M641.26,457.54c-12.36-2.91-25.75-8.01-40.31-19.73,19.35-4.28,147.23-32.61,147.23-32.61l-140.4-31.09c32.21-15.18,38.54-33.21,46.48-49.22,6.66-13.44,14.46-25.45,39.62-33.16,3.2-.98,6.68-1.89,10.48-2.73-42.64-15.36-55.44,4.95-80.94,20.73-10.33,6.39-22.75,12.04-40.07,14.27,12.11-19,80.03-125.55,80.03-125.55l-123.79,79.1c13.72-35.59,5.11-53.35-.77-70.8-4.79-14.21-7.77-28.21,4.57-51.46,1.57-2.96,3.39-6.06,5.48-9.34-41.01,19.29-35.7,42.7-42.57,71.89-2.91,12.35-8,25.73-19.7,40.27-4.24-19.13-32.64-147.38-32.64-147.38l-31.12,140.53c-15.18-32.15-33.19-38.49-49.19-46.42-13.44-6.66-25.45-14.46-33.16-39.62-.98-3.2-1.89-6.68-2.73-10.48-15.36,42.64,4.95,55.43,20.73,80.94,6.39,10.33,12.04,22.75,14.27,40.07-19-12.11-125.55-80.03-125.55-80.03l79.1,123.79c-35.59-13.72-53.35-5.11-70.8.77-14.21,4.79-28.21,7.77-51.46-4.57-2.96-1.57-6.06-3.39-9.34-5.48,19.29,41.01,42.7,35.7,71.89,42.57,12.36,2.91,25.75,8.01,40.31,19.73-19.35,4.28-147.23,32.61-147.23,32.61l140.4,31.09c-32.21,15.18-38.54,33.21-46.48,49.22-6.66,13.44-14.46,25.45-39.62,33.16-3.2.98-6.68,1.89-10.48,2.73,42.64,15.36,55.44-4.95,80.94-20.73,10.33-6.39,22.75-12.04,40.07-14.27-12.11,19-80.03,125.55-80.03,125.55l123.69-78.83c-13.57,35.41-5,53.13.87,70.54,4.79,14.21,7.77,28.21-4.57,51.46-1.57,2.96-3.39,6.06-5.48,9.34,41.01-19.29,35.7-42.7,42.57-71.89,2.91-12.35,8-25.73,19.69-40.27,4.24,19.13,32.64,147.38,32.64,147.38l31.12-140.53c15.18,32.15,33.19,38.49,49.19,46.42,13.44,6.66,25.45,14.46,33.16,39.62.98,3.2,1.89,6.68,2.73,10.48,15.36-42.64-4.95-55.44-20.73-80.94-6.39-10.33-12.04-22.75-14.27-40.07,19,12.11,125.55,80.03,125.55,80.03l-78.83-123.69c35.41,13.57,53.13,5,70.54-.87,14.21-4.79,28.21-7.77,51.46,4.57,2.96,1.57,6.06,3.39,9.34,5.48-19.29-41.01-42.7-35.7-71.89-42.57Z"/>
+  </defs>
+</svg>
+
+<div class="glow" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <div class="hero__img"><img src="assets/img/projects/ensolarada/photos/hero.webp" alt="Ensolarada badge logo on the violet gallery wall at Casa Criatura, Olinda"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="enso.eyebrow">Art &amp; NFT Exhibition · Olinda, PE · 2023</p>
+      <h1><span>Ensolarada</span><svg class="sunmark" viewBox="0 0 912 809" aria-hidden="true"><use href="#sunpath"/></svg></h1>
+      <p class="tagline">arte &amp; NFTs · made in Brazil</p>
+      <p class="lede" data-i18n="enso.lede">A crypto-art exhibition and tech event that brought 15 artists from Brazil's Northeast to the Solana blockchain — on screens, in person and in the metaverse. I created it from scratch.</p>
+      <div class="metarow">
+        <div><div class="k" data-i18n="enso.k_role">My role</div><div class="v" data-i18n="enso.v_role">Visual ID · Production · Social · Curation</div></div>
+        <div><div class="k" data-i18n="enso.k_dates">Dates</div><div class="v" data-i18n="enso.v_dates">Oct 7 — 14, 2023</div></div>
+        <div><div class="k" data-i18n="enso.k_venue">Venue</div><div class="v">Casa Criatura · Olinda, PE</div></div>
+        <div><div class="k" data-i18n="enso.k_network">Network</div><div class="v">Solana</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="wrap overview">
+      <div>
+        <div class="kicker"><span class="num" data-i18n="enso.ov_num">OVERVIEW</span><span class="line"></span></div>
+        <h2 data-i18n-html="enso.ov_h2">Art &amp; NFTs under the sun<span class="dot">.</span></h2>
+        <p class="body" data-i18n-html="enso.ov_p1">A project about <strong>decentralizing NFT culture</strong> — valuing and paying artists from Brazil, far from the usual art-and-crypto hubs. The goal: build an artistic and technological scene right here, in Pernambuco.</p>
+        <p class="body" data-i18n-html="enso.ov_p2">It happened through photographer <strong>JT Liss</strong>'s initiative to promote art events on Solana around the world, with initial support from the <strong>Solana Foundation</strong> — plus digital and local communities, NFT art projects and collectors.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">15</div><div class="l" data-i18n="enso.st_artists">Northeast artists</div></div>
+          <div class="stat"><div class="n">100+</div><div class="l" data-i18n="enso.st_sold">NFTs sold</div></div>
+          <div class="stat"><div class="n">30</div><div class="l" data-i18n="enso.st_works">Exclusive works</div></div>
+          <div class="stat"><div class="n">8</div><div class="l" data-i18n="enso.st_days">Days of show</div></div>
+        </div>
+      </div>
+      <figure class="piece">
+        <model-viewer class="piece-model" src="assets/img/projects/ensolarada/works/ensolarada.glb" alt="Ensolarada — interactive 3D sun piece by Numa"
+          camera-orbit="0deg 82deg auto" camera-controls disable-zoom disable-pan
+          interaction-prompt="none" exposure="1.05" shadow-intensity="0" environment-image="neutral"></model-viewer>
+        <figcaption data-i18n-html="enso.piece_cap"><b>“Ensolarada”</b> — interactive 3D piece I made for the top-5 collectors and the artists · drag to spin</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MY ROLE -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker"><span class="num" data-i18n="enso.role_num">MY ROLE</span><span class="line"></span></div>
+      <h2 data-i18n-html="enso.role_h2">One person, four hats<span class="dot">.</span></h2>
+      <p class="body" data-i18n="enso.role_body">Ensolarada was my idea and my production. I took it from the sponsorship deck to the closing party — designing it, running it, telling its story online and choosing who would be on the walls.</p>
+
+      <div class="roles">
+        <div class="role"><span class="rn">01</span><span class="rt" data-i18n="enso.r1_t">Visual Identity</span><span class="rd" data-i18n="enso.r1_d">Logo, palette, patterns, signage, plaques and screens.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+        <div class="role"><span class="rn">02</span><span class="rt" data-i18n="enso.r2_t">Production</span><span class="rd" data-i18n="enso.r2_d">Sponsors, venue, budget, NFT drops and the opening-day program.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+        <div class="role"><span class="rn">03</span><span class="rt" data-i18n="enso.r3_t">Social Media</span><span class="rd" data-i18n="enso.r3_d">Content plan, educational carousels, stories and recap video.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+        <div class="role"><span class="rn">04</span><span class="rt" data-i18n="enso.r4_t">Curation</span><span class="rd" data-i18n="enso.r4_d">15 artists from the Northeast, 30 exclusive works.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+      </div>
+
+      <!-- 01 VISUAL ID -->
+      <div class="rdisc" id="visual-id">
+        <div class="rdisc__head">
+          <span class="rdisc__n">01</span>
+          <h3 data-i18n="enso.r1_t">Visual Identity</h3>
+          <span class="rdisc__tools">Illustrator · Photoshop · After Effects</span>
+        </div>
+        <p data-i18n="enso.r1_p">A hand-drawn badge — a lime sun rising over a red hill, with a handwritten “arte &amp; NFTs” — set the tone: warm, tropical and handmade, far from the cold cyber look common in crypto. From there I built the palette, sun patterns and every application: posters, wall signage, artwork plaques, screen loops, tickets and the metaverse space.</p>
+        <div class="idboard">
+          <figure class="figure figure--video logo">
+            <span class="tag" data-i18n="enso.tag_logo2023">Logo used · 2023 edition</span>
+            <video src="assets/img/projects/ensolarada/id/logo-2023.mp4" autoplay muted loop playsinline></video>
+            <button type="button" class="sound-toggle" aria-label="Toggle sound" aria-pressed="false" onclick="toggleSound(this)">
+              <span class="sound-toggle__off" data-i18n="enso.sound_off">🔇 Sound off</span>
+              <span class="sound-toggle__on" data-i18n="enso.sound_on">🔊 Sound on</span>
+            </button>
+          </figure>
+          <figure class="figure sw"><img src="assets/img/projects/ensolarada/id/pattern-1.webp" alt="Ensolarada sun pattern" loading="lazy"></figure>
+          <figure class="figure sw"><img src="assets/img/projects/ensolarada/photos/expo-screen.webp" alt="Wall signage and artwork plaque on screen" loading="lazy" style="object-position:center 30%"></figure>
+        </div>
+        <div class="palette" aria-label="Palette">
+          <span><i style="background:#E6FF2A"></i>#E6FF2A</span>
+          <span><i style="background:#F04A33"></i>#F04A33</span>
+          <span><i style="background:#5B2A86"></i>#5B2A86</span>
+          <span><i style="background:#211247"></i>#211247</span>
+        </div>
+        <p class="credit" data-i18n-html="enso.r1_credit">Official poster <b>“La Vision”</b> by guest artist Matheus Ciberdelia · photos by Subverso Lab.</p>
+      </div>
+
+      <!-- 02 PRODUCTION -->
+      <div class="rdisc" id="production">
+        <div class="rdisc__head">
+          <span class="rdisc__n">02</span>
+          <h3 data-i18n="enso.r2_t">Production</h3>
+          <span class="rdisc__tools" data-i18n="enso.tools_prod">Planning · Sponsorship · Logistics</span>
+        </div>
+        <p data-i18n="enso.r2_p">I wrote the project and sponsorship deck (media, screen and exclusive-screen quotas), partnered with Casa Criatura in Olinda's historic center, invited the artists, set up the NFT drops — 1/1 pieces on Mallow and 100-edition works on 3.land — and ran a full opening day. Every collector got a commemorative NFT.</p>
+        <div class="day">
+          <div class="ev"><div class="t">15:00</div><div class="d" data-i18n="enso.d1">Doors open · exhibition</div></div>
+          <div class="ev"><div class="t" data-i18n="enso.t2">Workshop</div><div class="d" data-i18n="enso.d2">How to get into crypto and mint an NFT</div></div>
+          <div class="ev"><div class="t" data-i18n="enso.t3">Talk</div><div class="d" data-i18n="enso.d3">Art and other possibilities in NFTs, with the artists</div></div>
+          <div class="ev"><div class="t" data-i18n="enso.t4">Kids</div><div class="d" data-i18n="enso.d4">Drawing and face painting</div></div>
+          <div class="ev"><div class="t">→ 22:00</div><div class="d" data-i18n="enso.d5">Pocket shows by Barbarize &amp; Tagore + DJ set by Numa</div></div>
+        </div>
+        <p class="note" data-i18n="enso.inclusion">Inclusion first: trans people, people with disabilities and kids under 10 got in free — a welcoming space for every age, run by a diverse team.</p>
+        <div class="rgal rgal--3">
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/talk-1.webp" alt="Numa giving a talk in front of a screen" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/workshop.webp" alt="Crypto and NFT workshop" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/roda.webp" alt="Talk with the artists" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/kids.webp" alt="Kids with printed artworks" loading="lazy" style="object-position:center 35%"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-1.webp" alt="Pocket show on the Estelita stage" loading="lazy"></figure>
+          <figure class="figure"><img src="assets/img/projects/ensolarada/photos/show-2.webp" alt="Pocket show under green lights" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <!-- 03 SOCIAL -->
+      <div class="rdisc" id="social">
+        <div class="rdisc__head">
+          <span class="rdisc__n">03</span>
+          <h3 data-i18n="enso.r3_t">Social Media</h3>
+          <span class="rdisc__tools" data-i18n="enso.tools_social">Instagram · X · Stories</span>
+        </div>
+        <p data-i18n="enso.r3_p">I planned and designed the whole rollout for Instagram and X: educational carousels (“What's an NFT?”, “What's a blockchain?”) for an audience new to crypto, then the artist line-up, venue, sponsors, tickets and program — and edited the highlights video after the event.</p>
+        <div class="social">
+          <div class="posts">
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/01.webp" alt="Post: What is Ensolarada?" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/02.webp" alt="Post: What is an NFT?" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/04.webp" alt="Post: Casa Criatura, event venue" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/05.webp" alt="Post: artists in the exhibition" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/08.webp" alt="Post: October 7 to 14" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/09.webp" alt="Post: Estelita stage line-up" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/01b.webp" alt="Post: NFTs in the land of the sun" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/criancas.webp" alt="Post: free entry for trans people, PwD and kids" loading="lazy"></figure>
+            <figure class="figure"><img src="assets/img/projects/ensolarada/social/oficina.webp" alt="Post: crypto and NFT workshop" loading="lazy"></figure>
+          </div>
+          <figure class="figure figure--video reel">
+            <span class="tag tag--coral" data-i18n="enso.tag_recap">Recap · Reels &amp; Shorts</span>
+            <video src="assets/img/projects/ensolarada/highlights.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <button type="button" class="sound-toggle" aria-label="Toggle sound" aria-pressed="false" onclick="toggleSound(this)">
+              <span class="sound-toggle__off" data-i18n="enso.sound_off">🔇 Sound off</span>
+              <span class="sound-toggle__on" data-i18n="enso.sound_on">🔊 Sound on</span>
+            </button>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 04 CURATION -->
+      <div class="rdisc" id="curation">
+        <div class="rdisc__head">
+          <span class="rdisc__n">04</span>
+          <h3 data-i18n="enso.r4_t">Curation</h3>
+          <span class="rdisc__tools" data-i18n="enso.tools_cur">Selection · Concept · Display</span>
+        </div>
+        <p data-i18n="enso.r4_p">Every artist was born or lives in Brazil's Northeast, and each created two exclusive works for the show — a 1/1 and a 100-edition piece — displayed on screens across the house. I mixed NFT veterans with newcomers, bringing the Estelita label and Casa Criatura into the digital scene for the first time.</p>
+        <div class="works">
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/la-vision.mp4" autoplay muted loop playsinline></video><figcaption><b>La Vision</b><span>Ciberdelia · Recife, PE</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/space-bronze.mp4" autoplay muted loop playsinline></video><figcaption><b>Space Bronze</b><span>LUREX · Fortaleza, CE</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/tanara-mirawe.mp4" autoplay muted loop playsinline></video><figcaption><b>Tanara Mirawê</b><span>Pacha Pinta · Aracruz, ES</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/luminescencia.mp4" autoplay muted loop playsinline></video><figcaption><b>Luminescência</b><span>photoevaporation · João Pessoa, PB</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/divagacao-27.mp4" autoplay muted loop playsinline></video><figcaption><b>Divagação Particular #27</b><span>GUST · Abreu e Lima, PE</span></figcaption></figure>
+          <figure class="figure"><video src="assets/img/projects/ensolarada/works/ensolarada-numa.mp4" autoplay muted loop playsinline></video><figcaption><b>Ensolarada</b><span>Numa · Recife, PE</span></figcaption></figure>
+        </div>
+        <div class="artists">
+          <span class="artist">LUREX<small>CE</small></span>
+          <span class="artist">Pacha Pinta<small>ES</small></span>
+          <span class="artist">Felipe Lins<small>PB</small></span>
+          <span class="artist">Marcos Palhano<small>MA</small></span>
+          <span class="artist">Felipe Negreiros<small>CE</small></span>
+          <span class="artist">Morbeck<small>BA</small></span>
+          <span class="artist">Fernando Baggi<small>PE</small></span>
+          <span class="artist">Anderson Sang<small>PE</small></span>
+          <span class="artist">Moisés Nascimento<small>BA</small></span>
+          <span class="artist">GUST<small>PE</small></span>
+          <span class="artist">Gyo<small>BA</small></span>
+          <span class="artist">Numa<small>PE</small></span>
+          <span class="artist">Tagore<small>PE</small></span>
+          <span class="artist">Barbarize<small>PE</small></span>
+          <span class="artist">Matheus Ciberdelia<small>PE</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EVENT -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker"><span class="num" data-i18n="enso.ev_num">THE EVENT</span><span class="line"></span></div>
+      <h2 data-i18n-html="enso.ev_h2">A week of sun in Olinda<span class="dot">.</span></h2>
+      <p class="body" data-i18n-html="enso.ev_p">We sold <strong>over 100 NFTs</strong> — editions and 1/1s — and funded the whole initiative with them, with works by both experienced and emerging artists. The show lived in three places at once: on the walls of Casa Criatura, on-chain, and in a <span class="hl">metaverse version</span> built with 3.land.</p>
+      <div class="mosaic">
+        <figure class="figure big"><img src="assets/img/projects/ensolarada/photos/expo-viewers.webp" alt="Visitors looking at screens on the violet wall" loading="lazy"></figure>
+        <figure class="figure tall"><img src="assets/img/projects/ensolarada/photos/show-3.webp" alt="Singer performing at the pocket show" loading="lazy"></figure>
+        <figure class="figure tall"><img src="assets/img/projects/ensolarada/photos/artists.webp" alt="Artists posing next to their works" loading="lazy"></figure>
+        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/expo-room.webp" alt="Exhibition room during the talk" loading="lazy"></figure>
+        <figure class="figure"><img src="assets/img/projects/ensolarada/photos/venue.webp" alt="Casa Criatura doors and patio" loading="lazy"></figure>
+        <figure class="figure"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span></figure>
+        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/show-4.webp" alt="Pocket show at night" loading="lazy"></figure>
+        <figure class="figure wide"><img src="assets/img/projects/ensolarada/photos/talk-room.webp" alt="Audience during the talk" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2024 REBRAND -->
+  <section class="rebrand">
+    <div class="wrap">
+      <div class="kicker"><span class="num" data-i18n="enso.rb_num">NEXT EDITIONS</span><span class="line"></span></div>
+      <div class="rb">
+        <div>
+          <span class="tagline" data-i18n="enso.rb_tag">Rebrand · 2024 · unreleased</span>
+          <h2 data-i18n-html="enso.rb_h2">A new sun for what's next<span class="dot">.</span></h2>
+          <p class="body" data-i18n="enso.rb_p1">After the first edition I redesigned the identity for future editions: a wavy seal, a bold wordmark and a modular sun icon — a cleaner, scalable system for screens, merch and partners. Those editions haven't happened (yet).</p>
+          <p class="body" data-i18n="enso.rb_p2">The plan: reach more people to learn about NFTs, make it easier for new artists to join and explore everything crypto can do — in line with my master's research in Digital Artifact Design, focused on Web3 education and communities.</p>
+        </div>
+        <div class="rb__panel">
+          <div class="tile t1"><img src="assets/img/projects/ensolarada/id/ensolarada_horizontal.svg" alt="Ensolarada 2024 horizontal logo" loading="lazy"></div>
+          <div class="tile t2"><img src="assets/img/projects/ensolarada/id/ensolarada_forma.svg" alt="Ensolarada 2024 seal shape" loading="lazy"></div>
+          <div class="tile t3"><img src="assets/img/projects/ensolarada/id/ensolarada_icone.svg" alt="Ensolarada 2024 icon" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ecolane">
+    <div class="wrap">
+      <p class="ecolane__label" data-i18n="enso.eco_label">Sponsors &amp; partners</p>
+      <img src="assets/img/projects/ensolarada/id/sponsors.webp" alt="Solana Foundation, Estelita, 0xMQQ, Kanna, Collector, 3.land" loading="lazy">
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span data-i18n="enso.foot_copy">© 2023 Ensolarada — Arte &amp; NFTs · Olinda, PE</span>
+      <span class="sunny" data-i18n="enso.foot_made">Made in Brazil ☀</span>
+    </div>
+  </footer>
+</main>
+<script>
+  function toggleSound(btn){
+    var v=btn.parentNode.querySelector('video'); v.muted=!v.muted;
+    btn.setAttribute('aria-pressed',String(!v.muted)); btn.classList.toggle('on',!v.muted);
+  }
+  // pause offscreen videos to save CPU
+  (function(){
+    if(!('IntersectionObserver' in window))return;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{rootMargin:'200px'});
+    document.querySelectorAll('video').forEach(function(v){io.observe(v);});
+  })();
+
+  // i18n
+  (function() {
+    var STORAGE_KEY = 'numa-lang';
+    var LABEL = { en: 'EN', pt: 'PT', es: 'ES', de: 'DE' };
+    var HTMLLANG = { en: 'en', pt: 'pt-BR', es: 'es', de: 'de' };
+    var ORDER = ['en', 'pt', 'es', 'de'];
+    var currentLang = 'en';
+    try { currentLang = localStorage.getItem(STORAGE_KEY) || 'en'; } catch(e) {}
+    if (!LABEL[currentLang]) currentLang = 'en';
+    var translations = {};
+    function t(key) { return key.split('.').reduce(function(o,k){return o&&o[k];}, translations) || null; }
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var v=t(el.dataset.i18n); if(v) el.textContent = v; });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el){ var v=t(el.dataset.i18nHtml); if(v) el.innerHTML = v; });
+      var cur = document.getElementById('lang-current'); if (cur) cur.textContent = LABEL[currentLang];
+      document.querySelectorAll('.lang-menu button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === currentLang); });
+      document.documentElement.lang = HTMLLANG[currentLang] || 'en';
+    }
+    function loadAndApply(lang) {
+      fetch('/assets/lang/' + lang + '.json').then(function(r){return r.json();}).then(function(data){ translations = data; applyTranslations(); }).catch(function(){});
+    }
+    var langBtn = document.getElementById('lang-btn');
+    var langMenu = document.getElementById('lang-menu');
+    function closeLangMenu(){ if (langMenu) langMenu.classList.remove('open'); if (langBtn) langBtn.setAttribute('aria-expanded','false'); }
+    window.setLang = function(lang){ if(!LABEL[lang])return; currentLang=lang; try{localStorage.setItem(STORAGE_KEY,lang);}catch(e){} loadAndApply(lang); closeLangMenu(); };
+    window.toggleLang = function(){ window.setLang(ORDER[(ORDER.indexOf(currentLang)+1)%ORDER.length]); };
+    if (langBtn && langMenu) {
+      langBtn.addEventListener('click', function(e){ e.stopPropagation(); var open=langMenu.classList.toggle('open'); langBtn.setAttribute('aria-expanded', open?'true':'false'); });
+      langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ window.setLang(b.dataset.lang); }); });
+      document.addEventListener('click', function(e){ if(!e.target.closest('#lang-switch')) closeLangMenu(); });
+    }
+    loadAndApply(currentLang);
+  })();
+</script>
+</body>
+</html>
