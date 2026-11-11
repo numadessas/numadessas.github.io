@@ -481,7 +481,7 @@
   "enso": {
     "backlink": "← Design",
     "eyebrow": "Kunst- & NFT-Ausstellung · Olinda, PE · 2023",
-    "lede": "Eine Krypto-Kunst-Ausstellung und Tech-Event, das 15 Künstler:innen aus dem Nordosten Brasiliens auf die Solana-Blockchain brachte — auf Bildschirmen, vor Ort und im Metaverse. Ich habe es von Grund auf geschaffen.",
+    "lede": "Eine Krypto-Kunst-Ausstellung und Tech-Event mit 15 Künstler:innen aus dem Nordosten Brasiliens — auf Bildschirmen, vor Ort und im Metaverse. Ich habe es von Grund auf geschaffen.",
     "k_role": "Meine Rolle",
     "v_role": "Visual ID · Produktion · Social · Kuratierung",
     "k_dates": "Daten",
@@ -491,7 +491,7 @@
     "ov_num": "ÜBERBLICK",
     "ov_h2": "Kunst &amp; NFTs unter der Sonne<span class=\"dot\">.</span>",
     "ov_p1": "Ein Projekt über die <strong>Dezentralisierung der NFT-Kultur</strong> — Künstler:innen aus Brasilien wertschätzen und bezahlen, fernab der üblichen Kunst- und Krypto-Zentren.",
-    "ov_p2": "Möglich wurde es durch die Initiative des Fotografen <strong>JT Liss</strong>, weltweit Kunstevents auf Solana zu fördern, mit anfänglicher Unterstützung der <strong>Solana Foundation</strong> — dazu digitale und lokale Communities, NFT-Kunstprojekte und Sammler:innen.",
+    "ov_p2": "Anfangs gesponsert von der Solana Foundation, über ein Programm des Fotografen JT Liss, und unterstützt von digitalen und lokalen Communities, Kunstprojekten und NFT-Sammler:innen.",
     "st_artists": "Künstler:innen aus Nordost-Brasilien",
     "st_sold": "Verkaufte NFTs",
     "st_works": "Exklusive Werke",
@@ -551,6 +551,6 @@
     "tag_walk": "Rundgang",
     "col_tag": "Collector · Archiv",
     "col_h": "Verkauft auf Collector",
-    "col_p": "Die NFTs wurden auf Collector verkauft, einer Solana-Plattform für kuratierte Ausstellungen, die es nicht mehr gibt. Das ist die Seite der Ausstellung dort, gesichert bevor sie offline ging."
+    "col_p": "Die NFTs wurden auf Collector verkauft, einer Plattform für kuratierte NFT-Ausstellungen, die es nicht mehr gibt. Das ist die Seite der Ausstellung dort, gesichert bevor sie offline ging."
   }
 }

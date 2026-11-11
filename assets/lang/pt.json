@@ -481,7 +481,7 @@
   "enso": {
     "backlink": "← Design",
     "eyebrow": "Exposição de Arte & NFTs · Olinda, PE · 2023",
-    "lede": "Uma exposição de criptoarte e evento de tecnologia que levou 15 artistas do Nordeste para a blockchain Solana — nas telas, ao vivo e no metaverso. Criei do zero.",
+    "lede": "Uma exposição de criptoarte e evento de tecnologia com 15 artistas do Nordeste — nas telas, ao vivo e no metaverso. Criei do zero.",
     "k_role": "Meu papel",
     "v_role": "ID Visual · Produção · Redes · Curadoria",
     "k_dates": "Datas",
@@ -491,7 +491,7 @@
     "ov_num": "VISÃO GERAL",
     "ov_h2": "Arte &amp; NFTs debaixo do sol<span class=\"dot\">.</span>",
     "ov_p1": "Um projeto sobre <strong>descentralizar a cultura NFT</strong> — valorizando e remunerando artistas do Brasil, longe dos polos de sempre da arte e do cripto.",
-    "ov_p2": "Aconteceu por meio da iniciativa do fotógrafo <strong>JT Liss</strong> de promover eventos de arte na Solana pelo mundo, com apoio inicial da <strong>Solana Foundation</strong> — além de comunidades digitais e presenciais, projetos artísticos e colecionadores de NFT.",
+    "ov_p2": "Contou com patrocínio inicial da Solana Foundation, via um programa do fotógrafo JT Liss, e com o apoio de comunidades digitais e presenciais, projetos artísticos e colecionadores de NFT.",
     "st_artists": "Artistas do Nordeste",
     "st_sold": "NFTs vendidas",
     "st_works": "Obras exclusivas",
@@ -551,6 +551,6 @@
     "tag_walk": "Passeio",
     "col_tag": "Collector · arquivo",
     "col_h": "Vendidas na Collector",
-    "col_p": "As NFTs foram comercializadas na Collector, plataforma de exposições curadas na Solana que não existe mais. Esta é a página da exposição lá, salva antes de sair do ar."
+    "col_p": "As NFTs foram comercializadas na Collector, uma plataforma de exposições curadas de NFT que não existe mais. Esta é a página da exposição lá, salva antes de sair do ar."
   }
 }

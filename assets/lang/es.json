@@ -481,7 +481,7 @@
   "enso": {
     "backlink": "← Diseño",
     "eyebrow": "Exposición de Arte & NFTs · Olinda, PE · 2023",
-    "lede": "Una exposición de criptoarte y evento de tecnología que llevó a 15 artistas del Nordeste brasileño a la blockchain Solana — en pantallas, en persona y en el metaverso. La creé desde cero.",
+    "lede": "Una exposición de criptoarte y evento de tecnología con 15 artistas del Nordeste brasileño — en pantallas, en persona y en el metaverso. La creé desde cero.",
     "k_role": "Mi rol",
     "v_role": "ID Visual · Producción · Redes · Curaduría",
     "k_dates": "Fechas",
@@ -491,7 +491,7 @@
     "ov_num": "RESUMEN",
     "ov_h2": "Arte &amp; NFTs bajo el sol<span class=\"dot\">.</span>",
     "ov_p1": "Un proyecto sobre <strong>descentralizar la cultura NFT</strong> — valorando y remunerando a artistas de Brasil, lejos de los polos habituales del arte y lo cripto.",
-    "ov_p2": "Fue posible gracias a la iniciativa del fotógrafo <strong>JT Liss</strong> para promover eventos de arte en Solana por el mundo, con apoyo inicial de la <strong>Solana Foundation</strong> — además de comunidades digitales y locales, proyectos artísticos y coleccionistas de NFT.",
+    "ov_p2": "Contó con patrocinio inicial de la Solana Foundation, a través de un programa del fotógrafo JT Liss, y con el apoyo de comunidades digitales y locales, proyectos artísticos y coleccionistas de NFT.",
     "st_artists": "Artistas del Nordeste brasileño",
     "st_sold": "NFTs vendidos",
     "st_works": "Obras exclusivas",
@@ -551,6 +551,6 @@
     "tag_walk": "Recorrido",
     "col_tag": "Collector · archivo",
     "col_h": "Vendidos en Collector",
-    "col_p": "Los NFTs se vendieron en Collector, una plataforma de exposiciones curadas en Solana que ya no existe. Esta es la página de la muestra allí, guardada antes de que saliera del aire."
+    "col_p": "Los NFTs se vendieron en Collector, una plataforma de exposiciones curadas de NFT que ya no existe. Esta es la página de la muestra allí, guardada antes de que saliera del aire."
   }
 }
