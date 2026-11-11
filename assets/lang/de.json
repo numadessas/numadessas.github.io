@@ -512,7 +512,6 @@
     "tag_logo2023": "Verwendetes Logo · Ausgabe 2023",
     "sound_off": "🔇 Ton aus",
     "sound_on": "🔊 Ton an",
-    "r1_credit": "Hauptmotiv <b>„La Vision“</b> von Matheus Ciberdelia · Fotos von Subverso Lab.",
     "tools_prod": "Planung · Sponsoring · Logistik",
     "r2_p": "Ich schrieb das Projekt und das Sponsoring-Deck (Medien-, Screen- und Exklusiv-Screen-Pakete), gewann die Casa Criatura in Olindas Altstadt als Partner, lud die Künstler:innen ein, richtete die NFT-Drops ein — 1/1-Werke auf Mallow und 100er-Editionen auf 3.land — und produzierte einen vollen Eröffnungstag. Alle Sammler:innen erhielten ein Erinnerungs-NFT.",
     "d1": "Einlass · Ausstellung",
@@ -551,6 +550,10 @@
     "tag_walk": "Rundgang",
     "col_tag": "Collector · Archiv",
     "col_h": "Verkauft auf Collector",
-    "col_p": "Die NFTs wurden auf Collector verkauft, einer Plattform für kuratierte NFT-Ausstellungen, die es nicht mehr gibt. Das ist die Seite der Ausstellung dort, gesichert bevor sie offline ging."
+    "col_p": "Die NFTs wurden auf Collector verkauft, einer Plattform für kuratierte NFT-Ausstellungen, die es nicht mehr gibt. Das ist die Seite der Ausstellung dort, gesichert bevor sie offline ging.",
+    "sw_sun": "Sonne",
+    "sw_coral": "Koralle",
+    "sw_violet": "Violett",
+    "sw_night": "Nacht"
   }
 }

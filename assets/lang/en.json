@@ -512,7 +512,6 @@
     "tag_logo2023": "Logo used · 2023 edition",
     "sound_off": "🔇 Sound off",
     "sound_on": "🔊 Sound on",
-    "r1_credit": "Main art <b>“La Vision”</b> by Matheus Ciberdelia · photos by Subverso Lab.",
     "tools_prod": "Planning · Sponsorship · Logistics",
     "r2_p": "I wrote the project and sponsorship deck (media, screen and exclusive-screen quotas), partnered with Casa Criatura in Olinda's historic center, invited the artists, set up the NFT drops — 1/1 pieces on Mallow and 100-edition works on 3.land — and ran a full opening day. Every collector got a commemorative NFT.",
     "d1": "Doors open · exhibition",
@@ -551,6 +550,10 @@
     "tag_walk": "Walkthrough",
     "col_tag": "Collector · archive",
     "col_h": "Sold on Collector",
-    "col_p": "The NFTs were sold on Collector, a curated NFT exhibition platform that no longer exists. This is the show's page there, saved before it went offline."
+    "col_p": "The NFTs were sold on Collector, a curated NFT exhibition platform that no longer exists. This is the show's page there, saved before it went offline.",
+    "sw_sun": "Sun",
+    "sw_coral": "Coral",
+    "sw_violet": "Violet",
+    "sw_night": "Night"
   }
 }
