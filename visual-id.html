@@ -128,6 +128,17 @@
   /* placeholder look (swap the .ph span for an <img> when ready) */
   .logo-cell .ph{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--grey);opacity:.5}
+  /* featured 2x2 tile, rotates through a few marks */
+  .logo-feature{grid-column:span 2;grid-row:span 2}
+  .logo-feature img{position:absolute;inset:0;opacity:0;transform:scale(1.04);
+    transition:opacity .9s ease,transform 4.5s ease}
+  .logo-feature img.is-on{opacity:1;transform:scale(1)}
+  .logo-feature:hover img.is-on{transform:scale(1.04)}
+  .lf-dots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:2}
+  .lf-dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;cursor:pointer;
+    background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.25);transition:width .3s ease,background .3s ease}
+  .lf-dots button.is-on{width:22px;background:#fff}
+  .lf-dots button:focus-visible{outline:2px solid #fff;outline-offset:2px}
   @media(max-width:520px){.logowall{grid-template-columns:repeat(2,1fr)}}
 
   /* APPLICATIONS — per-category square galleries */
@@ -255,28 +266,46 @@
       <h2 style="margin-top:clamp(56px,9vw,110px)" data-i18n-html="visualid.wall_h2">The logo wall<span class="dot">.</span></h2>
       <p class="body" data-i18n="visualid.wall_body">A selection of marks across many industries and visual registers — from playful and hand-drawn to strict and geometric. Each square is one identity.</p>
       <div class="logowall">
+        <div class="logo-cell logo-feature" aria-roledescription="carousel" aria-label="Featured identities">
+          <img src="assets/img/design/visual-id/ensolarada.webp" alt="Ensolarada logo" class="is-on">
+          <img src="assets/img/design/visual-id/grao.webp" alt="Grão logo" loading="lazy">
+          <img src="assets/img/design/visual-id/brabas.webp" alt="Brabas logo" loading="lazy">
+          <img src="assets/img/design/visual-id/protege-accor.webp" alt="Protege Accor logo" loading="lazy">
+          <img src="assets/img/design/visual-id/riska.webp" alt="Riska logo" loading="lazy">
+          <div class="lf-dots"><button type="button" aria-label="Ensolarada" class="is-on" aria-current="true"></button><button type="button" aria-label="Grão"></button><button type="button" aria-label="Brabas"></button><button type="button" aria-label="Protege Accor"></button><button type="button" aria-label="Riska"></button></div>
+        </div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/kixa.webp" alt="Kixa logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/mnq.webp" alt="MNQ logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/teia.webp" alt="Teia logo" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/img/design/visual-id/ensolarada.webp" alt="Ensolarada logo" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/img/design/visual-id/grao.webp" alt="Grão logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/missa.webp" alt="Missa logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/todas.webp" alt="Todas logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/flui.webp" alt="Flui logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/maravilhosamente.webp" alt="Maravilhosamente logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/pitangueira.webp" alt="Pitangueira logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/ambientaliza.webp" alt="Ambientaliza logo" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/img/design/visual-id/brabas.webp" alt="Brabas logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/hof.webp" alt="HOF Intensive logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/babi.webp" alt="Babi logo" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/img/design/visual-id/protege-accor.webp" alt="Protege Accor logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/yuri.webp" alt="Yuri logo" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/img/design/visual-id/riska.webp" alt="Riska logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/leeh.webp" alt="Leeh logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/fnmhPE.webp" alt="FNMH PE logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/tino.webp" alt="Tino logo" loading="lazy"></div>
         <div class="logo-cell"><img src="assets/img/design/visual-id/cafeprosa.webp" alt="Café & Prosa logo" loading="lazy"></div>
       </div>
+      <script>
+      (function(){
+        var t=document.querySelector('.logo-feature');if(!t)return;
+        var imgs=t.querySelectorAll('img'),dots=t.querySelectorAll('.lf-dots button'),i=0,timer=null,
+            still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function show(n){imgs[i].classList.remove('is-on');dots[i].classList.remove('is-on');dots[i].removeAttribute('aria-current');
+          i=(n+imgs.length)%imgs.length;imgs[i].classList.add('is-on');dots[i].classList.add('is-on');dots[i].setAttribute('aria-current','true');}
+        function play(){if(still||timer)return;timer=setInterval(function(){show(i+1)},3800);}
+        function stop(){clearInterval(timer);timer=null;}
+        dots.forEach(function(d,k){d.addEventListener('click',function(){stop();show(k);play();});});
+        t.addEventListener('mouseenter',stop);t.addEventListener('mouseleave',play);
+        document.addEventListener('visibilitychange',function(){document.hidden?stop():play();});
+        play();
+      })();
+      </script>
 
       <h2 style="margin-top:clamp(56px,9vw,110px)" data-i18n-html="visualid.wild_h2">Marks in the wild<span class="dot">.</span></h2>
       <p class="body" data-i18n="visualid.wild_body">Where the identities actually show up — social and digital, print and merch, packaging, and beyond. Each square is a real application from a different project.</p>
