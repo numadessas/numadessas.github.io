@@ -114,30 +114,21 @@
   .piece figcaption{position:relative;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:6px}
   .piece figcaption b{color:var(--sun);font-weight:400}
 
-  /* why: design decisions */
-  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-  .wcard{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;
-    background:rgba(91,42,134,.22);border:1px solid var(--line)}
-  .wcard__viz{position:relative;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-    background:radial-gradient(80% 120% at 50% 110%,rgba(240,74,51,.35),transparent 70%),#211247}
-  .wcard__viz .sun{width:120px;height:120px;fill:var(--sun);animation:spin 40s linear infinite}
-  .wcard__viz .bands{display:flex;width:100%;height:100%}
-  .wcard__viz .bands i{display:block;height:100%}
-  .wcard__viz .bands i:nth-child(1){flex:5;background:var(--violet)}
-  .wcard__viz .bands i:nth-child(2){flex:3;background:var(--coral)}
-  .wcard__viz .bands i:nth-child(3){flex:2;background:var(--sun)}
-  .wcard__viz .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:16px}
-  .wcard__viz .chips span{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  /* why: Q&A inside visual identity */
+  .qa{display:grid;grid-template-columns:minmax(200px,.75fr) 1.6fr;gap:clamp(16px,4vw,48px);align-items:start;
+    margin:clamp(30px,5vw,48px) 0 clamp(20px,3vw,30px);padding:clamp(20px,3vw,28px) 0 0;border-top:1px solid rgba(240,74,51,.4)}
+  .qa h4{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.8vw,32px);line-height:1.05;margin:0;
+    display:flex;gap:12px;align-items:flex-start}
+  .qa h4 .qmark{flex:none;width:.9em;height:.9em;margin-top:.08em;fill:var(--sun);animation:spin 40s linear infinite}
+  .qa p{margin:0;max-width:62ch;color:#DCD2E8;font-size:clamp(15px,1.5vw,17px)}
+  .qa p+p{margin-top:12px}
+  .qa p b{color:var(--ink);font-weight:600}
+  .qa .chips{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:16px}
+  .qa .chips .cl{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .qa .chips span:not(.cl){font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     padding:6px 11px;border-radius:999px;border:1px solid rgba(230,255,42,.35);color:var(--sun);background:rgba(22,10,38,.6)}
-  .wcard__viz .chips span:last-child{border-style:dashed;color:var(--muted)}
-  .wcard__viz .cl{position:absolute;left:14px;top:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .wcard__body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px}
-  .wcard__k{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
-  .wcard h3{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.2vw,25px);line-height:1.1;margin:0}
-  .wcard p{margin:0;font-size:15px;color:#DCD2E8}
-  .wcard p b{color:var(--ink);font-weight:600}
-  @media(max-width:960px){.why{grid-template-columns:1fr}}
-
+  .qa .chips span:last-child{border-style:dashed!important;color:var(--muted)!important}
+  @media(max-width:760px){.qa{grid-template-columns:1fr}}
   /* role cards */
   .roles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
   .role{position:relative;border-radius:18px;padding:24px 22px 22px;overflow:hidden;
@@ -412,42 +403,6 @@
     </div>
   </section>
 
-  <!-- WHY: DESIGN DECISIONS -->
-  <section style="padding-top:0" id="why">
-    <div class="wrap">
-      <div class="kicker"><span class="num" data-i18n="enso.why_num">WHY THIS WAY</span><span class="line"></span></div>
-      <h2 data-i18n-html="enso.why_h2">The reasoning behind it<span class="dot">.</span></h2>
-      <p class="body" data-i18n="enso.why_intro">An event identity isn't just there to look good on the feed. Every decision here answers a practical question: where the project comes from, who it talks to and where that audience actually is.</p>
-      <div class="why">
-        <article class="wcard">
-          <div class="wcard__viz" aria-hidden="true"><svg class="sun" viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
-          <div class="wcard__body">
-            <span class="wcard__k">01 · <span data-i18n="enso.w1_k">Name &amp; symbol</span></span>
-            <h3 data-i18n="enso.w1_q">Why a sun?</h3>
-            <p data-i18n-html="enso.w1_a">The name came before the brand. The project started from an initiative on the <b>Solana</b> network — the sun was already in the name — and it existed to celebrate artists from Brazil's Northeast, where the sun isn't a metaphor, it's the weather forecast. <b>Ensolarada</b> (“sunny” in Portuguese) ties both origins into one word, and the sun became the most direct symbol possible: readable from afar and easy to repeat on badges, screens, plaques and motion.</p>
-          </div>
-        </article>
-        <article class="wcard">
-          <div class="wcard__viz" aria-hidden="true"><div class="bands"><i></i><i></i><i></i></div></div>
-          <div class="wcard__body">
-            <span class="wcard__k">02 · <span data-i18n="enso.w2_k">Color</span></span>
-            <h3 data-i18n="enso.w2_q">Why purple, orange and yellow?</h3>
-            <p data-i18n-html="enso.w2_a">Purple and orange show up a lot in my work, but here each one has a job. <b>Purple</b> stands for technology. On its own it feels cold — <b>orange</b> comes in to balance and warm it up. <b>Yellow</b> is the sun: it's what makes the identity actually sunny, not just by name.</p>
-          </div>
-        </article>
-        <article class="wcard">
-          <div class="wcard__viz"><span class="cl" data-i18n="enso.w3_cl">Collected from</span><div class="chips" data-i18n-html="enso.w3_c"><span>Turkey</span><span>Argentina</span><span>Brazil</span><span>USA</span><span>Canada</span><span>+ others</span></div></div>
-          <div class="wcard__body">
-            <span class="wcard__k">03 · <span data-i18n="enso.w3_k">Format</span></span>
-            <h3 data-i18n="enso.w3_q">Why augmented reality and the metaverse?</h3>
-            <p data-i18n-html="enso.w3_a">Because an NFT show's audience doesn't fit in a house in Olinda. The community is international: sales came from collectors in several countries who bought to support the event without ever setting foot there. For them the show had to exist online — and be worth visiting, not a list of links. AR posters and metaverse galleries are already Web3 culture; skipping them would mean a local event for a global audience.</p>
-            <p data-i18n="enso.w3_note">And the poster didn't stay digital: it was sold, and given to the artists who came in person.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- MY ROLE -->
   <section style="padding-top:0">
     <div class="wrap">
@@ -477,6 +432,10 @@
             <video src="assets/img/projects/ensolarada/id/logo-2023.mp4" autoplay muted loop playsinline></video>
           </figure>
         </div>
+        <div class="qa">
+          <h4><svg class="qmark" viewBox="0 0 912 809" aria-hidden="true"><use href="#sunpath"/></svg><span data-i18n="enso.w1_q">Why a sun?</span></h4>
+          <p data-i18n-html="enso.w1_a">The name came before the brand. The project started from an initiative on the <b>Solana</b> network — the sun was already in the name — and it existed to celebrate artists from Brazil's Northeast, where the sun isn't a metaphor, it's the weather forecast. <b>Ensolarada</b> (“sunny” in Portuguese) ties both origins into one word, and the sun became the most direct symbol possible: readable from afar and easy to repeat on badges, screens, plaques and motion.</p>
+        </div>
         <figure class="elements" aria-label="Elements from the main art">
           <img src="assets/img/projects/ensolarada/id/el/tower.webp" alt="Eye tower" loading="lazy">
           <img src="assets/img/projects/ensolarada/id/el/caranguejo.webp" alt="Crab" loading="lazy">
@@ -486,6 +445,10 @@
           <figcaption data-i18n="enso.el_cap">Elements cut from the main art and animated for the communication</figcaption>
         </figure>
         <figure class="figure idcover"><img src="assets/img/projects/ensolarada/id/id-cover.webp" alt="Ensolarada visual identity applications" loading="lazy"></figure>
+        <div class="qa">
+          <h4><svg class="qmark" viewBox="0 0 912 809" aria-hidden="true"><use href="#sunpath"/></svg><span data-i18n="enso.w2_q">Why purple, orange and yellow?</span></h4>
+          <p data-i18n-html="enso.w2_a">Purple and orange show up a lot in my work, but here each one has a job. <b>Purple</b> stands for technology. On its own it feels cold — <b>orange</b> comes in to balance and warm it up. <b>Yellow</b> is the sun: it's what makes the identity actually sunny, not just by name.</p>
+        </div>
         <div class="idfoot">
         <div class="palette" aria-label="Palette">
           <figure class="swatch"><div class="chip" style="background:#E6FF2A"></div><figcaption><b data-i18n="enso.sw_sun">Sun</b><span>#E6FF2A</span><span>RGB 230 255 42</span></figcaption></figure>
@@ -501,6 +464,18 @@
             <p data-i18n-html="enso.xr_p">The official poster came to life through an XR filter: point the phone at it and the artwork moves. Art by <b>Matheus Ciberdelia</b>, interaction built by the artist <b>LUREX</b>.</p>
           </div>
         </div>
+        </div>
+        <div class="qa">
+          <h4><svg class="qmark" viewBox="0 0 912 809" aria-hidden="true"><use href="#sunpath"/></svg><span data-i18n="enso.w3_q">Why augmented reality and the metaverse?</span></h4>
+          <div>
+            <p data-i18n-html="enso.w3_a">Because an NFT show's audience doesn't fit in a house in Olinda. The community is international: sales came from collectors in several countries who bought to support the event without ever setting foot there. For them the show had to exist online — and be worth visiting, not a list of links. AR posters and metaverse galleries are already Web3 culture; skipping them would mean a local event for a global audience.</p>
+            <div class="chips"><span class="cl" data-i18n="enso.w3_cl">Collected from</span><span style="display:contents" data-i18n-html="enso.w3_c"><span>Turkey</span><span>Argentina</span><span>Brazil</span><span>USA</span><span>Canada</span><span>+ others</span></span></div>
+            <p data-i18n="enso.w3_note" style="margin-top:16px">And the poster didn't stay digital: it was sold, and given to the artists who came in person.</p>
+          </div>
+        </div>
+        <div class="metawalk">
+          <figure class="figure metaverse"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span><figcaption><b>Praia da Criatura</b><span data-i18n="enso.metaverse_cap">The show’s metaverse version — built and exhibited by 3.land.</span></figcaption></figure>
+          <figure class="figure walk"><video src="assets/img/projects/ensolarada/works/metaverse-walk.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="tag" data-i18n="enso.tag_walk">Walkthrough</span></figure>
         </div>
       </div>
 
@@ -603,10 +578,6 @@
             <p data-i18n="enso.col_p">The NFTs were sold on Collector, a curated NFT exhibition platform that no longer exists. This is the show's page there, saved before it went offline.</p>
           </div>
           <figure class="figure scrollshot"><img src="assets/img/projects/ensolarada/photos/collector-page.webp" alt="Ensolarada exhibition page on Collector" loading="lazy"></figure>
-        </div>
-        <div class="metawalk">
-          <figure class="figure metaverse"><video src="assets/img/projects/ensolarada/works/praia-da-criatura.mp4" autoplay muted loop playsinline></video><span class="tag" data-i18n="enso.tag_metaverse">Metaverse · 3.land</span><figcaption><b>Praia da Criatura</b><span data-i18n="enso.metaverse_cap">The show’s metaverse version — built and exhibited by 3.land.</span></figcaption></figure>
-          <figure class="figure walk"><video src="assets/img/projects/ensolarada/works/metaverse-walk.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="tag" data-i18n="enso.tag_walk">Walkthrough</span></figure>
         </div>
       </div>
     </div>
