@@ -114,6 +114,30 @@
   .piece figcaption{position:relative;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:6px}
   .piece figcaption b{color:var(--sun);font-weight:400}
 
+  /* why: design decisions */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+  .wcard{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;
+    background:rgba(91,42,134,.22);border:1px solid var(--line)}
+  .wcard__viz{position:relative;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:radial-gradient(80% 120% at 50% 110%,rgba(240,74,51,.35),transparent 70%),#211247}
+  .wcard__viz .sun{width:120px;height:120px;fill:var(--sun);animation:spin 40s linear infinite}
+  .wcard__viz .bands{display:flex;width:100%;height:100%}
+  .wcard__viz .bands i{display:block;height:100%}
+  .wcard__viz .bands i:nth-child(1){flex:5;background:var(--violet)}
+  .wcard__viz .bands i:nth-child(2){flex:3;background:var(--coral)}
+  .wcard__viz .bands i:nth-child(3){flex:2;background:var(--sun)}
+  .wcard__viz .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:16px}
+  .wcard__viz .chips span{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    padding:6px 11px;border-radius:999px;border:1px solid rgba(230,255,42,.35);color:var(--sun);background:rgba(22,10,38,.6)}
+  .wcard__viz .chips span:last-child{border-style:dashed;color:var(--muted)}
+  .wcard__viz .cl{position:absolute;left:14px;top:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .wcard__body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px}
+  .wcard__k{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+  .wcard h3{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.2vw,25px);line-height:1.1;margin:0}
+  .wcard p{margin:0;font-size:15px;color:#DCD2E8}
+  .wcard p b{color:var(--ink);font-weight:600}
+  @media(max-width:960px){.why{grid-template-columns:1fr}}
+
   /* role cards */
   .roles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
   .role{position:relative;border-radius:18px;padding:24px 22px 22px;overflow:hidden;
@@ -354,7 +378,7 @@
       <p class="eyebrow" data-i18n="enso.eyebrow">Art &amp; NFT Exhibition · Olinda, PE · 2023</p>
       <h1><span>Ensolarada</span><svg class="sunmark" viewBox="0 0 912 809" aria-hidden="true"><use href="#sunpath"/></svg></h1>
       <p class="tagline">arte &amp; NFTs · made in Brazil</p>
-      <p class="lede" data-i18n="enso.lede">A crypto-art exhibition and tech event with 15 artists from Northeast Brazil — on screens, in person and in the metaverse. I created it from scratch.</p>
+      <p class="lede" data-i18n="enso.lede">A crypto-art exhibition and tech event with 15 artists from Northeast Brazil — on screens, in person and in the metaverse. My idea, my identity, my production.</p>
       <div class="metarow">
         <div><div class="k" data-i18n="enso.k_role">My role</div><div class="v" data-i18n="enso.v_role">Visual ID · Production · Social · Curation</div></div>
         <div><div class="k" data-i18n="enso.k_dates">Dates</div><div class="v" data-i18n="enso.v_dates">Oct 7 — 14, 2023</div></div>
@@ -370,7 +394,7 @@
       <div>
         <div class="kicker"><span class="num" data-i18n="enso.ov_num">OVERVIEW</span><span class="line"></span></div>
         <h2 data-i18n-html="enso.ov_h2">Art &amp; NFTs under the sun<span class="dot">.</span></h2>
-        <p class="body" data-i18n-html="enso.ov_p1">A project about <strong>decentralizing NFT culture</strong> — valuing and paying artists from Brazil, far from the usual art-and-crypto hubs.</p>
+        <p class="body" data-i18n-html="enso.ov_p1">A project to <strong>decentralize NFT culture</strong>: valuing and paying artists from Northeast Brazil, far from the usual art-and-crypto hubs.</p>
         <p class="body" data-i18n-html="enso.ov_p2">It had initial sponsorship from the Solana Foundation, through a program run by photographer JT Liss, and support from digital and local communities, art projects and NFT collectors.</p>
         <div class="stats">
           <div class="stat"><div class="n">15</div><div class="l" data-i18n="enso.st_artists">Artists from Northeast Brazil</div></div>
@@ -388,12 +412,48 @@
     </div>
   </section>
 
+  <!-- WHY: DESIGN DECISIONS -->
+  <section style="padding-top:0" id="why">
+    <div class="wrap">
+      <div class="kicker"><span class="num" data-i18n="enso.why_num">WHY THIS WAY</span><span class="line"></span></div>
+      <h2 data-i18n-html="enso.why_h2">The reasoning behind it<span class="dot">.</span></h2>
+      <p class="body" data-i18n="enso.why_intro">An event identity isn't just there to look good on the feed. Every decision here answers a practical question: where the project comes from, who it talks to and where that audience actually is.</p>
+      <div class="why">
+        <article class="wcard">
+          <div class="wcard__viz" aria-hidden="true"><svg class="sun" viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
+          <div class="wcard__body">
+            <span class="wcard__k">01 · <span data-i18n="enso.w1_k">Name &amp; symbol</span></span>
+            <h3 data-i18n="enso.w1_q">Why a sun?</h3>
+            <p data-i18n-html="enso.w1_a">The name came before the brand. The project started from an initiative on the <b>Solana</b> network — the sun was already in the name — and it existed to celebrate artists from Brazil's Northeast, where the sun isn't a metaphor, it's the weather forecast. <b>Ensolarada</b> (“sunny” in Portuguese) ties both origins into one word, and the sun became the most direct symbol possible: readable from afar and easy to repeat on badges, screens, plaques and motion.</p>
+          </div>
+        </article>
+        <article class="wcard">
+          <div class="wcard__viz" aria-hidden="true"><div class="bands"><i></i><i></i><i></i></div></div>
+          <div class="wcard__body">
+            <span class="wcard__k">02 · <span data-i18n="enso.w2_k">Color</span></span>
+            <h3 data-i18n="enso.w2_q">Why purple, orange and yellow?</h3>
+            <p data-i18n-html="enso.w2_a">Purple and orange show up a lot in my work, but here each one has a job. <b>Purple</b> stands for technology. On its own it feels cold — <b>orange</b> comes in to balance and warm it up. <b>Yellow</b> is the sun: it's what makes the identity actually sunny, not just by name.</p>
+          </div>
+        </article>
+        <article class="wcard">
+          <div class="wcard__viz"><span class="cl" data-i18n="enso.w3_cl">Collected from</span><div class="chips" data-i18n-html="enso.w3_c"><span>Turkey</span><span>Argentina</span><span>Brazil</span><span>USA</span><span>Canada</span><span>+ others</span></div></div>
+          <div class="wcard__body">
+            <span class="wcard__k">03 · <span data-i18n="enso.w3_k">Format</span></span>
+            <h3 data-i18n="enso.w3_q">Why augmented reality and the metaverse?</h3>
+            <p data-i18n-html="enso.w3_a">Because an NFT show's audience doesn't fit in a house in Olinda. The community is international: sales came from collectors in several countries who bought to support the event without ever setting foot there. For them the show had to exist online — and be worth visiting, not a list of links. AR posters and metaverse galleries are already Web3 culture; skipping them would mean a local event for a global audience.</p>
+            <p data-i18n="enso.w3_note">And the poster didn't stay digital: it was sold, and given to the artists who came in person.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- MY ROLE -->
   <section style="padding-top:0">
     <div class="wrap">
       <div class="kicker"><span class="num" data-i18n="enso.role_num">MY ROLE</span><span class="line"></span></div>
       <h2 data-i18n-html="enso.role_h2">One person, four hats<span class="dot">.</span></h2>
-      <p class="body" data-i18n="enso.role_body">Ensolarada was my idea and my production. I took it from the sponsorship deck to the closing party — designing it, running it, telling its story online and carefully building an interesting curation.</p>
+      <p class="body" data-i18n="enso.role_body">Ensolarada was my idea and I ran it end to end, from the sponsorship deck to the closing party: I designed it, produced it, told its story online and built the curation. Four jobs, one person — great for consistency, rough on everything else.</p>
 
       <div class="roles">
         <div class="role"><span class="rn">01</span><span class="rt" data-i18n="enso.r1_t">Visual Identity</span><span class="rd" data-i18n="enso.r1_d">Logo, palette, patterns, signage, plaques and screens.</span><svg viewBox="0 0 912 809"><use href="#sunpath"/></svg></div>
@@ -429,7 +489,7 @@
         <div class="idfoot">
         <div class="palette" aria-label="Palette">
           <figure class="swatch"><div class="chip" style="background:#E6FF2A"></div><figcaption><b data-i18n="enso.sw_sun">Sun</b><span>#E6FF2A</span><span>RGB 230 255 42</span></figcaption></figure>
-          <figure class="swatch"><div class="chip" style="background:#F04A33"></div><figcaption><b data-i18n="enso.sw_coral">Coral</b><span>#F04A33</span><span>RGB 240 74 51</span></figcaption></figure>
+          <figure class="swatch"><div class="chip" style="background:#F04A33"></div><figcaption><b data-i18n="enso.sw_coral">Orange</b><span>#F04A33</span><span>RGB 240 74 51</span></figcaption></figure>
           <figure class="swatch"><div class="chip" style="background:#5B2A86"></div><figcaption><b data-i18n="enso.sw_violet">Violet</b><span>#5B2A86</span><span>RGB 91 42 134</span></figcaption></figure>
           <figure class="swatch"><div class="chip" style="background:#211247"></div><figcaption><b data-i18n="enso.sw_night">Night</b><span>#211247</span><span>RGB 33 18 71</span></figcaption></figure>
         </div>
